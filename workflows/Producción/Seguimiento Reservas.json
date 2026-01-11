@@ -1,0 +1,1586 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Calcula Fecha y Hora Actual": {
+      "main": [
+        [
+          {
+            "node": "Preguntas de Confirmacion sin Respuesta",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reservaciones Pendientes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta Otro Formato": {
+      "main": [
+        [
+          {
+            "node": "Respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta": {
+      "main": [
+        [
+          {
+            "node": "Ingresa Registro ReConfirmacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Respuesta Otro Formato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Mensaje WA": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Pregunta Confirmacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingresa Registro ReConfirmacion": {
+      "main": [
+        [
+          {
+            "node": "Envia Mensaje WA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Pregunta Confirmacion": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Respuesta Otro Formato1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta Otro Formato1": {
+      "main": [
+        [
+          {
+            "node": "Respuesta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta1": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Mensaje WA1": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Pregunta Confirmacion1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingresa Registro ReConfirmacion1": {
+      "main": [
+        [
+          {
+            "node": "Envia Mensaje WA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Pregunta Confirmacion1": {
+      "main": [
+        [
+          {
+            "node": "Update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preguntas de Confirmacion sin Respuesta": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reservaciones Pendientes": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "Ingresa Registro ReConfirmacion1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Calcula Fecha y Hora Actual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-13T01:48:44.542Z",
+  "id": "VgvAY30E19bSey5e",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Seguimiento Reservas",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "77d1c36a-901f-46ce-bb1b-36ed256548f9",
+              "name": "fecha_hoy",
+              "value": "={{ new Date().toLocaleString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }) }}",
+              "type": "string"
+            },
+            {
+              "id": "4c0d264c-a98f-418c-b424-81ce227f92d8",
+              "name": "=hora_ahora",
+              "value": "={{ new Date().toLocaleString('en-GB', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) }}",
+              "type": "string"
+            },
+            {
+              "id": "5beed38e-1087-4ec6-8ffb-c77119e18396",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        16
+      ],
+      "id": "ab577a22-67df-46ef-8234-2c244aea1983",
+      "name": "Calcula Fecha y Hora Actual"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define las 20 variantes para retomar la confirmación\nconst respuestas = [\n  \"👋 ¡Hola! Me quedé esperando tu confirmación. ¿Los datos de la reserva son correctos para proceder?\",\n  \"Disculpa la insistencia, pero necesito tu confirmación final para poder asegurar tu mesa. ¿Está todo bien?\",\n  \"🍣 Solo nos falta un paso: ¿me confirmas si los datos anteriores son correctos para agendar tu visita?\",\n  \"¡Ojo! La reserva aún no está guardada en el sistema. ¿Me das el visto bueno para confirmarla?\",\n  \"Disculpa, ¿sigues ahí? Necesito un 'SÍ' o una confirmación para que no pierdas tu lugar en la lista. 📝\",\n  \"Para evitar que alguien más tome ese horario, por favor confírmame si los datos están bien.\",\n  \"⏳ Sigo pendiente de tu respuesta. Sin tu confirmación no puedo asegurar tu mesa. ¿Procedemos?\",\n  \"Hola, ¿te gustaría que finalice la reservación con la información que me diste?\",\n  \"No quiero que te quedes sin mesa 😱. ¿Me confirmas que los datos son correctos?\",\n  \"Recuerda que tu reserva está en 'pausa' hasta que me confirmes. ¿Todo correcto?\",\n  \"¡Casi listo! Solo necesito que me digas si la información es correcta para cerrar la reserva. [Sí/No]\",\n  \"¿Te parece bien si cerramos la reserva con esos datos? Avísame para guardarla.\",\n  \"Lo siento, sigo pendiente. ¿Confirmamos la reserva con los datos previos?\",\n  \"Disculpa, aún no he generado tu código de reserva. Por favor, confírmame para asegurar tu espacio.\",\n  \"¿Todo en orden con los datos? Respóndeme para dejar tu mesa lista. 🥢\",\n  \"Por favor, indícame si procedo con la reserva o si necesitas corregir algún dato.\",\n  \"Solo para estar seguros: ¿Confirmas la fecha, hora y cantidad de personas? [Sí/No]\",\n  \"¡No te olvides de confirmar! Aún no he podido asegurar tu mesa y podría ocuparse. ¿Procedo?\",\n  \"🥢 ¿Damos por buenos los datos? Necesito tu OK para finalizar.\",\n  \"Aquí sigo atento. ¿Me autorizas a confirmar la reserva con la información que me diste?\"\n];\n\n// Selecciona una respuesta aleatoria\nconst respuestaAleatoria = respuestas[Math.floor(Math.random() * respuestas.length)];\n\n// Prepara el output para n8n\n// Se mantiene la estructura que usaste en tu ejemplo\nconst output = [{ \n  json: {\n    respuesta: respuestaAleatoria,\n    timestamp: new Date().toISOString()\n  }\n}];\n\nreturn output;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        32
+      ],
+      "id": "a61c3d65-6498-4ab8-82a8-b1955f878cbc",
+      "name": "Respuesta Otro Formato"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d80a5788-a83f-4216-8261-bac563e6cd2a",
+              "name": "respuesta",
+              "value": "={{ $json.respuesta }}",
+              "type": "string"
+            },
+            {
+              "id": "47781a33-c7d8-4eb7-ac95-efc119632ae4",
+              "name": "chatid",
+              "value": "={{ $('Preguntas de Confirmacion sin Respuesta').item.json.chatid }}",
+              "type": "string"
+            },
+            {
+              "id": "9ecf5482-20da-405b-adb4-12b17921a615",
+              "name": "telefono",
+              "value": "={{ $('Preguntas de Confirmacion sin Respuesta').item.json.telefono }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        608,
+        32
+      ],
+      "id": "837e3760-123b-43a5-8ac0-e802af5bc331",
+      "name": "Respuesta"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        144,
+        16
+      ],
+      "id": "e4beb5bc-e0e0-4b75-a267-be5e321e390e",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution-api-evolution-api.2hxkvh.easypanel.host/message/sendText/Osaki-Resto",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=E0B8ADD8C625-43AA-A628-B042A5A087E5"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Respuesta').item.json.chatid }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Respuesta').item.json.respuesta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1056,
+        32
+      ],
+      "id": "7d4bd340-0738-4bfb-9641-dca9482300af",
+      "name": "Envia Mensaje WA"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Calcula Fecha y Hora Actual').item.json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message": "={\n  \"type\": \"ai\",\n  \"content\": \"{{ $('Respuesta').item.json.respuesta }}\",\n  \"tool_calls\": [],\n  \"additional_kwargs\": {},\n  \"response_metadata\": {},\n  \"invalid_tool_calls\": []\n}",
+            "session_id": "={{ $('Preguntas de Confirmacion sin Respuesta').item.json.chatid }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        832,
+        32
+      ],
+      "id": "b9c0dac8-c999-4511-b13a-8e449afdf3a1",
+      "name": "Ingresa Registro ReConfirmacion",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Calcula Fecha y Hora Actual').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "=clientes",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "pregunta_verifica_reserva": "={{ false }}",
+            "telefono": "={{ $('Loop Over Items').item.json.telefono }}"
+          },
+          "matchingColumns": [
+            "telefono"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1280,
+        32
+      ],
+      "id": "9bdf3602-3f74-4a4a-9a43-0120da032d99",
+      "name": "Actualiza Pregunta Confirmacion",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        128,
+        288
+      ],
+      "id": "3b4172c8-2296-47a5-b738-103637ad5203",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items que entran al nodo\nreturn items.map(item => {\n  const datos = item.json;\n  \n  // Cortamos los segundos (13:30:00 -> 13:30)\n  const hora = datos.hora_reservacion.substring(0, 5);\n  \n  const variantes = [\n    `👋 Hola *${datos.cliente}*, tu mesa con código *${datos.codigo_reserva}* te espera a las ${hora}. ¿Me confirmas que vienes en camino?`,\n    `¡Todo listo *${datos.cliente}*! Referencia: *${datos.codigo_reserva}*. Necesitamos tu confirmación final para asegurar la mesa.`,\n    `🍣 *${datos.cliente}*, el chef ya está preparado. Código: *${datos.codigo_reserva}*. ¿Confirmamos tu llegada?`,\n    `¡Nos vemos pronto *${datos.cliente}*! Reserva *${datos.codigo_reserva}*. Solo un mensaje rápido para confirmar que contamos contigo.`,\n    `Hola *${datos.cliente}*, estamos organizando tu llegada (Ref: *${datos.codigo_reserva}*). ¿Sigue confirmada tu asistencia a las ${hora}?`,\n    `*${datos.cliente}*, tu mesa para ${datos.numero_personas} personas (*${datos.codigo_reserva}*) está bloqueada. ¿Nos regalas una confirmación?`,\n    `⏳ Ya casi es hora *${datos.cliente}*. Código: *${datos.codigo_reserva}*. ¿Podemos confirmar tu asistencia hoy?`,\n    `Queremos brindarte el mejor servicio, *${datos.cliente}*. Código *${datos.codigo_reserva}*. ¿Nos confirmas tu visita?`,\n    `Hola *${datos.cliente}*, validando reserva *${datos.codigo_reserva}*: ¿Todo confirmado para las ${hora}?`,\n    `¡Qué emoción recibirte *${datos.cliente}*! Tu código es *${datos.codigo_reserva}*. ¿Me confirmas que llegarás para mantener tu mesa?`,\n    `Estamos a punto de preparar tu mesa (*${datos.codigo_reserva}*), *${datos.cliente}*. ¿Confirmas tu asistencia?`,\n    `Solo asegurándonos de que no haya cambios en la reserva *${datos.codigo_reserva}* de *${datos.cliente}*. ¿Llegada confirmada?`,\n    `Disculpa la molestia *${datos.cliente}*, validando reserva *${datos.codigo_reserva}*. ¿Me confirmas que vienes a las ${hora}?`,\n    `¡Tu mesa te espera *${datos.cliente}*! Código *${datos.codigo_reserva}*. ¿Confirmamos asistencia para ${datos.numero_personas} personas?`,\n    `🥢 Todo el equipo te espera *${datos.cliente}*. Ref: *${datos.codigo_reserva}*. ¿Nos das una confirmación para tener todo listo?`,\n    `Hola *${datos.cliente}*, para evitar liberar la mesa *${datos.codigo_reserva}* por error, ¿me confirmas que llegarás?`,\n    `Solo chequeando asistencia de *${datos.cliente}* para el código *${datos.codigo_reserva}*: ¿Nos confirmas tu llegada?`,\n    `Tu código es *${datos.codigo_reserva}*, *${datos.cliente}*. ¿Podrías confirmarnos si ya vienes en camino?`,\n    `Queremos que tu experiencia sea perfecta, *${datos.cliente}*. Reserva: *${datos.codigo_reserva}*. ¿Asistencia confirmada?`,\n    `¡Ya casi es la hora del sushi *${datos.cliente}*! 🍣 Reserva *${datos.codigo_reserva}*. ¿Confirmas tu llegada a las ${hora}?`\n  ];\n\n  // Selección aleatoria\n  const respuestaAleatoria = variantes[Math.floor(Math.random() * variantes.length)];\n\n  // Retornamos los datos originales + el mensaje generado\n  return {\n    json: {\n      ...datos, \n      mensaje_reconfirmacion: respuestaAleatoria,\n      timestamp_envio: new Date().toISOString()\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        304
+      ],
+      "id": "d901d307-951a-416b-a7f4-9c1b4a50cbd7",
+      "name": "Respuesta Otro Formato1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d80a5788-a83f-4216-8261-bac563e6cd2a",
+              "name": "respuesta",
+              "value": "={{ $json.mensaje_reconfirmacion }}",
+              "type": "string"
+            },
+            {
+              "id": "47781a33-c7d8-4eb7-ac95-efc119632ae4",
+              "name": "chatid",
+              "value": "={{ $('Loop Over Items1').item.json.chatid }}",
+              "type": "string"
+            },
+            {
+              "id": "9ecf5482-20da-405b-adb4-12b17921a615",
+              "name": "telefono",
+              "value": "={{ $('Loop Over Items1').item.json.telefono_solicitante }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        304
+      ],
+      "id": "72875054-f742-4788-8b83-c75c08c2e176",
+      "name": "Respuesta1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution-api-evolution-api.2hxkvh.easypanel.host/message/sendText/Osaki-Resto",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=E0B8ADD8C625-43AA-A628-B042A5A087E5"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Select rows from a table').item.json.chatid }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Respuesta1').item.json.respuesta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1216,
+        304
+      ],
+      "id": "053c231c-8f23-49d7-b558-036b4323640a",
+      "name": "Envia Mensaje WA1"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Calcula Fecha y Hora Actual').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message": "={\n  \"type\": \"ai\",\n  \"content\": \"{{ $('Respuesta1').item.json.respuesta }}\",\n  \"tool_calls\": [],\n  \"additional_kwargs\": {},\n  \"response_metadata\": {},\n  \"invalid_tool_calls\": []\n}",
+            "session_id": "={{ $json.chatid }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1008,
+        304
+      ],
+      "id": "574b23cc-63b1-4387-816c-54240d96712b",
+      "name": "Ingresa Registro ReConfirmacion1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Calcula Fecha y Hora Actual').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "=reservaciones",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "codigo_reserva": "={{ $('Loop Over Items1').item.json.codigo_reserva }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "intento_confirmacion": "={{ true }}"
+          },
+          "matchingColumns": [
+            "codigo_reserva"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1424,
+        304
+      ],
+      "id": "33cf5c72-f0a0-4c97-90d3-3f43d6f5eb46",
+      "name": "Actualiza Pregunta Confirmacion1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Calcula Fecha y Hora Actual').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefono": "={{ $json.telefono_solicitante }}",
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "intencion": "Reservación",
+            "tipo_atencion": "IA"
+          },
+          "matchingColumns": [
+            "telefono"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1696,
+        304
+      ],
+      "id": "f4c83559-e69c-4542-bb62-044d9440a46d",
+      "name": "Update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1904,
+        304
+      ],
+      "id": "fe850468-bbd8-435f-92b8-d6c0e1d20b6a",
+      "name": "Wait",
+      "webhookId": "1be735ae-eb71-49e8-bd1d-a2fb061d1dde"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  c.telefono,\n  c.chatid\nFROM {{ $json.schema }}.clientes c\nJOIN LATERAL (\n  SELECT message\n  FROM {{ $json.schema }}.n8n_chat_histories h\n  WHERE h.session_id = c.chatid\n  ORDER BY h.id DESC\n  LIMIT 1\n) last_msg ON true\nWHERE\n  c.pregunta_verifica_reserva IS TRUE\n  \n  -- LÓGICA DE TIEMPO AJUSTADA (VENTANA 5 a 30 MIN):\n  -- 1. Debe haber pasado hace más de 5 minutos (< resta 5 min)\n  AND c.fecha_modificacion < (\n      ('{{ $json.fecha_hoy }} {{ $json.hora_ahora }}')::timestamp - INTERVAL '5 minutes'\n  )\n  -- 2. PERO no debe ser más viejo de 30 minutos (> resta 30 min)\n  AND c.fecha_modificacion > (\n      ('{{ $json.fecha_hoy }} {{ $json.hora_ahora }}')::timestamp - INTERVAL '30 minutes'\n  )\n  \n  -- Validaciones de la IA\n  AND last_msg.message->>'type' = 'ai'\n  AND regexp_replace(last_msg.message->>'content', '^\\[Used tools:.*\\]\\]\\s*', '') ~* 'verificas[^\\n]*$';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -96,
+        16
+      ],
+      "id": "d39294ba-114e-4565-aba3-c0c15513d762",
+      "name": "Preguntas de Confirmacion sin Respuesta",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n  a.CLIENTE, \n  a.fecha_reservacion, \n  a.hora_reservacion, \n  a.numero_personas, \n  a.zona, \n  a.codigo_reserva, \n  a.telefono_solicitante, \n  b.chatid\nFROM {{ $json.schema }}.reservaciones a\nJOIN {{ $json.schema }}.clientes b \n  ON (a.telefono_solicitante::bigint = b.telefono)\nWHERE intento_confirmacion = false\n  and a.estado = 'Pendiente'\n  /* Creamos un Timestamp de la reserva sumando fecha + hora */\n  AND (a.fecha_reservacion::date + a.hora_reservacion::time) >= TO_TIMESTAMP($1 || ' ' || $2, 'YYYY-MM-DD HH24:MI:SS')\n  /* Filtramos que la diferencia sea menor a 1 hora (intervalo) */\n  AND (a.fecha_reservacion::date + a.hora_reservacion::time) < (TO_TIMESTAMP($1 || ' ' || $2, 'YYYY-MM-DD HH24:MI:SS') + INTERVAL '1 hour')\n  limit 5;",
+        "options": {
+          "queryReplacement": "={{ $json.fecha_hoy }}, {{ $json.hora_ahora }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -96,
+        288
+      ],
+      "id": "29f7fb50-bcb8-497a-ba93-6ec216aa4c9b",
+      "name": "Reservaciones Pendientes",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "osaki_main",
+          "mode": "list",
+          "cachedResultName": "osaki_main"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "telefono",
+              "value": "={{ $json.telefono }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        832,
+        304
+      ],
+      "id": "6eab4d4e-dce8-4954-b4e6-bd21e9236fad",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */5  18-22 * * * "
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -912,
+        32
+      ],
+      "id": "9c152a0a-dae8-44bb-8999-7d7d4f53d3fb",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2c00140b-069c-4727-bcd8-0889a7491d68",
+              "leftValue": "={{ $json.Hour.toNumber() }}",
+              "rightValue": 18,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "6f438686-3ac1-4463-871e-ba0bf00b75f6",
+              "leftValue": "={{ $json.Hour.toNumber() }}",
+              "rightValue": 23,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -704,
+        32
+      ],
+      "id": "1d2c7b5e-1bc6-4d3b-8803-0731ef2d1349",
+      "name": "If"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "ZpYgShc1li13uf3h"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-13T01:48:44.547Z",
+      "createdAt": "2025-12-13T01:48:44.547Z",
+      "role": "workflow:owner",
+      "workflowId": "VgvAY30E19bSey5e",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T13:58:58.227Z",
+      "createdAt": "2026-01-11T13:58:58.227Z",
+      "id": "KkeQFkJULwWdcCpc",
+      "name": "Producción"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2026-01-11T21:18:57.897Z",
+  "versionId": "96508c49-c71b-4b77-bb29-ac9b8faa3e1d"
+}
