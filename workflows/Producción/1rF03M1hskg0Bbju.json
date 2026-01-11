@@ -4862,21 +4862,9 @@
       "createdAt": "2026-01-11T13:58:58.227Z",
       "id": "KkeQFkJULwWdcCpc",
       "name": "Producción"
-    },
-    {
-      "updatedAt": "2026-01-11T13:59:07.966Z",
-      "createdAt": "2026-01-11T13:59:07.966Z",
-      "id": "TEy2u6jFlivu8kn7",
-      "name": "SubProceso"
-    },
-    {
-      "updatedAt": "2026-01-11T13:58:36.789Z",
-      "createdAt": "2026-01-11T13:58:36.789Z",
-      "id": "hFyftivmZQVr0Mx5",
-      "name": "Osaki"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-11T14:03:09.570Z",
+  "updatedAt": "2026-01-11T21:19:53.964Z",
   "versionId": "c9dae73f-c4cd-4050-8e03-c591113b6b95"
 }
