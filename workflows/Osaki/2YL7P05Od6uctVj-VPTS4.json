@@ -1,0 +1,500 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-01-08T17:52:04.000Z",
+    "createdAt": "2026-01-08T17:52:02.141Z",
+    "versionId": "e8dcc921-818e-4194-8f97-401592cbffec",
+    "workflowId": "2YL7P05Od6uctVj-VPTS4",
+    "nodes": [
+      {
+        "parameters": {
+          "path": "review-click",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -176,
+          -32
+        ],
+        "id": "ff0aa4c2-4f8a-4d6b-8ae0-e9d1dabd77b0",
+        "name": "Webhook",
+        "webhookId": "24602197-97d3-4a1b-b282-1f751c79e508"
+      },
+      {
+        "parameters": {
+          "respondWith": "noData",
+          "options": {
+            "responseCode": 302,
+            "responseHeaders": {
+              "entries": [
+                {
+                  "name": "Location",
+                  "value": "https://www.google.com/search?sca_esv=727911a362dc4a92&rlz=1C1VDKB_esAR1168AR1168&sxsrf=ANbL-n4GAbBnC1rmZNtDVZvFu7q7Kgn0WQ:1767887530537&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOVsKHAMG1SrSXGpuza5Nltda35baLBEjIo_itf6-9JhL3pWlwJFb88CRWQyrbDbi9c94RjIPeaz-NKxasYxRMTACbHwwSAVynlEt5qZyYKVZgkCPnDNe755PtRSar_jzJTDMVjk%3D&q=Osaki+Sushi+Bar+TAKE+AWAY+-+Calle+47+Reviews&sa=X&ved=2ahUKEwjOwYqipvyRAxUGrZUCHbIWDRAQ0bkNegQIQRAE&biw=1536&bih=703&dpr=1.25&aic=0"
+                }
+              ]
+            }
+          }
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          240,
+          -32
+        ],
+        "id": "582284e8-ba1e-417d-b68d-ac33827d3dd2",
+        "name": "Respond to Webhook"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "osaki_analytics",
+            "mode": "list",
+            "cachedResultName": "osaki_analytics"
+          },
+          "table": {
+            "__rl": true,
+            "value": "reviews",
+            "mode": "list",
+            "cachedResultName": "reviews"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "tipo_evento": "={{ $json.query.type }}",
+              "sucursal_nombre": "={{ $json.query.sucursal }}",
+              "pedido_codigo": "={{ $json.query.pedido }}",
+              "cliente_email": "={{ $json.query.email }}",
+              "cliente_nombre": "={{ $json.query.nombre }}",
+              "destino_url": "={{ $json.query.dest }}",
+              "user_agent": "={{ $json.headers[\"user-agent\"] }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_evento",
+                "displayName": "tipo_evento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "sucursal_nombre",
+                "displayName": "sucursal_nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "pedido_codigo",
+                "displayName": "pedido_codigo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "cliente_email",
+                "displayName": "cliente_email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "cliente_nombre",
+                "displayName": "cliente_nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "destino_url",
+                "displayName": "destino_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fec_registro",
+                "displayName": "fec_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "user_agent",
+                "displayName": "user_agent",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          32,
+          -32
+        ],
+        "id": "977fa1fe-3be1-4460-a9e7-8f22aca424c5",
+        "name": "Registra Click",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Registra Click",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Click": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": "Version e8dcc921",
+    "description": "",
+    "autosaved": false
+  },
+  "activeVersionId": "e8dcc921-818e-4194-8f97-401592cbffec",
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Registra Click",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Click": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-08T16:44:21.893Z",
+  "id": "2YL7P05Od6uctVj-VPTS4",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reviews",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "review-click",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -176,
+        -32
+      ],
+      "id": "ff0aa4c2-4f8a-4d6b-8ae0-e9d1dabd77b0",
+      "name": "Webhook",
+      "webhookId": "24602197-97d3-4a1b-b282-1f751c79e508"
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 302,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Location",
+                "value": "https://www.google.com/search?sca_esv=727911a362dc4a92&rlz=1C1VDKB_esAR1168AR1168&sxsrf=ANbL-n4GAbBnC1rmZNtDVZvFu7q7Kgn0WQ:1767887530537&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOVsKHAMG1SrSXGpuza5Nltda35baLBEjIo_itf6-9JhL3pWlwJFb88CRWQyrbDbi9c94RjIPeaz-NKxasYxRMTACbHwwSAVynlEt5qZyYKVZgkCPnDNe755PtRSar_jzJTDMVjk%3D&q=Osaki+Sushi+Bar+TAKE+AWAY+-+Calle+47+Reviews&sa=X&ved=2ahUKEwjOwYqipvyRAxUGrZUCHbIWDRAQ0bkNegQIQRAE&biw=1536&bih=703&dpr=1.25&aic=0"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        240,
+        -32
+      ],
+      "id": "582284e8-ba1e-417d-b68d-ac33827d3dd2",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "osaki_analytics",
+          "mode": "list",
+          "cachedResultName": "osaki_analytics"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reviews",
+          "mode": "list",
+          "cachedResultName": "reviews"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "tipo_evento": "={{ $json.query.type }}",
+            "sucursal_nombre": "={{ $json.query.sucursal }}",
+            "pedido_codigo": "={{ $json.query.pedido }}",
+            "cliente_email": "={{ $json.query.email }}",
+            "cliente_nombre": "={{ $json.query.nombre }}",
+            "destino_url": "={{ $json.query.dest }}",
+            "user_agent": "={{ $json.headers[\"user-agent\"] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_evento",
+              "displayName": "tipo_evento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucursal_nombre",
+              "displayName": "sucursal_nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_codigo",
+              "displayName": "pedido_codigo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente_email",
+              "displayName": "cliente_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente_nombre",
+              "displayName": "cliente_nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "destino_url",
+              "displayName": "destino_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fec_registro",
+              "displayName": "fec_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "user_agent",
+              "displayName": "user_agent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        32,
+        -32
+      ],
+      "id": "977fa1fe-3be1-4460-a9e7-8f22aca424c5",
+      "name": "Registra Click",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n-n8n.2hxkvh.easypanel.host",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "es-US,es-MX;q=0.9,es-419;q=0.8,es;q=0.7",
+            "priority": "u=0, i",
+            "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-user": "?1",
+            "sec-gpc": "1",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "201.141.109.2",
+            "x-forwarded-host": "n8n-n8n.2hxkvh.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "5a30a00e6f44",
+            "x-real-ip": "201.141.109.2"
+          },
+          "params": {},
+          "query": {
+            "type": "review",
+            "sucursal": "Calle 9",
+            "pedido": "8628138",
+            "email": "anaangelicacastillo17@gmail.com",
+            "nombre": "Ana Castillo",
+            "dest": "https://www.google.com/search?q=Osaki Sushi Reviews"
+          },
+          "body": {},
+          "webhookUrl": "https://n8n-n8n.2hxkvh.easypanel.host/webhook/review-click",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ZpYgShc1li13uf3h"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-08T16:44:21.897Z",
+      "createdAt": "2026-01-08T16:44:21.897Z",
+      "role": "workflow:owner",
+      "workflowId": "2YL7P05Od6uctVj-VPTS4",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T13:58:36.789Z",
+      "createdAt": "2026-01-11T13:58:36.789Z",
+      "id": "hFyftivmZQVr0Mx5",
+      "name": "Osaki"
+    },
+    {
+      "updatedAt": "2026-01-11T14:04:54.833Z",
+      "createdAt": "2026-01-11T14:04:54.833Z",
+      "id": "tt10iwS1I1BhsjLZ",
+      "name": "Analytics"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2026-01-11T14:04:56.496Z",
+  "versionId": "e8dcc921-818e-4194-8f97-401592cbffec"
+}
