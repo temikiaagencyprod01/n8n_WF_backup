@@ -1,0 +1,1599 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-19T16:52:51.214Z",
+    "createdAt": "2025-12-19T16:52:51.214Z",
+    "versionId": "a42e3eb6-bed6-4647-b726-90ba5d653fee",
+    "workflowId": "YUUJhIoCuRSeZUmY",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "fecha (YYYY-MM-DD)"
+              },
+              {
+                "name": "hora"
+              },
+              {
+                "name": "num_personas",
+                "type": "number"
+              },
+              {
+                "name": "schema"
+              }
+            ]
+          }
+        },
+        "id": "d6e11ad7-b812-4e17-ac57-97b0481b3a84",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -1472,
+          624
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) >= $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
+          "options": {
+            "queryReplacement": "={{ $('Code').item.json.fecha_normalizada }}, {{ $json.hora }}"
+          }
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          832,
+          592
+        ],
+        "id": "baf4664c-5d26-4ae7-a9d7-e4b3f96934fd",
+        "name": "Calcula Ocupación2",
+        "alwaysOutputData": true,
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// 1. Definimos los LÍMITES FIJOS\nconst CAPACIDAD_TOTAL_MESAS = 12;\nconst CAPACIDAD_TOTAL_BARRA = 16;\n\n// 2. Obtenemos los datos de la SOLICITUD (Lo que el cliente quiere)\nlet solicitud;\ntry {\n  solicitud = $('Code').first().json;\n} catch (error) {\n  solicitud = $input.first().json; \n}\n\nconst mesasRequeridas = Number(solicitud.mesas_sugeridas) || 0;\nconst personasRequeridas = Number(solicitud.num_personas) || 0;\n\n// 3. Calculamos la OCUPACIÓN ACTUAL (Lo que ya está lleno)\nconst items = $input.all();\n\nlet mesasOcupadasActualmente = 0;\nlet barraOcupadaActualmente = 0;\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Normalizamos el texto de la zona: a minúsculas y sin acentos para evitar errores\n  // \"Salón\" se convierte en \"salon\"\n  const zona = (data.zona || '').toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n  \n  // Convertimos los valores string \"2\" a numero 2\n  const numMesas = Number(data.num_mesas) || 0;\n  const numPersonas = Number(data.num_personas) || 0;\n\n  if (zona.includes('salon')) {\n    mesasOcupadasActualmente += numMesas;\n  } else if (zona.includes('barra')) {\n    barraOcupadaActualmente += numPersonas;\n  }\n}\n\n// 4. Calculamos el REMANENTE (Lo que queda libre)\nconst mesasLibres = Math.max(0, CAPACIDAD_TOTAL_MESAS - mesasOcupadasActualmente);\nconst lugaresBarraLibres = Math.max(0, CAPACIDAD_TOTAL_BARRA - barraOcupadaActualmente);\n\n// 5. Evaluamos disponibilidad REAL\n// ¿Caben las mesas requeridas en las que sobran?\nconst cabeEnSalon = mesasRequeridas <= mesasLibres;\n// ¿Caben las personas requeridas en los asientos de barra que sobran?\nconst cabeEnBarra = personasRequeridas <= lugaresBarraLibres;\n\n// 6. Generamos el mensaje\nlet mensaje = \"\";\nlet estado = \"sin_disponibilidad\";\n\nif (cabeEnSalon && cabeEnBarra) {\n  mensaje = \"Disponible: Hay lugar tanto en Salón como en Barra.\";\n  estado = \"total\";\n} else if (cabeEnSalon && !cabeEnBarra) {\n  mensaje = `Disponible solo en Salón. (La Barra tiene solo ${lugaresBarraLibres} lugares).`;\n  estado = \"solo_salon\";\n} else if (!cabeEnSalon && cabeEnBarra) {\n  // ESTE ES TU CASO ACTUAL:\n  // Pides 2 mesas, quedan 1 (3 total - 2 ocupadas). NO CABES.\n  // Pides 4 personas, quedan 5 en barra. SÍ CABES.\n  mensaje = `Disponible solo en Barra. (En Salón quedan ${mesasLibres} mesas y se requieren ${mesasRequeridas}).`;\n  estado = \"solo_barra\";\n} else {\n  if (mesasLibres === 0 && lugaresBarraLibres === 0) {\n    mensaje = \"Agotado: No quedan lugares en todo el restaurante. No ofrecer otros horarios para ese día.\";\n  } else {\n    mensaje = `Capacidad insuficiente: Quedan ${mesasLibres} mesas (req: ${mesasRequeridas}) y ${lugaresBarraLibres} en barra (req: ${personasRequeridas}).`;\n  }\n  estado = \"agotado\";\n}\n\n// 7. Retorno\nreturn [\n  {\n    json: {\n      req_mesas: mesasRequeridas,\n      req_personas: personasRequeridas,\n      \n      total_mesas_ocupadas: mesasOcupadasActualmente,\n      total_barra_ocupada: barraOcupadaActualmente,\n      \n      mesas_restantes: mesasLibres,\n      barra_restante: lugaresBarraLibres,\n      \n      cabe_en_salon: cabeEnSalon,\n      cabe_en_barra: cabeEnBarra,\n      \n      disponibilidad_texto: mensaje,\n      estado_disponibilidad: estado\n    }\n  }\n];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1056,
+          592
+        ],
+        "id": "045e9a81-e17d-4779-a1c5-6275abf59250",
+        "name": "Code in JavaScript2"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Nodo Code (JavaScript) en n8n\nconst items = $input.all();\nconst TIMEZONE = 'America/Buenos_Aires'; // <--- AJUSTA ESTO SI ES NECESARIO\n\n// Helper para obtener la fecha/hora actual en la zona horaria específica\n// Retorna un objeto Date que representa la \"hora reloj\" en México\nfunction getNowInTimezone() {\n  const d = new Date();\n  // Convertimos la hora UTC del servidor a string en hora local México\n  const localStr = d.toLocaleString('en-US', { timeZone: TIMEZONE });\n  return new Date(localStr);\n}\n\nfunction getTodayAtMidnight(nowReference) {\n  const d = new Date(nowReference.getTime());\n  d.setHours(0, 0, 0, 0);\n  return d;\n}\n\nfunction addMonths(date, months) {\n  const d = new Date(date.getTime());\n  const day = d.getDate();\n  d.setMonth(d.getMonth() + months);\n  if (d.getDate() < day) {\n    d.setDate(0);\n  }\n  d.setHours(23, 59, 59, 999);\n  return d;\n}\n\nfunction getWeekdayNameES(date) {\n  // Nota: Al crear el formateador, forzamos la zona horaria para asegurar el día correcto\n  const weekday = new Intl.DateTimeFormat('es-AR', {\n    weekday: 'long',\n    timeZone: TIMEZONE \n  }).format(date);\n  return weekday.charAt(0).toUpperCase() + weekday.slice(1);\n}\n\nfunction pad2(n) {\n  return n.toString().padStart(2, '0');\n}\n\nfunction calcularMesasSugeridas(numPersonas) {\n  if (numPersonas == null || isNaN(numPersonas) || numPersonas <= 0) {\n    return null; \n  }\n  if (numPersonas <= 2) return 1;\n  if (numPersonas <= 4) return 2;\n  if (numPersonas <= 6) return 3;\n  return 'VIP';\n}\n\n// 1. Definimos el \"Ahora\" y el \"Hoy\" basados en México, no en el servidor UTC\nconst now = getNowInTimezone();\nconst today = getTodayAtMidnight(now);\nconst maxDate = addMonths(today, 3);\n\nconst out = items.map(item => {\n  const data = item.json;\n\n  const fechaStr    = data['fecha (YYYY-MM-DD)'];\n  const horaStr     = data.hora;\n  const numPersonas = data.num_personas != null ? Number(data.num_personas) : null;\n\n  let escenarioRestrictivo = null;\n  let leyenda = '';\n  let esValida = true;\n\n  const [y, m, d] = (fechaStr || '').split('-').map(Number);\n  const [hh, mm]  = (horaStr || '').split(':').map(Number);\n\n  // Fecha base (00:00) construida con los datos de entrada\n  const fechaSolo = new Date(y, m - 1, d);\n  fechaSolo.setHours(0, 0, 0, 0);\n\n  // Validaciones de rango (comparando fechas \"reloj\" contra fechas \"reloj\")\n  if (fechaSolo < today) {\n    esValida = false;\n    escenarioRestrictivo = 'fecha_pasada';\n    leyenda = 'La fecha a reservar es anterior al día de hoy.';\n  } else if (fechaSolo > maxDate) {\n    esValida = false;\n    escenarioRestrictivo = 'fecha_fuera_rango_3_meses';\n    leyenda = 'La fecha excede el límite de 3 meses para crear reservaciones.';\n  }\n\n  // Objeto Fecha+Hora entrada\n  let fechaHora = new Date(y, m - 1, d, hh, mm || 0, 0, 0);\n\n  // Lógica de \"Menos de 1 hora\"\n  if (esValida && fechaSolo.getTime() === today.getTime()) {\n    // Calculamos diferencia en ms entre la entrada y el \"ahora\" de México\n    const diffMs = fechaHora.getTime() - now.getTime();\n    const diffMin = diffMs / 60000;\n\n    // IMPORTANTE: Verificamos que diffMin sea positivo (futuro) y menor a 60\n    // Si diffMin es negativo, significa que la hora ya pasó hoy.\n    \n    if (diffMin < 0) {\n       // Opcional: Si la hora ya pasó hoy, ¿es inválida?\n       // Por ahora asumiremos que se ajusta igual que si faltara poco\n       // O podrías marcarla como inválida. Aquí mantengo la lógica de ajuste.\n    }\n\n    // La regla: Si estamos a menos de 60 minutos (incluyendo si ya pasó hace poco)\n    // Nota: Si quieres que solo aplique a futuro cercano usa: (diffMin > 0 && diffMin < 60)\n    // Si dejas solo (diffMin < 60) ajustará también horas pasadas del día de hoy.\n    if (diffMin < 60) {\n      \n      // Tomamos la hora actual de México ('now') y sumamos 1 hora\n      const nextHour = new Date(now.getTime());\n      nextHour.setMinutes(0, 0, 0);\n      nextHour.setHours(nextHour.getHours() + 1);\n\n      fechaHora = nextHour;\n      \n      escenarioRestrictivo = 'menos_de_una_hora';\n      leyenda = 'No se pudo validar disponibilidad. Reservas con por lo menos 1 hora de anticipación, ofrece un poco más tarde o escala con humano (integrante del equipo) para una gestión manual.';\n    }\n  }\n\n  // Generar salida final basada en fechaHora (que pudo haber cambiado de día)\n  const finalYear = fechaHora.getFullYear();\n  const finalMonth = fechaHora.getMonth() + 1;\n  const finalDay = fechaHora.getDate();\n  const finalHour = fechaHora.getHours();\n  const finalMinute = fechaHora.getMinutes();\n\n  const fechaNormalizada = `${finalYear}-${pad2(finalMonth)}-${pad2(finalDay)}`;\n  const horaNormalizada  = `${pad2(finalHour)}:${pad2(finalMinute)}`;\n  const diaSemana = getWeekdayNameES(fechaHora);\n\n  const mesasSugeridas = calcularMesasSugeridas(numPersonas);\n\n  const resultado = {\n    fecha_original: fechaStr,\n    hora_original: horaStr,\n    num_personas_original: numPersonas,\n\n    fecha_normalizada: fechaNormalizada,\n    hora_normalizada: horaNormalizada,\n    dia_semana: diaSemana,\n    \n    // Aquí están los campos separados que pediste\n    hora: finalHour,\n    minutos: finalMinute,\n    \n    fecha_hora_iso: fechaHora.toISOString(), // Nota: esto saldrá en la ISO del 'falso local', útil para logs\n    num_personas: numPersonas,\n    mesas_sugeridas: mesasSugeridas,\n\n    es_valida: esValida,\n    escenario_restrictivo: escenarioRestrictivo,\n    leyenda: escenarioRestrictivo ? leyenda : 'Selección válida.'\n  };\n\n  return { json: resultado };\n});\n\nreturn out;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1120,
+          624
+        ],
+        "id": "5ad8e662-6c39-4ad4-bcd4-75d1f560dec0",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "8c117918-ad3e-4edb-9f4d-8f102ecc68ab",
+                "name": "respuesta",
+                "value": "={{ $json.respuesta }}",
+                "type": "string"
+              },
+              {
+                "id": "36c2951a-12ab-4f76-985c-6ba28d0861b3",
+                "name": "hora",
+                "value": "={{ $json.hora }}",
+                "type": "string"
+              },
+              {
+                "id": "2793fa48-47e9-4061-9682-4482f5e5cbd5",
+                "name": "minutos",
+                "value": "={{ $json.minutos }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          608,
+          592
+        ],
+        "id": "7a8ed62f-bd97-46c0-8847-c0fb34338417",
+        "name": "Captura"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+                "name": "Response",
+                "value": "=Fecha Consultada: {{ $('Code').first().json.fecha_normalizada }}\nHorario Consultado: {{ $('Captura').first().json.hora +\":\"+ $('Captura').first().json.minutos }} hrs\nDisponibilidad: {{ $json.estado_disponibilidad.toSentenceCase() }}\nOcupación:\nBarra: {{ $json.total_barra_ocupada }} de 16 (personas)\nSalón: {{ $json.total_mesas_ocupadas }} de 12 (mesas)\nStatus: {{ $json.disponibilidad_texto }}\n\nNota: {{ $('Captura').first().json.respuesta }}\n",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1280,
+          592
+        ],
+        "id": "bbb287c8-dcc1-4e22-9cb7-65c6e8691d4a",
+        "name": "Response No Zona"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "cd5c68d0-0ea7-4239-80a2-2913ffa030f4",
+                      "leftValue": "={{ \n['2025-12-24','2025-12-25','2025-12-31','2026-01-01'].includes($json.fecha_normalizada ) &&$json.hora >=16\n}}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Feriado"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "d1de5bd5-e970-4c94-a432-2169f41f1b27",
+                      "leftValue": "={{ ($json.hora ==20 && $json.minutos >= 25 && $json.dia_semana =='Miércoles' ) || ($json.dia_semana =='Miércoles' && $json.hora > 21 ) || ($json.dia_semana =='Miércoles' && $json.hora == 21 && $json.minutos > 15 ) }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Fuera Horario Sushi Libre"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "609c9d24-a2e5-4242-9f52-77fd1cd5af75",
+                      "leftValue": "={{    $json.dia_semana === 'Jueves' &&    ($json.hora * 60 + $json.minutos) >= 1170 &&    ($json.hora * 60 + $json.minutos) <= 1350  }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Jueves Promo"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "88942190-4fb1-40a3-bd3b-e13af01bb73f",
+                      "leftValue": "={{ ($json.hora == 21 && $json.minutos >= 00 && $json.minutos <= 15 && $json.dia_semana =='Miércoles' ) }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Miercoles Sushi Libre"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.dia_semana }}",
+                      "rightValue": "Lunes",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "36605d07-8da7-4a7a-9b47-b649babef182"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Lunes"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "edbe898c-cf51-478b-bb5e-bf073eb5c7d8",
+                      "leftValue": "={{ ($json.dia_semana ==\"Lunes\") || (\n( $json.hora >= 15 && $json.minutos>=30 )  && \n( $json.hora <= 17 && $json.minutos<59 ) ) || \n( $json.hora == 23 && $json.minutos>=01 )  }}",
+                      "rightValue": "Local Cerrado",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Local Cerrado"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "8de0c6a0-3693-4d73-9da4-124b0e419a7a",
+                      "leftValue": "={{ $json.escenario_restrictivo.isNotEmpty() }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "escenario_restrictivo"
+              }
+            ]
+          },
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "Extra"
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.3,
+        "position": [
+          -688,
+          560
+        ],
+        "id": "aa71df22-5786-4952-aa65-bf0d885a9b52",
+        "name": "Switch"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+                "name": "respuesta",
+                "value": "=No hay reservaciones a las {{ $json.hora_original }} en miércoles por el evento Sushi Libre. Todas las reservaciones son a las 21:00 con 15 minutos de tolerancia.",
+                "type": "string"
+              },
+              {
+                "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+                "name": "hora",
+                "value": "21",
+                "type": "string"
+              },
+              {
+                "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+                "name": "minutos",
+                "value": "00",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          16
+        ],
+        "id": "457ddc2e-ed86-4f2b-9ea6-594f6219599a",
+        "name": "Sushi Libre"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+                "name": "respuesta",
+                "value": "=En este horario está la promoción **Menú por Pasos**. Informa al usuario.",
+                "type": "string"
+              },
+              {
+                "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+                "name": "hora",
+                "value": "={{ $json.hora }}",
+                "type": "string"
+              },
+              {
+                "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+                "name": "minutos",
+                "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          160
+        ],
+        "id": "13a3ae86-39d5-415d-9b2f-4670aa27eb75",
+        "name": "Jueves Menu Pasos"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "fa4d0d7b-08e2-4bee-86b2-d37d176329bc",
+                "name": "respuesta",
+                "value": "Tolerancia de 15 min",
+                "type": "string"
+              },
+              {
+                "id": "b08770a7-f3df-4315-aed1-f710e85e011c",
+                "name": "hora",
+                "value": "={{ $('Code').item.json.hora }}",
+                "type": "string"
+              },
+              {
+                "id": "3c34de73-a626-4a92-bc42-f3c5b27ec227",
+                "name": "minutos",
+                "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          912
+        ],
+        "id": "37f393f3-16aa-4a79-93e1-ab863196c66e",
+        "name": "Response Todo OK"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4fe2a561-b5fb-494f-89cb-f8b40fb3481e",
+                "name": "Response",
+                "value": "={{ $json.leyenda }}",
+                "type": "string"
+              },
+              {
+                "id": "98bfa8fb-8283-4391-9ee8-a16b277d7c86",
+                "name": "fecha_original",
+                "value": "={{ $json.fecha_original }}",
+                "type": "string"
+              },
+              {
+                "id": "6e677551-1d0c-4a34-8fc8-755c5408083f",
+                "name": "hora_original",
+                "value": "={{ $json.hora_original }}",
+                "type": "string"
+              },
+              {
+                "id": "f6e65775-dbe5-40bf-a739-a0414b81f3e3",
+                "name": "dia_semana",
+                "value": "={{ $json.dia_semana }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          736
+        ],
+        "id": "93f57b6d-7a3e-4a19-bc8c-d10590486542",
+        "name": "Response Restricción"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+                "name": "Response",
+                "value": "=No se puede tomar la reserva. Los Lunes está cerrado el local.",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          464
+        ],
+        "id": "469c714f-683e-45fa-ba05-58b5ab6abc4b",
+        "name": "Response Local Cerrado1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+                "name": "respuesta",
+                "value": "=En este horario está el evento **\"Sushi Libre\"** (Horario único para el evento: 21hrs). Informa al usuario si aún no se ha mencionado. Tolerancia de 15 min.",
+                "type": "string"
+              },
+              {
+                "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+                "name": "hora",
+                "value": "={{ $json.hora }}",
+                "type": "string"
+              },
+              {
+                "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+                "name": "minutos",
+                "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+                "type": "string"
+              },
+              {
+                "id": "e0d19ef8-0857-4d4a-b146-48490d432bb9",
+                "name": "fecha",
+                "value": "={{ $json.fecha_normalizada }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          0,
+          304
+        ],
+        "id": "4923e427-c24f-42c6-b91b-9896d1c75596",
+        "name": "Miércoles de Sushi Libre"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+                "name": "Response",
+                "value": "=No se puede tomar la reserva. Los horarios para reservaciones son de 10:30 a 15:00 y de 18:00 hasta 23:00. Si la reserva es después de las 23:00 recuerda que la cocina cierra a las 23:30. Considera feriados.",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          16,
+          608
+        ],
+        "id": "fc281e62-af04-4acc-9fe9-68bd566b22ba",
+        "name": "Response Local Cerrado2"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+                "name": "Response",
+                "value": "=No se puede tomar la reserva. Local cerrado por día/horario feriado. Revisa los horarios del local. 24,25,31 diciembre y 1 de enero que cierra a las 16 hrs.",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -16,
+          -144
+        ],
+        "id": "f50f22fb-0552-4df7-bd45-2c1d343481ca",
+        "name": "Response Feriado"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Calcula Ocupación2": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript2": {
+        "main": [
+          [
+            {
+              "node": "Response No Zona",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Captura": {
+        "main": [
+          [
+            {
+              "node": "Calcula Ocupación2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "Response Feriado",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Sushi Libre",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Jueves Menu Pasos",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Miércoles de Sushi Libre",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response Local Cerrado1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response Local Cerrado2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response Restricción",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response Todo OK",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Sushi Libre": {
+        "main": [
+          [
+            {
+              "node": "Captura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Jueves Menu Pasos": {
+        "main": [
+          [
+            {
+              "node": "Captura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Response Todo OK": {
+        "main": [
+          [
+            {
+              "node": "Captura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Response Local Cerrado1": {
+        "main": [
+          [
+            {
+              "node": "Captura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Miércoles de Sushi Libre": {
+        "main": [
+          [
+            {
+              "node": "Captura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "a42e3eb6-bed6-4647-b726-90ba5d653fee",
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcula Ocupación2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Response No Zona",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Captura": {
+      "main": [
+        [
+          {
+            "node": "Calcula Ocupación2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Response Feriado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sushi Libre",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Jueves Menu Pasos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Miércoles de Sushi Libre",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Local Cerrado1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Local Cerrado2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Restricción",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Todo OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sushi Libre": {
+      "main": [
+        [
+          {
+            "node": "Captura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jueves Menu Pasos": {
+      "main": [
+        [
+          {
+            "node": "Captura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Response Todo OK": {
+      "main": [
+        [
+          {
+            "node": "Captura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Response Local Cerrado1": {
+      "main": [
+        [
+          {
+            "node": "Captura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Miércoles de Sushi Libre": {
+      "main": [
+        [
+          {
+            "node": "Captura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-11T18:01:58.159Z",
+  "id": "YUUJhIoCuRSeZUmY",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Calcula Ocupacion",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "fecha (YYYY-MM-DD)"
+            },
+            {
+              "name": "hora"
+            },
+            {
+              "name": "num_personas",
+              "type": "number"
+            },
+            {
+              "name": "schema"
+            }
+          ]
+        }
+      },
+      "id": "d6e11ad7-b812-4e17-ac57-97b0481b3a84",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -1472,
+        624
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) >= $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
+        "options": {
+          "queryReplacement": "={{ $('Code').item.json.fecha_normalizada }}, {{ $json.hora }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        832,
+        592
+      ],
+      "id": "baf4664c-5d26-4ae7-a9d7-e4b3f96934fd",
+      "name": "Calcula Ocupación2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Definimos los LÍMITES FIJOS\nconst CAPACIDAD_TOTAL_MESAS = 12;\nconst CAPACIDAD_TOTAL_BARRA = 16;\n\n// 2. Obtenemos los datos de la SOLICITUD (Lo que el cliente quiere)\nlet solicitud;\ntry {\n  solicitud = $('Code').first().json;\n} catch (error) {\n  solicitud = $input.first().json; \n}\n\nconst mesasRequeridas = Number(solicitud.mesas_sugeridas) || 0;\nconst personasRequeridas = Number(solicitud.num_personas) || 0;\n\n// 3. Calculamos la OCUPACIÓN ACTUAL (Lo que ya está lleno)\nconst items = $input.all();\n\nlet mesasOcupadasActualmente = 0;\nlet barraOcupadaActualmente = 0;\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Normalizamos el texto de la zona: a minúsculas y sin acentos para evitar errores\n  // \"Salón\" se convierte en \"salon\"\n  const zona = (data.zona || '').toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n  \n  // Convertimos los valores string \"2\" a numero 2\n  const numMesas = Number(data.num_mesas) || 0;\n  const numPersonas = Number(data.num_personas) || 0;\n\n  if (zona.includes('salon')) {\n    mesasOcupadasActualmente += numMesas;\n  } else if (zona.includes('barra')) {\n    barraOcupadaActualmente += numPersonas;\n  }\n}\n\n// 4. Calculamos el REMANENTE (Lo que queda libre)\nconst mesasLibres = Math.max(0, CAPACIDAD_TOTAL_MESAS - mesasOcupadasActualmente);\nconst lugaresBarraLibres = Math.max(0, CAPACIDAD_TOTAL_BARRA - barraOcupadaActualmente);\n\n// 5. Evaluamos disponibilidad REAL\n// ¿Caben las mesas requeridas en las que sobran?\nconst cabeEnSalon = mesasRequeridas <= mesasLibres;\n// ¿Caben las personas requeridas en los asientos de barra que sobran?\nconst cabeEnBarra = personasRequeridas <= lugaresBarraLibres;\n\n// 6. Generamos el mensaje\nlet mensaje = \"\";\nlet estado = \"sin_disponibilidad\";\n\nif (cabeEnSalon && cabeEnBarra) {\n  mensaje = \"Disponible: Hay lugar tanto en Salón como en Barra.\";\n  estado = \"total\";\n} else if (cabeEnSalon && !cabeEnBarra) {\n  mensaje = `Disponible solo en Salón. (La Barra tiene solo ${lugaresBarraLibres} lugares).`;\n  estado = \"solo_salon\";\n} else if (!cabeEnSalon && cabeEnBarra) {\n  // ESTE ES TU CASO ACTUAL:\n  // Pides 2 mesas, quedan 1 (3 total - 2 ocupadas). NO CABES.\n  // Pides 4 personas, quedan 5 en barra. SÍ CABES.\n  mensaje = `Disponible solo en Barra. (En Salón quedan ${mesasLibres} mesas y se requieren ${mesasRequeridas}).`;\n  estado = \"solo_barra\";\n} else {\n  if (mesasLibres === 0 && lugaresBarraLibres === 0) {\n    mensaje = \"Agotado: No quedan lugares en todo el restaurante. No ofrecer otros horarios para ese día.\";\n  } else {\n    mensaje = `Capacidad insuficiente: Quedan ${mesasLibres} mesas (req: ${mesasRequeridas}) y ${lugaresBarraLibres} en barra (req: ${personasRequeridas}).`;\n  }\n  estado = \"agotado\";\n}\n\n// 7. Retorno\nreturn [\n  {\n    json: {\n      req_mesas: mesasRequeridas,\n      req_personas: personasRequeridas,\n      \n      total_mesas_ocupadas: mesasOcupadasActualmente,\n      total_barra_ocupada: barraOcupadaActualmente,\n      \n      mesas_restantes: mesasLibres,\n      barra_restante: lugaresBarraLibres,\n      \n      cabe_en_salon: cabeEnSalon,\n      cabe_en_barra: cabeEnBarra,\n      \n      disponibilidad_texto: mensaje,\n      estado_disponibilidad: estado\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        592
+      ],
+      "id": "045e9a81-e17d-4779-a1c5-6275abf59250",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Nodo Code (JavaScript) en n8n\nconst items = $input.all();\nconst TIMEZONE = 'America/Buenos_Aires'; // <--- AJUSTA ESTO SI ES NECESARIO\n\n// Helper para obtener la fecha/hora actual en la zona horaria específica\n// Retorna un objeto Date que representa la \"hora reloj\" en México\nfunction getNowInTimezone() {\n  const d = new Date();\n  // Convertimos la hora UTC del servidor a string en hora local México\n  const localStr = d.toLocaleString('en-US', { timeZone: TIMEZONE });\n  return new Date(localStr);\n}\n\nfunction getTodayAtMidnight(nowReference) {\n  const d = new Date(nowReference.getTime());\n  d.setHours(0, 0, 0, 0);\n  return d;\n}\n\nfunction addMonths(date, months) {\n  const d = new Date(date.getTime());\n  const day = d.getDate();\n  d.setMonth(d.getMonth() + months);\n  if (d.getDate() < day) {\n    d.setDate(0);\n  }\n  d.setHours(23, 59, 59, 999);\n  return d;\n}\n\nfunction getWeekdayNameES(date) {\n  // Nota: Al crear el formateador, forzamos la zona horaria para asegurar el día correcto\n  const weekday = new Intl.DateTimeFormat('es-AR', {\n    weekday: 'long',\n    timeZone: TIMEZONE \n  }).format(date);\n  return weekday.charAt(0).toUpperCase() + weekday.slice(1);\n}\n\nfunction pad2(n) {\n  return n.toString().padStart(2, '0');\n}\n\nfunction calcularMesasSugeridas(numPersonas) {\n  if (numPersonas == null || isNaN(numPersonas) || numPersonas <= 0) {\n    return null; \n  }\n  if (numPersonas <= 2) return 1;\n  if (numPersonas <= 4) return 2;\n  if (numPersonas <= 6) return 3;\n  return 'VIP';\n}\n\n// 1. Definimos el \"Ahora\" y el \"Hoy\" basados en México, no en el servidor UTC\nconst now = getNowInTimezone();\nconst today = getTodayAtMidnight(now);\nconst maxDate = addMonths(today, 3);\n\nconst out = items.map(item => {\n  const data = item.json;\n\n  const fechaStr    = data['fecha (YYYY-MM-DD)'];\n  const horaStr     = data.hora;\n  const numPersonas = data.num_personas != null ? Number(data.num_personas) : null;\n\n  let escenarioRestrictivo = null;\n  let leyenda = '';\n  let esValida = true;\n\n  const [y, m, d] = (fechaStr || '').split('-').map(Number);\n  const [hh, mm]  = (horaStr || '').split(':').map(Number);\n\n  // Fecha base (00:00) construida con los datos de entrada\n  const fechaSolo = new Date(y, m - 1, d);\n  fechaSolo.setHours(0, 0, 0, 0);\n\n  // Validaciones de rango (comparando fechas \"reloj\" contra fechas \"reloj\")\n  if (fechaSolo < today) {\n    esValida = false;\n    escenarioRestrictivo = 'fecha_pasada';\n    leyenda = 'La fecha a reservar es anterior al día de hoy.';\n  } else if (fechaSolo > maxDate) {\n    esValida = false;\n    escenarioRestrictivo = 'fecha_fuera_rango_3_meses';\n    leyenda = 'La fecha excede el límite de 3 meses para crear reservaciones.';\n  }\n\n  // Objeto Fecha+Hora entrada\n  let fechaHora = new Date(y, m - 1, d, hh, mm || 0, 0, 0);\n\n  // Lógica de \"Menos de 1 hora\"\n  if (esValida && fechaSolo.getTime() === today.getTime()) {\n    // Calculamos diferencia en ms entre la entrada y el \"ahora\" de México\n    const diffMs = fechaHora.getTime() - now.getTime();\n    const diffMin = diffMs / 60000;\n\n    // IMPORTANTE: Verificamos que diffMin sea positivo (futuro) y menor a 60\n    // Si diffMin es negativo, significa que la hora ya pasó hoy.\n    \n    if (diffMin < 0) {\n       // Opcional: Si la hora ya pasó hoy, ¿es inválida?\n       // Por ahora asumiremos que se ajusta igual que si faltara poco\n       // O podrías marcarla como inválida. Aquí mantengo la lógica de ajuste.\n    }\n\n    // La regla: Si estamos a menos de 60 minutos (incluyendo si ya pasó hace poco)\n    // Nota: Si quieres que solo aplique a futuro cercano usa: (diffMin > 0 && diffMin < 60)\n    // Si dejas solo (diffMin < 60) ajustará también horas pasadas del día de hoy.\n    if (diffMin < 60) {\n      \n      // Tomamos la hora actual de México ('now') y sumamos 1 hora\n      const nextHour = new Date(now.getTime());\n      nextHour.setMinutes(0, 0, 0);\n      nextHour.setHours(nextHour.getHours() + 1);\n\n      fechaHora = nextHour;\n      \n      escenarioRestrictivo = 'menos_de_una_hora';\n      leyenda = 'No se pudo validar disponibilidad. Reservas con por lo menos 1 hora de anticipación, ofrece un poco más tarde o escala con humano (integrante del equipo) para una gestión manual.';\n    }\n  }\n\n  // Generar salida final basada en fechaHora (que pudo haber cambiado de día)\n  const finalYear = fechaHora.getFullYear();\n  const finalMonth = fechaHora.getMonth() + 1;\n  const finalDay = fechaHora.getDate();\n  const finalHour = fechaHora.getHours();\n  const finalMinute = fechaHora.getMinutes();\n\n  const fechaNormalizada = `${finalYear}-${pad2(finalMonth)}-${pad2(finalDay)}`;\n  const horaNormalizada  = `${pad2(finalHour)}:${pad2(finalMinute)}`;\n  const diaSemana = getWeekdayNameES(fechaHora);\n\n  const mesasSugeridas = calcularMesasSugeridas(numPersonas);\n\n  const resultado = {\n    fecha_original: fechaStr,\n    hora_original: horaStr,\n    num_personas_original: numPersonas,\n\n    fecha_normalizada: fechaNormalizada,\n    hora_normalizada: horaNormalizada,\n    dia_semana: diaSemana,\n    \n    // Aquí están los campos separados que pediste\n    hora: finalHour,\n    minutos: finalMinute,\n    \n    fecha_hora_iso: fechaHora.toISOString(), // Nota: esto saldrá en la ISO del 'falso local', útil para logs\n    num_personas: numPersonas,\n    mesas_sugeridas: mesasSugeridas,\n\n    es_valida: esValida,\n    escenario_restrictivo: escenarioRestrictivo,\n    leyenda: escenarioRestrictivo ? leyenda : 'Selección válida.'\n  };\n\n  return { json: resultado };\n});\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1120,
+        624
+      ],
+      "id": "5ad8e662-6c39-4ad4-bcd4-75d1f560dec0",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c117918-ad3e-4edb-9f4d-8f102ecc68ab",
+              "name": "respuesta",
+              "value": "={{ $json.respuesta }}",
+              "type": "string"
+            },
+            {
+              "id": "36c2951a-12ab-4f76-985c-6ba28d0861b3",
+              "name": "hora",
+              "value": "={{ $json.hora }}",
+              "type": "string"
+            },
+            {
+              "id": "2793fa48-47e9-4061-9682-4482f5e5cbd5",
+              "name": "minutos",
+              "value": "={{ $json.minutos }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        608,
+        592
+      ],
+      "id": "7a8ed62f-bd97-46c0-8847-c0fb34338417",
+      "name": "Captura"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "=Fecha Consultada: {{ $('Code').first().json.fecha_normalizada }}\nHorario Consultado: {{ $('Captura').first().json.hora +\":\"+ $('Captura').first().json.minutos }} hrs\nDisponibilidad: {{ $json.estado_disponibilidad.toSentenceCase() }}\nOcupación:\nBarra: {{ $json.total_barra_ocupada }} de 16 (personas)\nSalón: {{ $json.total_mesas_ocupadas }} de 12 (mesas)\nStatus: {{ $json.disponibilidad_texto }}\n\nNota: {{ $('Captura').first().json.respuesta }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        592
+      ],
+      "id": "bbb287c8-dcc1-4e22-9cb7-65c6e8691d4a",
+      "name": "Response No Zona"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cd5c68d0-0ea7-4239-80a2-2913ffa030f4",
+                    "leftValue": "={{ \n['2025-12-24','2025-12-25','2025-12-31','2026-01-01'].includes($json.fecha_normalizada ) &&$json.hora >=16\n}}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Feriado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d1de5bd5-e970-4c94-a432-2169f41f1b27",
+                    "leftValue": "={{ ($json.hora ==20 && $json.minutos >= 25 && $json.dia_semana =='Miércoles' ) || ($json.dia_semana =='Miércoles' && $json.hora > 21 ) || ($json.dia_semana =='Miércoles' && $json.hora == 21 && $json.minutos > 15 ) }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Fuera Horario Sushi Libre"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "609c9d24-a2e5-4242-9f52-77fd1cd5af75",
+                    "leftValue": "={{    $json.dia_semana === 'Jueves' &&    ($json.hora * 60 + $json.minutos) >= 1170 &&    ($json.hora * 60 + $json.minutos) <= 1350  }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Jueves Promo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "88942190-4fb1-40a3-bd3b-e13af01bb73f",
+                    "leftValue": "={{ ($json.hora == 21 && $json.minutos >= 00 && $json.minutos <= 15 && $json.dia_semana =='Miércoles' ) }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Miercoles Sushi Libre"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.dia_semana }}",
+                    "rightValue": "Lunes",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "36605d07-8da7-4a7a-9b47-b649babef182"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lunes"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "edbe898c-cf51-478b-bb5e-bf073eb5c7d8",
+                    "leftValue": "={{ ($json.dia_semana ==\"Lunes\") || (\n( $json.hora >= 15 && $json.minutos>=30 )  && \n( $json.hora <= 17 && $json.minutos<59 ) ) || \n( $json.hora == 23 && $json.minutos>=01 )  }}",
+                    "rightValue": "Local Cerrado",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Local Cerrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8de0c6a0-3693-4d73-9da4-124b0e419a7a",
+                    "leftValue": "={{ $json.escenario_restrictivo.isNotEmpty() }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "escenario_restrictivo"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -688,
+        560
+      ],
+      "id": "aa71df22-5786-4952-aa65-bf0d885a9b52",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+              "name": "respuesta",
+              "value": "=No hay reservaciones a las {{ $json.hora_original }} en miércoles por el evento Sushi Libre. Todas las reservaciones son a las 21:00 con 15 minutos de tolerancia.",
+              "type": "string"
+            },
+            {
+              "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+              "name": "hora",
+              "value": "21",
+              "type": "string"
+            },
+            {
+              "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+              "name": "minutos",
+              "value": "00",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        16
+      ],
+      "id": "457ddc2e-ed86-4f2b-9ea6-594f6219599a",
+      "name": "Sushi Libre"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+              "name": "respuesta",
+              "value": "=En este horario está la promoción **Menú por Pasos**. Informa al usuario.",
+              "type": "string"
+            },
+            {
+              "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+              "name": "hora",
+              "value": "={{ $json.hora }}",
+              "type": "string"
+            },
+            {
+              "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+              "name": "minutos",
+              "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        160
+      ],
+      "id": "13a3ae86-39d5-415d-9b2f-4670aa27eb75",
+      "name": "Jueves Menu Pasos"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa4d0d7b-08e2-4bee-86b2-d37d176329bc",
+              "name": "respuesta",
+              "value": "Tolerancia de 15 min",
+              "type": "string"
+            },
+            {
+              "id": "b08770a7-f3df-4315-aed1-f710e85e011c",
+              "name": "hora",
+              "value": "={{ $('Code').item.json.hora }}",
+              "type": "string"
+            },
+            {
+              "id": "3c34de73-a626-4a92-bc42-f3c5b27ec227",
+              "name": "minutos",
+              "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        912
+      ],
+      "id": "37f393f3-16aa-4a79-93e1-ab863196c66e",
+      "name": "Response Todo OK"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4fe2a561-b5fb-494f-89cb-f8b40fb3481e",
+              "name": "Response",
+              "value": "={{ $json.leyenda }}",
+              "type": "string"
+            },
+            {
+              "id": "98bfa8fb-8283-4391-9ee8-a16b277d7c86",
+              "name": "fecha_original",
+              "value": "={{ $json.fecha_original }}",
+              "type": "string"
+            },
+            {
+              "id": "6e677551-1d0c-4a34-8fc8-755c5408083f",
+              "name": "hora_original",
+              "value": "={{ $json.hora_original }}",
+              "type": "string"
+            },
+            {
+              "id": "f6e65775-dbe5-40bf-a739-a0414b81f3e3",
+              "name": "dia_semana",
+              "value": "={{ $json.dia_semana }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        736
+      ],
+      "id": "93f57b6d-7a3e-4a19-bc8c-d10590486542",
+      "name": "Response Restricción"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "=No se puede tomar la reserva. Los Lunes está cerrado el local.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        464
+      ],
+      "id": "469c714f-683e-45fa-ba05-58b5ab6abc4b",
+      "name": "Response Local Cerrado1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
+              "name": "respuesta",
+              "value": "=En este horario está el evento **\"Sushi Libre\"** (Horario único para el evento: 21hrs). Informa al usuario si aún no se ha mencionado. Tolerancia de 15 min.",
+              "type": "string"
+            },
+            {
+              "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
+              "name": "hora",
+              "value": "={{ $json.hora }}",
+              "type": "string"
+            },
+            {
+              "id": "668905da-ccb1-4d46-becf-aa1c36a04832",
+              "name": "minutos",
+              "value": "={{ $('Code').item.json.minutos.toString().padStart(2, '0') }}",
+              "type": "string"
+            },
+            {
+              "id": "e0d19ef8-0857-4d4a-b146-48490d432bb9",
+              "name": "fecha",
+              "value": "={{ $json.fecha_normalizada }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        304
+      ],
+      "id": "4923e427-c24f-42c6-b91b-9896d1c75596",
+      "name": "Miércoles de Sushi Libre"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "=No se puede tomar la reserva. Los horarios para reservaciones son de 10:30 a 15:00 y de 18:00 hasta 23:00. Si la reserva es después de las 23:00 recuerda que la cocina cierra a las 23:30. Considera feriados.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        16,
+        608
+      ],
+      "id": "fc281e62-af04-4acc-9fe9-68bd566b22ba",
+      "name": "Response Local Cerrado2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "=No se puede tomar la reserva. Local cerrado por día/horario feriado. Revisa los horarios del local. 24,25,31 diciembre y 1 de enero que cierra a las 16 hrs.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -16,
+        -144
+      ],
+      "id": "f50f22fb-0552-4df7-bd45-2c1d343481ca",
+      "name": "Response Feriado"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "fecha (YYYY-MM-DD)": "2025-12-24",
+          "hora": "21:00",
+          "num_personas": 5,
+          "schema": "osaki_main"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "ZpYgShc1li13uf3h"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-11T18:01:58.164Z",
+      "createdAt": "2025-12-11T18:01:58.164Z",
+      "role": "workflow:owner",
+      "workflowId": "YUUJhIoCuRSeZUmY",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T13:58:58.227Z",
+      "createdAt": "2026-01-11T13:58:58.227Z",
+      "id": "KkeQFkJULwWdcCpc",
+      "name": "Producción"
+    },
+    {
+      "updatedAt": "2026-01-11T13:59:07.966Z",
+      "createdAt": "2026-01-11T13:59:07.966Z",
+      "id": "TEy2u6jFlivu8kn7",
+      "name": "SubProceso"
+    },
+    {
+      "updatedAt": "2026-01-11T13:58:36.789Z",
+      "createdAt": "2026-01-11T13:58:36.789Z",
+      "id": "hFyftivmZQVr0Mx5",
+      "name": "Osaki"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-11T14:01:18.606Z",
+  "versionId": "a42e3eb6-bed6-4647-b726-90ba5d653fee"
+}
