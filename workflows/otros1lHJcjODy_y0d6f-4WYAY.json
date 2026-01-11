@@ -69,7 +69,7 @@
       "main": [
         [
           {
-            "node": "Check Status",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -78,71 +78,19 @@
     },
     "Check Status": {
       "main": [
-        [
-          {
-            "node": "Same file - Do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "File is different",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "File is new",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Same file - Do nothing": {
-      "main": [
-        [
-          {
-            "node": "Return",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "File is different": {
-      "main": [
-        [
-          {
-            "node": "Edit existing file",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        [],
+        []
       ]
     },
     "File is new": {
       "main": [
-        [
-          {
-            "node": "Create new file",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Create new file": {
       "main": [
-        [
-          {
-            "node": "Return",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Edit existing file": {
@@ -245,6 +193,42 @@
           }
         ]
       ]
+    },
+    "Create a file": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Create a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit existing file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-01-11T14:10:34.317Z",
@@ -320,8 +304,8 @@
       "name": "Return",
       "type": "n8n-nodes-base.set",
       "position": [
-        2448,
-        1168
+        1952,
+        1072
       ],
       "typeVersion": 3.3
     },
@@ -431,30 +415,8 @@
       "name": "Check Status",
       "type": "n8n-nodes-base.switch",
       "position": [
-        1408,
-        976
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "c49c0d8b-efa0-4459-9864-cf3424aee620",
-      "name": "Same file - Do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
-        1648,
-        816
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "b5445538-d307-4785-9d0f-4fe14b043ad7",
-      "name": "File is different",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
-        1648,
-        992
+        2736,
+        736
       ],
       "typeVersion": 1
     },
@@ -464,8 +426,8 @@
       "name": "File is new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        1648,
-        1168
+        1616,
+        1424
       ],
       "typeVersion": 1
     },
@@ -490,8 +452,8 @@
       "name": "Create new file",
       "type": "n8n-nodes-base.github",
       "position": [
-        1872,
-        1168
+        3120,
+        624
       ],
       "typeVersion": 1,
       "webhookId": "c559314e-2a45-419a-8239-836bd6c01276",
@@ -524,7 +486,7 @@
       "name": "Edit existing file",
       "type": "n8n-nodes-base.github",
       "position": [
-        1872,
+        1648,
         992
       ],
       "typeVersion": 1,
@@ -656,7 +618,7 @@
               "id": "81c4dc54-86bf-4432-a23f-22c7ea831e74",
               "name": "repo.path",
               "type": "string",
-              "value": "=workflows/{{ $json.tags[0].name }}"
+              "value": "=workflows/{{ $json.tags[0] ? $json.tags[0].name : 'otros' }}"
             }
           ]
         },
@@ -695,7 +657,7 @@
               "id": "12cad226-e091-4bbb-aed9-a8e01311772c",
               "name": "tags[0].name",
               "type": "string",
-              "value": "={{ $('Execute Workflow Trigger').item.json.tags[0].name }}/"
+              "value": "={{ $('Loop Over Items').item.json.tags[0].name }}/"
             }
           ]
         },
@@ -775,6 +737,133 @@
         896
       ],
       "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $('Globals').item.json.repo.owner }}",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "={{ $('Globals').item.json.repo.name }}",
+          "mode": "name"
+        },
+        "filePath": "={{ $('Globals').item.json.repo.path }}{{$('Loop Over Items').item.json.id}}.json",
+        "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
+        "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1648,
+        848
+      ],
+      "id": "57e470ef-c190-4577-9aec-738d71958937",
+      "name": "Create a file",
+      "webhookId": "8b386b7e-8b46-48b4-9b00-2e18ab4b5da3",
+      "credentials": {
+        "githubApi": {
+          "id": "k1DW4v8FHReu0W1Q",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.github_status}}",
+                    "rightValue": "new",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "13058479-fb0d-42f0-9f64-a60b507e4c22"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "new"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2f08366c-2106-4695-9b4f-c8c77efaabec",
+                    "leftValue": "={{$json.github_status}}",
+                    "rightValue": "different",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "different"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "75f1da84-3868-4071-abe4-a25d22971fdb",
+                    "leftValue": "={{$json.github_status}}",
+                    "rightValue": "same",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "same"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Desconocido"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1408,
+        976
+      ],
+      "id": "a8621fa9-6684-465a-adec-fd1ebeb87343",
+      "name": "Switch"
     }
   ],
   "pinData": {},
@@ -794,6 +883,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T14:29:52.202Z",
-  "versionId": "707e3592-1e45-4224-b395-05e320ea8280"
+  "updatedAt": "2026-01-11T17:59:42.112Z",
+  "versionId": "8b181ad4-6f4d-412b-bfc6-706ba9c9dc7d"
 }
