@@ -1,0 +1,381 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-11T18:34:51.577Z",
+    "createdAt": "2025-12-11T18:34:51.577Z",
+    "versionId": "fbe9a103-be84-4c43-ad73-04c12064a42c",
+    "workflowId": "ZpYgShc1li13uf3h",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.errorTrigger",
+        "typeVersion": 1,
+        "position": [
+          -272,
+          -80
+        ],
+        "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
+        "name": "Error Trigger"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://evolution-api-evolution-api.m6iigx.easypanel.host/message/sendText/Temikia",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "apikey",
+                "value": "=90E7214218F8-4725-8CA7-85C2BCDAEE8A"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "number",
+                "value": "=5215546389518@s.whatsapp.net"
+              },
+              {
+                "name": "text",
+                "value": "={{ \"‼ *ERROR* ‼\\nThere was an error in a workflow execution:\\n\\nName: \"+$json.workflowName +\"\\nid: \"+$json.id +\"\\nNode Name: \"+$json.nodeName+\"\\nNode Type: \"+$json.nodeType+\"\\nMessage: \"+$json.message+\"\\nURL: \"+$json.urlExecution+\"\\nMessages:\"+ $json.messages}}\n"
+              },
+              {
+                "name": "delay",
+                "value": "={{ parseInt(10000) }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          432,
+          -80
+        ],
+        "id": "4eeac33b-eb5e-46d5-a4ac-7a534fe0c87c",
+        "name": "HTTP Request1",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
+                "name": "workflowName",
+                "value": "={{ $json.workflow.name }}",
+                "type": "string"
+              },
+              {
+                "id": "b8c88f39-62df-4627-85ff-533944e5be35",
+                "name": "id",
+                "value": "={{ $json.execution.id }}",
+                "type": "string"
+              },
+              {
+                "id": "fbe3c28d-fcee-4b7c-ae89-6973533d77b8",
+                "name": "urlExecution",
+                "value": "={{ $json.execution.url }}",
+                "type": "string"
+              },
+              {
+                "id": "046ec7fd-6efc-45e3-8f85-6af624ff0784",
+                "name": "message",
+                "value": "={{ $json.execution.error.message }}",
+                "type": "string"
+              },
+              {
+                "id": "af57b9b4-93c7-4eb5-8a6d-2887c53742b7",
+                "name": "nodeType",
+                "value": "={{ $json.execution.error.node.type }}",
+                "type": "string"
+              },
+              {
+                "id": "77d7033c-3a7b-42cd-b7fc-c77124c3a44f",
+                "name": "nodeName",
+                "value": "={{ $json.execution.error.node.name }}",
+                "type": "string"
+              },
+              {
+                "id": "20bd6767-6e67-41c7-a8ad-ef21f3edfdba",
+                "name": "messages",
+                "value": "={{ $json.execution.error.messages }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          32,
+          -80
+        ],
+        "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          448,
+          176
+        ],
+        "id": "5d850d9d-7617-4569-b31f-28a62046c0cb",
+        "name": "Send Report",
+        "webhookId": "779803fd-13ea-45a6-b1b5-ef96db968628",
+        "credentials": {
+          "telegramApi": {
+            "id": "Hzk8nmYjP8cCvVqh",
+            "name": "Telegram Temikia-Notifications"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Error Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request1",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Send Report",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "fbe9a103-be84-4c43-ad73-04c12064a42c",
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-11T18:33:27.574Z",
+  "id": "ZpYgShc1li13uf3h",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Error Report",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        -80
+      ],
+      "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://evolution-api-evolution-api.m6iigx.easypanel.host/message/sendText/Temikia",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=90E7214218F8-4725-8CA7-85C2BCDAEE8A"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=5215546389518@s.whatsapp.net"
+            },
+            {
+              "name": "text",
+              "value": "={{ \"‼ *ERROR* ‼\\nThere was an error in a workflow execution:\\n\\nName: \"+$json.workflowName +\"\\nid: \"+$json.id +\"\\nNode Name: \"+$json.nodeName+\"\\nNode Type: \"+$json.nodeType+\"\\nMessage: \"+$json.message+\"\\nURL: \"+$json.urlExecution+\"\\nMessages:\"+ $json.messages}}\n"
+            },
+            {
+              "name": "delay",
+              "value": "={{ parseInt(10000) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        432,
+        -80
+      ],
+      "id": "4eeac33b-eb5e-46d5-a4ac-7a534fe0c87c",
+      "name": "HTTP Request1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
+              "name": "workflowName",
+              "value": "={{ $json.workflow.name }}",
+              "type": "string"
+            },
+            {
+              "id": "b8c88f39-62df-4627-85ff-533944e5be35",
+              "name": "id",
+              "value": "={{ $json.execution.id }}",
+              "type": "string"
+            },
+            {
+              "id": "fbe3c28d-fcee-4b7c-ae89-6973533d77b8",
+              "name": "urlExecution",
+              "value": "={{ $json.execution.url }}",
+              "type": "string"
+            },
+            {
+              "id": "046ec7fd-6efc-45e3-8f85-6af624ff0784",
+              "name": "message",
+              "value": "={{ $json.execution.error.message }}",
+              "type": "string"
+            },
+            {
+              "id": "af57b9b4-93c7-4eb5-8a6d-2887c53742b7",
+              "name": "nodeType",
+              "value": "={{ $json.execution.error.node.type }}",
+              "type": "string"
+            },
+            {
+              "id": "77d7033c-3a7b-42cd-b7fc-c77124c3a44f",
+              "name": "nodeName",
+              "value": "={{ $json.execution.error.node.name }}",
+              "type": "string"
+            },
+            {
+              "id": "20bd6767-6e67-41c7-a8ad-ef21f3edfdba",
+              "name": "messages",
+              "value": "={{ $json.execution.error.messages }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        32,
+        -80
+      ],
+      "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "chatId": "67869519",
+        "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        176
+      ],
+      "id": "5d850d9d-7617-4569-b31f-28a62046c0cb",
+      "name": "Send Report",
+      "webhookId": "779803fd-13ea-45a6-b1b5-ef96db968628",
+      "credentials": {
+        "telegramApi": {
+          "id": "Hzk8nmYjP8cCvVqh",
+          "name": "Telegram Temikia-Notifications"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-11T18:33:27.577Z",
+      "createdAt": "2025-12-11T18:33:27.577Z",
+      "role": "workflow:owner",
+      "workflowId": "ZpYgShc1li13uf3h",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T21:21:13.085Z",
+      "createdAt": "2026-01-11T21:21:13.085Z",
+      "id": "Igu5v6jjbjja1nak",
+      "name": "Sistema"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-11T21:21:22.440Z",
+  "versionId": "fbe9a103-be84-4c43-ad73-04c12064a42c"
+}
