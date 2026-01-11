@@ -1,0 +1,1732 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-01-10T20:40:49.000Z",
+    "createdAt": "2026-01-10T20:40:46.570Z",
+    "versionId": "d944dd72-5a17-44dd-af5e-6d4abdbcd50a",
+    "workflowId": "9IRkn2WtQUbKYT7W",
+    "nodes": [
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -1648,
+          -96
+        ],
+        "id": "f0bd3235-9483-4035-a014-071e7c5b4b1e",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "phone_number",
+                "type": "number"
+              },
+              {
+                "name": "sessionId"
+              },
+              {
+                "name": "canal"
+              },
+              {
+                "name": "schema"
+              },
+              {
+                "name": "sucursal"
+              },
+              {
+                "name": "tabla_historica"
+              }
+            ]
+          }
+        },
+        "id": "127ad679-fdb5-4381-8348-6364c13fb9d8",
+        "typeVersion": 1.1,
+        "name": "Flujo Agente Principal",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -2096,
+          -96
+        ]
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{$('Flujo Agente Principal').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "seguimiento_reportes",
+            "mode": "list",
+            "cachedResultName": "seguimiento_reportes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "requiere_humano": "={{ true }}",
+              "canal": "whatsapp",
+              "num_telefono": "={{ $('Flujo Agente Principal').item.json.phone_number }}",
+              "fecha_reporte": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "resumen_intencion": "={{ $json.intencion }}",
+              "resumen_datos_clave": "={{ $json.datos_clave }}",
+              "resumen_contexto": "={{ $json.contexto }}",
+              "resumen_proxima_accion": "={{ $json.proxima_accion_recomendada }}",
+              "notas_tono_sentimiento": "={{ $json.notas_operativas.tono_sentimiento }}",
+              "notas_urgencia": "={{ $json.notas_operativas.urgencia }}",
+              "estado_seguimiento": "Pendiente",
+              "texto_original": "={{ $json.resumen_final }}",
+              "asignado_a": "Cajero",
+              "nivel_urgencia": "={{ $json.notas_operativas.nivel_urgencia }}",
+              "conversacion_id": "={{ $('Flujo Agente Principal').item.json.sessionId }}",
+              "sucursal": "={{ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "conversacion_id",
+                "displayName": "conversacion_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "num_telefono",
+                "displayName": "num_telefono",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fecha_reporte",
+                "displayName": "fecha_reporte",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "resumen_intencion",
+                "displayName": "resumen_intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "resumen_datos_clave",
+                "displayName": "resumen_datos_clave",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "resumen_contexto",
+                "displayName": "resumen_contexto",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "resumen_proxima_accion",
+                "displayName": "resumen_proxima_accion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas_tono_sentimiento",
+                "displayName": "notas_tono_sentimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas_urgencia",
+                "displayName": "notas_urgencia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nivel_urgencia",
+                "displayName": "nivel_urgencia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "requiere_humano",
+                "displayName": "requiere_humano",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "estado_seguimiento",
+                "displayName": "estado_seguimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "asignado_a",
+                "displayName": "asignado_a",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "texto_original",
+                "displayName": "texto_original",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "metadata_extra",
+                "displayName": "metadata_extra",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1408,
+          368
+        ],
+        "id": "ecde03b7-af1b-4ca7-bc29-b8742db6985d",
+        "name": "Registra Seguimiento",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Code node (JavaScript)\n// Convierte el arreglo Aggregate.data[*].message{type, content} en un objeto plano:\n// { \"Humano_1\": \"...\", \"IA_1\": \"...\", \"Humano_2\": \"...\", \"IA_2\": \"...\" }\n\nconst items = $input.all();\n\n// Limpia el texto: recorta, colapsa espacios y, si viene el bloque largo,\n// extrae lo que sigue a \"Mensaje de Texto o Descripción:\"\nfunction cleanText(s) {\n  if (!s) return '';\n  let t = String(s);\n\n  const marker = 'Mensaje de Texto o Descripción';\n  const idx = t.toLowerCase().indexOf(marker.toLowerCase());\n  if (idx !== -1) {\n    t = t.slice(idx + marker.length);\n  }\n\n  // Quita separadores iniciales y colapsa espacios/nuevas líneas\n  t = t.replace(/^[\\s:.-]+/, '').replace(/\\s+/g, ' ').trim();\n  return t;\n}\n\n// Extrae mensajes desde varias formas posibles\nconst records = [];\nfor (const it of items) {\n  const j = it.json || {};\n\n  // Si viene como { data: [...] } úsalo; si no, intenta interpretar el propio objeto\n  const arr = Array.isArray(j.data) ? j.data : (Array.isArray(j) ? j : (j.data ? [j.data] : [j]));\n\n  for (const row of arr) {\n    const msg = row?.message || row;\n    const type = (msg?.type || msg?.role || '').toLowerCase();\n    const content = msg?.content ?? msg?.text ?? '';\n\n    if (!type || !content) continue;\n\n    const role = (type === 'human' || type === 'user') ? 'Humano' : 'IA';\n    records.push({ role, text: cleanText(content) });\n  }\n}\n\n// Construye objeto plano con claves enumeradas\nconst out = {};\nlet h = 1, a = 1;\nfor (const r of records) {\n  if (r.role === 'Humano') out[`Humano_${h++}`] = r.text;\n  else out[`IA_${a++}`] = r.text;\n}\n\nreturn [{ json: out }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -2096,
+          144
+        ],
+        "id": "d3e24591-96bf-40e6-83f5-8192893a4af8",
+        "name": "Agrupa Conversacion"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Code (JavaScript) ANTES del Summarization Chain\n// Convierte Humano_*/IA_* en un solo bloque de texto ordenado\n\nconst firstItem = $input.first();\nif (!firstItem || !firstItem.json) {\n  // Si por alguna razón no hay nada, devolvemos un texto vacío controlado\n  return [{ json: { text: '' } }];\n}\n\nconst it = firstItem.json;\n\nconst lines = Object.entries(it)\n  .filter(([k]) => /^(Humano|IA)_(\\d+)$/i.test(k))\n  .sort(\n    (a, b) =>\n      parseInt(a[0].match(/\\d+/)[0], 10) -\n      parseInt(b[0].match(/\\d+/)[0], 10),\n  )\n  .map(([k, v]) =>\n    `${k.startsWith('Humano') ? 'Humano' : 'IA'}: ${String(v ?? '').trim()}`,\n  );\n\n// Si por lo que sea no hay líneas, igual devolvemos text, pero vacío\nreturn [{ json: { text: lines.join('\\n') || '' } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1872,
+          144
+        ],
+        "id": "feece544-a14a-497d-aa1c-0b399de7c5e8",
+        "name": "Formatea Conversacion"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "74152472-bd3a-4273-a24a-b85df24325e1",
+                "leftValue": "={{ $('Flujo Agente Principal').first().json.canal }}",
+                "rightValue": "Restó",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -512,
+          368
+        ],
+        "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "={{ $json.mensaje }}",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -736,
+          368
+        ],
+        "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
+        "name": "Soporte",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "=7996447459",
+          "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -80,
+          192
+        ],
+        "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
+        "name": "Osaki Resto",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1872,
+          -96
+        ],
+        "id": "243928cd-1b09-4ca9-8e89-5376d456a131",
+        "name": "Obtiene Chat Delivery",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const item = $input.first() || { json: {} };\nconst j = item.json || {};\nlet text = j.text ?? '';\n\ntext = String(text).trim();\n\nif (!text) {\n  // Si no hay texto, devolvemos un mensaje mínimo para que el Summarization no truene\n  text = 'No hay conversación disponible para resumir.';\n}\n\nreturn [{ json: { text } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1648,
+          144
+        ],
+        "id": "1f4d147b-5f48-413a-83a8-5a169f69f920",
+        "name": "Valida Texto"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
+          "options": {
+            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{  \n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3,
+        "position": [
+          -2048,
+          368
+        ],
+        "id": "d96524ad-1d58-4553-b6f2-cb25463e5303",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4.1-mini"
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.3,
+        "position": [
+          -2096,
+          576
+        ],
+        "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "fATP1TjAWkMAqBDc",
+            "name": "OpenAi Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "5617014635",
+          "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -80,
+          352
+        ],
+        "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
+        "name": "Osaki Delivery Calle 9",
+        "webhookId": "ebe8e6a1-30f0-4659-ba16-4aa6367ba491",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "1971847998",
+          "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -80,
+          512
+        ],
+        "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
+        "name": "Osaki Delivery Calle 47",
+        "webhookId": "ebe8e6a1-30f0-4659-ba16-4aa6367ba491",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "2ae7eff9-5e2b-4f42-b720-43644889cbd7",
+                "leftValue": "={{ $('Flujo Agente Principal').item.json.sucursal }}",
+                "rightValue": "Calle 9",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -336,
+          432
+        ],
+        "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
+        "name": "If2"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "=Reportado a Osaki Correctamente",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          240,
+          352
+        ],
+        "id": "a7891107-926d-4ed0-b87e-95938f034d44",
+        "name": "Soporte1",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "d10e36db-8e9e-4eb6-9b1e-ffccf79875ad",
+                "name": "=enlace",
+                "value": "={{ $('Flujo Agente Principal').item.json.sessionId && $('Flujo Agente Principal').item.json.sessionId.toString().includes('whatsapp') ? 'https://wa.me/' + $('Flujo Agente Principal').item.json.sessionId.toString().split('@')[0] : 'https://wa.me/549' + $('Flujo Agente Principal').item.json.phone_number }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1184,
+          368
+        ],
+        "id": "51617408-32d1-47a6-8615-42b2be9df13a",
+        "name": "Crea Link WhatsApp"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "eb55e5e0-e175-443b-9d7c-2cca4c50d38c",
+                "name": "mensaje",
+                "value": "={{ \"‼ <b>REQUIERE ATENCIÓN HUMANA</b> ‼\"+ \n\"\\n<b>Número:</b> \"+ $('Flujo Agente Principal').first().json.phone_number+\n\"\\n<b>Ir a:</b> \"+$json.enlace+\n\"\\n<b>Fecha Reporte:</b> \"+new Date($('Registra Seguimiento').item.json.fecha_reporte).toISOString().replace('T', ' ').substring(0, 16) .replace('T',' ')+\n\"\\n<b>Canal:</b> \"+$('Flujo Agente Principal').first().json.canal+ \n\"\\n<b>Sucursal:</b> \"+$('Flujo Agente Principal').first().json.sucursal+ \n\"\\n\\n\"+$('Normaliza Analisis').item.json.resumen_final+\"\\n\" }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -960,
+          368
+        ],
+        "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
+        "name": "Crea Mensaje"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 1. Obtenemos el texto crudo\nconst text = $input.item.json.output;\n\n// 2. Función auxiliar para extraer datos ignorando errores de JSON\nfunction extraer(regex, fuente) {\n  const match = fuente.match(regex);\n  return match ? match[1].trim() : \"No proporcionado\";\n}\n\n// 3. Extraemos cada campo individualmente (usando Regex para evitar el error del JSON roto)\nconst intencion = extraer(/\"intencion\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst datos_clave = extraer(/\"datos_clave\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst contexto = extraer(/\"contexto\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst proxima_accion = extraer(/\"proxima_accion_recomendada\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst tono = extraer(/\"tono_sentimiento\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst urgencia = extraer(/\"urgencia\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst nivel = extraer(/\"nivel_urgencia\"\\s*:\\s*\"?(\\d+)\"?/i, text);\n\n// 4. Construimos el bloque de texto agrupado (Resumen Ejecutivo)\nconst resumenEjecutivo = `RESUMEN EJECUTIVO\n• Intención: ${intencion}\n• Datos clave: ${datos_clave}\n• Contexto: ${contexto}\n• Próxima acción recomendada: ${proxima_accion}\n\nNOTAS OPERATIVAS\n• Tono/sentimiento: ${tono}\n• Urgencia: ${urgencia}\n• Nivel de urgencia: ${nivel}`;\n\n// 5. Retornamos TODO: campos sueltos y el resumen final\nreturn {\n  intencion,\n  datos_clave,\n  contexto,\n  proxima_accion_recomendada: proxima_accion,\n  notas_operativas: {\n    tono_sentimiento: tono,\n    urgencia: urgencia,\n    nivel_urgencia: nivel\n  },\n  resumen_final: resumenEjecutivo\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1648,
+          368
+        ],
+        "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
+        "name": "Normaliza Analisis"
+      }
+    ],
+    "connections": {
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "Agrupa Conversacion",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Flujo Agente Principal": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Chat Delivery",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Seguimiento": {
+        "main": [
+          [
+            {
+              "node": "Crea Link WhatsApp",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Agrupa Conversacion": {
+        "main": [
+          [
+            {
+              "node": "Formatea Conversacion",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Formatea Conversacion": {
+        "main": [
+          [
+            {
+              "node": "Valida Texto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Osaki Resto",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "If2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Chat Delivery": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Valida Texto": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Normaliza Analisis",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If2": {
+        "main": [
+          [
+            {
+              "node": "Osaki Delivery Calle 9",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Osaki Delivery Calle 47",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Soporte": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Osaki Resto": {
+        "main": [
+          [
+            {
+              "node": "Soporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Osaki Delivery Calle 9": {
+        "main": [
+          [
+            {
+              "node": "Soporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Osaki Delivery Calle 47": {
+        "main": [
+          [
+            {
+              "node": "Soporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crea Link WhatsApp": {
+        "main": [
+          [
+            {
+              "node": "Crea Mensaje",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Crea Mensaje": {
+        "main": [
+          [
+            {
+              "node": "Soporte",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normaliza Analisis": {
+        "main": [
+          [
+            {
+              "node": "Registra Seguimiento",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": "Version d944dd72",
+    "description": "",
+    "autosaved": false
+  },
+  "activeVersionId": "d944dd72-5a17-44dd-af5e-6d4abdbcd50a",
+  "connections": {
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Agrupa Conversacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flujo Agente Principal": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Chat Delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Seguimiento": {
+      "main": [
+        [
+          {
+            "node": "Crea Link WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agrupa Conversacion": {
+      "main": [
+        [
+          {
+            "node": "Formatea Conversacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatea Conversacion": {
+      "main": [
+        [
+          {
+            "node": "Valida Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Osaki Resto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Chat Delivery": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valida Texto": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Analisis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Osaki Delivery Calle 9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Osaki Delivery Calle 47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Soporte": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Osaki Resto": {
+      "main": [
+        [
+          {
+            "node": "Soporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Osaki Delivery Calle 9": {
+      "main": [
+        [
+          {
+            "node": "Soporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Osaki Delivery Calle 47": {
+      "main": [
+        [
+          {
+            "node": "Soporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea Link WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Crea Mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea Mensaje": {
+      "main": [
+        [
+          {
+            "node": "Soporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Analisis": {
+      "main": [
+        [
+          {
+            "node": "Registra Seguimiento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-11T18:19:46.221Z",
+  "id": "9IRkn2WtQUbKYT7W",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reporta Encargado",
+  "nodes": [
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        -96
+      ],
+      "id": "f0bd3235-9483-4035-a014-071e7c5b4b1e",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "phone_number",
+              "type": "number"
+            },
+            {
+              "name": "sessionId"
+            },
+            {
+              "name": "canal"
+            },
+            {
+              "name": "schema"
+            },
+            {
+              "name": "sucursal"
+            },
+            {
+              "name": "tabla_historica"
+            }
+          ]
+        }
+      },
+      "id": "127ad679-fdb5-4381-8348-6364c13fb9d8",
+      "typeVersion": 1.1,
+      "name": "Flujo Agente Principal",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -2096,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{$('Flujo Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "seguimiento_reportes",
+          "mode": "list",
+          "cachedResultName": "seguimiento_reportes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "requiere_humano": "={{ true }}",
+            "canal": "whatsapp",
+            "num_telefono": "={{ $('Flujo Agente Principal').item.json.phone_number }}",
+            "fecha_reporte": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "resumen_intencion": "={{ $json.intencion }}",
+            "resumen_datos_clave": "={{ $json.datos_clave }}",
+            "resumen_contexto": "={{ $json.contexto }}",
+            "resumen_proxima_accion": "={{ $json.proxima_accion_recomendada }}",
+            "notas_tono_sentimiento": "={{ $json.notas_operativas.tono_sentimiento }}",
+            "notas_urgencia": "={{ $json.notas_operativas.urgencia }}",
+            "estado_seguimiento": "Pendiente",
+            "texto_original": "={{ $json.resumen_final }}",
+            "asignado_a": "Cajero",
+            "nivel_urgencia": "={{ $json.notas_operativas.nivel_urgencia }}",
+            "conversacion_id": "={{ $('Flujo Agente Principal').item.json.sessionId }}",
+            "sucursal": "={{ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "conversacion_id",
+              "displayName": "conversacion_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "num_telefono",
+              "displayName": "num_telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_reporte",
+              "displayName": "fecha_reporte",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumen_intencion",
+              "displayName": "resumen_intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumen_datos_clave",
+              "displayName": "resumen_datos_clave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumen_contexto",
+              "displayName": "resumen_contexto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumen_proxima_accion",
+              "displayName": "resumen_proxima_accion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas_tono_sentimiento",
+              "displayName": "notas_tono_sentimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas_urgencia",
+              "displayName": "notas_urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nivel_urgencia",
+              "displayName": "nivel_urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "requiere_humano",
+              "displayName": "requiere_humano",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estado_seguimiento",
+              "displayName": "estado_seguimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "asignado_a",
+              "displayName": "asignado_a",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "texto_original",
+              "displayName": "texto_original",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "metadata_extra",
+              "displayName": "metadata_extra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "sucursal",
+              "displayName": "sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1408,
+        368
+      ],
+      "id": "ecde03b7-af1b-4ca7-bc29-b8742db6985d",
+      "name": "Registra Seguimiento",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n// Convierte el arreglo Aggregate.data[*].message{type, content} en un objeto plano:\n// { \"Humano_1\": \"...\", \"IA_1\": \"...\", \"Humano_2\": \"...\", \"IA_2\": \"...\" }\n\nconst items = $input.all();\n\n// Limpia el texto: recorta, colapsa espacios y, si viene el bloque largo,\n// extrae lo que sigue a \"Mensaje de Texto o Descripción:\"\nfunction cleanText(s) {\n  if (!s) return '';\n  let t = String(s);\n\n  const marker = 'Mensaje de Texto o Descripción';\n  const idx = t.toLowerCase().indexOf(marker.toLowerCase());\n  if (idx !== -1) {\n    t = t.slice(idx + marker.length);\n  }\n\n  // Quita separadores iniciales y colapsa espacios/nuevas líneas\n  t = t.replace(/^[\\s:.-]+/, '').replace(/\\s+/g, ' ').trim();\n  return t;\n}\n\n// Extrae mensajes desde varias formas posibles\nconst records = [];\nfor (const it of items) {\n  const j = it.json || {};\n\n  // Si viene como { data: [...] } úsalo; si no, intenta interpretar el propio objeto\n  const arr = Array.isArray(j.data) ? j.data : (Array.isArray(j) ? j : (j.data ? [j.data] : [j]));\n\n  for (const row of arr) {\n    const msg = row?.message || row;\n    const type = (msg?.type || msg?.role || '').toLowerCase();\n    const content = msg?.content ?? msg?.text ?? '';\n\n    if (!type || !content) continue;\n\n    const role = (type === 'human' || type === 'user') ? 'Humano' : 'IA';\n    records.push({ role, text: cleanText(content) });\n  }\n}\n\n// Construye objeto plano con claves enumeradas\nconst out = {};\nlet h = 1, a = 1;\nfor (const r of records) {\n  if (r.role === 'Humano') out[`Humano_${h++}`] = r.text;\n  else out[`IA_${a++}`] = r.text;\n}\n\nreturn [{ json: out }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2096,
+        144
+      ],
+      "id": "d3e24591-96bf-40e6-83f5-8192893a4af8",
+      "name": "Agrupa Conversacion"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Code (JavaScript) ANTES del Summarization Chain\n// Convierte Humano_*/IA_* en un solo bloque de texto ordenado\n\nconst firstItem = $input.first();\nif (!firstItem || !firstItem.json) {\n  // Si por alguna razón no hay nada, devolvemos un texto vacío controlado\n  return [{ json: { text: '' } }];\n}\n\nconst it = firstItem.json;\n\nconst lines = Object.entries(it)\n  .filter(([k]) => /^(Humano|IA)_(\\d+)$/i.test(k))\n  .sort(\n    (a, b) =>\n      parseInt(a[0].match(/\\d+/)[0], 10) -\n      parseInt(b[0].match(/\\d+/)[0], 10),\n  )\n  .map(([k, v]) =>\n    `${k.startsWith('Humano') ? 'Humano' : 'IA'}: ${String(v ?? '').trim()}`,\n  );\n\n// Si por lo que sea no hay líneas, igual devolvemos text, pero vacío\nreturn [{ json: { text: lines.join('\\n') || '' } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1872,
+        144
+      ],
+      "id": "feece544-a14a-497d-aa1c-0b399de7c5e8",
+      "name": "Formatea Conversacion"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "74152472-bd3a-4273-a24a-b85df24325e1",
+              "leftValue": "={{ $('Flujo Agente Principal').first().json.canal }}",
+              "rightValue": "Restó",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -512,
+        368
+      ],
+      "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "chatId": "67869519",
+        "text": "={{ $json.mensaje }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -736,
+        368
+      ],
+      "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
+      "name": "Soporte",
+      "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "=7996447459",
+        "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        192
+      ],
+      "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
+      "name": "Osaki Resto",
+      "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1872,
+        -96
+      ],
+      "id": "243928cd-1b09-4ca9-8e89-5376d456a131",
+      "name": "Obtiene Chat Delivery",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first() || { json: {} };\nconst j = item.json || {};\nlet text = j.text ?? '';\n\ntext = String(text).trim();\n\nif (!text) {\n  // Si no hay texto, devolvemos un mensaje mínimo para que el Summarization no truene\n  text = 'No hay conversación disponible para resumir.';\n}\n\nreturn [{ json: { text } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1648,
+        144
+      ],
+      "id": "1f4d147b-5f48-413a-83a8-5a169f69f920",
+      "name": "Valida Texto"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
+        "options": {
+          "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{  \n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -2048,
+        368
+      ],
+      "id": "d96524ad-1d58-4553-b6f2-cb25463e5303",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -2096,
+        576
+      ],
+      "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "5617014635",
+        "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        352
+      ],
+      "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
+      "name": "Osaki Delivery Calle 9",
+      "webhookId": "ebe8e6a1-30f0-4659-ba16-4aa6367ba491",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "1971847998",
+        "text": "={{ $('Crea Mensaje').item.json.mensaje }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        512
+      ],
+      "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
+      "name": "Osaki Delivery Calle 47",
+      "webhookId": "ebe8e6a1-30f0-4659-ba16-4aa6367ba491",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2ae7eff9-5e2b-4f42-b720-43644889cbd7",
+              "leftValue": "={{ $('Flujo Agente Principal').item.json.sucursal }}",
+              "rightValue": "Calle 9",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -336,
+        432
+      ],
+      "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "chatId": "67869519",
+        "text": "=Reportado a Osaki Correctamente",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        352
+      ],
+      "id": "a7891107-926d-4ed0-b87e-95938f034d44",
+      "name": "Soporte1",
+      "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d10e36db-8e9e-4eb6-9b1e-ffccf79875ad",
+              "name": "=enlace",
+              "value": "={{ $('Flujo Agente Principal').item.json.sessionId && $('Flujo Agente Principal').item.json.sessionId.toString().includes('whatsapp') ? 'https://wa.me/' + $('Flujo Agente Principal').item.json.sessionId.toString().split('@')[0] : 'https://wa.me/549' + $('Flujo Agente Principal').item.json.phone_number }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1184,
+        368
+      ],
+      "id": "51617408-32d1-47a6-8615-42b2be9df13a",
+      "name": "Crea Link WhatsApp"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb55e5e0-e175-443b-9d7c-2cca4c50d38c",
+              "name": "mensaje",
+              "value": "={{ \"‼ <b>REQUIERE ATENCIÓN HUMANA</b> ‼\"+ \n\"\\n<b>Número:</b> \"+ $('Flujo Agente Principal').first().json.phone_number+\n\"\\n<b>Ir a:</b> \"+$json.enlace+\n\"\\n<b>Fecha Reporte:</b> \"+new Date($('Registra Seguimiento').item.json.fecha_reporte).toISOString().replace('T', ' ').substring(0, 16) .replace('T',' ')+\n\"\\n<b>Canal:</b> \"+$('Flujo Agente Principal').first().json.canal+ \n\"\\n<b>Sucursal:</b> \"+$('Flujo Agente Principal').first().json.sucursal+ \n\"\\n\\n\"+$('Normaliza Analisis').item.json.resumen_final+\"\\n\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -960,
+        368
+      ],
+      "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
+      "name": "Crea Mensaje"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtenemos el texto crudo\nconst text = $input.item.json.output;\n\n// 2. Función auxiliar para extraer datos ignorando errores de JSON\nfunction extraer(regex, fuente) {\n  const match = fuente.match(regex);\n  return match ? match[1].trim() : \"No proporcionado\";\n}\n\n// 3. Extraemos cada campo individualmente (usando Regex para evitar el error del JSON roto)\nconst intencion = extraer(/\"intencion\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst datos_clave = extraer(/\"datos_clave\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst contexto = extraer(/\"contexto\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst proxima_accion = extraer(/\"proxima_accion_recomendada\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst tono = extraer(/\"tono_sentimiento\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst urgencia = extraer(/\"urgencia\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst nivel = extraer(/\"nivel_urgencia\"\\s*:\\s*\"?(\\d+)\"?/i, text);\n\n// 4. Construimos el bloque de texto agrupado (Resumen Ejecutivo)\nconst resumenEjecutivo = `RESUMEN EJECUTIVO\n• Intención: ${intencion}\n• Datos clave: ${datos_clave}\n• Contexto: ${contexto}\n• Próxima acción recomendada: ${proxima_accion}\n\nNOTAS OPERATIVAS\n• Tono/sentimiento: ${tono}\n• Urgencia: ${urgencia}\n• Nivel de urgencia: ${nivel}`;\n\n// 5. Retornamos TODO: campos sueltos y el resumen final\nreturn {\n  intencion,\n  datos_clave,\n  contexto,\n  proxima_accion_recomendada: proxima_accion,\n  notas_operativas: {\n    tono_sentimiento: tono,\n    urgencia: urgencia,\n    nivel_urgencia: nivel\n  },\n  resumen_final: resumenEjecutivo\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1648,
+        368
+      ],
+      "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
+      "name": "Normaliza Analisis"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "ZpYgShc1li13uf3h"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-11T18:19:46.230Z",
+      "createdAt": "2025-12-11T18:19:46.230Z",
+      "role": "workflow:owner",
+      "workflowId": "9IRkn2WtQUbKYT7W",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T13:58:58.227Z",
+      "createdAt": "2026-01-11T13:58:58.227Z",
+      "id": "KkeQFkJULwWdcCpc",
+      "name": "Producción"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-11T21:20:01.448Z",
+  "versionId": "d944dd72-5a17-44dd-af5e-6d4abdbcd50a"
+}
