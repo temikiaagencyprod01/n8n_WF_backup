@@ -1,0 +1,2465 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Session_Ids": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Conversation": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent_Delivery_47",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent_Delivery_9",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Session_Ids_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items_Delivery_47": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Conversation_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "Aggregate_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "AI Agent_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Salida_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Salida_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "Registra Analisis_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Analisis_Delivery_47": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Session_Ids_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items_Delivery_9": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Conversation_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "Aggregate_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "AI Agent_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Salida_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Salida_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "Registra Analisis_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Analisis_Delivery_9": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get Conversation_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items_Delivery_9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Get Conversation_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items_Delivery_47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Get Conversation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Datos": {
+      "main": [
+        [
+          {
+            "node": "Call 'Actualiza_fecha'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Get Session_Ids",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Actualiza_fecha'": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Datos Pedido": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Delete table or rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete table or rows": {
+      "main": [
+        [
+          {
+            "node": "Delete table or rows1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete table or rows1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-04T02:41:19.665Z",
+  "id": "QVM5m5V1miSM8O5f",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Llena Hora",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1104,
+        -208
+      ],
+      "id": "4d7bccfb-e171-4513-ac6d-c0306f4216fe",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH raw_messages AS (\n    -- Paso 1: Obtenemos los últimos 10 registros de la tabla principal\n    SELECT \n        id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'main' as source\n    FROM osaki_main.{{ $('Edit Fields').first().json.tabla_chat }}\n    WHERE session_id = $1\n    UNION \n    -- Paso 2: Obtenemos los últimos 10 registros del backup\n    SELECT \n        old_id as id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'backup' as source\n    FROM osaki_main.{{ $('Edit Fields').first().json.tabla_chat }}_bkup\n    WHERE session_id = $1\n  ),\ncleaned_content AS (\n    -- Paso 3: Limpiamos el ruido inicial (ej: [Used tools...]) una sola vez\n    SELECT \n        id,\n        type,\n        regexp_replace(raw_content, '^\\[Used tools:.*\\]\\]\\s*', '') AS content\n    FROM raw_messages\n)\n-- Paso 4: Aplicamos la lógica de extracción de fecha y texto final\nSELECT\n    CASE \n        WHEN type = 'human' THEN \n            to_char(\n                to_timestamp(\n                    -- Extraemos la fecha y normalizamos guiones a barras\n                    replace(\n                        substring(content FROM '(?i)fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})'),\n                        '-', '/'\n                    ), \n                    'YYYY/MM/DD HH24:MI:SS'\n                ), \n                'YYYY/MM/DD HH24:MI:SS'\n            )\n        ELSE NULL \n    END AS fecha_hora,\n    \n    id,\n    type,\n    \n    CASE \n        WHEN type = 'human' THEN \n            trim(\n                regexp_replace(\n                    split_part(content, 'Mensaje de Texto o Descripción:', 2),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\nFROM cleaned_content\nwhere id is not null\nORDER BY id asc;\n",
+        "options": {
+          "queryReplacement": "={{ $json.session_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -416,
+        32
+      ],
+      "id": "9245dc9f-bd6c-43c1-9518-31033883e302",
+      "name": "Get Conversation",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with conversations as (\n    -- Obtener session_id de la tabla principal con fec_registro nulo\n    select distinct session_id\n    from osaki_main.{{ $json.tabla_chat }}\n    where fec_registro is null    \n    union    \n    select distinct session_id\n    from osaki_main.{{ $json.tabla_chat }}_bkup\n    where fec_registro is null\n),\nextracted_numbers as (\n    select \n        session_id,\n        case \n            when session_id like '%@%' then \n                substring(\n                    split_part(session_id, '@', 1) \n                    from '(\\d{10})$'\n                )\n            else null\n        end as last_10_digits\n    from conversations\n    where session_id like '%@%'\n)\nselect distinct \n    en.session_id\nfrom extracted_numbers en\nwhere en.last_10_digits is not null\n  --and en.session_id ='5491122512709@s.whatsapp.net'\norder by en.session_id asc\n-- limit 1\n  ;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1104,
+        32
+      ],
+      "id": "e9acde5a-8867-4df9-9478-379e5a8b9e44",
+      "name": "Get Session_Ids",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify({\n  conversation_id: $('Loop Over Items').item.json.session_id ,\n  messages: $input.all().map(i => i.json)\n}) }}\n",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "=## ROL\nTu función es analizar la conversación que recibes y calcular el campo fec_registro en la tabla de conversaciones (n8n_chat_histories), que actualmente se encuentra vacío. Te basarás en el siguiente criterio:\n\n## Reglas\n- Si todos los id están null, no analices nada, sáltatelos, todos los valores salida van en nulos.\n- El mensaje del humano trae el timestamp, por lo que solo tienes que usar este mismo en su respectivo id.\n- El bot responde con 35 segundos después del humano, por lo que si es una constestación a algo que indica el humano, se aplica esta regla y se actualiza dicho id del mensaje del bot con el mensaje del humano más 35 segundos\n- Si el bot es quien inicia la conversación, dicho mensaje se queda nulo.\n- La fecha siempre usará el formato \"yyyy-MM-dd'T'HH:mm:ss.000'Z'\"\n- Si un registro sin fecha corresponde a una pregunta de la IA por una confirmación en medio de la conversación, resta 1 minuto de la respuesta siguiente del humano y se rellena de esta manera.\n- Si el inicio de conversación es de la IA indicando que:\n  * no puede procesar un mensaje por formato o por notificación inicial, toma el valor de la fecha y hora del siguiente mensaje humano y réstale 1 minuto para asignar en este registro.\n- Cuando sea la notificación de un pedido puedes calcular la fecha y hora aproximada consultando los datos del pedido con la herramienta **\"Datos Pedido\"**\n- Cuando no haya caido en ningún escenario anterior y hay indicios para asignar una Fecha y Hora de acuerdo al contexto de la conversación con una seguiridad por encima del 50%, asígnala.\n\n## Herramientas\n- **Datos Pedido**: Se consultan los datos de un pedido.\n\n\n### Directriz de uso \"Datos Pedido\"  \n- Usando únicamente el número del pedido.\n- NO usa SQL.\n- Usar un solo valor númerico. (p. ej. 8745874, 1145874896, 887458 )\n\n\n## Formato de Salida **Obligatorio** :\n\n```json\n{ [\n  { \"id\": \"\",        // si no hay valor, id=0\n  \"fec_registro\": \"\" // null si no se cumplen las reglas\n  },\n  { \"id\": \"\",        // si no hay valor, id=0\n  \"fec_registro\": \"\" // null si no se cumplen las reglas\n  }\n  ]\n}\n```"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        272,
+        -112
+      ],
+      "id": "b0bcaac5-8965-454a-a70c-a59c63090efb",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -112
+      ],
+      "id": "953ea3a8-31d8-4743-b3fc-632a58855661",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -896,
+        32
+      ],
+      "id": "ea29e364-b826-4083-b589-fa0ac0babf98",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1216,
+        192
+      ],
+      "id": "e33f1108-51eb-4ead-8792-e5f189afaa68",
+      "name": "Wait",
+      "webhookId": "d346dceb-b799-40d6-8947-05c79d1d599a"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        768
+      ],
+      "id": "f0ac075e-9d9b-4add-af76-4ae14a5b6e41",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        704
+      ],
+      "id": "82007210-bda5-40da-aed4-b4a2a84065be",
+      "name": "Wait1",
+      "webhookId": "cccb197e-2fc1-42f1-aeca-448f9e8adb26"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        1200
+      ],
+      "id": "d6b001dc-fabb-4a96-8061-2b22d0ce3bd0",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        1152
+      ],
+      "id": "425ae68a-55ef-4e3e-b87a-a32337853361",
+      "name": "Wait2",
+      "webhookId": "cc068829-6111-4525-98ce-4062fe059413"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nwith conversations as (\n    select distinct session_id\n    from osaki_main.n8n_chat_histories_delivery_calle_47\n    union\n    select distinct session_id\n    from osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n),\nextracted_numbers as (\n    select \n        session_id,\n        case \n            when session_id like '%@%' then \n                substring(\n                    split_part(session_id, '@', 1) \n                    from '(\\d{10})$'\n                )\n            else null\n        end as last_10_digits\n    from conversations\n    where session_id like '%@%'\n)\nselect distinct \n    en.session_id\nfrom extracted_numbers en\nwhere en.last_10_digits is not null\nand en.last_10_digits not in (\n    -- Convertimos phone a texto si es bigint\n    select phone::text \n    from osaki_main.blacklist_phones_calle_47\n)\nand en.session_id not in (\n    select distinct conversation_id \n    from osaki_analytics.auditoria_conversacion_reservas\n)\norder by en.session_id asc\n-- limit 5\n;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1248,
+        656
+      ],
+      "id": "eaf2e7e1-6dfd-44c8-86d8-d703fb1a0254",
+      "name": "Get Session_Ids_Delivery_47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1024,
+        656
+      ],
+      "id": "e1febe45-1862-4073-b78e-37249bd921b1",
+      "name": "Loop Over Items_Delivery_47"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH raw_messages AS (\n    -- Paso 1: Obtenemos los últimos 10 registros de la tabla principal\n    SELECT \n        id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'main' as source\n    FROM osaki_main.n8n_chat_histories_delivery_calle_47\n    WHERE session_id = $1\n    UNION \n    -- Paso 2: Obtenemos los últimos 10 registros del backup\n    SELECT \n        old_id as id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'backup' as source\n    FROM osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n    WHERE session_id = $1\n  ),\ncleaned_content AS (\n    -- Paso 3: Limpiamos el ruido inicial (ej: [Used tools...]) una sola vez\n    SELECT \n        id,\n        type,\n        regexp_replace(raw_content, '^\\[Used tools:.*\\]\\]\\s*', '') AS content\n    FROM raw_messages\n)\n-- Paso 4: Aplicamos la lógica de extracción de fecha y texto final\nSELECT\n    CASE \n        WHEN type = 'human' THEN \n            to_char(\n                to_timestamp(\n                    -- Extraemos la fecha y normalizamos guiones a barras\n                    replace(\n                        substring(content FROM '(?i)fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})'),\n                        '-', '/'\n                    ), \n                    'YYYY/MM/DD HH24:MI:SS'\n                ), \n                'YYYY/MM/DD HH24:MI:SS'\n            )\n        ELSE NULL \n    END AS fecha_hora,\n    \n    id,\n    type,\n    \n    CASE \n        WHEN type = 'human' THEN \n            trim(\n                regexp_replace(\n                    split_part(content, 'Mensaje de Texto o Descripción:', 2),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\nFROM cleaned_content\nORDER BY id asc;\n",
+        "options": {
+          "queryReplacement": "={{ $json.session_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -544,
+        624
+      ],
+      "id": "930c079c-a705-40dc-8e26-1c5e2f160e24",
+      "name": "Get Conversation_Delivery_47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        624
+      ],
+      "id": "e365cb95-a822-4220-98af-e63b93439314",
+      "name": "Aggregate_Delivery_47"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify({\n  conversation_id: $('Loop Over Items_Delivery_47').item.json.session_id ,\n  messages: $input.all().map(i => i.json)\n}) }}\n",
+        "options": {
+          "systemMessage": "=ROL\nEres un auditor automático de conversaciones (WhatsApp u otros canales) para un agente de DELIVERY / SEGUIMIENTO DE PEDIDOS.\nTu tarea es analizar una conversación (lista de mensajes) y producir UN ÚNICO JSON con las columnas de la tabla\nosaki_analytics.auditoria_conversacion_delivery.\n\nREGLA CRÍTICA ANTI-ALUCINACIÓN (OBLIGATORIA)\n- Solo puedes afirmar datos explícitos en los mensajes de entrada.\n- Si un dato no aparece o no puede inferirse de forma determinística, usa null (o [] para arreglos) y agrega el nombre del campo a datos_faltantes.\n- No inventes: estado del pedido, ETA/tiempo de entrega, consultas a herramientas/DB, políticas, identidades, ni acciones fuera del texto.\n- Si el bot afirma “tu pedido está en camino / en preparación / llega en X min” y NO existe evidencia en el input de que consultó una herramienta/DB (o que se mostró un resultado explícito),\n  entonces:\n  - afirmacion_estado_sin_fuente = true (si afirma estado)\n  - afirmacion_eta_sin_fuente = true (si afirma ETA/tiempo)\n  - y NO uses ese estado/ETA como verdad: deja pedido_estado=\"desconocido\" y/o pedido_hora=null.\n\nINPUT (FORMATO)\nRecibirás un único JSON con:\n- conversation_id: string\n- (opcional) channel: string\n- (opcional) agent: string\n- (opcional) brand: string\n- messages: array de objetos con:\n  - id: number|string|null\n  - fecha_hora: string|null\n  - type: \"human\" | \"ai\" | \"human_agent\" | otro\n  - content: string\n\nDEFAULTS (solo si NO vienen en input)\n- channel = \"whatsapp\"\n- agent = \"delivery\"\n- brand = null\n\nREGLAS DE CÁLCULO\n\n1) Tiempo y sesiones\n- Parsear timestamps no nulos (si no parsea, tratar como null).\n- first_user_ts: primer timestamp de type='human'\n- last_user_ts: último timestamp de type='human'\n- duration_sec: last_user_ts - first_user_ts (segundos) si ambos existen; si no, null.\n- session_rule (texto fijo): \"gap_human_gt_30m\"\n- session_count: 1 + número de gaps entre mensajes 'human' consecutivos > 30 min. Si no hay ts suficientes, 1.\n- max_gap_minutes: máximo gap (min) entre mensajes 'human' consecutivos. Si no hay ts suficientes, null.\n\n2) Conteos\n- msg_count_total: total mensajes\n- msg_count_ai: count(type='ai')\n- msg_count_human: count(type='human') + count(type='human_agent')\n- turn_count: número de cambios de actor al recorrer mensajes en orden temporal (cada cambio incrementa turno).\n  Si no hay timestamps, usa el orden dado.\n\n3) Intención (texto libre con catálogo recomendado)\nintent_principal: elige 1 (texto). Catálogo recomendado:\n- crear_pedido -> nuevo pedido\n- rastrear_pedido -> estado/ubicación/ETA del pedido\n- modificar_pedido -> cambio en pedido existente\n- cancelar_pedido -> anular pedido existente\n- consultar_menu -> info sobre menú/productos\n- consultar_promociones -> info sobre ofertas/descuentos\n- consultar_horarios -> info sobre horarios de atención\n- consultar_ubicacion -> info sobre dirección/sucursales\n- reservacion_mesa -> reservar mesa en restaurante\n- otro -> no encaja\n- Si no hay intención clara o es ambigua => \"otro\".\n\nintents_secundarios: arreglo de strings (sin duplicar intent_principal). Si no hay, [].\n\n4) Resolución\n- resolution_ok: true si el intent_principal fue exitoso;\n  false si no se logró o quedó inconcluso.\n- resolution_status (texto recomendado):\n  - \"exitoso\" -> si se logró la acción principal (pedido creado/modificado/cancelado o info entregada y humano cierra conforme)\n  - \"parcial\" -> si se logró parcialmente (p.ej. pedido modificado parcialmente)\n  - \"fallido\" -> si no se logró la acción principal\n  - \"derivado_humano\" -> si escaló a humano antes de resolución\n  - \"abandonado\" -> si el humano cierra sin resolución\n  - \"otro\"\n- no_resolution_reason (texto, solo si resolution_ok=false). Catálogo recomendado:\n  - \"faltan_datos_cliente\" -> faltan datos del cliente (nombre, código, etc.)\n  - \"faltan_datos_negocio\" -> faltan datos del negocio (disponibilidad, tiempos, etc.)\n  - \"error_herramienta\" -> error técnico o de integración\n  - \"politica_negocio\" -> política que impide completar acción\n  - \"loop_o_confusion\" -> bucle o confusión en la conversación\n  - \"cliente_no_responde\" -> el cliente no responde o cierra\n  - \"otro\"\n  - null si resolution_ok=true\nSi resolution_ok=true => no_resolution_reason=null y resolution_status NO debe ser \"fallido\".\n\n5) Extracción de entidades (solo si aparecen explícitas)\n- pedido_accion (texto recomendado):\n  - \"create\" | \"track\" | \"modify\" | \"cancel\" | null\n- pedido_codigo: string|null (código/ID explícito)\n- pedido_plataforma (texto recomendado):\n  - \"masdelivery\" | \"pedidosya\" | \"web\" | \"whatsapp\" | \"desconocido\"\n- pedido_tipo_entrega: \"delivery\" | \"retiro\" | null (solo si lo dicen)\n- pedido_estado: texto recomendado:\n  - \"recibido\" | \"en_preparacion\" | \"listo\" | \"en_viaje\" | \"entregado\" | \"cancelado\" | \"desconocido\"\n  Reglas:\n  - Solo usar un estado como verdad si aparece explícito con certeza en el chat (por usuario/humano o por resultado explícito).\n  - Si el AI lo afirma sin fuente: pedido_estado=\"desconocido\" y afirmacion_estado_sin_fuente=true.\n- pedido_fecha: \"YYYY-MM-DD\"|null (si se menciona con certeza)\n- pedido_hora: \"HH:MM\"|\"HH:MM:SS\"|null (si se menciona con certeza)\n- cliente_nombre: string|null (si lo aporta explícitamente)\n- sucursal_detectada: string|null (si se menciona explícitamente)\n\n6) Calidad del flujo\n- confirmacion_explicita:\n  true si existe confirmación explícita de cualquiera de las partes sobre un dato/acción (p.ej. “confirmo”, “ok”, “sí” ante una propuesta concreta).\n- repreguntas_count:\n  cuántas veces la IA pide un dato ya entregado por el humano (código, nombre, plataforma, etc.)\n- claridad_siguiente_paso: 0|1|2\n  - 2: siguiente paso concreto y accionable\n  - 1: hay siguiente paso pero incompleto/ambiguo\n  - 0: no hay\n- friccion_score: 0..5 (enteros)\n  Suma sugerida (cap a 5):\n  +2 queja/enojo (“mal”, “tardan”, insultos)\n  +1 si la IA comete error evidente (fecha/hora/política)\n  +1 confusión (“no entiendo”, “cómo”, “qué hago”)\n  +1 repetición del mismo pedido sin avance\n  +1 conversación larga sin progreso\n- consistencia_sucursal:\n  true si no hay contradicción en sucursal; false si cambia; null si no se menciona.\n\n7) Sentimiento (texto libre con catálogo recomendado)\nsentiment_inicio y sentiment_final (texto recomendado):\n- \"positivo\" | \"neutral\" | \"negativo\" | \"mixto\" | \"desconocido\"\n\n8) Escalación\n- escalado: true si se indica explícitamente que un humano continuará (“te escribe alguien”, “paso a un compañero”, etc.)\n- escalacion_tipo (texto recomendado): \n  \"politica\" | \"incertidumbre\" | \"error_tecnico\" | \"queja\" | \"peticion_cliente\" | \"loop_conversacional\" | \"otro\" | null\n- escalacion_turno: integer|null (turno donde ocurre primera mención de escalación)\n- handoff_quality: 0|1|2|null\n  - 2: resumen + datos clave + siguiente paso claro\n  - 1: parcial\n  - 0: sin contexto\nRegla:\n- Si escalado=false => escalacion_tipo=null, escalacion_turno=null, handoff_quality=null.\n\n9) Veracidad / errores\n- error_detectado: true SOLO si hay evidencia clara de error/bucle/contradicción.\n- error_tipo (texto recomendado):\n  \"invento_info\" | \"estado_inventado\" | \"eta_inventado\" | \"politica_mal_aplicada\" | \"contradiccion\" | \"loop\" | \"otro\" | null\n\n10) Riesgo / mejoras (texto libre)\n- riesgo_negocio: \"low\" | \"med\" | \"high\" (recomendado)\n- improvement_tag: string|null (texto libre; usa tags consistentes, p.ej. \"kb\", \"flujo_preguntas\", \"handoff_humano\", etc.)\n\n11) Evidencia\n- evidence_message_ids:\n  lista de 2 a 6 ids que sustenten intent, resolución, escalación o error. Si no hay ids, [].\nRegla:\n- Si resolution_ok=true o escalado=true o error_detectado=true => evidence_message_ids NO debe ser [].\n- evidence_snippet:\n  1-2 líneas <= 250 caracteres con extracto mínimo (sin inventar).\n- datos_faltantes:\n  arreglo de strings con campos relevantes que quedaron null/[] por falta de evidencia.\n\n12) entidades_json (jsonb)\nEstructura mínima:\n{\n  \"extracted\": { ... },\n  \"confidence\": { \"campo\": 0.0-1.0, ... },\n  \"notes\": [ ... ]\n}\n\nSALIDA (FORMATO ESTRICTO)\nResponde EXCLUSIVAMENTE con UN ÚNICO JSON válido, sin markdown, sin comentarios, sin texto adicional.\nLas claves deben coincidir EXACTAMENTE con las columnas de osaki_analytics.auditoria_conversacion_delivery:\n\n```json\n{\n  \"conversation_id\": \"string\",\n  \"channel\": \"string\",\n  \"agent\": \"string\",\n  \"brand\": \"string|null\",\n  \"sucursal_detectada\": \"string|null\",\n\n  \"first_user_ts\": \"timestamp|null\",  // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"last_user_ts\": \"timestamp|null\",   // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"duration_sec\": \"number|null\", // número entero >=0\n\n  \"session_count\": 1, // número de sesiones detectadas\n  \"session_rule\": \"gap_human_gt_30m\", \n  \"max_gap_minutes\": \"number|null\", // número entero >=0\n\n  \"msg_count_total\": 0, // número de mensajes en total\n  \"msg_count_ai\": 0, // número de mensajes del AI\n  \"msg_count_human\": 0, // número de mensajes del humano\n  \"turn_count\": 0,  // min(msg_count_human, msg_count_ai)\n\n  \"intent_principal\": \"crear_pedido|rastrear_pedido|modificar_pedido|cancelar_pedido|consultar_menu|consultar_promociones|consultar_horarios|consultar_ubicacion|reservacion_mesa|otro\",  //  ENUM ¿Cuál es el objetivo dominante del humano?\n  \"intents_secundarios\": [],  // arreglo de strings (sin duplicar intent_principal). Si no hay, []\n\n  \"resolution_status\": \"exitoso|parcial|fallido|derivado_humano|abandonado|otro\", // estado de resolución del intent principal\n  \"resolution_ok\": \"true|false\", // boolean, si el intento principal se logró\n  \"no_resolution_reason\": \"faltan_datos_cliente|faltan_datos_negocio|error_herramienta|politica_negocio|loop_o_confusion|cliente_no_responde|otro|null\", // null si resolution_ok es true\n\n  \"pedido_accion\": \"create|track|modify|cancel|null\", // Si hay un pedido explícito\n  \"pedido_codigo\": \"string|null\",\n  \"pedido_plataforma\": \"masdelivery|pedidosya|web|whatsapp|desconocido\",\n  \"pedido_tipo_entrega\": \"delivery|retiro|null\",\n  \"pedido_estado\": \"string\",\n  \"pedido_fecha\": \"YYYY-MM-DD|null\",\n  \"pedido_hora\": \"HH:MM|HH:MM:SS|null\",\n\n  \"cliente_nombre\": \"string|null\",\n\n  \"confirmacion_explicita\": \"true|false\", // boolean si la IA pide confirmación explícita\n  \"repreguntas_count\": 0, // número de repreguntas sobre datos ya dados\n  \"claridad_siguiente_paso\": \"0|1|2\",  // 0: no hay; 1: ambiguo/incompleto; 2: claro\n  \"consistencia_sucursal\": \"true|false|null\", // null si no se menciona\n  \"friccion_score\": \"0|1|2|3|4|5|6\", // 0 (sin fricción) a 6 (mucha fricción)\n\n  \"sentiment_inicio\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al inicio de la conversación\n  \"sentiment_final\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al final de la conversación\n  \"tono_ai\": \"cordial|profesional|efusivo|otro\", // etiqueta breve según estilo del bot\n\n  \"escalado\": \"true|false\", // boolean si hubo escalación a humano\n  \"escalacion_tipo\": \"politica|incertidumbre|error_tecnico|queja|peticion_cliente|loop_conversacional|otro|null\", // null si escalado es false\n  \"escalacion_turno\": \"number|null\", //  null si escalado es false\n  \"handoff_quality\": \"number|null\",\n\n  \"afirmacion_estado_sin_fuente\": \"true|false\", // boolean si el bot afirma estado sin evidencia de consulta a herramienta\n  \"afirmacion_eta_sin_fuente\": \"true|false\", // boolean si el bot afirma ETA sin evidencia de consulta a herramienta\n\n  \"error_detectado\": \"true|false\", // boolean si hay evidencia interna de error/contradicción por parte de la IA\n  \"error_tipo\": \"invento_info|estado_inventado|eta_inventado|politica_mal_aplicada|contradiccion|loop|otro|null\", // null si error_detectado es false\n\n  \"riesgo_negocio\": \"high|med|low\", // nivel de riesgo detectado\n  \"improvement_tag\": \"prompt|kb|flujo_preguntas|validaciones_fecha_hora|integracion_calendario|multi_sucursal|tono|seguridad_privacidad|handoff_humano|otro|null\", // null si no aplica\n\n  \"evidence_message_ids\": [],\n  \"evidence_snippet\": \"string|null\",\n  \"datos_faltantes\": [],\n\n  \"entidades_json\": { \"extracted\": {}, \"confidence\": {}, \"notes\": [] },\n  \"messages_json\": null,\n\n  \"analyzed_by\": \"audit-llm-delivery-v1\"\n}\n```\n\nVALIDACIONES FINALES (OBLIGATORIAS)\n- No “rellenes” con suposiciones: si falta evidencia => null/[] + datos_faltantes.\n- Si resolution_ok=true => resolution_status != \"fallido\" y no_resolution_reason=null.\n- Si escalado=false => escalacion_* = null y handoff_quality=null.\n- Si (resolution_ok=true) OR (escalado=true) OR (error_detectado=true) => evidence_message_ids no puede ser [].\n- Usa español.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -144,
+        624
+      ],
+      "id": "2e546b00-eb96-4d11-9b6b-70eebfd30fa5",
+      "name": "AI Agent_Delivery_47"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items\nreturn items.map(item => {\n  try {\n    // 1. Obtenemos el string\n    let rawContent = item.json.output || \"\";\n\n    // 2. Limpieza de Markdown (Como antes)\n    let cleanContent = rawContent\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/\\s*```$/, '')\n      .trim();\n\n    // -----------------------------------------------------------\n    // 3. REPARACIÓN DE JSON ROTO (El Parche)\n    // -----------------------------------------------------------\n    // El error es: cierra una propiedad con \", en lugar de },\n    // Buscamos: Salto de linea (\\n) -> Espacios (\\s*) -> Comilla (\") -> Coma (,)\n    // Y lo reemplazamos por: },\n    // Nota: Usamos una Regex específica para no romper otros textos.\n    \n    cleanContent = cleanContent.replace(/(\\n\\s*)\"\\s*,/g, '$1},');\n\n    // -----------------------------------------------------------\n\n    // 4. Parseo\n    const parsedData = JSON.parse(cleanContent);\n\n    // 5. Retorno Exitoso\n    return {\n      json: parsedData\n    };\n\n  } catch (error) {\n    // Si falla de nuevo, te dará detalles más precisos\n    return {\n      json: {\n        error: true,\n        message: \"Aún fallando el parseo. Revisa 'cleaned_string' para ver el error.\",\n        original_error: error.message,\n        // Devolvemos el string limpio para que veas si el parche funcionó visualmente\n        cleaned_string: error.input_string_debug \n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        624
+      ],
+      "id": "1bfb64c0-e18b-4573-889e-21aa1e63ea68",
+      "name": "Normaliza Salida_Delivery_47"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "osaki_analytics",
+          "mode": "list",
+          "cachedResultName": "osaki_analytics"
+        },
+        "table": {
+          "__rl": true,
+          "value": "auditoria_conversacion_delivery",
+          "mode": "list",
+          "cachedResultName": "auditoria_conversacion_delivery"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "resolution_ok": "={{ $json.resolution_ok }}",
+            "confirmacion_explicita": "={{ $json.confirmacion_explicita }}",
+            "consistencia_sucursal": "={{ $json.consistencia_sucursal }}",
+            "escalado": "={{ $json.escalado }}",
+            "afirmacion_estado_sin_fuente": "={{ $json.afirmacion_estado_sin_fuente }}",
+            "afirmacion_eta_sin_fuente": "={{ $json.afirmacion_eta_sin_fuente }}",
+            "error_detectado": "={{ $json.error_detectado }}",
+            "conversation_id": "={{ $('Loop Over Items_Delivery_47').item.json.session_id }}",
+            "channel": "WhatsApp",
+            "agent": "Delivery",
+            "brand": "Osaki",
+            "sucursal_detectada": "Calle 47",
+            "first_user_ts": "={{ $json.first_user_ts }}",
+            "last_user_ts": "={{ $json.last_user_ts }}",
+            "duration_sec": "={{ $json.duration_sec }}",
+            "session_count": "={{ $json.session_count }}",
+            "session_rule": "={{ $json.session_rule }}",
+            "max_gap_minutes": "={{ $json.max_gap_minutes }}",
+            "msg_count_total": "={{ $json.msg_count_total }}",
+            "msg_count_ai": "={{ $json.msg_count_ai }}",
+            "msg_count_human": "={{ $json.msg_count_human }}",
+            "turn_count": "={{ $json.turn_count }}",
+            "intent_principal": "={{ $json.intent_principal }}",
+            "intents_secundarios": "={{ $json.intents_secundarios }}",
+            "resolution_status": "={{ $json.resolution_status }}",
+            "no_resolution_reason": "={{ $json.no_resolution_reason }}",
+            "pedido_accion": "={{ $json.pedido_accion }}",
+            "pedido_codigo": "={{ $json.pedido_codigo }}",
+            "pedido_plataforma": "={{ $json.pedido_plataforma }}",
+            "pedido_tipo_entrega": "={{ $json.pedido_tipo_entrega }}",
+            "pedido_estado": "={{ $json.pedido_estado }}",
+            "pedido_fecha": "={{ $json.pedido_fecha }}",
+            "pedido_hora": "={{ $json.pedido_hora }}",
+            "cliente_nombre": "={{ $json.cliente_nombre }}",
+            "repreguntas_count": "={{ $json.repreguntas_count }}",
+            "claridad_siguiente_paso": "={{ $json.claridad_siguiente_paso }}",
+            "friccion_score": "={{ $json.friccion_score }}",
+            "sentiment_inicio": "={{ $json.sentiment_inicio }}",
+            "sentiment_final": "={{ $json.sentiment_final }}",
+            "tono_ai": "={{ $json.tono_ai }}",
+            "escalacion_tipo": "={{ $json.escalacion_tipo }}",
+            "escalacion_turno": "={{ $json.escalacion_turno }}",
+            "handoff_quality": "={{ $json.handoff_quality }}",
+            "error_tipo": "={{ $json.error_tipo }}",
+            "riesgo_negocio": "={{ $json.riesgo_negocio }}",
+            "improvement_tag": "={{ $json.improvement_tag }}",
+            "evidence_message_ids": "={{ $json.evidence_message_ids }}",
+            "evidence_snippet": "={{ $json.evidence_snippet }}",
+            "datos_faltantes": "={{ $json.datos_faltantes }}",
+            "entidades_json": "={{ $json.entidades_json }}",
+            "analyzed_by": "={{ $json.analyzed_by }}",
+            "messages_json": "={{ { \"conversacion\": $('Aggregate_Delivery_47').item.json.data } }}",
+            "analyzed_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "audit_id",
+              "displayName": "audit_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "channel",
+              "displayName": "channel",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent",
+              "displayName": "agent",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "brand",
+              "displayName": "brand",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucursal_detectada",
+              "displayName": "sucursal_detectada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "first_user_ts",
+              "displayName": "first_user_ts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_user_ts",
+              "displayName": "last_user_ts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duration_sec",
+              "displayName": "duration_sec",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_count",
+              "displayName": "session_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_rule",
+              "displayName": "session_rule",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_gap_minutes",
+              "displayName": "max_gap_minutes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_total",
+              "displayName": "msg_count_total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_ai",
+              "displayName": "msg_count_ai",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_human",
+              "displayName": "msg_count_human",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "turn_count",
+              "displayName": "turn_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intent_principal",
+              "displayName": "intent_principal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intents_secundarios",
+              "displayName": "intents_secundarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resolution_status",
+              "displayName": "resolution_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resolution_ok",
+              "displayName": "resolution_ok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "no_resolution_reason",
+              "displayName": "no_resolution_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_accion",
+              "displayName": "pedido_accion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_codigo",
+              "displayName": "pedido_codigo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_plataforma",
+              "displayName": "pedido_plataforma",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_tipo_entrega",
+              "displayName": "pedido_tipo_entrega",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_estado",
+              "displayName": "pedido_estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_fecha",
+              "displayName": "pedido_fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_hora",
+              "displayName": "pedido_hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente_nombre",
+              "displayName": "cliente_nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "confirmacion_explicita",
+              "displayName": "confirmacion_explicita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "repreguntas_count",
+              "displayName": "repreguntas_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "claridad_siguiente_paso",
+              "displayName": "claridad_siguiente_paso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "consistencia_sucursal",
+              "displayName": "consistencia_sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "friccion_score",
+              "displayName": "friccion_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentiment_inicio",
+              "displayName": "sentiment_inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentiment_final",
+              "displayName": "sentiment_final",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tono_ai",
+              "displayName": "tono_ai",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalado",
+              "displayName": "escalado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalacion_tipo",
+              "displayName": "escalacion_tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalacion_turno",
+              "displayName": "escalacion_turno",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "handoff_quality",
+              "displayName": "handoff_quality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "afirmacion_estado_sin_fuente",
+              "displayName": "afirmacion_estado_sin_fuente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "afirmacion_eta_sin_fuente",
+              "displayName": "afirmacion_eta_sin_fuente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "error_detectado",
+              "displayName": "error_detectado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "error_tipo",
+              "displayName": "error_tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "riesgo_negocio",
+              "displayName": "riesgo_negocio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "improvement_tag",
+              "displayName": "improvement_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "evidence_message_ids",
+              "displayName": "evidence_message_ids",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "evidence_snippet",
+              "displayName": "evidence_snippet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "datos_faltantes",
+              "displayName": "datos_faltantes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "entidades_json",
+              "displayName": "entidades_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "messages_json",
+              "displayName": "messages_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analyzed_by",
+              "displayName": "analyzed_by",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analyzed_at",
+              "displayName": "analyzed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        400,
+        624
+      ],
+      "id": "7e4cb6b4-0f6d-478b-9bad-ae3889a9783e",
+      "name": "Registra Analisis_Delivery_47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nwith conversations as (\n    select distinct session_id\n    from osaki_main.n8n_chat_histories_delivery_calle_9\n    union\n    select distinct session_id\n    from osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n),\nextracted_numbers as (\n    select \n        session_id,\n        case \n            when session_id like '%@%' then \n                substring(\n                    split_part(session_id, '@', 1) \n                    from '(\\d{10})$'\n                )\n            else null\n        end as last_10_digits\n    from conversations\n    where session_id like '%@%'\n)\nselect distinct \n    en.session_id\nfrom extracted_numbers en\nwhere en.last_10_digits is not null\nand en.last_10_digits not in (\n    -- Convertimos phone a texto si es bigint\n    select phone::text \n    from osaki_main.blacklist_phones_calle_9\n)\nand en.session_id not in (\n    select distinct conversation_id \n    from osaki_analytics.auditoria_conversacion_delivery\n)\norder by en.session_id asc\n-- limit 5\n;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1248,
+        1104
+      ],
+      "id": "806a2fdd-9caa-4629-a123-b8aa42a967a3",
+      "name": "Get Session_Ids_Delivery_9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1024,
+        1104
+      ],
+      "id": "955ba4d8-e97c-42fa-80a4-cbe89b8aa88a",
+      "name": "Loop Over Items_Delivery_9"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH raw_messages AS (\n    -- Paso 1: Obtenemos los últimos 10 registros de la tabla principal\n    SELECT \n        id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'main' as source\n    FROM osaki_main.n8n_chat_histories_delivery_calle_9\n    WHERE session_id = $1\n    UNION \n    -- Paso 2: Obtenemos los últimos 10 registros del backup\n    SELECT \n        old_id as id, \n        message->>'type' as type, \n        message->>'content' as raw_content,\n        'backup' as source\n    FROM osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n    WHERE session_id = $1\n  ),\ncleaned_content AS (\n    -- Paso 3: Limpiamos el ruido inicial (ej: [Used tools...]) una sola vez\n    SELECT \n        id,\n        type,\n        regexp_replace(raw_content, '^\\[Used tools:.*\\]\\]\\s*', '') AS content\n    FROM raw_messages\n)\n-- Paso 4: Aplicamos la lógica de extracción de fecha y texto final\nSELECT\n    CASE \n        WHEN type = 'human' THEN \n            to_char(\n                to_timestamp(\n                    -- Extraemos la fecha y normalizamos guiones a barras\n                    replace(\n                        substring(content FROM '(?i)fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})'),\n                        '-', '/'\n                    ), \n                    'YYYY/MM/DD HH24:MI:SS'\n                ), \n                'YYYY/MM/DD HH24:MI:SS'\n            )\n        ELSE NULL \n    END AS fecha_hora,\n    \n    id,\n    type,\n    \n    CASE \n        WHEN type = 'human' THEN \n            trim(\n                regexp_replace(\n                    split_part(content, 'Mensaje de Texto o Descripción:', 2),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\nFROM cleaned_content\nORDER BY id asc;\n",
+        "options": {
+          "queryReplacement": "={{ $json.session_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -544,
+        1056
+      ],
+      "id": "0cfdca97-db25-4a44-beff-4052f3665abb",
+      "name": "Get Conversation_Delivery_9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        1056
+      ],
+      "id": "27250a33-3e9c-47e7-9ea0-5d391329e996",
+      "name": "Aggregate_Delivery_9"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify({\n  conversation_id: $('Loop Over Items_Delivery_9').item.json.session_id ,\n  messages: $input.all().map(i => i.json)\n}) }}\n",
+        "options": {
+          "systemMessage": "=ROL\nEres un auditor automático de conversaciones (WhatsApp u otros canales) para un agente de DELIVERY / SEGUIMIENTO DE PEDIDOS.\nTu tarea es analizar una conversación (lista de mensajes) y producir UN ÚNICO JSON con las columnas de la tabla\nosaki_analytics.auditoria_conversacion_delivery.\n\nREGLA CRÍTICA ANTI-ALUCINACIÓN (OBLIGATORIA)\n- Solo puedes afirmar datos explícitos en los mensajes de entrada.\n- Si un dato no aparece o no puede inferirse de forma determinística, usa null (o [] para arreglos) y agrega el nombre del campo a datos_faltantes.\n- No inventes: estado del pedido, ETA/tiempo de entrega, consultas a herramientas/DB, políticas, identidades, ni acciones fuera del texto.\n- Si el bot afirma “tu pedido está en camino / en preparación / llega en X min” y NO existe evidencia en el input de que consultó una herramienta/DB (o que se mostró un resultado explícito),\n  entonces:\n  - afirmacion_estado_sin_fuente = true (si afirma estado)\n  - afirmacion_eta_sin_fuente = true (si afirma ETA/tiempo)\n  - y NO uses ese estado/ETA como verdad: deja pedido_estado=\"desconocido\" y/o pedido_hora=null.\n\nINPUT (FORMATO)\nRecibirás un único JSON con:\n- conversation_id: string\n- (opcional) channel: string\n- (opcional) agent: string\n- (opcional) brand: string\n- messages: array de objetos con:\n  - id: number|string|null\n  - fecha_hora: string|null\n  - type: \"human\" | \"ai\" | \"human_agent\" | otro\n  - content: string\n\nDEFAULTS (solo si NO vienen en input)\n- channel = \"whatsapp\"\n- agent = \"delivery\"\n- brand = null\n\nREGLAS DE CÁLCULO\n\n1) Tiempo y sesiones\n- Parsear timestamps no nulos (si no parsea, tratar como null).\n- first_user_ts: primer timestamp de type='human'\n- last_user_ts: último timestamp de type='human'\n- duration_sec: last_user_ts - first_user_ts (segundos) si ambos existen; si no, null.\n- session_rule (texto fijo): \"gap_human_gt_30m\"\n- session_count: 1 + número de gaps entre mensajes 'human' consecutivos > 30 min. Si no hay ts suficientes, 1.\n- max_gap_minutes: máximo gap (min) entre mensajes 'human' consecutivos. Si no hay ts suficientes, null.\n\n2) Conteos\n- msg_count_total: total mensajes\n- msg_count_ai: count(type='ai')\n- msg_count_human: count(type='human') + count(type='human_agent')\n- turn_count: número de cambios de actor al recorrer mensajes en orden temporal (cada cambio incrementa turno).\n  Si no hay timestamps, usa el orden dado.\n\n3) Intención (texto libre con catálogo recomendado)\nintent_principal: elige 1 (texto). Catálogo recomendado:\n- crear_pedido -> nuevo pedido\n- rastrear_pedido -> estado/ubicación/ETA del pedido\n- modificar_pedido -> cambio en pedido existente\n- cancelar_pedido -> anular pedido existente\n- consultar_menu -> info sobre menú/productos\n- consultar_promociones -> info sobre ofertas/descuentos\n- consultar_horarios -> info sobre horarios de atención\n- consultar_ubicacion -> info sobre dirección/sucursales\n- reservacion_mesa -> reservar mesa en restaurante\n- otro -> no encaja\n- Si no hay intención clara o es ambigua => \"otro\".\n\nintents_secundarios: arreglo de strings (sin duplicar intent_principal). Si no hay, [].\n\n4) Resolución\n- resolution_ok: true si el intent_principal fue exitoso;\n  false si no se logró o quedó inconcluso.\n- resolution_status (texto recomendado):\n  - \"exitoso\" -> si se logró la acción principal (pedido creado/modificado/cancelado o info entregada y humano cierra conforme)\n  - \"parcial\" -> si se logró parcialmente (p.ej. pedido modificado parcialmente)\n  - \"fallido\" -> si no se logró la acción principal\n  - \"derivado_humano\" -> si escaló a humano antes de resolución\n  - \"abandonado\" -> si el humano cierra sin resolución\n  - \"otro\"\n- no_resolution_reason (texto, solo si resolution_ok=false). Catálogo recomendado:\n  - \"faltan_datos_cliente\" -> faltan datos del cliente (nombre, código, etc.)\n  - \"faltan_datos_negocio\" -> faltan datos del negocio (disponibilidad, tiempos, etc.)\n  - \"error_herramienta\" -> error técnico o de integración\n  - \"politica_negocio\" -> política que impide completar acción\n  - \"loop_o_confusion\" -> bucle o confusión en la conversación\n  - \"cliente_no_responde\" -> el cliente no responde o cierra\n  - \"otro\"\n  - null si resolution_ok=true\nSi resolution_ok=true => no_resolution_reason=null y resolution_status NO debe ser \"fallido\".\n\n5) Extracción de entidades (solo si aparecen explícitas)\n- pedido_accion (texto recomendado):\n  - \"create\" | \"track\" | \"modify\" | \"cancel\" | null\n- pedido_codigo: string|null (código/ID explícito)\n- pedido_plataforma (texto recomendado):\n  - \"masdelivery\" | \"pedidosya\" | \"web\" | \"whatsapp\" | \"desconocido\"\n- pedido_tipo_entrega: \"delivery\" | \"retiro\" | null (solo si lo dicen)\n- pedido_estado: texto recomendado:\n  - \"recibido\" | \"en_preparacion\" | \"listo\" | \"en_viaje\" | \"entregado\" | \"cancelado\" | \"desconocido\"\n  Reglas:\n  - Solo usar un estado como verdad si aparece explícito con certeza en el chat (por usuario/humano o por resultado explícito).\n  - Si el AI lo afirma sin fuente: pedido_estado=\"desconocido\" y afirmacion_estado_sin_fuente=true.\n- pedido_fecha: \"YYYY-MM-DD\"|null (si se menciona con certeza)\n- pedido_hora: \"HH:MM\"|\"HH:MM:SS\"|null (si se menciona con certeza)\n- cliente_nombre: string|null (si lo aporta explícitamente)\n- sucursal_detectada: string|null (si se menciona explícitamente)\n\n6) Calidad del flujo\n- confirmacion_explicita:\n  true si existe confirmación explícita de cualquiera de las partes sobre un dato/acción (p.ej. “confirmo”, “ok”, “sí” ante una propuesta concreta).\n- repreguntas_count:\n  cuántas veces la IA pide un dato ya entregado por el humano (código, nombre, plataforma, etc.)\n- claridad_siguiente_paso: 0|1|2\n  - 2: siguiente paso concreto y accionable\n  - 1: hay siguiente paso pero incompleto/ambiguo\n  - 0: no hay\n- friccion_score: 0..5 (enteros)\n  Suma sugerida (cap a 5):\n  +2 queja/enojo (“mal”, “tardan”, insultos)\n  +1 si la IA comete error evidente (fecha/hora/política)\n  +1 confusión (“no entiendo”, “cómo”, “qué hago”)\n  +1 repetición del mismo pedido sin avance\n  +1 conversación larga sin progreso\n- consistencia_sucursal:\n  true si no hay contradicción en sucursal; false si cambia; null si no se menciona.\n\n7) Sentimiento (texto libre con catálogo recomendado)\nsentiment_inicio y sentiment_final (texto recomendado):\n- \"positivo\" | \"neutral\" | \"negativo\" | \"mixto\" | \"desconocido\"\n\n8) Escalación\n- escalado: true si se indica explícitamente que un humano continuará (“te escribe alguien”, “paso a un compañero”, etc.)\n- escalacion_tipo (texto recomendado): \n  \"politica\" | \"incertidumbre\" | \"error_tecnico\" | \"queja\" | \"peticion_cliente\" | \"loop_conversacional\" | \"otro\" | null\n- escalacion_turno: integer|null (turno donde ocurre primera mención de escalación)\n- handoff_quality: 0|1|2|null\n  - 2: resumen + datos clave + siguiente paso claro\n  - 1: parcial\n  - 0: sin contexto\nRegla:\n- Si escalado=false => escalacion_tipo=null, escalacion_turno=null, handoff_quality=null.\n\n9) Veracidad / errores\n- error_detectado: true SOLO si hay evidencia clara de error/bucle/contradicción.\n- error_tipo (texto recomendado):\n  \"invento_info\" | \"estado_inventado\" | \"eta_inventado\" | \"politica_mal_aplicada\" | \"contradiccion\" | \"loop\" | \"otro\" | null\n\n10) Riesgo / mejoras (texto libre)\n- riesgo_negocio: \"low\" | \"med\" | \"high\" (recomendado)\n- improvement_tag: string|null (texto libre; usa tags consistentes, p.ej. \"kb\", \"flujo_preguntas\", \"handoff_humano\", etc.)\n\n11) Evidencia\n- evidence_message_ids:\n  lista de 2 a 6 ids que sustenten intent, resolución, escalación o error. Si no hay ids, [].\nRegla:\n- Si resolution_ok=true o escalado=true o error_detectado=true => evidence_message_ids NO debe ser [].\n- evidence_snippet:\n  1-2 líneas <= 250 caracteres con extracto mínimo (sin inventar).\n- datos_faltantes:\n  arreglo de strings con campos relevantes que quedaron null/[] por falta de evidencia.\n\n12) entidades_json (jsonb)\nEstructura mínima:\n{\n  \"extracted\": { ... },\n  \"confidence\": { \"campo\": 0.0-1.0, ... },\n  \"notes\": [ ... ]\n}\n\nSALIDA (FORMATO ESTRICTO)\nResponde EXCLUSIVAMENTE con UN ÚNICO JSON válido, sin markdown, sin comentarios, sin texto adicional.\nLas claves deben coincidir EXACTAMENTE con las columnas de osaki_analytics.auditoria_conversacion_delivery:\n\n```json\n{\n  \"conversation_id\": \"string\",\n  \"channel\": \"string\",\n  \"agent\": \"string\",\n  \"brand\": \"string|null\",\n  \"sucursal_detectada\": \"string|null\",\n\n  \"first_user_ts\": \"timestamp|null\",  // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"last_user_ts\": \"timestamp|null\",   // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"duration_sec\": \"number|null\", // número entero >=0\n\n  \"session_count\": 1, // número de sesiones detectadas\n  \"session_rule\": \"gap_human_gt_30m\", \n  \"max_gap_minutes\": \"number|null\", // número entero >=0\n\n  \"msg_count_total\": 0, // número de mensajes en total\n  \"msg_count_ai\": 0, // número de mensajes del AI\n  \"msg_count_human\": 0, // número de mensajes del humano\n  \"turn_count\": 0,  // min(msg_count_human, msg_count_ai)\n\n  \"intent_principal\": \"crear_pedido|rastrear_pedido|modificar_pedido|cancelar_pedido|consultar_menu|consultar_promociones|consultar_horarios|consultar_ubicacion|reservacion_mesa|otro\",  //  ENUM ¿Cuál es el objetivo dominante del humano?\n  \"intents_secundarios\": [],  // arreglo de strings (sin duplicar intent_principal). Si no hay, []\n\n  \"resolution_status\": \"exitoso|parcial|fallido|derivado_humano|abandonado|otro\", // estado de resolución del intent principal\n  \"resolution_ok\": \"true|false\", // boolean, si el intento principal se logró\n  \"no_resolution_reason\": \"faltan_datos_cliente|faltan_datos_negocio|error_herramienta|politica_negocio|loop_o_confusion|cliente_no_responde|otro|null\", // null si resolution_ok es true\n\n  \"pedido_accion\": \"create|track|modify|cancel|null\", // Si hay un pedido explícito\n  \"pedido_codigo\": \"string|null\",\n  \"pedido_plataforma\": \"masdelivery|pedidosya|web|whatsapp|desconocido\",\n  \"pedido_tipo_entrega\": \"delivery|retiro|null\",\n  \"pedido_estado\": \"string\",\n  \"pedido_fecha\": \"YYYY-MM-DD|null\",\n  \"pedido_hora\": \"HH:MM|HH:MM:SS|null\",\n\n  \"cliente_nombre\": \"string|null\",\n\n  \"confirmacion_explicita\": \"true|false\", // boolean si la IA pide confirmación explícita\n  \"repreguntas_count\": 0, // número de repreguntas sobre datos ya dados\n  \"claridad_siguiente_paso\": \"0|1|2\",  // 0: no hay; 1: ambiguo/incompleto; 2: claro\n  \"consistencia_sucursal\": \"true|false|null\", // null si no se menciona\n  \"friccion_score\": \"0|1|2|3|4|5|6\", // 0 (sin fricción) a 6 (mucha fricción)\n\n  \"sentiment_inicio\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al inicio de la conversación\n  \"sentiment_final\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al final de la conversación\n  \"tono_ai\": \"cordial|profesional|efusivo|otro\", // etiqueta breve según estilo del bot\n\n  \"escalado\": \"true|false\", // boolean si hubo escalación a humano\n  \"escalacion_tipo\": \"politica|incertidumbre|error_tecnico|queja|peticion_cliente|loop_conversacional|otro|null\", // null si escalado es false\n  \"escalacion_turno\": \"number|null\", //  null si escalado es false\n  \"handoff_quality\": \"number|null\",\n\n  \"afirmacion_estado_sin_fuente\": \"true|false\", // boolean si el bot afirma estado sin evidencia de consulta a herramienta\n  \"afirmacion_eta_sin_fuente\": \"true|false\", // boolean si el bot afirma ETA sin evidencia de consulta a herramienta\n\n  \"error_detectado\": \"true|false\", // boolean si hay evidencia interna de error/contradicción por parte de la IA\n  \"error_tipo\": \"invento_info|estado_inventado|eta_inventado|politica_mal_aplicada|contradiccion|loop|otro|null\", // null si error_detectado es false\n\n  \"riesgo_negocio\": \"high|med|low\", // nivel de riesgo detectado\n  \"improvement_tag\": \"prompt|kb|flujo_preguntas|validaciones_fecha_hora|integracion_calendario|multi_sucursal|tono|seguridad_privacidad|handoff_humano|otro|null\", // null si no aplica\n\n  \"evidence_message_ids\": [],\n  \"evidence_snippet\": \"string|null\",\n  \"datos_faltantes\": [],\n\n  \"entidades_json\": { \"extracted\": {}, \"confidence\": {}, \"notes\": [] },\n  \"messages_json\": null,\n\n  \"analyzed_by\": \"audit-llm-delivery-v1\"\n}\n```\n\nVALIDACIONES FINALES (OBLIGATORIAS)\n- No “rellenes” con suposiciones: si falta evidencia => null/[] + datos_faltantes.\n- Si resolution_ok=true => resolution_status != \"fallido\" y no_resolution_reason=null.\n- Si escalado=false => escalacion_* = null y handoff_quality=null.\n- Si (resolution_ok=true) OR (escalado=true) OR (error_detectado=true) => evidence_message_ids no puede ser [].\n- Usa español.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -144,
+        1056
+      ],
+      "id": "88726c92-4bde-4e96-8f5f-ffc201044e84",
+      "name": "AI Agent_Delivery_9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items\nreturn items.map(item => {\n  try {\n    // 1. Obtenemos el string\n    let rawContent = item.json.output || \"\";\n\n    // 2. Limpieza de Markdown (Como antes)\n    let cleanContent = rawContent\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/\\s*```$/, '')\n      .trim();\n\n    // -----------------------------------------------------------\n    // 3. REPARACIÓN DE JSON ROTO (El Parche)\n    // -----------------------------------------------------------\n    // El error es: cierra una propiedad con \", en lugar de },\n    // Buscamos: Salto de linea (\\n) -> Espacios (\\s*) -> Comilla (\") -> Coma (,)\n    // Y lo reemplazamos por: },\n    // Nota: Usamos una Regex específica para no romper otros textos.\n    \n    cleanContent = cleanContent.replace(/(\\n\\s*)\"\\s*,/g, '$1},');\n\n    // -----------------------------------------------------------\n\n    // 4. Parseo\n    const parsedData = JSON.parse(cleanContent);\n\n    // 5. Retorno Exitoso\n    return {\n      json: parsedData\n    };\n\n  } catch (error) {\n    // Si falla de nuevo, te dará detalles más precisos\n    return {\n      json: {\n        error: true,\n        message: \"Aún fallando el parseo. Revisa 'cleaned_string' para ver el error.\",\n        original_error: error.message,\n        // Devolvemos el string limpio para que veas si el parche funcionó visualmente\n        cleaned_string: error.input_string_debug \n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        1056
+      ],
+      "id": "225a71cd-ccf9-40c4-b16e-03e4a97e79e7",
+      "name": "Normaliza Salida_Delivery_9"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "osaki_analytics",
+          "mode": "list",
+          "cachedResultName": "osaki_analytics"
+        },
+        "table": {
+          "__rl": true,
+          "value": "auditoria_conversacion_delivery",
+          "mode": "list",
+          "cachedResultName": "auditoria_conversacion_delivery"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "resolution_ok": "={{ $json.resolution_ok }}",
+            "confirmacion_explicita": "={{ $json.confirmacion_explicita }}",
+            "consistencia_sucursal": "={{ $json.consistencia_sucursal }}",
+            "escalado": "={{ $json.escalado }}",
+            "afirmacion_estado_sin_fuente": "={{ $json.afirmacion_estado_sin_fuente }}",
+            "afirmacion_eta_sin_fuente": "={{ $json.afirmacion_eta_sin_fuente }}",
+            "error_detectado": "={{ $json.error_detectado }}",
+            "conversation_id": "={{ $('Loop Over Items_Delivery_9').item.json.session_id }}",
+            "channel": "WhatsApp",
+            "agent": "Delivery",
+            "brand": "Osaki",
+            "sucursal_detectada": "Calle 9",
+            "first_user_ts": "={{ $json.first_user_ts }}",
+            "last_user_ts": "={{ $json.last_user_ts }}",
+            "duration_sec": "={{ $json.duration_sec }}",
+            "session_count": "={{ $json.session_count }}",
+            "session_rule": "={{ $json.session_rule }}",
+            "max_gap_minutes": "={{ $json.max_gap_minutes }}",
+            "msg_count_total": "={{ $json.msg_count_total }}",
+            "msg_count_ai": "={{ $json.msg_count_ai }}",
+            "msg_count_human": "={{ $json.msg_count_human }}",
+            "turn_count": "={{ $json.turn_count }}",
+            "intent_principal": "={{ $json.intent_principal }}",
+            "intents_secundarios": "={{ $json.intents_secundarios }}",
+            "resolution_status": "={{ $json.resolution_status }}",
+            "no_resolution_reason": "={{ $json.no_resolution_reason }}",
+            "pedido_accion": "={{ $json.pedido_accion }}",
+            "pedido_codigo": "={{ $json.pedido_codigo }}",
+            "pedido_plataforma": "={{ $json.pedido_plataforma }}",
+            "pedido_tipo_entrega": "={{ $json.pedido_tipo_entrega }}",
+            "pedido_estado": "={{ $json.pedido_estado }}",
+            "pedido_fecha": "={{ $json.pedido_fecha }}",
+            "pedido_hora": "={{ $json.pedido_hora }}",
+            "cliente_nombre": "={{ $json.cliente_nombre }}",
+            "repreguntas_count": "={{ $json.repreguntas_count }}",
+            "claridad_siguiente_paso": "={{ $json.claridad_siguiente_paso }}",
+            "friccion_score": "={{ $json.friccion_score }}",
+            "sentiment_inicio": "={{ $json.sentiment_inicio }}",
+            "sentiment_final": "={{ $json.sentiment_final }}",
+            "tono_ai": "={{ $json.tono_ai }}",
+            "escalacion_tipo": "={{ $json.escalacion_tipo }}",
+            "escalacion_turno": "={{ $json.escalacion_turno }}",
+            "handoff_quality": "={{ $json.handoff_quality }}",
+            "error_tipo": "={{ $json.error_tipo }}",
+            "riesgo_negocio": "={{ $json.riesgo_negocio }}",
+            "improvement_tag": "={{ $json.improvement_tag }}",
+            "evidence_message_ids": "={{ $json.evidence_message_ids }}",
+            "evidence_snippet": "={{ $json.evidence_snippet }}",
+            "datos_faltantes": "={{ $json.datos_faltantes }}",
+            "entidades_json": "={{ $json.entidades_json }}",
+            "analyzed_by": "={{ $json.analyzed_by }}",
+            "messages_json": "={{ { \"conversacion\": $('Aggregate_Delivery_9').item.json.data } }}",
+            "analyzed_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "audit_id",
+              "displayName": "audit_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "channel",
+              "displayName": "channel",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agent",
+              "displayName": "agent",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "brand",
+              "displayName": "brand",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucursal_detectada",
+              "displayName": "sucursal_detectada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "first_user_ts",
+              "displayName": "first_user_ts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_user_ts",
+              "displayName": "last_user_ts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duration_sec",
+              "displayName": "duration_sec",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_count",
+              "displayName": "session_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_rule",
+              "displayName": "session_rule",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_gap_minutes",
+              "displayName": "max_gap_minutes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_total",
+              "displayName": "msg_count_total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_ai",
+              "displayName": "msg_count_ai",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg_count_human",
+              "displayName": "msg_count_human",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "turn_count",
+              "displayName": "turn_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intent_principal",
+              "displayName": "intent_principal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intents_secundarios",
+              "displayName": "intents_secundarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resolution_status",
+              "displayName": "resolution_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resolution_ok",
+              "displayName": "resolution_ok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "no_resolution_reason",
+              "displayName": "no_resolution_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_accion",
+              "displayName": "pedido_accion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_codigo",
+              "displayName": "pedido_codigo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_plataforma",
+              "displayName": "pedido_plataforma",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_tipo_entrega",
+              "displayName": "pedido_tipo_entrega",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_estado",
+              "displayName": "pedido_estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_fecha",
+              "displayName": "pedido_fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pedido_hora",
+              "displayName": "pedido_hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente_nombre",
+              "displayName": "cliente_nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "confirmacion_explicita",
+              "displayName": "confirmacion_explicita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "repreguntas_count",
+              "displayName": "repreguntas_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "claridad_siguiente_paso",
+              "displayName": "claridad_siguiente_paso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "consistencia_sucursal",
+              "displayName": "consistencia_sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "friccion_score",
+              "displayName": "friccion_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentiment_inicio",
+              "displayName": "sentiment_inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentiment_final",
+              "displayName": "sentiment_final",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tono_ai",
+              "displayName": "tono_ai",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalado",
+              "displayName": "escalado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalacion_tipo",
+              "displayName": "escalacion_tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "escalacion_turno",
+              "displayName": "escalacion_turno",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "handoff_quality",
+              "displayName": "handoff_quality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "afirmacion_estado_sin_fuente",
+              "displayName": "afirmacion_estado_sin_fuente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "afirmacion_eta_sin_fuente",
+              "displayName": "afirmacion_eta_sin_fuente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "error_detectado",
+              "displayName": "error_detectado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "error_tipo",
+              "displayName": "error_tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "riesgo_negocio",
+              "displayName": "riesgo_negocio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "improvement_tag",
+              "displayName": "improvement_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "evidence_message_ids",
+              "displayName": "evidence_message_ids",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "evidence_snippet",
+              "displayName": "evidence_snippet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "datos_faltantes",
+              "displayName": "datos_faltantes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "array",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "entidades_json",
+              "displayName": "entidades_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "messages_json",
+              "displayName": "messages_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analyzed_by",
+              "displayName": "analyzed_by",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "analyzed_at",
+              "displayName": "analyzed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        400,
+        1056
+      ],
+      "id": "94e52365-34bc-4233-a297-51125a49a7cc",
+      "name": "Registra Analisis_Delivery_9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "faf12f8f-17b5-473d-8de0-2a2fc8038ca4",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -768,
+        1120
+      ],
+      "id": "964ececd-a62f-4934-8bea-2beb30dd534f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "faf12f8f-17b5-473d-8de0-2a2fc8038ca4",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -800,
+        672
+      ],
+      "id": "cdf2f7a4-d84c-49c2-a893-33e6e2d2ee70",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "faf12f8f-17b5-473d-8de0-2a2fc8038ca4",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -656,
+        48
+      ],
+      "id": "2b79a900-92b7-402d-b219-2f1b75696a54",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        176,
+        48
+      ],
+      "id": "d8a29134-0839-46ca-af2c-0413369d0fa8",
+      "name": "Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputString = items[0].json.output;\n\n// Método 1: Limpiar el string completo y luego parsear\nconst cleanString = inputString\n  .replace(/```json\\s*/g, '')  // Quitar ```json y espacios\n  .replace(/```\\s*$/g, '')     // Quitar ``` al final\n  .replace(/^\\s*```\\s*/g, '')  // Quitar ``` al inicio\n  .trim();\n\nlet parsedData;\n\ntry {\n  parsedData = JSON.parse(cleanString);\n} catch (error1) {\n  // Si falla, intentar con expresión regular como fallback\n  const jsonMatch = inputString.match(/(?:\\[\\s*{[\\s\\S]*}\\s*\\])|(?:{\\s*[\\s\\S]*\\s*})/);\n  \n  if (jsonMatch) {\n    try {\n      parsedData = JSON.parse(jsonMatch[0]);\n    } catch (error2) {\n      throw new Error(`Error al parsear JSON. Primer error: ${error1.message}, Segundo error: ${error2.message}`);\n    }\n  } else {\n    throw new Error(`No se encontró JSON válido en: ${inputString}`);\n  }\n}\n\n// Normalizar los datos\nconst normalizeItem = (item) => {\n  const normalized = { ...item };\n  \n  // Convertir id a número si existe y es convertible\n  if (normalized.id !== undefined && normalized.id !== null) {\n    const numId = Number(normalized.id);\n    // Solo asignar si la conversión es válida\n    if (!isNaN(numId) && isFinite(numId)) {\n      normalized.id = numId;\n    }\n  }\n  \n  return normalized;\n};\n\n// Procesar según el tipo de dato\nif (Array.isArray(parsedData)) {\n  return parsedData.map(item => ({ \n    json: normalizeItem(item)\n  }));\n} else if (typeof parsedData === 'object' && parsedData !== null) {\n  return [{ json: normalizeItem(parsedData) }];\n} else {\n  // Si es otro tipo (string, number, etc.)\n  return [{ json: { value: parsedData } }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        608,
+        -112
+      ],
+      "id": "35fd5cdf-2628-495d-a5f2-11a404247523",
+      "name": "Normaliza Datos"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "OJmrzHLICEUYOMqm",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/OJmrzHLICEUYOMqm",
+          "cachedResultName": "Actualiza_fecha"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id}}",
+            "fec_registro": "={{ $json.fec_registro }}",
+            "tabla_chat": "={{ $('Edit Fields').first().json.tabla_chat }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "fec_registro",
+              "displayName": "fec_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "tabla_chat",
+              "displayName": "tabla_chat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        864,
+        -112
+      ],
+      "id": "736622f9-6aef-41ba-997c-dc25d31cc93e",
+      "name": "Call 'Actualiza_fecha'"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c75ab0d3-de41-4ae1-9f39-3b5d96593520",
+              "name": "tabla_chat",
+              "value": "n8n_chat_histories_delivery_calle_9",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -912,
+        -208
+      ],
+      "id": "75a8bd4f-aa32-46d2-afdf-2901a511c845",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n'Calle 47' as sucursal,     a.idventa,     CASE\n WHEN A.CodigoPedidoPlataforma IS NULL THEN 'TAKE AWAY'\n WHEN A.CodigoPedidoPlataforma = '' THEN 'TAKE AWAY'\n    ELSE A.CodigoPedidoPlataforma\nEND AS CodigoPedidoPlataforma,     REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') as plataforma,     CASE\n WHEN a.EntregaTipo = '1' THEN 'Delivery Propio'\n WHEN a.EntregaTipo = '2' THEN 'Mostrador'\n WHEN a.EntregaTipo = '3' THEN 'Delivery Externo'\nEND AS TipoEntrega,     CASE\n WHEN b.Etapa = 'EP' THEN 'En Preparación'\n\nWHEN b.Etapa = 'PR' THEN 'Preparado'\nWHEN b.Etapa = 'PE' THEN 'Por Entregar'\nWHEN b.Etapa = 'EV' THEN 'En Viaje'\nWHEN b.Etapa = 'E' THEN 'Entregado'\nWHEN b.Etapa = 'RG' THEN 'Pedido Cancelado'\nELSE 'Sin Clasificación'\nEND AS etapaPedido,     d.nombre,     c.Telefono,     CONCAT(c.Calle, ';', c.Numero) AS direccion,     b.FechaHoraApertura,     b.FechaHoraCierre,     a.FechaHoraEntrega FROM osakisucursal5.ventas_datospedido a JOIN osakisucursal5.ventas b\nON (b.IdVenta = a.IdVenta) JOIN osakisucursal5.clientespedidos_lugaresentrega c\nON (a.IdClientePedido = c.IdClientePedido AND a.IdLugarEntrega = c.IdLugarEntrega) JOIN osakisucursal5.clientespedidos d\nON (a.IdClientePedido = d.IdClientePedido) JOIN osakicentral.tvc_pedidos_plataformas e\nON (e.IdIntegracionPedidos = a.IdIntegracionPedidos) \n  WHERE (A.CodigoPedidoPlataforma = $1 OR SUBSTR(CodigoPedidoPlataforma, LOCATE('/', CodigoPedidoPlataforma) + 1)  = $1)\nUNION\nSELECT\n'Calle 9' as sucursal,     a.idventa,     CASE\n WHEN A.CodigoPedidoPlataforma IS NULL THEN 'TAKE AWAY'\n WHEN A.CodigoPedidoPlataforma = '' THEN 'TAKE AWAY'\n    ELSE A.CodigoPedidoPlataforma\nEND AS CodigoPedidoPlataforma,     REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') as plataforma,     CASE\n WHEN a.EntregaTipo = '1' THEN 'Delivery Propio'\n WHEN a.EntregaTipo = '2' THEN 'Mostrador'\n WHEN a.EntregaTipo = '3' THEN 'Delivery Externo'\nEND AS TipoEntrega,     CASE\n WHEN b.Etapa = 'EP' THEN 'En Preparación'\n\nWHEN b.Etapa = 'PR' THEN 'Preparado'\nWHEN b.Etapa = 'PE' THEN 'Por Entregar'\nWHEN b.Etapa = 'EV' THEN 'En Viaje'\nWHEN b.Etapa = 'E' THEN 'Entregado'\nWHEN b.Etapa = 'RG' THEN 'Pedido Cancelado'\nELSE 'Sin Clasificación'\nEND AS etapaPedido,     d.nombre,     c.Telefono,     CONCAT(c.Calle, ';', c.Numero) AS direccion,     b.FechaHoraApertura,     b.FechaHoraCierre,     a.FechaHoraEntrega FROM osakisucursal4.ventas_datospedido a JOIN osakisucursal4.ventas b\nON (b.IdVenta = a.IdVenta) JOIN osakisucursal4.clientespedidos_lugaresentrega c\nON (a.IdClientePedido = c.IdClientePedido AND a.IdLugarEntrega = c.IdLugarEntrega) JOIN osakisucursal4.clientespedidos d\nON (a.IdClientePedido = d.IdClientePedido) JOIN osakicentral.tvc_pedidos_plataformas e\nON (e.IdIntegracionPedidos = a.IdIntegracionPedidos) \n  WHERE (A.CodigoPedidoPlataforma = $1 OR  SUBSTR(CodigoPedidoPlataforma, LOCATE('/', CodigoPedidoPlataforma) + 1)  = $1)\n\n",
+        "options": {
+          "queryReplacement": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Query_Parameters', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.mySqlTool",
+      "typeVersion": 2.5,
+      "position": [
+        448,
+        48
+      ],
+      "id": "73aa9e66-8c09-409f-a50e-f57a98b4a92d",
+      "name": "Datos Pedido",
+      "credentials": {
+        "mySql": {
+          "id": "sFauwBpvViqW5yF3",
+          "name": "MySQL Osaki-Ayres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        304,
+        48
+      ],
+      "id": "1442edad-6399-46ef-9d45-19ec6ad89aaf",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6055848d-9c56-488d-941c-967b2a18fac4",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -208,
+        32
+      ],
+      "id": "82a8da4b-e7d5-4d83-a8f8-99746db75eb1",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75d4fa55-c601-4099-aa3a-129d0fd84a32",
+              "name": "session_id",
+              "value": "={{ $('Loop Over Items').item.json.session_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        176
+      ],
+      "id": "9ca8e4b0-dc2d-4640-814b-ec09f3582699",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "osaki_main",
+          "mode": "list",
+          "cachedResultName": "osaki_main"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.tabla_chat }}",
+          "mode": "name"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $('Loop Over Items').item.json.session_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        288,
+        176
+      ],
+      "id": "49899063-b118-4546-8904-5462b67a8483",
+      "name": "Delete table or rows",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "osaki_main",
+          "mode": "list",
+          "cachedResultName": "osaki_main"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.tabla_chat }}_bkup",
+          "mode": "name"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $('Loop Over Items').item.json.session_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        464,
+        176
+      ],
+      "id": "a1cc68c8-94a0-491f-9ff5-d70e4b99f912",
+      "name": "Delete table or rows1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-04T02:41:19.671Z",
+      "createdAt": "2026-01-04T02:41:19.671Z",
+      "role": "workflow:owner",
+      "workflowId": "QVM5m5V1miSM8O5f",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-01-11T14:04:54.833Z",
+      "createdAt": "2026-01-11T14:04:54.833Z",
+      "id": "tt10iwS1I1BhsjLZ",
+      "name": "Analytics"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-11T21:20:18.159Z",
+  "versionId": "bb57711c-0db6-41e9-bfac-e5e50c17f3c9"
+}
