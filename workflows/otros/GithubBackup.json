@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-11T21:43:10.000Z",
-    "createdAt": "2026-01-11T21:41:52.601Z",
-    "versionId": "ad2a516d-b5a2-41c2-b0fe-fcaafc8a81ff",
+    "updatedAt": "2026-01-11T22:04:50.000Z",
+    "createdAt": "2026-01-11T22:04:48.052Z",
+    "versionId": "75305d6b-cff6-4506-82e1-5ba9548376bc",
     "workflowId": "1lHJcjODy_y0d6f-4WYAY",
     "nodes": [
       {
@@ -48,8 +48,8 @@
         "name": "Get File",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          464,
-          752
+          416,
+          768
         ],
         "typeVersion": 4.2
       },
@@ -61,7 +61,7 @@
         "name": "isDiffOrNew",
         "type": "n8n-nodes-base.code",
         "position": [
-          368,
+          320,
           992
         ],
         "typeVersion": 1
@@ -136,8 +136,8 @@
         "name": "Get file data",
         "type": "n8n-nodes-base.github",
         "position": [
-          -32,
-          768
+          -80,
+          784
         ],
         "typeVersion": 1,
         "alwaysOutputData": true,
@@ -186,8 +186,8 @@
         "name": "Globals",
         "type": "n8n-nodes-base.set",
         "position": [
-          -240,
-          768
+          -288,
+          784
         ],
         "typeVersion": 3.4
       },
@@ -202,8 +202,8 @@
         "name": "Sticky Note3",
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -256,
-          688
+          -304,
+          704
         ],
         "typeVersion": 1
       },
@@ -227,7 +227,7 @@
         "type": "n8n-nodes-base.github",
         "typeVersion": 1.1,
         "position": [
-          832,
+          784,
           768
         ],
         "id": "57e470ef-c190-4577-9aec-738d71958937",
@@ -328,7 +328,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          576,
+          528,
           960
         ],
         "id": "a8621fa9-6684-465a-adec-fd1ebeb87343",
@@ -372,8 +372,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          176,
-          768
+          128,
+          784
         ],
         "id": "64b85d66-0351-4d5f-a09c-5510ac17dbee",
         "name": "If file too large"
@@ -383,7 +383,7 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          192,
+          144,
           992
         ],
         "id": "f5dd114e-6566-487f-acd1-04a62c6952bc",
@@ -406,7 +406,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1120,
+          1072,
           1008
         ],
         "id": "ad089037-1be3-4f56-8c5d-b22663051972",
@@ -433,7 +433,7 @@
         "type": "n8n-nodes-base.github",
         "typeVersion": 1.1,
         "position": [
-          832,
+          784,
           912
         ],
         "id": "000dadc1-1266-4760-af4d-5462538aa8ba",
@@ -683,11 +683,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version ad2a516d",
+    "name": "Version 75305d6b",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "ad2a516d-b5a2-41c2-b0fe-fcaafc8a81ff",
+  "activeVersionId": "75305d6b-cff6-4506-82e1-5ba9548376bc",
   "connections": {
     "On clicking 'execute'": {
       "main": [
@@ -939,8 +939,8 @@
       "name": "Get File",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        464,
-        752
+        416,
+        768
       ],
       "typeVersion": 4.2
     },
@@ -952,7 +952,7 @@
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        368,
+        320,
         992
       ],
       "typeVersion": 1
@@ -1027,8 +1027,8 @@
       "name": "Get file data",
       "type": "n8n-nodes-base.github",
       "position": [
-        -32,
-        768
+        -80,
+        784
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -1077,8 +1077,8 @@
       "name": "Globals",
       "type": "n8n-nodes-base.set",
       "position": [
-        -240,
-        768
+        -288,
+        784
       ],
       "typeVersion": 3.4
     },
@@ -1093,8 +1093,8 @@
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -256,
-        688
+        -304,
+        704
       ],
       "typeVersion": 1
     },
@@ -1118,7 +1118,7 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        832,
+        784,
         768
       ],
       "id": "57e470ef-c190-4577-9aec-738d71958937",
@@ -1219,7 +1219,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        576,
+        528,
         960
       ],
       "id": "a8621fa9-6684-465a-adec-fd1ebeb87343",
@@ -1263,8 +1263,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        176,
-        768
+        128,
+        784
       ],
       "id": "64b85d66-0351-4d5f-a09c-5510ac17dbee",
       "name": "If file too large"
@@ -1274,7 +1274,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        192,
+        144,
         992
       ],
       "id": "f5dd114e-6566-487f-acd1-04a62c6952bc",
@@ -1297,7 +1297,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1120,
+        1072,
         1008
       ],
       "id": "ad089037-1be3-4f56-8c5d-b22663051972",
@@ -1317,14 +1317,14 @@
           "value": "={{ $('Globals').item.json.repo.name }}",
           "mode": "name"
         },
-        "filePath": "={{ $('Globals').item.json.repo.path }}{{$('Loop Over Items').item.json.id}}.json",
+        "filePath": "={{ $('Globals').item.json.repo.path }}{{ $('Globals').item.json.WorkFlowName }}.json",
         "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
         "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
       },
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        832,
+        784,
         912
       ],
       "id": "000dadc1-1266-4760-af4d-5462538aa8ba",
@@ -1392,6 +1392,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-11T21:41:52.600Z",
-  "versionId": "ad2a516d-b5a2-41c2-b0fe-fcaafc8a81ff"
+  "updatedAt": "2026-01-15T16:15:13.396Z",
+  "versionId": "c91fc73a-2e71-42e4-8ffb-5fba1254246a"
 }
