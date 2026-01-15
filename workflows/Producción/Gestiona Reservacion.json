@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-11T05:00:33.000Z",
-    "createdAt": "2026-01-11T05:00:28.241Z",
-    "versionId": "02a80906-49b4-433d-8b77-915a2ebea1d5",
+    "updatedAt": "2026-01-14T20:16:48.000Z",
+    "createdAt": "2026-01-14T20:16:42.857Z",
+    "versionId": "b511076c-c6a0-4a28-a8b6-305539724a2a",
     "workflowId": "DLXqCjSAXyHORiTb",
     "nodes": [
       {
@@ -356,7 +356,7 @@
               {
                 "id": "c822e4f8-2713-4f24-943a-cce25ee3761b",
                 "name": "Response",
-                "value": "=El cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el tipo a \"Forzada\" (uso interno del sistema).",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
                 "type": "string"
               }
             ]
@@ -508,7 +508,7 @@
               {
                 "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
                 "name": "Response",
-                "value": "=No se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
                 "type": "string"
               }
             ]
@@ -590,7 +590,7 @@
               {
                 "id": "25292be3-bf74-44c2-b93d-0ce1ba6e5469",
                 "name": "Response",
-                "value": "La reservación ya se encontraba Cancelada, nada que hacer",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nLa reservación ya se encontraba Cancelada, nada que hacer",
                 "type": "string"
               }
             ]
@@ -647,7 +647,7 @@
               {
                 "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
                 "name": "Response",
-                "value": "=No se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.id_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
                 "type": "string"
               }
             ]
@@ -1974,7 +1974,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Ocupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
                 "type": "string"
               }
             ]
@@ -2356,7 +2356,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
                 "type": "string"
               }
             ]
@@ -2379,7 +2379,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
                 "type": "string"
               }
             ]
@@ -2402,7 +2402,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
                 "type": "string"
               }
             ]
@@ -2425,7 +2425,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
                 "type": "string"
               },
               {
@@ -2730,7 +2730,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
                 "type": "string"
               }
             ]
@@ -2938,7 +2938,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Ocupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
                 "type": "string"
               }
             ]
@@ -3017,7 +3017,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=Te equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
                 "type": "string"
               }
             ]
@@ -3108,7 +3108,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by id;",
+          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by zona desc, estado asc, id asc ;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -3460,7 +3460,7 @@
               {
                 "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
                 "name": "Response",
-                "value": "=No se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
                 "type": "string"
               }
             ]
@@ -5109,11 +5109,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 02a80906",
+    "name": "Version b511076c",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "02a80906-49b4-433d-8b77-915a2ebea1d5",
+  "activeVersionId": "b511076c-c6a0-4a28-a8b6-305539724a2a",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -6379,7 +6379,7 @@
             {
               "id": "c822e4f8-2713-4f24-943a-cce25ee3761b",
               "name": "Response",
-              "value": "=El cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el tipo a \"Forzada\" (uso interno del sistema).",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
               "type": "string"
             }
           ]
@@ -6531,7 +6531,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "=No se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -6613,7 +6613,7 @@
             {
               "id": "25292be3-bf74-44c2-b93d-0ce1ba6e5469",
               "name": "Response",
-              "value": "La reservación ya se encontraba Cancelada, nada que hacer",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nLa reservación ya se encontraba Cancelada, nada que hacer",
               "type": "string"
             }
           ]
@@ -6670,7 +6670,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "=No se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.id_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -7997,7 +7997,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Ocupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -8379,7 +8379,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
               "type": "string"
             }
           ]
@@ -8402,7 +8402,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
               "type": "string"
             }
           ]
@@ -8425,7 +8425,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
               "type": "string"
             }
           ]
@@ -8448,7 +8448,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
               "type": "string"
             },
             {
@@ -8753,7 +8753,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
               "type": "string"
             }
           ]
@@ -8961,7 +8961,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Ocupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -9040,7 +9040,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=Te equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -9131,7 +9131,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by id;",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by zona desc, estado asc, id asc ;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -9483,7 +9483,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "=No se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -10249,6 +10249,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T21:18:10.847Z",
-  "versionId": "02a80906-49b4-433d-8b77-915a2ebea1d5"
+  "updatedAt": "2026-01-14T20:16:42.854Z",
+  "versionId": "b511076c-c6a0-4a28-a8b6-305539724a2a"
 }
