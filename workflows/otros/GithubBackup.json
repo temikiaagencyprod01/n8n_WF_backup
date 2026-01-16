@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-11T22:04:50.000Z",
-    "createdAt": "2026-01-11T22:04:48.052Z",
-    "versionId": "75305d6b-cff6-4506-82e1-5ba9548376bc",
+    "updatedAt": "2026-01-15T16:15:58.000Z",
+    "createdAt": "2026-01-15T16:15:13.397Z",
+    "versionId": "c91fc73a-2e71-42e4-8ffb-5fba1254246a",
     "workflowId": "1lHJcjODy_y0d6f-4WYAY",
     "nodes": [
       {
@@ -426,7 +426,7 @@
             "value": "={{ $('Globals').item.json.repo.name }}",
             "mode": "name"
           },
-          "filePath": "={{ $('Globals').item.json.repo.path }}{{$('Loop Over Items').item.json.id}}.json",
+          "filePath": "={{ $('Globals').item.json.repo.path }}{{ $('Globals').item.json.WorkFlowName }}.json",
           "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
           "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
         },
@@ -683,11 +683,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 75305d6b",
+    "name": "Version c91fc73a",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "75305d6b-cff6-4506-82e1-5ba9548376bc",
+  "activeVersionId": "c91fc73a-2e71-42e4-8ffb-5fba1254246a",
   "connections": {
     "On clicking 'execute'": {
       "main": [
