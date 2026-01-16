@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-14T20:16:48.000Z",
-    "createdAt": "2026-01-14T20:16:42.857Z",
-    "versionId": "b511076c-c6a0-4a28-a8b6-305539724a2a",
+    "updatedAt": "2026-01-15T21:56:12.000Z",
+    "createdAt": "2026-01-15T21:56:09.799Z",
+    "versionId": "f8784cf1-0530-4f55-8d08-b8e4ef7d7fdc",
     "workflowId": "DLXqCjSAXyHORiTb",
     "nodes": [
       {
@@ -76,7 +76,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          1968,
+          1952,
           800
         ],
         "id": "df1db4ee-22f6-4171-8473-ac55a23b9ad7",
@@ -91,7 +91,7 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          2384,
+          2608,
           880
         ],
         "id": "c5ec415c-d970-448f-b606-2760c92a3837",
@@ -120,7 +120,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          2592,
+          2816,
           880
         ],
         "id": "0859146a-291f-479a-9ab3-45768fe9c3a5",
@@ -334,6 +334,15 @@
                   "type": "string",
                   "operation": "notEquals"
                 }
+              },
+              {
+                "id": "9e2993e6-ae9c-4ed0-aef5-56321c91fed8",
+                "leftValue": "={{ $('Normaliza Datos').first().json.nombre_completo }}",
+                "rightValue": "Invitado Osaki",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
               }
             ],
             "combinator": "and"
@@ -343,7 +352,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          2816,
+          3040,
           880
         ],
         "id": "52655776-be7a-471e-9a09-ee017c4973b8",
@@ -356,7 +365,7 @@
               {
                 "id": "c822e4f8-2713-4f24-943a-cce25ee3761b",
                 "name": "Response",
-                "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
+                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
                 "type": "string"
               }
             ]
@@ -366,7 +375,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          3024,
+          3248,
           768
         ],
         "id": "22168bc3-8712-4d8e-8c89-52ee40faf4cd",
@@ -787,7 +796,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          1760,
+          1776,
           800
         ],
         "id": "2398c032-a42a-4e1f-bf77-d20374679271",
@@ -809,8 +818,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          1760,
-          944
+          1776,
+          960
         ],
         "id": "b5e6aa0f-a3b6-4cfc-a0d7-28f1e713aef2",
         "name": "Busca Reserva",
@@ -963,7 +972,7 @@
         "typeVersion": 2.6,
         "position": [
           2176,
-          704
+          752
         ],
         "id": "0175cfaa-fb89-485f-9035-27f698944b73",
         "name": "Alta Clientes",
@@ -1116,7 +1125,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          3200,
+          3424,
           944
         ],
         "id": "88529c5f-e8d8-42ef-92f9-7a9afbcb3200",
@@ -2213,7 +2222,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          3024,
+          3248,
           944
         ],
         "id": "10652887-0692-4145-8257-8a3be72bb739",
@@ -4101,8 +4110,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          1968,
-          944
+          1984,
+          960
         ],
         "id": "2c0f5692-308d-4fc6-a776-974452138c48",
         "name": "Resume Encontradas"
@@ -4761,12 +4770,12 @@
         "main": [
           [
             {
-              "node": "Busca Cliente",
+              "node": "Busca Reserva",
               "type": "main",
               "index": 0
             },
             {
-              "node": "Busca Reserva",
+              "node": "Busca Cliente",
               "type": "main",
               "index": 0
             }
@@ -5109,11 +5118,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version b511076c",
+    "name": "Version f8784cf1",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "b511076c-c6a0-4a28-a8b6-305539724a2a",
+  "activeVersionId": "f8784cf1-0530-4f55-8d08-b8e4ef7d7fdc",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -5676,12 +5685,12 @@
       "main": [
         [
           {
-            "node": "Busca Cliente",
+            "node": "Busca Reserva",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Busca Reserva",
+            "node": "Busca Cliente",
             "type": "main",
             "index": 0
           }
@@ -6099,7 +6108,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1968,
+        1952,
         800
       ],
       "id": "df1db4ee-22f6-4171-8473-ac55a23b9ad7",
@@ -6114,7 +6123,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        2384,
+        2608,
         880
       ],
       "id": "c5ec415c-d970-448f-b606-2760c92a3837",
@@ -6143,7 +6152,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2592,
+        2816,
         880
       ],
       "id": "0859146a-291f-479a-9ab3-45768fe9c3a5",
@@ -6357,6 +6366,15 @@
                 "type": "string",
                 "operation": "notEquals"
               }
+            },
+            {
+              "id": "9e2993e6-ae9c-4ed0-aef5-56321c91fed8",
+              "leftValue": "={{ $('Normaliza Datos').first().json.nombre_completo }}",
+              "rightValue": "Invitado Osaki",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
             }
           ],
           "combinator": "and"
@@ -6366,7 +6384,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2816,
+        3040,
         880
       ],
       "id": "52655776-be7a-471e-9a09-ee017c4973b8",
@@ -6379,7 +6397,7 @@
             {
               "id": "c822e4f8-2713-4f24-943a-cce25ee3761b",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
               "type": "string"
             }
           ]
@@ -6389,7 +6407,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3024,
+        3248,
         768
       ],
       "id": "22168bc3-8712-4d8e-8c89-52ee40faf4cd",
@@ -6531,7 +6549,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -6613,7 +6631,7 @@
             {
               "id": "25292be3-bf74-44c2-b93d-0ce1ba6e5469",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nLa reservación ya se encontraba Cancelada, nada que hacer",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nLa reservación ya se encontraba Cancelada, nada que hacer",
               "type": "string"
             }
           ]
@@ -6670,7 +6688,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -6810,7 +6828,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1760,
+        1776,
         800
       ],
       "id": "2398c032-a42a-4e1f-bf77-d20374679271",
@@ -6832,8 +6850,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1760,
-        944
+        1776,
+        960
       ],
       "id": "b5e6aa0f-a3b6-4cfc-a0d7-28f1e713aef2",
       "name": "Busca Reserva",
@@ -6986,7 +7004,7 @@
       "typeVersion": 2.6,
       "position": [
         2176,
-        704
+        752
       ],
       "id": "0175cfaa-fb89-485f-9035-27f698944b73",
       "name": "Alta Clientes",
@@ -7139,7 +7157,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        3200,
+        3424,
         944
       ],
       "id": "88529c5f-e8d8-42ef-92f9-7a9afbcb3200",
@@ -7997,7 +8015,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -8236,7 +8254,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        3024,
+        3248,
         944
       ],
       "id": "10652887-0692-4145-8257-8a3be72bb739",
@@ -8379,7 +8397,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
               "type": "string"
             }
           ]
@@ -8402,7 +8420,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
               "type": "string"
             }
           ]
@@ -8425,7 +8443,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
               "type": "string"
             }
           ]
@@ -8448,7 +8466,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
               "type": "string"
             },
             {
@@ -8753,7 +8771,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
               "type": "string"
             }
           ]
@@ -8961,7 +8979,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -9040,7 +9058,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -9483,7 +9501,7 @@
             {
               "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').item.json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
               "type": "string"
             }
           ]
@@ -9823,7 +9841,7 @@
       "typeVersion": 3.4,
       "position": [
         1696,
-        2160
+        2128
       ],
       "id": "11fdddb0-9174-4e5a-87a0-84aabd78467a",
       "name": "Edit Fields14"
@@ -10124,8 +10142,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1968,
-        944
+        1984,
+        960
       ],
       "id": "2c0f5692-308d-4fc6-a776-974452138c48",
       "name": "Resume Encontradas"
@@ -10249,6 +10267,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-14T20:16:42.854Z",
-  "versionId": "b511076c-c6a0-4a28-a8b6-305539724a2a"
+  "updatedAt": "2026-01-15T21:59:24.031Z",
+  "versionId": "97d494eb-dce6-4832-b39e-d0cd05309522"
 }
