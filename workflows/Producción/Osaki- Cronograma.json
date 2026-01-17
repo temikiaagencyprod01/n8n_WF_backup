@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-13T17:21:47.000Z",
-    "createdAt": "2026-01-13T17:21:42.892Z",
-    "versionId": "0f1ae7be-a630-4a22-a676-538cedab6c49",
+    "updatedAt": "2026-01-17T02:09:22.000Z",
+    "createdAt": "2026-01-17T02:08:40.708Z",
+    "versionId": "6334164c-3f25-40df-8cb4-71376aa5edeb",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -3452,7 +3452,7 @@
             "value": {
               "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
               "canal": "Google Sheets",
-              "telefono": "={{ $('Loop Over Items12').item.json.Telefono.replace(/\\D/g, '') }}",
+              "telefono": "={{ $('Loop Over Items12').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}",
               "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
               "tipo_atencion": "={{ $('Loop Over Items12').item.json['TipoAtención'] }}",
               "notas": "Registro creado desde Google Sheets",
@@ -3756,7 +3756,7 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "phone": "={{ $json['Teléfono'] }}"
+              "phone": "={{ $json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}"
             },
             "matchingColumns": [
               "id"
@@ -4278,7 +4278,7 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "phone": "={{ $json['Teléfono'] }}"
+              "phone": "={{ $json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}"
             },
             "matchingColumns": [
               "id"
@@ -4877,7 +4877,7 @@
             "values": [
               {
                 "column": "telefono",
-                "value": "={{ $json.Telefono.toString().replace(/[^\\d]/g, '') }}"
+                "value": "={{ $json.Telefono.toString().replace(/[^\\d]/g, '').slice(-10) }}"
               }
             ]
           },
@@ -4917,7 +4917,7 @@
             "value": {
               "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
               "canal": "Google Sheets",
-              "telefono": "={{ $('Loop Over Items13').item.json.Telefono }}",
+              "telefono": "={{ $('Loop Over Items13').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}",
               "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
               "tipo_atencion": "={{ $('Loop Over Items13').item.json['TipoAtención'] }}",
               "notas": "Registro creado desde Google Sheets",
@@ -5781,7 +5781,7 @@
             "mappingMode": "defineBelow",
             "value": {
               "row_number": "={{ $('Loop Over Items12').item.json.row_number}}",
-              "Telefono": "={{ $('Loop Over Items12').item.json.Telefono.replace(/\\D/g, '') }}"
+              "Telefono": "={{ $('Loop Over Items12').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}"
             },
             "matchingColumns": [
               "row_number"
@@ -7294,11 +7294,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 0f1ae7be",
+    "name": "Version 6334164c",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "0f1ae7be-a630-4a22-a676-538cedab6c49",
+  "activeVersionId": "6334164c-3f25-40df-8cb4-71376aa5edeb",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -12176,7 +12176,7 @@
           "value": {
             "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
             "canal": "Google Sheets",
-            "telefono": "={{ $('Loop Over Items12').item.json.Telefono.replace(/\\D/g, '') }}",
+            "telefono": "={{ $('Loop Over Items12').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}",
             "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
             "tipo_atencion": "={{ $('Loop Over Items12').item.json['TipoAtención'] }}",
             "notas": "Registro creado desde Google Sheets",
@@ -12480,7 +12480,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "phone": "={{ $json['Teléfono'] }}"
+            "phone": "={{ $json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}"
           },
           "matchingColumns": [
             "id"
@@ -13002,7 +13002,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "phone": "={{ $json['Teléfono'] }}"
+            "phone": "={{ $json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}"
           },
           "matchingColumns": [
             "id"
@@ -13601,7 +13601,7 @@
           "values": [
             {
               "column": "telefono",
-              "value": "={{ $json.Telefono.toString().replace(/[^\\d]/g, '') }}"
+              "value": "={{ $json.Telefono.toString().replace(/[^\\d]/g, '').slice(-10) }}"
             }
           ]
         },
@@ -13641,7 +13641,7 @@
           "value": {
             "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
             "canal": "Google Sheets",
-            "telefono": "={{ $('Loop Over Items13').item.json.Telefono }}",
+            "telefono": "={{ $('Loop Over Items13').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}",
             "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
             "tipo_atencion": "={{ $('Loop Over Items13').item.json['TipoAtención'] }}",
             "notas": "Registro creado desde Google Sheets",
@@ -14505,7 +14505,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "row_number": "={{ $('Loop Over Items12').item.json.row_number}}",
-            "Telefono": "={{ $('Loop Over Items12').item.json.Telefono.replace(/\\D/g, '') }}"
+            "Telefono": "={{ $('Loop Over Items12').item.json.Telefono.toString().replace(/\\D/g, '').slice(-10) }}"
           },
           "matchingColumns": [
             "row_number"
@@ -14634,6 +14634,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2026-01-13T17:21:42.888Z",
-  "versionId": "0f1ae7be-a630-4a22-a676-538cedab6c49"
+  "updatedAt": "2026-01-17T02:08:40.705Z",
+  "versionId": "6334164c-3f25-40df-8cb4-71376aa5edeb"
 }
