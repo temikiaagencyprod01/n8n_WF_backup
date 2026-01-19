@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-17T02:09:22.000Z",
-    "createdAt": "2026-01-17T02:08:40.708Z",
-    "versionId": "6334164c-3f25-40df-8cb4-71376aa5edeb",
+    "updatedAt": "2026-01-18T14:58:05.000Z",
+    "createdAt": "2026-01-18T14:57:36.650Z",
+    "versionId": "4986ac07-6f00-4af3-bf69-099751ac60fe",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -25,19 +25,19 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1088,
-          816
+          -1056,
+          832
         ],
         "id": "7b1d7e3c-0718-48b8-91c5-546b3c654a72",
         "name": "Get Reserv Sheets",
-        "alwaysOutputData": false,
+        "alwaysOutputData": true,
         "credentials": {
           "googleSheetsOAuth2Api": {
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
         },
-        "onError": "continueErrorOutput"
+        "onError": "continueRegularOutput"
       },
       {
         "parameters": {
@@ -272,7 +272,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -128,
+          80,
           0
         ],
         "id": "83d721aa-03f0-480b-ab85-9910c76c7b1c",
@@ -425,7 +425,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          400,
+          608,
           -96
         ],
         "id": "b16d93ab-e572-48f0-8e13-5e97205af854",
@@ -444,8 +444,8 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -1328,
-          800
+          -1296,
+          816
         ],
         "id": "19163e0d-961f-4f35-8ab2-998c5aa92706",
         "name": "Loop Over Items1"
@@ -466,7 +466,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -864,
+          -464,
           832
         ],
         "id": "00f20ac6-a210-4c58-96cf-511c58ce91dd",
@@ -487,7 +487,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -608,
+          -304,
           832
         ],
         "id": "4c069244-2194-4eae-99b0-552d69cb322d",
@@ -527,7 +527,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -336,
+          -144,
           832
         ],
         "id": "bab9f449-b1c8-4390-ac49-e56d6bddbe96",
@@ -591,7 +591,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          864,
+          1072,
           640
         ],
         "id": "23bd5028-3d08-409d-95ec-877a3b4774b3",
@@ -762,7 +762,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          1312,
+          1520,
           640
         ],
         "id": "6523e24b-239d-4a97-915d-c5dc9d97b892",
@@ -783,7 +783,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          1088,
+          1296,
           640
         ],
         "id": "1f1b96ee-1584-4f06-83f4-501b7255afd7",
@@ -999,7 +999,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -240,
+          -32,
           368
         ],
         "id": "56e0858b-df07-48fa-830a-4b7672394d3c",
@@ -1073,7 +1073,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.3,
         "position": [
-          -1024,
+          -816,
           576
         ],
         "id": "cf15d1f5-c84e-44ec-83d2-e4b670f075da",
@@ -1093,7 +1093,7 @@
         "type": "n8n-nodes-base.aggregate",
         "typeVersion": 1,
         "position": [
-          -32,
+          176,
           624
         ],
         "id": "cceb2ed7-9513-4d64-8e24-17ba307db4eb",
@@ -1107,7 +1107,7 @@
         "type": "n8n-nodes-base.splitOut",
         "typeVersion": 1,
         "position": [
-          384,
+          592,
           624
         ],
         "id": "29bdac86-586a-409e-8f27-5b2cf9fd2a8f",
@@ -1120,7 +1120,7 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          592,
+          800,
           624
         ],
         "id": "56fc304d-f752-46b6-b504-6eb914ccd00a",
@@ -1155,7 +1155,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1424,
+          -1696,
           16
         ],
         "id": "ee321f4b-bc54-4af3-a5b5-9adff82c3572",
@@ -1176,7 +1176,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -624,
+          -416,
           -16
         ],
         "id": "cd6061e3-cd4d-4008-bf3b-86478a5c093f",
@@ -1189,7 +1189,7 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -432,
+          -224,
           352
         ],
         "id": "36f6a34a-29fa-433c-a99d-58da07fa511a",
@@ -1202,7 +1202,7 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -400,
+          -192,
           -16
         ],
         "id": "f5ac0b77-39d5-43c5-a434-3ce943a53279",
@@ -1215,7 +1215,7 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          1376,
+          1584,
           320
         ],
         "id": "21bab4e9-57c3-4b01-834e-b9273799bcb1",
@@ -1229,7 +1229,7 @@
         "type": "n8n-nodes-base.aggregate",
         "typeVersion": 1,
         "position": [
-          1600,
+          1808,
           336
         ],
         "id": "92f46abb-8e4a-42b8-a072-29a08a3d8bcf",
@@ -1264,7 +1264,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -1520,
+          -1792,
           -128
         ],
         "typeVersion": 1,
@@ -1280,7 +1280,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -512,
+          -304,
           -176
         ],
         "typeVersion": 1,
@@ -1462,7 +1462,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          1040,
+          1248,
           64
         ],
         "id": "5b21e725-2b74-4aee-96cc-e6facc271c7a",
@@ -1501,7 +1501,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          832,
+          1040,
           16
         ],
         "id": "3e308ad4-ccd7-48fe-83f4-40fdcf18cae0",
@@ -1730,7 +1730,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          624,
+          832,
           16
         ],
         "id": "1cb16ccb-bfdd-47e6-923a-155b24552e33",
@@ -1770,7 +1770,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          112,
+          320,
           0
         ],
         "id": "5c3691c4-be1d-487c-b7f6-136bb532f1b7",
@@ -1950,7 +1950,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -48,
+          160,
           368
         ],
         "id": "b396e209-f6f6-4ddf-9861-fa8c2c258081",
@@ -1987,7 +1987,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          2240,
+          2448,
           320
         ],
         "id": "21962dd0-9596-4373-8649-cdadaf1faba0",
@@ -2026,7 +2026,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          1824,
+          2032,
           336
         ],
         "id": "576988e2-7ab9-4a0e-8321-79f934fe5c20",
@@ -2039,7 +2039,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          176,
+          384,
           624
         ],
         "id": "825f5bdb-75c0-49d7-98d8-760a7400b157",
@@ -2054,7 +2054,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -576,
+          -368,
           272
         ],
         "typeVersion": 1,
@@ -2070,7 +2070,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -112,
+          96,
           544
         ],
         "typeVersion": 1,
@@ -2080,14 +2080,14 @@
       {
         "parameters": {
           "content": "## Nuevas Fechas NO existen en Excel\n\n- Si hay reservaciones en cierta fecha y no existe su hoja en excel la crea\n- Pobla todos los datos de dicha fecha en el excel",
-          "height": 288,
-          "width": 976,
+          "height": 304,
+          "width": 1360,
           "color": 6
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -1136,
-          736
+          -1312,
+          752
         ],
         "typeVersion": 1,
         "id": "34978953-4660-4f1a-b477-99cc8ef33d95",
@@ -2111,61 +2111,6 @@
       },
       {
         "parameters": {
-          "rules": {
-            "values": [
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 2
-                  },
-                  "conditions": [
-                    {
-                      "leftValue": "={{ $('Cada 10 min').item.json.Hour.toNumber() >=10 && $('Cada 10 min').item.json.Hour.toNumber()<=23  }}",
-                      "rightValue": "",
-                      "operator": {
-                        "type": "boolean",
-                        "operation": "true",
-                        "singleValue": true
-                      },
-                      "id": "1ec67a71-1f65-4f7a-b7d6-7ce09e8f64e3"
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "Actualiza Reservas"
-              }
-            ]
-          },
-          "options": {
-            "fallbackOutput": "extra"
-          }
-        },
-        "type": "n8n-nodes-base.switch",
-        "typeVersion": 3.3,
-        "position": [
-          -2272,
-          896
-        ],
-        "id": "c4fbe842-6858-4415-9853-e3f679019470",
-        "name": "Check Horario"
-      },
-      {
-        "parameters": {},
-        "type": "n8n-nodes-base.noOp",
-        "typeVersion": 1,
-        "position": [
-          -1744,
-          1248
-        ],
-        "id": "33bde9e1-dd68-4887-8ea7-aee91d7ab302",
-        "name": "No Operation, do nothing"
-      },
-      {
-        "parameters": {
           "operation": "create",
           "documentId": {
             "__rl": true,
@@ -2180,7 +2125,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -896,
+          -1168,
           -16
         ],
         "id": "34e5a15c-e566-4681-8779-cf2cb26b651e",
@@ -2366,7 +2311,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          1488,
+          1696,
           0
         ],
         "id": "82a5744a-87af-428e-b8ff-6848a7e5e022",
@@ -2473,7 +2418,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1248,
+          1456,
           0
         ],
         "id": "788bdc2a-ef75-4c6d-a43c-0e0144195eaa",
@@ -2486,7 +2431,7 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          1536,
+          1744,
           640
         ],
         "id": "74101a03-2172-4633-b217-80eff92b71a6",
@@ -2499,7 +2444,7 @@
             "interval": [
               {
                 "field": "cronExpression",
-                "expression": "0 */10 1,10-23 * * *"
+                "expression": "0 */10 10-23 * * *"
               }
             ]
           }
@@ -2507,8 +2452,8 @@
         "type": "n8n-nodes-base.scheduleTrigger",
         "typeVersion": 1.2,
         "position": [
-          -2736,
-          896
+          -2640,
+          480
         ],
         "id": "f1855aba-ea0d-402f-97ba-90fdddac021d",
         "name": "Cada 10 min"
@@ -2675,7 +2620,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          160,
+          368,
           368
         ],
         "id": "a72d5a60-6bc3-4be3-9fa1-192737094a37",
@@ -2697,7 +2642,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          736,
+          944,
           352
         ],
         "id": "d86d91cc-d6ca-4bc7-9889-6decb77e8d0a",
@@ -2739,7 +2684,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          1152,
+          1360,
           352
         ],
         "id": "b1e2f577-cee3-4dd4-8bd5-5016963c2683",
@@ -2762,7 +2707,7 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          944,
+          1152,
           352
         ],
         "id": "f77cf367-093b-48e8-8b5e-ac6dcc03b70e",
@@ -2795,7 +2740,7 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 3.2,
         "position": [
-          2672,
+          2880,
           1008
         ],
         "id": "6da25126-8094-4e57-b30d-9543f6a4fdc3",
@@ -2808,7 +2753,7 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          2896,
+          3104,
           1008
         ],
         "id": "35ab282b-12b2-4027-93b3-3fcc29e18f71",
@@ -2833,7 +2778,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          3392,
+          3600,
           1024
         ],
         "id": "42832200-a8e2-42bf-9f44-c7f0c23e4a3b",
@@ -2863,7 +2808,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          432,
+          640,
           352
         ],
         "id": "9c3d3411-ec07-4f3e-87b5-19c26b0777c1",
@@ -2897,7 +2842,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -1184,
+          -1456,
           0
         ],
         "id": "fef81c9a-34aa-44bd-a0f4-5cabb7e111ba",
@@ -2908,7 +2853,7 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          3184,
+          3392,
           1024
         ],
         "id": "f01f6d34-923f-4d21-9655-ecbe8aab050a",
@@ -2944,8 +2889,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -2528,
-          896
+          -2432,
+          480
         ],
         "id": "5b377084-d4b4-4e72-9eda-4d08a1047ced",
         "name": "Calcula Fecha y Hora Actual"
@@ -5868,6 +5813,106 @@
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
         }
+      },
+      {
+        "parameters": {
+          "operation": "remove",
+          "documentId": {
+            "__rl": true,
+            "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "mode": "name",
+            "value": "={{ $('Loop Over Items1').item.json.fecha_reservacion }}"
+          }
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -640,
+          736
+        ],
+        "id": "edd38fad-39ad-47b2-a4cb-795abab7b14a",
+        "name": "Delete sheet2",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.keys().length }}",
+                      "rightValue": 0,
+                      "operator": {
+                        "type": "number",
+                        "operation": "equals"
+                      },
+                      "id": "cbdc5593-7972-48b5-841e-974f43b18529"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Hoja Vacía"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "bfe69bdd-73cf-4738-9352-b51bdf0494e4",
+                      "leftValue": "={{ $json.error }}",
+                      "rightValue": "=Sheet with name {{ $('Loop Over Items1').item.json.fecha_reservacion }} not found",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Hoja Inexistente"
+              }
+            ]
+          },
+          "options": {
+            "fallbackOutput": "extra"
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -848,
+          816
+        ],
+        "id": "34235d61-5a38-463c-9dc0-9e7d7c2ef367",
+        "name": "Evalua Hojas"
       }
     ],
     "connections": {
@@ -5875,18 +5920,12 @@
         "main": [
           [
             {
-              "node": "Loop Over Items1",
+              "node": "Evalua Hojas",
               "type": "main",
               "index": 0
             }
           ],
-          [
-            {
-              "node": "Create sheet",
-              "type": "main",
-              "index": 0
-            }
-          ]
+          []
         ]
       },
       "Limpia Históricos": {
@@ -6291,29 +6330,6 @@
           ]
         ]
       },
-      "Check Horario": {
-        "main": [
-          [
-            {
-              "node": "Check New",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Obtiene Fechas Reservas",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "No Operation, do nothing",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Create sheet1": {
         "main": [
           [
@@ -6569,7 +6585,12 @@
         "main": [
           [
             {
-              "node": "Check Horario",
+              "node": "Check New",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Fechas Reservas",
               "type": "main",
               "index": 0
             }
@@ -7291,31 +7312,61 @@
             }
           ]
         ]
+      },
+      "Delete sheet2": {
+        "main": [
+          [
+            {
+              "node": "Create sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Evalua Hojas": {
+        "main": [
+          [
+            {
+              "node": "Delete sheet2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Create sheet",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 6334164c",
+    "name": "Version 4986ac07",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "6334164c-3f25-40df-8cb4-71376aa5edeb",
+  "activeVersionId": "4986ac07-6f00-4af3-bf69-099751ac60fe",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
         [
           {
-            "node": "Loop Over Items1",
+            "node": "Evalua Hojas",
             "type": "main",
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Create sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Limpia Históricos": {
@@ -7720,29 +7771,6 @@
         ]
       ]
     },
-    "Check Horario": {
-      "main": [
-        [
-          {
-            "node": "Check New",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Obtiene Fechas Reservas",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Create sheet1": {
       "main": [
         [
@@ -7998,7 +8026,12 @@
       "main": [
         [
           {
-            "node": "Check Horario",
+            "node": "Check New",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Fechas Reservas",
             "type": "main",
             "index": 0
           }
@@ -8720,6 +8753,42 @@
           }
         ]
       ]
+    },
+    "Delete sheet2": {
+      "main": [
+        [
+          {
+            "node": "Create sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evalua Hojas": {
+      "main": [
+        [
+          {
+            "node": "Delete sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-11T17:49:55.779Z",
@@ -8749,19 +8818,19 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1088,
-        816
+        -1056,
+        832
       ],
       "id": "7b1d7e3c-0718-48b8-91c5-546b3c654a72",
       "name": "Get Reserv Sheets",
-      "alwaysOutputData": false,
+      "alwaysOutputData": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
       },
-      "onError": "continueErrorOutput"
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -8996,7 +9065,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -128,
+        80,
         0
       ],
       "id": "83d721aa-03f0-480b-ab85-9910c76c7b1c",
@@ -9149,7 +9218,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        400,
+        608,
         -96
       ],
       "id": "b16d93ab-e572-48f0-8e13-5e97205af854",
@@ -9168,8 +9237,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1328,
-        800
+        -1296,
+        816
       ],
       "id": "19163e0d-961f-4f35-8ab2-998c5aa92706",
       "name": "Loop Over Items1"
@@ -9190,7 +9259,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -864,
+        -464,
         832
       ],
       "id": "00f20ac6-a210-4c58-96cf-511c58ce91dd",
@@ -9211,7 +9280,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -608,
+        -304,
         832
       ],
       "id": "4c069244-2194-4eae-99b0-552d69cb322d",
@@ -9251,7 +9320,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -336,
+        -144,
         832
       ],
       "id": "bab9f449-b1c8-4390-ac49-e56d6bddbe96",
@@ -9315,7 +9384,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        864,
+        1072,
         640
       ],
       "id": "23bd5028-3d08-409d-95ec-877a3b4774b3",
@@ -9486,7 +9555,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1312,
+        1520,
         640
       ],
       "id": "6523e24b-239d-4a97-915d-c5dc9d97b892",
@@ -9507,7 +9576,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1088,
+        1296,
         640
       ],
       "id": "1f1b96ee-1584-4f06-83f4-501b7255afd7",
@@ -9723,7 +9792,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -240,
+        -32,
         368
       ],
       "id": "56e0858b-df07-48fa-830a-4b7672394d3c",
@@ -9797,7 +9866,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -1024,
+        -816,
         576
       ],
       "id": "cf15d1f5-c84e-44ec-83d2-e4b670f075da",
@@ -9817,7 +9886,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -32,
+        176,
         624
       ],
       "id": "cceb2ed7-9513-4d64-8e24-17ba307db4eb",
@@ -9831,7 +9900,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        384,
+        592,
         624
       ],
       "id": "29bdac86-586a-409e-8f27-5b2cf9fd2a8f",
@@ -9844,7 +9913,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        592,
+        800,
         624
       ],
       "id": "56fc304d-f752-46b6-b504-6eb914ccd00a",
@@ -9879,7 +9948,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1424,
+        -1696,
         16
       ],
       "id": "ee321f4b-bc54-4af3-a5b5-9adff82c3572",
@@ -9900,7 +9969,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -624,
+        -416,
         -16
       ],
       "id": "cd6061e3-cd4d-4008-bf3b-86478a5c093f",
@@ -9913,7 +9982,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -432,
+        -224,
         352
       ],
       "id": "36f6a34a-29fa-433c-a99d-58da07fa511a",
@@ -9926,7 +9995,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -400,
+        -192,
         -16
       ],
       "id": "f5ac0b77-39d5-43c5-a434-3ce943a53279",
@@ -9939,7 +10008,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1376,
+        1584,
         320
       ],
       "id": "21bab4e9-57c3-4b01-834e-b9273799bcb1",
@@ -9953,7 +10022,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1600,
+        1808,
         336
       ],
       "id": "92f46abb-8e4a-42b8-a072-29a08a3d8bcf",
@@ -9988,7 +10057,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1520,
+        -1792,
         -128
       ],
       "typeVersion": 1,
@@ -10004,7 +10073,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -512,
+        -304,
         -176
       ],
       "typeVersion": 1,
@@ -10186,7 +10255,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1040,
+        1248,
         64
       ],
       "id": "5b21e725-2b74-4aee-96cc-e6facc271c7a",
@@ -10225,7 +10294,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        832,
+        1040,
         16
       ],
       "id": "3e308ad4-ccd7-48fe-83f4-40fdcf18cae0",
@@ -10454,7 +10523,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        624,
+        832,
         16
       ],
       "id": "1cb16ccb-bfdd-47e6-923a-155b24552e33",
@@ -10494,7 +10563,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        112,
+        320,
         0
       ],
       "id": "5c3691c4-be1d-487c-b7f6-136bb532f1b7",
@@ -10674,7 +10743,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -48,
+        160,
         368
       ],
       "id": "b396e209-f6f6-4ddf-9861-fa8c2c258081",
@@ -10711,7 +10780,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        2240,
+        2448,
         320
       ],
       "id": "21962dd0-9596-4373-8649-cdadaf1faba0",
@@ -10750,7 +10819,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1824,
+        2032,
         336
       ],
       "id": "576988e2-7ab9-4a0e-8321-79f934fe5c20",
@@ -10763,7 +10832,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        176,
+        384,
         624
       ],
       "id": "825f5bdb-75c0-49d7-98d8-760a7400b157",
@@ -10778,7 +10847,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -576,
+        -368,
         272
       ],
       "typeVersion": 1,
@@ -10794,7 +10863,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -112,
+        96,
         544
       ],
       "typeVersion": 1,
@@ -10804,14 +10873,14 @@
     {
       "parameters": {
         "content": "## Nuevas Fechas NO existen en Excel\n\n- Si hay reservaciones en cierta fecha y no existe su hoja en excel la crea\n- Pobla todos los datos de dicha fecha en el excel",
-        "height": 288,
-        "width": 976,
+        "height": 304,
+        "width": 1360,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1136,
-        736
+        -1312,
+        752
       ],
       "typeVersion": 1,
       "id": "34978953-4660-4f1a-b477-99cc8ef33d95",
@@ -10835,61 +10904,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Cada 10 min').item.json.Hour.toNumber() >=10 && $('Cada 10 min').item.json.Hour.toNumber()<=23  }}",
-                    "rightValue": "",
-                    "operator": {
-                      "type": "boolean",
-                      "operation": "true",
-                      "singleValue": true
-                    },
-                    "id": "1ec67a71-1f65-4f7a-b7d6-7ce09e8f64e3"
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Actualiza Reservas"
-            }
-          ]
-        },
-        "options": {
-          "fallbackOutput": "extra"
-        }
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
-      "position": [
-        -2272,
-        896
-      ],
-      "id": "c4fbe842-6858-4415-9853-e3f679019470",
-      "name": "Check Horario"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        -1744,
-        1248
-      ],
-      "id": "33bde9e1-dd68-4887-8ea7-aee91d7ab302",
-      "name": "No Operation, do nothing"
-    },
-    {
-      "parameters": {
         "operation": "create",
         "documentId": {
           "__rl": true,
@@ -10904,7 +10918,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -896,
+        -1168,
         -16
       ],
       "id": "34e5a15c-e566-4681-8779-cf2cb26b651e",
@@ -11090,7 +11104,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1488,
+        1696,
         0
       ],
       "id": "82a5744a-87af-428e-b8ff-6848a7e5e022",
@@ -11197,7 +11211,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1248,
+        1456,
         0
       ],
       "id": "788bdc2a-ef75-4c6d-a43c-0e0144195eaa",
@@ -11210,7 +11224,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1536,
+        1744,
         640
       ],
       "id": "74101a03-2172-4633-b217-80eff92b71a6",
@@ -11223,7 +11237,7 @@
           "interval": [
             {
               "field": "cronExpression",
-              "expression": "0 */10 1,10-23 * * *"
+              "expression": "0 */10 10-23 * * *"
             }
           ]
         }
@@ -11231,8 +11245,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -2736,
-        896
+        -2640,
+        480
       ],
       "id": "f1855aba-ea0d-402f-97ba-90fdddac021d",
       "name": "Cada 10 min"
@@ -11399,7 +11413,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        160,
+        368,
         368
       ],
       "id": "a72d5a60-6bc3-4be3-9fa1-192737094a37",
@@ -11421,7 +11435,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        736,
+        944,
         352
       ],
       "id": "d86d91cc-d6ca-4bc7-9889-6decb77e8d0a",
@@ -11463,7 +11477,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1152,
+        1360,
         352
       ],
       "id": "b1e2f577-cee3-4dd4-8bd5-5016963c2683",
@@ -11486,7 +11500,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        944,
+        1152,
         352
       ],
       "id": "f77cf367-093b-48e8-8b5e-ac6dcc03b70e",
@@ -11519,7 +11533,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        2672,
+        2880,
         1008
       ],
       "id": "6da25126-8094-4e57-b30d-9543f6a4fdc3",
@@ -11532,7 +11546,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2896,
+        3104,
         1008
       ],
       "id": "35ab282b-12b2-4027-93b3-3fcc29e18f71",
@@ -11557,7 +11571,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        3392,
+        3600,
         1024
       ],
       "id": "42832200-a8e2-42bf-9f44-c7f0c23e4a3b",
@@ -11587,7 +11601,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        432,
+        640,
         352
       ],
       "id": "9c3d3411-ec07-4f3e-87b5-19c26b0777c1",
@@ -11621,7 +11635,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1184,
+        -1456,
         0
       ],
       "id": "fef81c9a-34aa-44bd-a0f4-5cabb7e111ba",
@@ -11632,7 +11646,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3184,
+        3392,
         1024
       ],
       "id": "f01f6d34-923f-4d21-9655-ecbe8aab050a",
@@ -11668,8 +11682,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2528,
-        896
+        -2432,
+        480
       ],
       "id": "5b377084-d4b4-4e72-9eda-4d08a1047ced",
       "name": "Calcula Fecha y Hora Actual"
@@ -14592,6 +14606,106 @@
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "remove",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Loop Over Items1').item.json.fecha_reservacion }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -640,
+        736
+      ],
+      "id": "edd38fad-39ad-47b2-a4cb-795abab7b14a",
+      "name": "Delete sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.keys().length }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "cbdc5593-7972-48b5-841e-974f43b18529"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Hoja Vacía"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bfe69bdd-73cf-4738-9352-b51bdf0494e4",
+                    "leftValue": "={{ $json.error }}",
+                    "rightValue": "=Sheet with name {{ $('Loop Over Items1').item.json.fecha_reservacion }} not found",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Hoja Inexistente"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -848,
+        816
+      ],
+      "id": "34235d61-5a38-463c-9dc0-9e7d7c2ef367",
+      "name": "Evalua Hojas"
     }
   ],
   "settings": {
@@ -14634,6 +14748,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2026-01-17T02:08:40.705Z",
-  "versionId": "6334164c-3f25-40df-8cb4-71376aa5edeb"
+  "updatedAt": "2026-01-18T14:57:36.647Z",
+  "versionId": "4986ac07-6f00-4af3-bf69-099751ac60fe"
 }
