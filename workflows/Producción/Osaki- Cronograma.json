@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-18T14:58:05.000Z",
-    "createdAt": "2026-01-18T14:57:36.650Z",
-    "versionId": "4986ac07-6f00-4af3-bf69-099751ac60fe",
+    "updatedAt": "2026-01-21T14:23:08.000Z",
+    "createdAt": "2026-01-21T14:21:52.770Z",
+    "versionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -3755,6 +3755,16 @@
                 "type": "number",
                 "canBeUsedToMatch": true,
                 "removed": true
+              },
+              {
+                "id": "fec_registro",
+                "displayName": "fec_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
               }
             ],
             "attemptToConvertTypes": false,
@@ -3794,11 +3804,12 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Teléfono": "={{ $('Switch1').item.json[\"Teléfono\"] }}",
-              "Estado": "Agregado"
+              "Teléfono": "={{ $('Loop Over Items6').item.json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}",
+              "Estado": "Agregado",
+              "row_number": "={{ $('Loop Over Items6').item.json.row_number }}"
             },
             "matchingColumns": [
-              "Teléfono"
+              "row_number"
             ],
             "schema": [
               {
@@ -3842,8 +3853,8 @@
                 "removed": true
               },
               {
-                "id": "En esta lista se incluyen todo aquellos números de teléfono (10 dígitos) que serán excluídos de la atención que realiza el agente IA de manera PERMANENTE, es decir, si alguno de estos números se comunica con el agente, este NO responderá.",
-                "displayName": "En esta lista se incluyen todo aquellos números de teléfono (10 dígitos) que serán excluídos de la atención que realiza el agente IA de manera PERMANENTE, es decir, si alguno de estos números se comunica con el agente, este NO responderá.",
+                "id": "Esta es una lista PERMANENTE. El agente nunca responderá a los números aquí registrados",
+                "displayName": "Esta es una lista PERMANENTE. El agente nunca responderá a los números aquí registrados",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -3860,7 +3871,7 @@
                 "type": "number",
                 "canBeUsedToMatch": true,
                 "readOnly": true,
-                "removed": true
+                "removed": false
               }
             ],
             "attemptToConvertTypes": false,
@@ -4277,6 +4288,16 @@
                 "type": "number",
                 "canBeUsedToMatch": true,
                 "removed": true
+              },
+              {
+                "id": "fec_registro",
+                "displayName": "fec_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
               }
             ],
             "attemptToConvertTypes": false,
@@ -4316,11 +4337,12 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Teléfono": "={{ $('Switch2').item.json[\"Teléfono\"] }}",
-              "Estado": "Agregado"
+              "Teléfono": "={{ $('Loop Over Items7').item.json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}",
+              "Estado": "Agregado",
+              "row_number": "={{ $('Loop Over Items7').item.json.row_number }}"
             },
             "matchingColumns": [
-              "Teléfono"
+              "row_number"
             ],
             "schema": [
               {
@@ -4382,7 +4404,7 @@
                 "type": "number",
                 "canBeUsedToMatch": true,
                 "readOnly": true,
-                "removed": true
+                "removed": false
               }
             ],
             "attemptToConvertTypes": false,
@@ -7351,11 +7373,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 4986ac07",
+    "name": "Version 594f7c2d",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "4986ac07-6f00-4af3-bf69-099751ac60fe",
+  "activeVersionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -12548,6 +12570,16 @@
               "type": "number",
               "canBeUsedToMatch": true,
               "removed": true
+            },
+            {
+              "id": "fec_registro",
+              "displayName": "fec_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -12587,11 +12619,12 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Teléfono": "={{ $('Switch1').item.json[\"Teléfono\"] }}",
-            "Estado": "Agregado"
+            "Teléfono": "={{ $('Loop Over Items6').item.json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}",
+            "Estado": "Agregado",
+            "row_number": "={{ $('Loop Over Items6').item.json.row_number }}"
           },
           "matchingColumns": [
-            "Teléfono"
+            "row_number"
           ],
           "schema": [
             {
@@ -12635,8 +12668,8 @@
               "removed": true
             },
             {
-              "id": "En esta lista se incluyen todo aquellos números de teléfono (10 dígitos) que serán excluídos de la atención que realiza el agente IA de manera PERMANENTE, es decir, si alguno de estos números se comunica con el agente, este NO responderá.",
-              "displayName": "En esta lista se incluyen todo aquellos números de teléfono (10 dígitos) que serán excluídos de la atención que realiza el agente IA de manera PERMANENTE, es decir, si alguno de estos números se comunica con el agente, este NO responderá.",
+              "id": "Esta es una lista PERMANENTE. El agente nunca responderá a los números aquí registrados",
+              "displayName": "Esta es una lista PERMANENTE. El agente nunca responderá a los números aquí registrados",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -12653,7 +12686,7 @@
               "type": "number",
               "canBeUsedToMatch": true,
               "readOnly": true,
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -13070,6 +13103,16 @@
               "type": "number",
               "canBeUsedToMatch": true,
               "removed": true
+            },
+            {
+              "id": "fec_registro",
+              "displayName": "fec_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -13109,11 +13152,12 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Teléfono": "={{ $('Switch2').item.json[\"Teléfono\"] }}",
-            "Estado": "Agregado"
+            "Teléfono": "={{ $('Loop Over Items7').item.json['Teléfono'].toString().replace(/\\D/g, '').slice(-10) }}",
+            "Estado": "Agregado",
+            "row_number": "={{ $('Loop Over Items7').item.json.row_number }}"
           },
           "matchingColumns": [
-            "Teléfono"
+            "row_number"
           ],
           "schema": [
             {
@@ -13175,7 +13219,7 @@
               "type": "number",
               "canBeUsedToMatch": true,
               "readOnly": true,
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -14748,6 +14792,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2026-01-20T21:52:08.380Z",
-  "versionId": "4986ac07-6f00-4af3-bf69-099751ac60fe"
+  "updatedAt": "2026-01-21T14:21:52.765Z",
+  "versionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a"
 }
