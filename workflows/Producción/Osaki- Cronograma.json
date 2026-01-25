@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-21T14:23:08.000Z",
-    "createdAt": "2026-01-21T14:21:52.770Z",
-    "versionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a",
+    "updatedAt": "2026-01-24T22:18:31.000Z",
+    "createdAt": "2026-01-24T22:14:27.120Z",
+    "versionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -61,8 +61,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1104,
-          1632
+          -1616,
+          1648
         ],
         "id": "58d96e47-f110-4a4e-8d1c-594fcb18cf23",
         "name": "Limpia Históricos",
@@ -76,14 +76,14 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \nWHERE fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n    order by id;",
+          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion >= '{{ $('Get Initial Data').first().json.fecha_hoy }}'::date - INTERVAL '3 months'\nAND fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n    order by fecha_reservacion ASC;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -912,
-          1632
+          -1392,
+          1648
         ],
         "id": "2d53ed3d-4a62-45df-8b03-59a72b0adac5",
         "name": "Get Historic",
@@ -233,8 +233,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -720,
-          1632
+          -1168,
+          1648
         ],
         "id": "34eb8f13-e082-4c36-ab58-0b6dee1093e0",
         "name": "Update Historic",
@@ -551,15 +551,15 @@
           },
           "sheetName": {
             "__rl": true,
-            "value": "={{new Date(new Date($('Get Initial Data').item.json.fecha_hoy).setDate(new Date($('Get Initial Data').item.json.fecha_hoy).getDate()-1)).toISOString().split('T')[0]}}",
+            "value": "={{ $json.fecha_reservacion }}",
             "mode": "name"
           }
         },
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -512,
-          1632
+          -336,
+          1664
         ],
         "id": "d24f3728-5957-4013-a38a-fd3fc75ae0d4",
         "name": "Delete sheet",
@@ -2097,13 +2097,13 @@
         "parameters": {
           "content": "## Rellena Reservaciones Históricas\n\n- Toma todos los registros antiguos\n- Limpia el historial en excel\n. Rellena los registros en excel",
           "height": 336,
-          "width": 1120,
+          "width": 1744,
           "color": 2
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -1408,
-          1504
+          -1904,
+          1520
         ],
         "typeVersion": 1,
         "id": "9b300582-f487-455f-9cfb-3f7d872086d1",
@@ -2904,8 +2904,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -1344,
-          1632
+          -1840,
+          1648
         ],
         "id": "19180504-6c4d-496f-9d59-f3477e44ffd0",
         "name": "Actualiza Estado Reserv Realizada",
@@ -2990,7 +2990,8 @@
           "rule": {
             "interval": [
               {
-                "triggerAtHour": 1
+                "field": "cronExpression",
+                "expression": "0 0 1 * * *"
               }
             ]
           }
@@ -3271,8 +3272,8 @@
         "type": "n8n-nodes-base.scheduleTrigger",
         "typeVersion": 1.2,
         "position": [
-          -3024,
-          3776
+          -3344,
+          4000
         ],
         "id": "13159c0b-54eb-4b8d-be3b-37a2638f83c3",
         "name": "Cada 1 Min"
@@ -3286,8 +3287,8 @@
         "type": "n8n-nodes-base.splitOut",
         "typeVersion": 1,
         "position": [
-          -2592,
-          3776
+          -2912,
+          4000
         ],
         "id": "0df71b31-b8e9-4576-848e-c35d0b7bc284",
         "name": "Split Out1"
@@ -4056,6 +4057,12 @@
                 "name": "schema",
                 "value": "osaki_main",
                 "type": "string"
+              },
+              {
+                "id": "9e13ba25-fbac-499a-bf25-ab9764f99541",
+                "name": "fecha_hoy",
+                "value": "={{ new Date().toLocaleString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }) }}",
+                "type": "string"
               }
             ]
           },
@@ -4064,8 +4071,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -2816,
-          3776
+          -3136,
+          4000
         ],
         "id": "752a7c6a-5ba6-4499-8440-7a1c1008395d",
         "name": "Obtiene Datos Iniciales"
@@ -4166,8 +4173,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -2384,
-          3776
+          -2704,
+          4000
         ],
         "id": "7cf9bc46-3af9-472b-a61c-c33d3e8a87f8",
         "name": "If"
@@ -4206,8 +4213,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1808,
-          4240
+          -1632,
+          4880
         ],
         "id": "f9d3917b-7bf4-4c06-a77c-2b9019ac5171",
         "name": "Get BlackList",
@@ -4308,8 +4315,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -800,
-          4224
+          -624,
+          4864
         ],
         "id": "39f4a6c2-7273-462c-96f2-15aaf39635d1",
         "name": "Insert rows in a table",
@@ -4415,8 +4422,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -576,
-          4224
+          -400,
+          4864
         ],
         "id": "3fbcc3f3-04c2-499c-aa56-f3470b05d2f7",
         "name": "Update row in sheet",
@@ -4454,8 +4461,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -800,
-          4384
+          -624,
+          5024
         ],
         "id": "5a839245-411b-4b2d-b581-281c6f2e6aa8",
         "name": "Delete table or rows",
@@ -4487,8 +4494,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -576,
-          4384
+          -400,
+          5024
         ],
         "id": "49fdf290-6a71-4fcb-a001-9da816583ae1",
         "name": "Delete rows or columns from sheet",
@@ -4506,8 +4513,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -2016,
-          4240
+          -1840,
+          4880
         ],
         "id": "599f46ee-696d-47ef-9575-ddce1c3e1548",
         "name": "Variables 9"
@@ -4519,8 +4526,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -1600,
-          4240
+          -1424,
+          4880
         ],
         "id": "e03c8dda-c60f-41f3-8ad3-6fafeb735238",
         "name": "Reverse 9"
@@ -4545,8 +4552,8 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -1808,
-          3952
+          -1632,
+          4592
         ],
         "id": "a2d06fae-ef8d-4b29-90a9-c729870b24fd",
         "name": "Loop Over Items13"
@@ -4814,8 +4821,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -384,
-          3984
+          -208,
+          4624
         ],
         "id": "661265d9-3169-4ab0-8bc1-059b9c9bc6c3",
         "name": "Update rows in a table",
@@ -4853,8 +4860,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -1360,
-          3952
+          -1184,
+          4592
         ],
         "id": "94a0ca8b-668a-4a58-922d-c557bce70be9",
         "name": "Select rows from a table",
@@ -5127,8 +5134,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -624,
-          3936
+          -448,
+          4576
         ],
         "id": "2a4ca1da-6d7d-4fef-a180-5f729eb6380d",
         "name": "Insert rows in a table6",
@@ -5177,8 +5184,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -1600,
-          3968
+          -1424,
+          4608
         ],
         "id": "869eae78-de12-4ff5-a197-fb5bd005ff52",
         "name": "If14"
@@ -5210,8 +5217,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -928,
-          4000
+          -752,
+          4640
         ],
         "id": "d00014aa-0d3c-4eb2-8844-b369a16862ce",
         "name": "If15"
@@ -5237,8 +5244,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -2032,
-          3952
+          -1856,
+          4592
         ],
         "id": "348c0182-0564-46df-b3b4-36ee2e100394",
         "name": "Get Clientes Sheet",
@@ -5601,8 +5608,8 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          -1136,
-          4240
+          -960,
+          4880
         ],
         "id": "3c5e8606-23b7-4cb0-8972-ed48eee0a733",
         "name": "Switch2"
@@ -5614,8 +5621,8 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 3,
         "position": [
-          -1360,
-          4240
+          -1184,
+          4880
         ],
         "id": "516c3f61-1d40-4aef-b620-2d4da2730b1f",
         "name": "Loop Over Items7"
@@ -5641,8 +5648,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          -352,
-          4384
+          -176,
+          5024
         ],
         "id": "b546b867-f22a-43cd-aa6d-4bf547cb8c0b",
         "name": "Wait3",
@@ -5676,8 +5683,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -1136,
-          3952
+          -960,
+          4592
         ],
         "id": "b8b823f5-3e9c-4c25-a732-e6cc3ee6c450",
         "name": "If16"
@@ -5721,8 +5728,8 @@
         "type": "n8n-nodes-base.manualTrigger",
         "typeVersion": 1,
         "position": [
-          -2304,
-          3136
+          -1024,
+          1232
         ],
         "id": "9fd9e270-ead8-4241-8337-816e17500724",
         "name": "When clicking ‘Execute workflow’"
@@ -5935,6 +5942,812 @@
         ],
         "id": "34235d61-5a38-463c-9dc0-9e7d7c2ef367",
         "name": "Evalua Hojas"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "  \nSELECT distinct TO_CHAR(fecha_reservacion, 'YYYY-MM-DD') as fecha_reservacion\n  FROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \n    WHERE fecha_reservacion >= '{{ $('Get Initial Data').first().json.fecha_hoy }}'::date - INTERVAL '3 months'\n  AND fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n  order by fecha_reservacion asc;\n\n\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -768,
+          1648
+        ],
+        "id": "23a6bb5c-462d-4cb8-8f70-57e1bcef05b3",
+        "name": "Obtiene Todas Fechas",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -544,
+          1648
+        ],
+        "id": "ed939b67-c701-4124-aecf-8ddfed766a87",
+        "name": "Loop Over Items9"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -960,
+          1648
+        ],
+        "id": "0e53a899-b381-414a-99a8-f48a1010c6c7",
+        "name": "Aggregate2"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1807951179,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1840,
+          3984
+        ],
+        "id": "07dbb707-443d-4b7c-9c5e-801f8258aa9c",
+        "name": "Obtiene Google Sheets",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT  id, TO_CHAR(fecha_reporte, 'YYYY-MM-DD HH24:MI')  as fecha_reporte,num_telefono, resumen_intencion, notas_tono_sentimiento, notas_urgencia, sucursal, resumen_datos_clave, estado_seguimiento\nFROM {{ $('Obtiene Datos Iniciales').first().json.schema }}.seguimiento_reportes\nWHERE fecha_reporte >= '{{ $('Obtiene Datos Iniciales').first().json.fecha_hoy }}'::date - INTERVAL '1 DAY'\n  and sucursal !='Delivery-Calle 9'\norder by fecha_reporte asc, num_telefono asc;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1840,
+          3792
+        ],
+        "id": "87a151be-d7bc-42f4-9916-12bf7f7223af",
+        "name": "Obtiene Postgres",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1807951179,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "num_telefono": "={{ $json.num_telefono }}",
+              "fecha_reporte": "={{ $json.fecha_reporte }}",
+              "resumen_intencion": "={{ $json.resumen_intencion }}",
+              "notas_tono_sentimiento": "={{ $json.notas_tono_sentimiento}}",
+              "notas_urgencia": "={{ $json.notas_urgencia}}",
+              "sucursal": "={{ $json.sucursal}}",
+              "resumen_datos_clave": "={{ $json.resumen_datos_clave}}",
+              "estado_seguimiento": "={{ $json.estado_seguimiento}}"
+            },
+            "matchingColumns": [
+              "num_telefono"
+            ],
+            "schema": [
+              {
+                "id": "fecha_reporte",
+                "displayName": "fecha_reporte",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "num_telefono",
+                "displayName": "num_telefono",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "resumen_intencion",
+                "displayName": "resumen_intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas_tono_sentimiento",
+                "displayName": "notas_tono_sentimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas_urgencia",
+                "displayName": "notas_urgencia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "resumen_datos_clave",
+                "displayName": "resumen_datos_clave",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "estado_seguimiento",
+                "displayName": "estado_seguimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -384,
+          3856
+        ],
+        "id": "132d3194-977e-4476-8bf7-87d4f5c89115",
+        "name": "Registra Reporte",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "UPDATE osaki_main.seguimiento_reportes\nSET estado_seguimiento = '{{ $json.nuevo_estado }}'\nWHERE num_telefono = '{{ $json.num_telefono }}'\nAND id={{ $json.id }};",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -384,
+          4032
+        ],
+        "id": "a5c1acb6-234d-45ca-8b4c-19a5a8e8d693",
+        "name": "Actualiza Reporte",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "items",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -544,
+          4032
+        ],
+        "id": "3e5931aa-c6db-450c-a08d-a30c8e49e36b",
+        "name": "Split Out2"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1392,
+          3920
+        ],
+        "id": "8b977796-b3f2-484a-b9b4-dfe322a0ba10",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -1184,
+          3920
+        ],
+        "id": "5d1a2396-7c3c-4789-8b60-aa77048fa235",
+        "name": "Loop Over Items10"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.tipo }}",
+                      "rightValue": "nuevo",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "68532fa8-5992-4b78-b130-eaccfad4ae33"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Nuevo"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "e0586bac-ebef-4869-ad1f-11643c7c9137",
+                      "leftValue": "={{ $json.tipo }}",
+                      "rightValue": "actualizacion",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Actualización"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -864,
+          3936
+        ],
+        "id": "8c394d39-81fb-478e-8549-7f63c7009019",
+        "name": "Switch3"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "items",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -544,
+          3856
+        ],
+        "id": "f9d64884-9e8f-4a2f-ab11-1c8ee13d592a",
+        "name": "Split Out4"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -1584,
+          3920
+        ],
+        "id": "9a29a219-a208-4078-a887-e2b514f1adb4",
+        "name": "Merge2"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+            "mode": "list",
+            "cachedResultName": "Control Calle 9",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1032791827,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1728,
+          5568
+        ],
+        "id": "1f23f132-a1cc-485b-adeb-46dd1645bfd7",
+        "name": "Obtiene Google Sheets1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT  id, TO_CHAR(fecha_reporte, 'YYYY-MM-DD HH24:MI')  as fecha_reporte,num_telefono, resumen_intencion, notas_tono_sentimiento, notas_urgencia, sucursal, resumen_datos_clave, estado_seguimiento\nFROM {{ $('Obtiene Datos Iniciales').first().json.schema }}.seguimiento_reportes\nWHERE fecha_reporte >= '{{ $('Obtiene Datos Iniciales').first().json.fecha_hoy }}'::date - INTERVAL '1 DAY'\n  and sucursal ='Delivery-Calle 9'\norder by fecha_reporte asc, num_telefono asc;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1728,
+          5376
+        ],
+        "id": "333941d8-5cbc-49f0-9182-092f850c0e13",
+        "name": "Obtiene Postgres1",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+            "mode": "list",
+            "cachedResultName": "Control Calle 9",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1032791827,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "num_telefono": "={{ $json.num_telefono }}",
+              "fecha_reporte": "={{ $json.fecha_reporte }}",
+              "resumen_intencion": "={{ $json.resumen_intencion }}",
+              "notas_tono_sentimiento": "={{ $json.notas_tono_sentimiento}}",
+              "notas_urgencia": "={{ $json.notas_urgencia}}",
+              "sucursal": "={{ $json.sucursal}}",
+              "resumen_datos_clave": "={{ $json.resumen_datos_clave}}",
+              "estado_seguimiento": "={{ $json.estado_seguimiento}}"
+            },
+            "matchingColumns": [
+              "num_telefono"
+            ],
+            "schema": [
+              {
+                "id": "fecha_reporte",
+                "displayName": "fecha_reporte",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "num_telefono",
+                "displayName": "num_telefono",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "resumen_intencion",
+                "displayName": "resumen_intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas_tono_sentimiento",
+                "displayName": "notas_tono_sentimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas_urgencia",
+                "displayName": "notas_urgencia",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "resumen_datos_clave",
+                "displayName": "resumen_datos_clave",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "estado_seguimiento",
+                "displayName": "estado_seguimiento",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -272,
+          5440
+        ],
+        "id": "abb67c63-1e2a-42d6-be83-ec6927ac86ae",
+        "name": "Registra Reporte1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "UPDATE osaki_main.seguimiento_reportes\nSET estado_seguimiento = '{{ $json.nuevo_estado }}'\nWHERE num_telefono = '{{ $json.num_telefono }}'\nAND id={{ $json.id }};",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -272,
+          5616
+        ],
+        "id": "daf81487-ef07-4d45-83ea-764e5cdbbf01",
+        "name": "Actualiza Reporte1",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "items",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -432,
+          5616
+        ],
+        "id": "1baad8ba-16cc-417f-8f32-65ad03b78bee",
+        "name": "Split Out3"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres1\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets1\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1280,
+          5504
+        ],
+        "id": "a018be5e-c1fa-41ca-a86a-0681451c7b13",
+        "name": "Code in JavaScript2"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -1072,
+          5504
+        ],
+        "id": "27aae7e8-63d3-4bdf-ad5b-14ae8b0ae431",
+        "name": "Loop Over Items14"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.tipo }}",
+                      "rightValue": "nuevo",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "68532fa8-5992-4b78-b130-eaccfad4ae33"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Nuevo"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "e0586bac-ebef-4869-ad1f-11643c7c9137",
+                      "leftValue": "={{ $json.tipo }}",
+                      "rightValue": "actualizacion",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Actualización"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -752,
+          5520
+        ],
+        "id": "d97f4065-51bd-4aa9-a078-b00ad312b758",
+        "name": "Switch4"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "items",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -432,
+          5440
+        ],
+        "id": "e6139ec1-59a0-4181-8875-5431b3f69b59",
+        "name": "Split Out5"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -1472,
+          5504
+        ],
+        "id": "2e43d6c8-e56c-423c-9475-7d215d8256ea",
+        "name": "Merge3"
+      },
+      {
+        "parameters": {
+          "operation": "clear",
+          "documentId": {
+            "__rl": true,
+            "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1807951179,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+          },
+          "keepFirstRow": true
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1168,
+          2640
+        ],
+        "id": "d1c7f79e-8157-462a-903f-284733bdf4fb",
+        "name": "Limpia Hoja Reportes Calle 47",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "clear",
+          "documentId": {
+            "__rl": true,
+            "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+            "mode": "list",
+            "cachedResultName": "Control Calle 9",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 1032791827,
+            "mode": "list",
+            "cachedResultName": "Reportes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+          },
+          "keepFirstRow": true
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1168,
+          2816
+        ],
+        "id": "086f714e-6b65-46a4-95e8-a0d08399ebf5",
+        "name": "Limpia Hoja Reportes Calle  9",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "OnTQvkOeBX8Kq3DU",
+            "name": "Google Sheets Osaki-TemikiaProd01"
+          }
+        }
       }
     ],
     "connections": {
@@ -6049,7 +6862,7 @@
         "main": [
           [
             {
-              "node": "Delete sheet",
+              "node": "Aggregate2",
               "type": "main",
               "index": 0
             }
@@ -6714,12 +7527,24 @@
       },
       "Limpia Hoja Clientes Calle 47": {
         "main": [
-          []
+          [
+            {
+              "node": "Limpia Hoja Reportes Calle 47",
+              "type": "main",
+              "index": 0
+            }
+          ]
         ]
       },
       "Limpia Hoja Clientes Calle 9": {
         "main": [
-          []
+          [
+            {
+              "node": "Limpia Hoja Reportes Calle  9",
+              "type": "main",
+              "index": 0
+            }
+          ]
         ]
       },
       "Obtiene Historial a Borrar Deli Calle 47": {
@@ -7001,6 +7826,16 @@
               "node": "Get Clientes Sheet2",
               "type": "main",
               "index": 0
+            },
+            {
+              "node": "Obtiene Postgres",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Google Sheets",
+              "type": "main",
+              "index": 0
             }
           ],
           [
@@ -7011,6 +7846,16 @@
             },
             {
               "node": "Variables 9",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Postgres1",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Google Sheets1",
               "type": "main",
               "index": 0
             }
@@ -7370,14 +8215,295 @@
             }
           ]
         ]
+      },
+      "Obtiene Todas Fechas": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items9": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Delete sheet",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Delete sheet": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate2": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Todas Fechas",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Google Sheets": {
+        "main": [
+          [
+            {
+              "node": "Merge2",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Obtiene Postgres": {
+        "main": [
+          [
+            {
+              "node": "Merge2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Reporte": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items10",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Reporte": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items10",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out2": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Reporte",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items10",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items10": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Switch3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch3": {
+        "main": [
+          [
+            {
+              "node": "Split Out4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Split Out2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out4": {
+        "main": [
+          [
+            {
+              "node": "Registra Reporte",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge2": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Google Sheets1": {
+        "main": [
+          [
+            {
+              "node": "Merge3",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Obtiene Postgres1": {
+        "main": [
+          [
+            {
+              "node": "Merge3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Reporte1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items14",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Reporte1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items14",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out3": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Reporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript2": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items14",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items14": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Switch4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch4": {
+        "main": [
+          [
+            {
+              "node": "Split Out5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Split Out3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out5": {
+        "main": [
+          [
+            {
+              "node": "Registra Reporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge3": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 594f7c2d",
+    "name": "Version 0e0968e4",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a",
+  "activeVersionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -7490,7 +8616,7 @@
       "main": [
         [
           {
-            "node": "Delete sheet",
+            "node": "Aggregate2",
             "type": "main",
             "index": 0
           }
@@ -8155,12 +9281,24 @@
     },
     "Limpia Hoja Clientes Calle 47": {
       "main": [
-        []
+        [
+          {
+            "node": "Limpia Hoja Reportes Calle 47",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Limpia Hoja Clientes Calle 9": {
       "main": [
-        []
+        [
+          {
+            "node": "Limpia Hoja Reportes Calle  9",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Obtiene Historial a Borrar Deli Calle 47": {
@@ -8442,6 +9580,16 @@
             "node": "Get Clientes Sheet2",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Obtiene Postgres",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Google Sheets",
+            "type": "main",
+            "index": 0
           }
         ],
         [
@@ -8452,6 +9600,16 @@
           },
           {
             "node": "Variables 9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Postgres1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Google Sheets1",
             "type": "main",
             "index": 0
           }
@@ -8811,6 +9969,287 @@
           }
         ]
       ]
+    },
+    "Obtiene Todas Fechas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items9": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Delete sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Todas Fechas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Obtiene Postgres": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Reporte": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Reporte": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items10": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Split Out4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out4": {
+      "main": [
+        [
+          {
+            "node": "Registra Reporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Obtiene Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Reporte1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Reporte1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out3": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items14": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Split Out5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out5": {
+      "main": [
+        [
+          {
+            "node": "Registra Reporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-11T17:49:55.779Z",
@@ -8876,8 +10315,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1104,
-        1632
+        -1616,
+        1648
       ],
       "id": "58d96e47-f110-4a4e-8d1c-594fcb18cf23",
       "name": "Limpia Históricos",
@@ -8891,14 +10330,14 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \nWHERE fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n    order by id;",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion >= '{{ $('Get Initial Data').first().json.fecha_hoy }}'::date - INTERVAL '3 months'\nAND fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n    order by fecha_reservacion ASC;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -912,
-        1632
+        -1392,
+        1648
       ],
       "id": "2d53ed3d-4a62-45df-8b03-59a72b0adac5",
       "name": "Get Historic",
@@ -9048,8 +10487,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -720,
-        1632
+        -1168,
+        1648
       ],
       "id": "34eb8f13-e082-4c36-ab58-0b6dee1093e0",
       "name": "Update Historic",
@@ -9366,15 +10805,15 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": "={{new Date(new Date($('Get Initial Data').item.json.fecha_hoy).setDate(new Date($('Get Initial Data').item.json.fecha_hoy).getDate()-1)).toISOString().split('T')[0]}}",
+          "value": "={{ $json.fecha_reservacion }}",
           "mode": "name"
         }
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -512,
-        1632
+        -336,
+        1664
       ],
       "id": "d24f3728-5957-4013-a38a-fd3fc75ae0d4",
       "name": "Delete sheet",
@@ -10912,13 +12351,13 @@
       "parameters": {
         "content": "## Rellena Reservaciones Históricas\n\n- Toma todos los registros antiguos\n- Limpia el historial en excel\n. Rellena los registros en excel",
         "height": 336,
-        "width": 1120,
+        "width": 1744,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1408,
-        1504
+        -1904,
+        1520
       ],
       "typeVersion": 1,
       "id": "9b300582-f487-455f-9cfb-3f7d872086d1",
@@ -11719,8 +13158,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -1344,
-        1632
+        -1840,
+        1648
       ],
       "id": "19180504-6c4d-496f-9d59-f3477e44ffd0",
       "name": "Actualiza Estado Reserv Realizada",
@@ -11805,7 +13244,8 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 1
+              "field": "cronExpression",
+              "expression": "0 0 1 * * *"
             }
           ]
         }
@@ -12086,8 +13526,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -3024,
-        3776
+        -3344,
+        4000
       ],
       "id": "13159c0b-54eb-4b8d-be3b-37a2638f83c3",
       "name": "Cada 1 Min"
@@ -12101,8 +13541,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -2592,
-        3776
+        -2912,
+        4000
       ],
       "id": "0df71b31-b8e9-4576-848e-c35d0b7bc284",
       "name": "Split Out1"
@@ -12871,6 +14311,12 @@
               "name": "schema",
               "value": "osaki_main",
               "type": "string"
+            },
+            {
+              "id": "9e13ba25-fbac-499a-bf25-ab9764f99541",
+              "name": "fecha_hoy",
+              "value": "={{ new Date().toLocaleString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }) }}",
+              "type": "string"
             }
           ]
         },
@@ -12879,8 +14325,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2816,
-        3776
+        -3136,
+        4000
       ],
       "id": "752a7c6a-5ba6-4499-8440-7a1c1008395d",
       "name": "Obtiene Datos Iniciales"
@@ -12981,8 +14427,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -2384,
-        3776
+        -2704,
+        4000
       ],
       "id": "7cf9bc46-3af9-472b-a61c-c33d3e8a87f8",
       "name": "If"
@@ -13021,8 +14467,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1808,
-        4240
+        -1632,
+        4880
       ],
       "id": "f9d3917b-7bf4-4c06-a77c-2b9019ac5171",
       "name": "Get BlackList",
@@ -13123,8 +14569,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -800,
-        4224
+        -624,
+        4864
       ],
       "id": "39f4a6c2-7273-462c-96f2-15aaf39635d1",
       "name": "Insert rows in a table",
@@ -13230,8 +14676,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -576,
-        4224
+        -400,
+        4864
       ],
       "id": "3fbcc3f3-04c2-499c-aa56-f3470b05d2f7",
       "name": "Update row in sheet",
@@ -13269,8 +14715,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -800,
-        4384
+        -624,
+        5024
       ],
       "id": "5a839245-411b-4b2d-b581-281c6f2e6aa8",
       "name": "Delete table or rows",
@@ -13302,8 +14748,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -576,
-        4384
+        -400,
+        5024
       ],
       "id": "49fdf290-6a71-4fcb-a001-9da816583ae1",
       "name": "Delete rows or columns from sheet",
@@ -13321,8 +14767,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2016,
-        4240
+        -1840,
+        4880
       ],
       "id": "599f46ee-696d-47ef-9575-ddce1c3e1548",
       "name": "Variables 9"
@@ -13334,8 +14780,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1600,
-        4240
+        -1424,
+        4880
       ],
       "id": "e03c8dda-c60f-41f3-8ad3-6fafeb735238",
       "name": "Reverse 9"
@@ -13360,8 +14806,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1808,
-        3952
+        -1632,
+        4592
       ],
       "id": "a2d06fae-ef8d-4b29-90a9-c729870b24fd",
       "name": "Loop Over Items13"
@@ -13629,8 +15075,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -384,
-        3984
+        -208,
+        4624
       ],
       "id": "661265d9-3169-4ab0-8bc1-059b9c9bc6c3",
       "name": "Update rows in a table",
@@ -13668,8 +15114,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -1360,
-        3952
+        -1184,
+        4592
       ],
       "id": "94a0ca8b-668a-4a58-922d-c557bce70be9",
       "name": "Select rows from a table",
@@ -13942,8 +15388,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -624,
-        3936
+        -448,
+        4576
       ],
       "id": "2a4ca1da-6d7d-4fef-a180-5f729eb6380d",
       "name": "Insert rows in a table6",
@@ -13992,8 +15438,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1600,
-        3968
+        -1424,
+        4608
       ],
       "id": "869eae78-de12-4ff5-a197-fb5bd005ff52",
       "name": "If14"
@@ -14025,8 +15471,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -928,
-        4000
+        -752,
+        4640
       ],
       "id": "d00014aa-0d3c-4eb2-8844-b369a16862ce",
       "name": "If15"
@@ -14052,8 +15498,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -2032,
-        3952
+        -1856,
+        4592
       ],
       "id": "348c0182-0564-46df-b3b4-36ee2e100394",
       "name": "Get Clientes Sheet",
@@ -14416,8 +15862,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -1136,
-        4240
+        -960,
+        4880
       ],
       "id": "3c5e8606-23b7-4cb0-8972-ed48eee0a733",
       "name": "Switch2"
@@ -14429,8 +15875,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1360,
-        4240
+        -1184,
+        4880
       ],
       "id": "516c3f61-1d40-4aef-b620-2d4da2730b1f",
       "name": "Loop Over Items7"
@@ -14456,8 +15902,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -352,
-        4384
+        -176,
+        5024
       ],
       "id": "b546b867-f22a-43cd-aa6d-4bf547cb8c0b",
       "name": "Wait3",
@@ -14491,8 +15937,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1136,
-        3952
+        -960,
+        4592
       ],
       "id": "b8b823f5-3e9c-4c25-a732-e6cc3ee6c450",
       "name": "If16"
@@ -14536,8 +15982,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -2304,
-        3136
+        -1024,
+        1232
       ],
       "id": "9fd9e270-ead8-4241-8337-816e17500724",
       "name": "When clicking ‘Execute workflow’"
@@ -14750,6 +16196,812 @@
       ],
       "id": "34235d61-5a38-463c-9dc0-9e7d7c2ef367",
       "name": "Evalua Hojas"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "  \nSELECT distinct TO_CHAR(fecha_reservacion, 'YYYY-MM-DD') as fecha_reservacion\n  FROM {{ $('Get Initial Data').first().json.schema }}.reservaciones \n    WHERE fecha_reservacion >= '{{ $('Get Initial Data').first().json.fecha_hoy }}'::date - INTERVAL '3 months'\n  AND fecha_reservacion < '{{ $('Get Initial Data').first().json.fecha_hoy }}'\n  order by fecha_reservacion asc;\n\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -768,
+        1648
+      ],
+      "id": "23a6bb5c-462d-4cb8-8f70-57e1bcef05b3",
+      "name": "Obtiene Todas Fechas",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -544,
+        1648
+      ],
+      "id": "ed939b67-c701-4124-aecf-8ddfed766a87",
+      "name": "Loop Over Items9"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        1648
+      ],
+      "id": "0e53a899-b381-414a-99a8-f48a1010c6c7",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1807951179,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1840,
+        3984
+      ],
+      "id": "07dbb707-443d-4b7c-9c5e-801f8258aa9c",
+      "name": "Obtiene Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT  id, TO_CHAR(fecha_reporte, 'YYYY-MM-DD HH24:MI')  as fecha_reporte,num_telefono, resumen_intencion, notas_tono_sentimiento, notas_urgencia, sucursal, resumen_datos_clave, estado_seguimiento\nFROM {{ $('Obtiene Datos Iniciales').first().json.schema }}.seguimiento_reportes\nWHERE fecha_reporte >= '{{ $('Obtiene Datos Iniciales').first().json.fecha_hoy }}'::date - INTERVAL '1 DAY'\n  and sucursal !='Delivery-Calle 9'\norder by fecha_reporte asc, num_telefono asc;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1840,
+        3792
+      ],
+      "id": "87a151be-d7bc-42f4-9916-12bf7f7223af",
+      "name": "Obtiene Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1807951179,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "num_telefono": "={{ $json.num_telefono }}",
+            "fecha_reporte": "={{ $json.fecha_reporte }}",
+            "resumen_intencion": "={{ $json.resumen_intencion }}",
+            "notas_tono_sentimiento": "={{ $json.notas_tono_sentimiento}}",
+            "notas_urgencia": "={{ $json.notas_urgencia}}",
+            "sucursal": "={{ $json.sucursal}}",
+            "resumen_datos_clave": "={{ $json.resumen_datos_clave}}",
+            "estado_seguimiento": "={{ $json.estado_seguimiento}}"
+          },
+          "matchingColumns": [
+            "num_telefono"
+          ],
+          "schema": [
+            {
+              "id": "fecha_reporte",
+              "displayName": "fecha_reporte",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "num_telefono",
+              "displayName": "num_telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_intencion",
+              "displayName": "resumen_intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_tono_sentimiento",
+              "displayName": "notas_tono_sentimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_urgencia",
+              "displayName": "notas_urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucursal",
+              "displayName": "sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_datos_clave",
+              "displayName": "resumen_datos_clave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "estado_seguimiento",
+              "displayName": "estado_seguimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -384,
+        3856
+      ],
+      "id": "132d3194-977e-4476-8bf7-87d4f5c89115",
+      "name": "Registra Reporte",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE osaki_main.seguimiento_reportes\nSET estado_seguimiento = '{{ $json.nuevo_estado }}'\nWHERE num_telefono = '{{ $json.num_telefono }}'\nAND id={{ $json.id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -384,
+        4032
+      ],
+      "id": "a5c1acb6-234d-45ca-8b4c-19a5a8e8d693",
+      "name": "Actualiza Reporte",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -544,
+        4032
+      ],
+      "id": "3e5931aa-c6db-450c-a08d-a30c8e49e36b",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1392,
+        3920
+      ],
+      "id": "8b977796-b3f2-484a-b9b4-dfe322a0ba10",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1184,
+        3920
+      ],
+      "id": "5d1a2396-7c3c-4789-8b60-aa77048fa235",
+      "name": "Loop Over Items10"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "nuevo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "68532fa8-5992-4b78-b130-eaccfad4ae33"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Nuevo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "e0586bac-ebef-4869-ad1f-11643c7c9137",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "actualizacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Actualización"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -864,
+        3936
+      ],
+      "id": "8c394d39-81fb-478e-8549-7f63c7009019",
+      "name": "Switch3"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -544,
+        3856
+      ],
+      "id": "f9d64884-9e8f-4a2f-ab11-1c8ee13d592a",
+      "name": "Split Out4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1584,
+        3920
+      ],
+      "id": "9a29a219-a208-4078-a887-e2b514f1adb4",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+          "mode": "list",
+          "cachedResultName": "Control Calle 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1032791827,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1728,
+        5568
+      ],
+      "id": "1f23f132-a1cc-485b-adeb-46dd1645bfd7",
+      "name": "Obtiene Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT  id, TO_CHAR(fecha_reporte, 'YYYY-MM-DD HH24:MI')  as fecha_reporte,num_telefono, resumen_intencion, notas_tono_sentimiento, notas_urgencia, sucursal, resumen_datos_clave, estado_seguimiento\nFROM {{ $('Obtiene Datos Iniciales').first().json.schema }}.seguimiento_reportes\nWHERE fecha_reporte >= '{{ $('Obtiene Datos Iniciales').first().json.fecha_hoy }}'::date - INTERVAL '1 DAY'\n  and sucursal ='Delivery-Calle 9'\norder by fecha_reporte asc, num_telefono asc;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1728,
+        5376
+      ],
+      "id": "333941d8-5cbc-49f0-9182-092f850c0e13",
+      "name": "Obtiene Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+          "mode": "list",
+          "cachedResultName": "Control Calle 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1032791827,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "num_telefono": "={{ $json.num_telefono }}",
+            "fecha_reporte": "={{ $json.fecha_reporte }}",
+            "resumen_intencion": "={{ $json.resumen_intencion }}",
+            "notas_tono_sentimiento": "={{ $json.notas_tono_sentimiento}}",
+            "notas_urgencia": "={{ $json.notas_urgencia}}",
+            "sucursal": "={{ $json.sucursal}}",
+            "resumen_datos_clave": "={{ $json.resumen_datos_clave}}",
+            "estado_seguimiento": "={{ $json.estado_seguimiento}}"
+          },
+          "matchingColumns": [
+            "num_telefono"
+          ],
+          "schema": [
+            {
+              "id": "fecha_reporte",
+              "displayName": "fecha_reporte",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "num_telefono",
+              "displayName": "num_telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_intencion",
+              "displayName": "resumen_intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_tono_sentimiento",
+              "displayName": "notas_tono_sentimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_urgencia",
+              "displayName": "notas_urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucursal",
+              "displayName": "sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_datos_clave",
+              "displayName": "resumen_datos_clave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "estado_seguimiento",
+              "displayName": "estado_seguimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -272,
+        5440
+      ],
+      "id": "abb67c63-1e2a-42d6-be83-ec6927ac86ae",
+      "name": "Registra Reporte1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE osaki_main.seguimiento_reportes\nSET estado_seguimiento = '{{ $json.nuevo_estado }}'\nWHERE num_telefono = '{{ $json.num_telefono }}'\nAND id={{ $json.id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -272,
+        5616
+      ],
+      "id": "daf81487-ef07-4d45-83ea-764e5cdbbf01",
+      "name": "Actualiza Reporte1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        5616
+      ],
+      "id": "1baad8ba-16cc-417f-8f32-65ad03b78bee",
+      "name": "Split Out3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres1\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets1\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        5504
+      ],
+      "id": "a018be5e-c1fa-41ca-a86a-0681451c7b13",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1072,
+        5504
+      ],
+      "id": "27aae7e8-63d3-4bdf-ad5b-14ae8b0ae431",
+      "name": "Loop Over Items14"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "nuevo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "68532fa8-5992-4b78-b130-eaccfad4ae33"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Nuevo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "e0586bac-ebef-4869-ad1f-11643c7c9137",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "actualizacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Actualización"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -752,
+        5520
+      ],
+      "id": "d97f4065-51bd-4aa9-a078-b00ad312b758",
+      "name": "Switch4"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        5440
+      ],
+      "id": "e6139ec1-59a0-4181-8875-5431b3f69b59",
+      "name": "Split Out5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1472,
+        5504
+      ],
+      "id": "2e43d6c8-e56c-423c-9475-7d215d8256ea",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "operation": "clear",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1807951179,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+        },
+        "keepFirstRow": true
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1168,
+        2640
+      ],
+      "id": "d1c7f79e-8157-462a-903f-284733bdf4fb",
+      "name": "Limpia Hoja Reportes Calle 47",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "clear",
+        "documentId": {
+          "__rl": true,
+          "value": "15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g",
+          "mode": "list",
+          "cachedResultName": "Control Calle 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1032791827,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g/edit#gid=1032791827"
+        },
+        "keepFirstRow": true
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1168,
+        2816
+      ],
+      "id": "086f714e-6b65-46a4-95e8-a0d08399ebf5",
+      "name": "Limpia Hoja Reportes Calle  9",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
     }
   ],
   "settings": {
@@ -14792,6 +17044,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2026-01-21T14:21:52.765Z",
-  "versionId": "594f7c2d-020b-4e22-a8a0-0c4a14ebc96a"
+  "updatedAt": "2026-01-24T22:14:27.116Z",
+  "versionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07"
 }
