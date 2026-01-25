@@ -1,0 +1,654 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Cada 1 Min": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Datos Iniciales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Datos Iniciales": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Postgres",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Obtiene Postgres": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Reporte": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Reporte": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Registra Reporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-24T18:01:45.272Z",
+  "id": "VTUgao1_YRQhdvEgLG_Ir",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 * 10-23 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -704,
+        48
+      ],
+      "id": "562dd613-a762-407e-8c2a-03bea36208f5",
+      "name": "Cada 1 Min"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sheets",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        48
+      ],
+      "id": "5d64eba5-f45a-49d8-957b-f56c05b9a981",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06cb9b12-57dd-43b3-b321-4a700bb2ed51",
+              "name": "sheets",
+              "value": "[  { \"sucursal\":\"calle_47\", \"id\": \"16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0\"},    { \"sucursal\":\"calle_9\",\"id\": \"15TzDefkI5k5T6AQt8AwVZ0BUfdSkgTUtxuxvq4wFP-g\"}]   ",
+              "type": "array"
+            },
+            {
+              "id": "a5334687-67f0-462f-b4ed-4280f95f783d",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            },
+            {
+              "id": "9e13ba25-fbac-499a-bf25-ab9764f99541",
+              "name": "fecha_hoy",
+              "value": "={{ new Date().toLocaleString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -496,
+        48
+      ],
+      "id": "4a7c6de6-4bfe-42ae-a8cc-8d79b0711767",
+      "name": "Obtiene Datos Iniciales"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d5ffa888-9090-46a3-9f1d-2b0bd27331ae",
+              "leftValue": "={{ $json.sheets.sucursal }}",
+              "rightValue": "calle_47",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -64,
+        48
+      ],
+      "id": "58454d96-6c2d-434f-ac54-01f3b3ace139",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        736,
+        64
+      ],
+      "id": "5d6df9e3-3659-4ea2-b093-68da970d1781",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1807951179,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        288,
+        128
+      ],
+      "id": "1beaec70-69e2-4515-ba8c-de9004e94e9f",
+      "name": "Obtiene Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT  id, TO_CHAR(fecha_reporte, 'YYYY-MM-DD HH24:MI')  as fecha_reporte,num_telefono, resumen_intencion, notas_tono_sentimiento, notas_urgencia, sucursal, resumen_datos_clave, estado_seguimiento\nFROM {{ $('Obtiene Datos Iniciales').first().json.schema }}.seguimiento_reportes\nWHERE fecha_reporte >= '{{ $('Obtiene Datos Iniciales').first().json.fecha_hoy }}'::date - INTERVAL '1 DAY'\n  and sucursal !='Delivery-Calle 9'\norder by fecha_reporte asc, num_telefono asc;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        288,
+        -64
+      ],
+      "id": "1dd71f09-2fe2-4f6f-a4d8-71f169ea6e7a",
+      "name": "Obtiene Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        944,
+        64
+      ],
+      "id": "13d9a0b6-c043-4363-98d8-13f252ce8db0",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "nuevo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "68532fa8-5992-4b78-b130-eaccfad4ae33"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Nuevo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "e0586bac-ebef-4869-ad1f-11643c7c9137",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "actualizacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Actualización"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        80
+      ],
+      "id": "dae76a70-c4a7-40ee-9a18-df195120888c",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1807951179,
+          "mode": "list",
+          "cachedResultName": "Reportes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit#gid=1807951179"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "num_telefono": "={{ $json.num_telefono }}",
+            "fecha_reporte": "={{ $json.fecha_reporte }}",
+            "resumen_intencion": "={{ $json.resumen_intencion }}",
+            "notas_tono_sentimiento": "={{ $json.notas_tono_sentimiento}}",
+            "notas_urgencia": "={{ $json.notas_urgencia}}",
+            "sucursal": "={{ $json.sucursal}}",
+            "resumen_datos_clave": "={{ $json.resumen_datos_clave}}",
+            "estado_seguimiento": "={{ $json.estado_seguimiento}}"
+          },
+          "matchingColumns": [
+            "num_telefono"
+          ],
+          "schema": [
+            {
+              "id": "fecha_reporte",
+              "displayName": "fecha_reporte",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "num_telefono",
+              "displayName": "num_telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_intencion",
+              "displayName": "resumen_intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_tono_sentimiento",
+              "displayName": "notas_tono_sentimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas_urgencia",
+              "displayName": "notas_urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "sucursal",
+              "displayName": "sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resumen_datos_clave",
+              "displayName": "resumen_datos_clave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "estado_seguimiento",
+              "displayName": "estado_seguimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1744,
+        0
+      ],
+      "id": "fa580b6a-f77e-4448-8eb6-56d6ae2a6398",
+      "name": "Registra Reporte",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE osaki_main.seguimiento_reportes\nSET estado_seguimiento = '{{ $json.nuevo_estado }}'\nWHERE num_telefono = '{{ $json.num_telefono }}'\nAND id={{ $json.id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1744,
+        176
+      ],
+      "id": "22d19e06-142b-4030-bf3b-9b4b99bf0685",
+      "name": "Actualiza Reporte",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        0
+      ],
+      "id": "9f61c9d4-abdd-44ec-8094-5a17bef88e17",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        544,
+        64
+      ],
+      "id": "53a32cd8-41c9-43e2-908a-11f9f3ae26b6",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        176
+      ],
+      "id": "3ad85f44-4cd0-4fab-8012-d20f267aa5a0",
+      "name": "Split Out2"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-24T18:01:45.276Z",
+      "createdAt": "2026-01-24T18:01:45.276Z",
+      "role": "workflow:owner",
+      "workflowId": "VTUgao1_YRQhdvEgLG_Ir",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-24T22:21:44.074Z",
+  "versionId": "6930c0d6-4ff0-4366-a1c2-c4a8d29df940"
+}
