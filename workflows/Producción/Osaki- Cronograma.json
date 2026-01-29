@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-24T22:18:31.000Z",
-    "createdAt": "2026-01-24T22:14:27.120Z",
-    "versionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07",
+    "updatedAt": "2026-01-28T15:43:25.000Z",
+    "createdAt": "2026-01-28T15:43:11.567Z",
+    "versionId": "b9ec733d-a889-4ab6-9f55-cc75ad5d39cc",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -481,7 +481,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $('Loop Over Items1').item.json.fecha_reservacion }}'  \norder by zona desc, estado asc, id asc ;",
+          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $('Loop Over Items1').item.json.fecha_reservacion }}'  \norder by estado asc, zona desc,  id asc ;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -777,7 +777,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $json.fecha_reservacion }}'  \norder by zona desc, estado asc, id asc ;",
+          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $json.fecha_reservacion }}'  \norder by estado asc, zona desc, id asc ;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -8499,11 +8499,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 0e0968e4",
+    "name": "Version b9ec733d",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07",
+  "activeVersionId": "b9ec733d-a889-4ab6-9f55-cc75ad5d39cc",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -10735,7 +10735,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $('Loop Over Items1').item.json.fecha_reservacion }}'  \norder by zona desc, estado asc, id asc ;",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $('Loop Over Items1').item.json.fecha_reservacion }}'  \norder by estado asc, zona desc,  id asc ;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -11031,7 +11031,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $json.fecha_reservacion }}'  \norder by zona desc, estado asc, id asc ;",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Calcula Fecha y Hora Actual').first().json.schema }}.reservaciones \nWHERE fecha_reservacion = '{{ $json.fecha_reservacion }}'  \norder by estado asc, zona desc, id asc ;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -17044,6 +17044,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2026-01-24T22:14:27.116Z",
-  "versionId": "0e0968e4-4182-4f59-b0f8-54faa2df3d07"
+  "updatedAt": "2026-01-28T15:43:11.564Z",
+  "versionId": "b9ec733d-a889-4ab6-9f55-cc75ad5d39cc"
 }
