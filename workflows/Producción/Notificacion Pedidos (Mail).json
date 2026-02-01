@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-10T15:24:49.000Z",
-    "createdAt": "2026-01-10T15:24:46.719Z",
-    "versionId": "c9dae73f-c4cd-4050-8e03-c591113b6b95",
+    "updatedAt": "2026-02-01T02:53:59.000Z",
+    "createdAt": "2026-02-01T02:53:53.499Z",
+    "versionId": "1050326d-ec7d-4e85-8017-2645dde0748d",
     "workflowId": "1rF03M1hskg0Bbju",
     "nodes": [
       {
@@ -1921,8 +1921,8 @@
         "type": "n8n-nodes-base.gmail",
         "typeVersion": 2.2,
         "position": [
-          -672,
-          480
+          -144,
+          384
         ],
         "id": "f0fe7781-85ef-4fa5-95e1-87d96fcaa97f",
         "name": "Send a message",
@@ -1947,29 +1947,44 @@
       },
       {
         "parameters": {
-          "sendTo": "=cheshire.zol@hotmail.com",
+          "fromEmail": "temikia.agency.prod01@gmail.com",
+          "toEmail": "cheshire.zol@hotmail.com",
           "subject": "={{ $json.subject }}",
-          "message": "={{ $json.html }}",
+          "emailFormat": "both",
+          "text": "={{ $json.text }}",
+          "html": "={{ $json.html }}",
           "options": {
-            "appendAttribution": false,
-            "senderName": "=Osaki {{ $('Normaliza Datos1').item.json.sucursal.nombre}}"
+            "appendAttribution": false
           }
         },
-        "type": "n8n-nodes-base.gmail",
-        "typeVersion": 2.2,
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
         "position": [
-          -480,
-          160
+          -432,
+          432
         ],
-        "id": "e49662fa-e54a-4173-b267-317a544a36e6",
-        "name": "Testeo Correos",
-        "webhookId": "a2e87fa7-2bbb-47b1-83b6-183eac8e9872",
+        "id": "3aac007b-bd7a-43f1-a810-64d535cb5235",
+        "name": "Send email",
+        "webhookId": "d0d930f0-7331-433d-beed-47f993b62b89",
         "credentials": {
-          "gmailOAuth2": {
-            "id": "ekkn7I2G8DZI9Ar7",
-            "name": "Gmail DeliveryOsaki"
+          "smtp": {
+            "id": "Tb5Kma6EadIYHsAO",
+            "name": "SMTP account"
           }
         }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Capturamos los datos de entrada\nconst inputJson = items[0].json;\nconst htmlContent = inputJson.html || \"\";\nconst subject = inputJson.subject || \"Actualización de tu pedido\"; // Valor por defecto si no existe\n\n/**\n * Función para convertir HTML a Texto Plano de forma limpia\n */\nfunction htmlToText(html) {\n    let text = html;\n\n    // 1. Eliminar bloques de <style> y <head>\n    text = text.replace(/<style([\\s\\S]*?)<\\/style>/gi, '');\n    text = text.replace(/<head([\\s\\S]*?)<\\/head>/gi, '');\n    \n    // 2. Reemplazar cierres de bloques por saltos de línea para mantener estructura\n    text = text.replace(/<\\/p>|<\\/div>|<tr>|<\\/h1>|<\\/h2>/gi, '\\n');\n    text = text.replace(/<br\\s*\\/?>/gi, '\\n');\n    \n    // 3. Eliminar todas las etiquetas HTML\n    text = text.replace(/<[^>]+>/g, '');\n    \n    // 4. Decodificar entidades HTML comunes\n    const entities = {\n        '&nbsp;': ' ', '&aacute;': 'á', '&eacute;': 'é', '&iacute;': 'í', \n        '&oacute;': 'ó', '&uacute;': 'ú', '&ntilde;': 'ñ', '&Aacute;': 'Á',\n        '&Eacute;': 'É', '&Iacute;': 'Í', '&Oacute;': 'Ó', '&Uacute;': 'Ú', '&Ntilde;': 'Ñ'\n    };\n    \n    Object.keys(entities).forEach(key => {\n        text = text.replace(new RegExp(key, 'g'), entities[key]);\n    });\n\n    // 5. Limpiar espacios en blanco laterales y reducir saltos de línea múltiples\n    return text.trim().replace(/\\n\\s*\\n/g, '\\n\\n');\n}\n\n// Generamos la versión de texto plano\nconst plainText = htmlToText(htmlContent);\n\n// Retornamos el objeto final para el nodo de Email\nreturn [\n  {\n    json: {\n      subject: subject, // Pasa sin transformación\n      html: htmlContent,\n      text: plainText\n    }\n  }\n];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -704,
+          432
+        ],
+        "id": "8e535c8f-e0cd-4794-81a5-7894f8da11fb",
+        "name": "Code in JavaScript1"
       }
     ],
     "connections": {
@@ -2189,7 +2204,7 @@
         "main": [
           [
             {
-              "node": "Send a message",
+              "node": "Code in JavaScript1",
               "type": "main",
               "index": 0
             }
@@ -2200,7 +2215,7 @@
         "main": [
           [
             {
-              "node": "Send a message",
+              "node": "Code in JavaScript1",
               "type": "main",
               "index": 0
             }
@@ -2365,6 +2380,27 @@
       },
       "Send a message": {
         "main": [
+          []
+        ]
+      },
+      "Normaliza Datos1": {
+        "main": [
+          []
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Send email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send email": {
+        "main": [
           [
             {
               "node": "Ingresa Registro ReConfirmacion3",
@@ -2373,19 +2409,14 @@
             }
           ]
         ]
-      },
-      "Normaliza Datos1": {
-        "main": [
-          []
-        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c9dae73f",
+    "name": "Version 1050326d",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "c9dae73f-c4cd-4050-8e03-c591113b6b95",
+  "activeVersionId": "1050326d-ec7d-4e85-8017-2645dde0748d",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -2603,7 +2634,7 @@
       "main": [
         [
           {
-            "node": "Send a message",
+            "node": "Code in JavaScript1",
             "type": "main",
             "index": 0
           }
@@ -2614,7 +2645,7 @@
       "main": [
         [
           {
-            "node": "Send a message",
+            "node": "Code in JavaScript1",
             "type": "main",
             "index": 0
           }
@@ -2779,6 +2810,27 @@
     },
     "Send a message": {
       "main": [
+        []
+      ]
+    },
+    "Normaliza Datos1": {
+      "main": [
+        []
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "main": [
         [
           {
             "node": "Ingresa Registro ReConfirmacion3",
@@ -2786,11 +2838,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Normaliza Datos1": {
-      "main": [
-        []
       ]
     }
   },
@@ -4717,8 +4764,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -672,
-        480
+        -144,
+        384
       ],
       "id": "f0fe7781-85ef-4fa5-95e1-87d96fcaa97f",
       "name": "Send a message",
@@ -4743,29 +4790,44 @@
     },
     {
       "parameters": {
-        "sendTo": "=cheshire.zol@hotmail.com",
+        "fromEmail": "temikia.agency.prod01@gmail.com",
+        "toEmail": "cheshire.zol@hotmail.com",
         "subject": "={{ $json.subject }}",
-        "message": "={{ $json.html }}",
+        "emailFormat": "both",
+        "text": "={{ $json.text }}",
+        "html": "={{ $json.html }}",
         "options": {
-          "appendAttribution": false,
-          "senderName": "=Osaki {{ $('Normaliza Datos1').item.json.sucursal.nombre}}"
+          "appendAttribution": false
         }
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
       "position": [
-        -480,
-        160
+        -432,
+        432
       ],
-      "id": "e49662fa-e54a-4173-b267-317a544a36e6",
-      "name": "Testeo Correos",
-      "webhookId": "a2e87fa7-2bbb-47b1-83b6-183eac8e9872",
+      "id": "3aac007b-bd7a-43f1-a810-64d535cb5235",
+      "name": "Send email",
+      "webhookId": "d0d930f0-7331-433d-beed-47f993b62b89",
       "credentials": {
-        "gmailOAuth2": {
-          "id": "ekkn7I2G8DZI9Ar7",
-          "name": "Gmail DeliveryOsaki"
+        "smtp": {
+          "id": "Tb5Kma6EadIYHsAO",
+          "name": "SMTP account"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Capturamos los datos de entrada\nconst inputJson = items[0].json;\nconst htmlContent = inputJson.html || \"\";\nconst subject = inputJson.subject || \"Actualización de tu pedido\"; // Valor por defecto si no existe\n\n/**\n * Función para convertir HTML a Texto Plano de forma limpia\n */\nfunction htmlToText(html) {\n    let text = html;\n\n    // 1. Eliminar bloques de <style> y <head>\n    text = text.replace(/<style([\\s\\S]*?)<\\/style>/gi, '');\n    text = text.replace(/<head([\\s\\S]*?)<\\/head>/gi, '');\n    \n    // 2. Reemplazar cierres de bloques por saltos de línea para mantener estructura\n    text = text.replace(/<\\/p>|<\\/div>|<tr>|<\\/h1>|<\\/h2>/gi, '\\n');\n    text = text.replace(/<br\\s*\\/?>/gi, '\\n');\n    \n    // 3. Eliminar todas las etiquetas HTML\n    text = text.replace(/<[^>]+>/g, '');\n    \n    // 4. Decodificar entidades HTML comunes\n    const entities = {\n        '&nbsp;': ' ', '&aacute;': 'á', '&eacute;': 'é', '&iacute;': 'í', \n        '&oacute;': 'ó', '&uacute;': 'ú', '&ntilde;': 'ñ', '&Aacute;': 'Á',\n        '&Eacute;': 'É', '&Iacute;': 'Í', '&Oacute;': 'Ó', '&Uacute;': 'Ú', '&Ntilde;': 'Ñ'\n    };\n    \n    Object.keys(entities).forEach(key => {\n        text = text.replace(new RegExp(key, 'g'), entities[key]);\n    });\n\n    // 5. Limpiar espacios en blanco laterales y reducir saltos de línea múltiples\n    return text.trim().replace(/\\n\\s*\\n/g, '\\n\\n');\n}\n\n// Generamos la versión de texto plano\nconst plainText = htmlToText(htmlContent);\n\n// Retornamos el objeto final para el nodo de Email\nreturn [\n  {\n    json: {\n      subject: subject, // Pasa sin transformación\n      html: htmlContent,\n      text: plainText\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -704,
+        432
+      ],
+      "id": "8e535c8f-e0cd-4794-81a5-7894f8da11fb",
+      "name": "Code in JavaScript1"
     }
   ],
   "settings": {
@@ -4806,6 +4868,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-11T21:19:53.964Z",
-  "versionId": "c9dae73f-c4cd-4050-8e03-c591113b6b95"
+  "updatedAt": "2026-02-01T02:53:53.498Z",
+  "versionId": "1050326d-ec7d-4e85-8017-2645dde0748d"
 }
