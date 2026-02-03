@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-06T03:58:26.000Z",
-    "createdAt": "2026-01-06T03:58:23.007Z",
-    "versionId": "fcb8c632-a0be-4420-8074-a1f3a280b1e3",
+    "updatedAt": "2026-02-02T19:02:51.000Z",
+    "createdAt": "2026-02-02T19:02:47.927Z",
+    "versionId": "c71c0a74-ff05-4c3c-8acf-ab7c362c75c8",
     "workflowId": "kKkB2zB1kibZ3wus",
     "nodes": [
       {
@@ -48,6 +48,7 @@
       },
       {
         "parameters": {
+          "modelName": "models/gemini-flash-latest",
           "options": {}
         },
         "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -903,6 +904,7 @@
       },
       {
         "parameters": {
+          "modelName": "models/gemini-flash-latest",
           "options": {}
         },
         "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -935,7 +937,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 47'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+          "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 47'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -1631,7 +1633,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 9'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_9 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+          "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 9'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_9 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -2448,7 +2450,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_reservas a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+          "query": "SELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_reservas a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -2540,6 +2542,7 @@
       },
       {
         "parameters": {
+          "modelName": "models/gemini-3-flash-preview",
           "options": {}
         },
         "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -2979,11 +2982,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version fcb8c632",
+    "name": "Version c71c0a74",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "fcb8c632-a0be-4420-8074-a1f3a280b1e3",
+  "activeVersionId": "c71c0a74-ff05-4c3c-8acf-ab7c362c75c8",
   "connections": {
     "Get Conversation": {
       "main": [
@@ -3454,6 +3457,7 @@
     },
     {
       "parameters": {
+        "modelName": "models/gemini-flash-latest",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -4309,6 +4313,7 @@
     },
     {
       "parameters": {
+        "modelName": "models/gemini-flash-latest",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -4341,7 +4346,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 47'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+        "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_47_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 47'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -5037,7 +5042,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 9'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_9 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+        "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_delivery_calle_9_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_delivery a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n    and sucursal_detectada = 'Calle 9'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_9 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -5854,7 +5859,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_reservas a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
+        "query": "SELECT DISTINCT ch.session_id\n       --ch.ultimos_10_numeros\nFROM (\n    SELECT session_id,\n           RIGHT(SPLIT_PART(session_id, '@', 1), 10) as ultimos_10_numeros\n    FROM (\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n        UNION\n        SELECT session_id\n        FROM osaki_main.n8n_chat_histories_bkup\n        WHERE fec_registro BETWEEN '{{ $json.fec_initial }}' AND '{{ $json.fec_final }}'\n        AND session_id like '%@%'\n    ) t\n) ch\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM osaki_analytics.auditoria_conversacion_reservas a\n    WHERE a.session_id = ch.session_id\n    AND a.mes_analisis = '{{ $json.mes_anterior }}'\n)\nAND NOT EXISTS (\n    SELECT 1\n    FROM osaki_main.blacklist_phones_calle_47 b\n    WHERE b.phone = ch.ultimos_10_numeros::bigint\n)\nORDER BY ch.session_id ASC;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -5946,6 +5951,7 @@
     },
     {
       "parameters": {
+        "modelName": "models/gemini-3-flash-preview",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -5995,6 +6001,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-11T21:20:26.819Z",
-  "versionId": "fcb8c632-a0be-4420-8074-a1f3a280b1e3"
+  "updatedAt": "2026-02-02T19:02:47.925Z",
+  "versionId": "c71c0a74-ff05-4c3c-8acf-ab7c362c75c8"
 }
