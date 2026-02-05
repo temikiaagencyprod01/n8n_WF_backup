@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-10T20:40:49.000Z",
-    "createdAt": "2026-01-10T20:40:46.570Z",
-    "versionId": "d944dd72-5a17-44dd-af5e-6d4abdbcd50a",
+    "updatedAt": "2026-02-04T21:52:58.000Z",
+    "createdAt": "2026-02-04T21:52:51.454Z",
+    "versionId": "ad08978d-dbb9-4134-a9bc-f5c5d78021ab",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -86,7 +86,8 @@
               "asignado_a": "Cajero",
               "nivel_urgencia": "={{ $json.notas_operativas.nivel_urgencia }}",
               "conversacion_id": "={{ $('Flujo Agente Principal').item.json.sessionId }}",
-              "sucursal": "={{ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal }}"
+              "sucursal": "={{ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal }}",
+              "queja": "={{ $json.queja }}"
             },
             "matchingColumns": [
               "id"
@@ -257,6 +258,16 @@
                 "type": "string",
                 "canBeUsedToMatch": true,
                 "removed": false
+              },
+              {
+                "id": "queja",
+                "displayName": "queja",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
               }
             ],
             "attemptToConvertTypes": false,
@@ -391,7 +402,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+          "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -427,7 +438,7 @@
           "promptType": "define",
           "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
           "options": {
-            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{  \n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
+            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
@@ -620,7 +631,7 @@
       },
       {
         "parameters": {
-          "jsCode": "// 1. Obtenemos el texto crudo\nconst text = $input.item.json.output;\n\n// 2. Función auxiliar para extraer datos ignorando errores de JSON\nfunction extraer(regex, fuente) {\n  const match = fuente.match(regex);\n  return match ? match[1].trim() : \"No proporcionado\";\n}\n\n// 3. Extraemos cada campo individualmente (usando Regex para evitar el error del JSON roto)\nconst intencion = extraer(/\"intencion\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst datos_clave = extraer(/\"datos_clave\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst contexto = extraer(/\"contexto\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst proxima_accion = extraer(/\"proxima_accion_recomendada\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst tono = extraer(/\"tono_sentimiento\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst urgencia = extraer(/\"urgencia\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst nivel = extraer(/\"nivel_urgencia\"\\s*:\\s*\"?(\\d+)\"?/i, text);\n\n// 4. Construimos el bloque de texto agrupado (Resumen Ejecutivo)\nconst resumenEjecutivo = `RESUMEN EJECUTIVO\n• Intención: ${intencion}\n• Datos clave: ${datos_clave}\n• Contexto: ${contexto}\n• Próxima acción recomendada: ${proxima_accion}\n\nNOTAS OPERATIVAS\n• Tono/sentimiento: ${tono}\n• Urgencia: ${urgencia}\n• Nivel de urgencia: ${nivel}`;\n\n// 5. Retornamos TODO: campos sueltos y el resumen final\nreturn {\n  intencion,\n  datos_clave,\n  contexto,\n  proxima_accion_recomendada: proxima_accion,\n  notas_operativas: {\n    tono_sentimiento: tono,\n    urgencia: urgencia,\n    nivel_urgencia: nivel\n  },\n  resumen_final: resumenEjecutivo\n};"
+          "jsCode": "// 1. Obtenemos el texto crudo\nconst text = $input.item.json.output;\n\n// 2. Función auxiliar para extraer datos ignorando errores de JSON\nfunction extraer(regex, fuente) {\n  const match = fuente.match(regex);\n  return match ? match[1].trim() : \"No proporcionado\";\n}\n\n// 3. Extraemos cada campo individualmente (usando Regex para evitar el error del JSON roto)\nconst queja = extraer(/\"queja\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst intencion = extraer(/\"intencion\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst datos_clave = extraer(/\"datos_clave\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst contexto = extraer(/\"contexto\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst proxima_accion = extraer(/\"proxima_accion_recomendada\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst tono = extraer(/\"tono_sentimiento\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst urgencia = extraer(/\"urgencia\"\\s*:\\s*\"([^\"]+)\"/i, text);\nconst nivel = extraer(/\"nivel_urgencia\"\\s*:\\s*\"?(\\d+)\"?/i, text);\n\n// 4. Construimos el bloque de texto agrupado (Resumen Ejecutivo)\nconst resumenEjecutivo = `RESUMEN EJECUTIVO\n• Intención: ${intencion}\n• Datos clave: ${datos_clave}\n• Contexto: ${contexto}\n• Próxima acción recomendada: ${proxima_accion}\n\nNOTAS OPERATIVAS\n• Tono/sentimiento: ${tono}\n• Urgencia: ${urgencia}\n• Nivel de urgencia: ${nivel}`;\n\n// 5. Retornamos TODO: campos sueltos y el resumen final\nreturn {\n  queja,\n  intencion,\n  datos_clave,\n  contexto,\n  proxima_accion_recomendada: proxima_accion,\n  notas_operativas: {\n    tono_sentimiento: tono,\n    urgencia: urgencia,\n    nivel_urgencia: nivel\n  },\n  resumen_final: resumenEjecutivo\n};"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -847,11 +858,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version d944dd72",
+    "name": "Version ad08978d",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "d944dd72-5a17-44dd-af5e-6d4abdbcd50a",
+  "activeVersionId": "ad08978d-dbb9-4134-a9bc-f5c5d78021ab",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1121,8 +1132,7 @@
       "position": [
         -2096,
         -96
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1471,7 +1481,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+        "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -1739,6 +1749,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-20T23:47:56.796Z",
-  "versionId": "862e6e8e-8621-4dfd-82bd-a2a2e71dee5b"
+  "updatedAt": "2026-02-04T21:52:51.451Z",
+  "versionId": "ad08978d-dbb9-4134-a9bc-f5c5d78021ab"
 }
