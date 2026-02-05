@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-28T15:44:06.000Z",
-    "createdAt": "2026-01-28T15:44:02.272Z",
-    "versionId": "a3887e34-47cf-41d8-8c09-c818cffda2e4",
+    "updatedAt": "2026-02-04T15:40:18.000Z",
+    "createdAt": "2026-02-04T15:39:18.124Z",
+    "versionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667",
     "workflowId": "DLXqCjSAXyHORiTb",
     "nodes": [
       {
@@ -1954,7 +1954,7 @@
             "conditions": [
               {
                 "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
-                "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 16 ) }}",
+                "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
                 "rightValue": "",
                 "operator": {
                   "type": "boolean",
@@ -1983,7 +1983,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
                 "type": "string"
               }
             ]
@@ -2918,7 +2918,7 @@
             "conditions": [
               {
                 "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
-                "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 16 ) }}",
+                "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
                 "rightValue": "",
                 "operator": {
                   "type": "boolean",
@@ -3026,7 +3026,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
                 "type": "string"
               }
             ]
@@ -5118,11 +5118,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version a3887e34",
+    "name": "Version f479e28f",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "a3887e34-47cf-41d8-8c09-c818cffda2e4",
+  "activeVersionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -7986,7 +7986,7 @@
           "conditions": [
             {
               "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
-              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 16 ) }}",
+              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -8015,7 +8015,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -8950,7 +8950,7 @@
           "conditions": [
             {
               "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
-              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 16 ) }}",
+              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -9058,7 +9058,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
               "type": "string"
             }
           ]
@@ -10267,6 +10267,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-28T15:44:02.267Z",
-  "versionId": "a3887e34-47cf-41d8-8c09-c818cffda2e4"
+  "updatedAt": "2026-02-04T15:39:18.121Z",
+  "versionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667"
 }
