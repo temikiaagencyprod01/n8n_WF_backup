@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-04T17:02:34.000Z",
-    "createdAt": "2026-02-04T15:37:00.401Z",
-    "versionId": "5526eb0a-14ba-4796-840a-27027f0a74a7",
+    "updatedAt": "2026-02-05T15:00:42.000Z",
+    "createdAt": "2026-02-05T13:06:57.038Z",
+    "versionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -2346,7 +2346,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{ $('Data Filter').first().json.schema }}.n8n_chat_histories  \n  WHERE session_id = '{{ $('Data Filter').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+          "query": "\n\nWITH historias AS (\n  SELECT\n    id,\n    TO_CHAR(fec_registro, 'YYYY-MM-DD HH24:MI') as fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{ $('Data Filter').first().json.schema }}.n8n_chat_histories  \n  WHERE session_id = '{{ $('Data Filter').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n fec_registro AS fecha_hora,  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -8714,11 +8714,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 5526eb0a",
+    "name": "Version 9cf04d9e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "5526eb0a-14ba-4796-840a-27027f0a74a7",
+  "activeVersionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -12852,7 +12852,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "WITH historias AS (\n  SELECT\n    id,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{ $('Data Filter').first().json.schema }}.n8n_chat_histories  \n  WHERE session_id = '{{ $('Data Filter').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  CASE\n    WHEN type = 'human' THEN\n      to_char(\n        to_timestamp(\n          regexp_replace(\n            (regexp_match(\n              content, \n              'fecha\\s*y\\s*hora:\\s*([0-9]{4}[/-][0-9]{2}[/-][0-9]{2}\\s*[0-9]{2}:[0-9]{2}:[0-9]{2})',\n              'i'\n            ))[1],\n            '-', '/', 'g'\n          ),\n          'YYYY/MM/DD HH24:MI:SS'  -- <-- ¡AQUÍ ESTABA EL ERROR! (Decía HH2S)\n        ),\n        'YYYY/MM/DD HH24:MI:SS'\n      )\n    ELSE NULL\n  END AS fecha_hora,\n  \n  id,\n  type,\n  \n  CASE\n    WHEN type = 'human' THEN\n      trim(\n        regexp_replace(\n          split_part(content, 'Mensaje de Texto o Descripción:', 2),\n          '\\s+', ' ', 'g'\n        )\n      )\n    ELSE content\n  END AS content\n  \nFROM historias\nORDER BY id;",
+        "query": "\n\nWITH historias AS (\n  SELECT\n    id,\n    TO_CHAR(fec_registro, 'YYYY-MM-DD HH24:MI') as fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{ $('Data Filter').first().json.schema }}.n8n_chat_histories  \n  WHERE session_id = '{{ $('Data Filter').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n fec_registro AS fecha_hora,  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -17461,6 +17461,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-04T17:01:59.742Z",
-  "versionId": "5526eb0a-14ba-4796-840a-27027f0a74a7"
+  "updatedAt": "2026-02-05T13:06:57.031Z",
+  "versionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f"
 }
