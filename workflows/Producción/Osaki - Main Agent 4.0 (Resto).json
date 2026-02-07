@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-05T15:00:42.000Z",
-    "createdAt": "2026-02-05T13:06:57.038Z",
-    "versionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f",
+    "updatedAt": "2026-02-06T17:44:42.000Z",
+    "createdAt": "2026-02-06T17:44:39.431Z",
+    "versionId": "a2884e68-3fc0-434a-887f-24162b7cb8da",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -5789,64 +5789,6 @@
       },
       {
         "parameters": {
-          "method": "POST",
-          "url": "={{ $('Data Filter').item.json.url_server }}/chat/getBase64FromMediaMessage/{{ $('Data Filter').item.json.instance_name }}",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "apikey",
-                "value": "={{ $('Data Filter').item.json.apiKey }}"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "message.key.id",
-                "value": "={{ $('Data Filter').item.json.message_id }}"
-              },
-              {
-                "name": "convertToMp4",
-                "value": "={{ Boolean(false) }}"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.3,
-        "position": [
-          1328,
-          288
-        ],
-        "id": "62e7f984-e703-4f01-9867-c8f55b9f4104",
-        "name": "Get Audio"
-      },
-      {
-        "parameters": {
-          "resource": "audio",
-          "operation": "transcribe",
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.openAi",
-        "typeVersion": 2.1,
-        "position": [
-          1648,
-          288
-        ],
-        "id": "92b41293-1560-4b25-8775-5c3c7d2a2288",
-        "name": "Transcribe a recording",
-        "credentials": {
-          "openAiApi": {
-            "id": "fATP1TjAWkMAqBDc",
-            "name": "OpenAi Osaki-TemikiaProd01"
-          }
-        }
-      },
-      {
-        "parameters": {
           "dataTableId": {
             "__rl": true,
             "value": "5uvecEt3FcX1y3h6",
@@ -6926,6 +6868,64 @@
             "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
           }
         }
+      },
+      {
+        "parameters": {
+          "resource": "audio",
+          "operation": "transcribe",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.openAi",
+        "typeVersion": 2.1,
+        "position": [
+          1648,
+          288
+        ],
+        "id": "948a8ab5-b435-43ab-81d7-0789c12b72fe",
+        "name": "Transcribe a recording",
+        "credentials": {
+          "openAiApi": {
+            "id": "fATP1TjAWkMAqBDc",
+            "name": "OpenAi Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "={{ $('Data Filter').item.json.url_server }}/chat/getBase64FromMediaMessage/{{ $('Data Filter').item.json.instance_name }}",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "apikey",
+                "value": "={{ $('Data Filter').item.json.apiKey }}"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "message.key.id",
+                "value": "={{ $('Data Filter').item.json.message_id }}"
+              },
+              {
+                "name": "convertToMp4",
+                "value": "={{ Boolean(false) }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          1328,
+          288
+        ],
+        "id": "adcf7d94-7bac-41fc-998d-2446801208f2",
+        "name": "Get Audio"
       }
     ],
     "connections": {
@@ -8242,28 +8242,6 @@
           ]
         ]
       },
-      "Get Audio": {
-        "main": [
-          [
-            {
-              "node": "Convert audio",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Transcribe a recording": {
-        "main": [
-          [
-            {
-              "node": "Audio Content",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Insert row": {
         "main": [
           [
@@ -8711,14 +8689,36 @@
             }
           ]
         ]
+      },
+      "Transcribe a recording": {
+        "main": [
+          [
+            {
+              "node": "Audio Content",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Audio": {
+        "main": [
+          [
+            {
+              "node": "Convert audio",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 9cf04d9e",
+    "name": "Version a2884e68",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f",
+  "activeVersionId": "a2884e68-3fc0-434a-887f-24162b7cb8da",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -10033,28 +10033,6 @@
         ]
       ]
     },
-    "Get Audio": {
-      "main": [
-        [
-          {
-            "node": "Convert audio",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Transcribe a recording": {
-      "main": [
-        [
-          {
-            "node": "Audio Content",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Insert row": {
       "main": [
         [
@@ -10497,6 +10475,28 @@
         [
           {
             "node": "Random Num",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Audio Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Audio": {
+      "main": [
+        [
+          {
+            "node": "Convert audio",
             "type": "main",
             "index": 0
           }
@@ -16295,64 +16295,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "={{ $('Data Filter').item.json.url_server }}/chat/getBase64FromMediaMessage/{{ $('Data Filter').item.json.instance_name }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{ $('Data Filter').item.json.apiKey }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "message.key.id",
-              "value": "={{ $('Data Filter').item.json.message_id }}"
-            },
-            {
-              "name": "convertToMp4",
-              "value": "={{ Boolean(false) }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        1328,
-        288
-      ],
-      "id": "62e7f984-e703-4f01-9867-c8f55b9f4104",
-      "name": "Get Audio"
-    },
-    {
-      "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2.1,
-      "position": [
-        1648,
-        288
-      ],
-      "id": "92b41293-1560-4b25-8775-5c3c7d2a2288",
-      "name": "Transcribe a recording",
-      "credentials": {
-        "openAiApi": {
-          "id": "fATP1TjAWkMAqBDc",
-          "name": "OpenAi Osaki-TemikiaProd01"
-        }
-      }
-    },
-    {
-      "parameters": {
         "dataTableId": {
           "__rl": true,
           "value": "5uvecEt3FcX1y3h6",
@@ -17432,6 +17374,64 @@
           "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        1648,
+        288
+      ],
+      "id": "948a8ab5-b435-43ab-81d7-0789c12b72fe",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Data Filter').item.json.url_server }}/chat/getBase64FromMediaMessage/{{ $('Data Filter').item.json.instance_name }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $('Data Filter').item.json.apiKey }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message.key.id",
+              "value": "={{ $('Data Filter').item.json.message_id }}"
+            },
+            {
+              "name": "convertToMp4",
+              "value": "={{ Boolean(false) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1328,
+        288
+      ],
+      "id": "adcf7d94-7bac-41fc-998d-2446801208f2",
+      "name": "Get Audio"
     }
   ],
   "settings": {
@@ -17461,6 +17461,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-05T13:06:57.031Z",
-  "versionId": "9cf04d9e-9c82-4404-bc53-64a754fc225f"
+  "updatedAt": "2026-02-06T17:44:39.419Z",
+  "versionId": "a2884e68-3fc0-434a-887f-24162b7cb8da"
 }
