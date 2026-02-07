@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-06T00:08:53.000Z",
-    "createdAt": "2026-02-06T00:08:37.404Z",
-    "versionId": "7477c4e6-d707-455f-acc9-b145fe1a5d99",
+    "updatedAt": "2026-02-07T01:00:42.000Z",
+    "createdAt": "2026-02-07T01:00:30.001Z",
+    "versionId": "fb30e015-3c1d-4e45-9c8d-1d90ce0065f5",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -51,7 +51,7 @@
         "name": "Flujo Agente Principal",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -2784,
+          -2864,
           144
         ]
       },
@@ -403,7 +403,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
+          "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$('Flujo Agente Principal').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -866,11 +866,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 7477c4e6",
+    "name": "Version fb30e015",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "7477c4e6-d707-455f-acc9-b145fe1a5d99",
+  "activeVersionId": "fb30e015-3c1d-4e45-9c8d-1d90ce0065f5",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1145,7 +1145,7 @@
       "name": "Flujo Agente Principal",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -2784,
+        -2864,
         144
       ]
     },
@@ -1497,7 +1497,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
+        "query": "WITH historias AS (\n  SELECT\n    id,\n  fec_registro,\n    message->>'type'    AS type,\n    regexp_replace(\n      message->>'content',\n      '^\\[Used tools:.*\\]\\]\\s*', \n      ''                          \n    ) AS content\n  FROM {{$('Flujo Agente Principal').first().json.tabla_historica }}\n  WHERE session_id = '{{$('Flujo Agente Principal').first().json.sessionId }}'\n  ORDER BY id DESC\n  LIMIT 10\n)\nSELECT\n  fec_registro AS fecha_hora,\n  \n  id,\n  type,\n    CASE \n        WHEN type = 'human' THEN \n            TRIM(\n                REGEXP_REPLACE(\n                    -- Buscamos cualquiera de los dos prefijos y lo eliminamos\n                    REGEXP_REPLACE(content, '^(Mensaje de Texto o Descripción:|Mensaje:)', '', 'i'),\n                    '\\s+', ' ', 'g'\n                )\n            )\n        ELSE content \n    END AS content\n  \nFROM historias\nORDER BY id;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -1765,6 +1765,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-02-06T00:08:37.403Z",
-  "versionId": "7477c4e6-d707-455f-acc9-b145fe1a5d99"
+  "updatedAt": "2026-02-07T01:00:30.000Z",
+  "versionId": "fb30e015-3c1d-4e45-9c8d-1d90ce0065f5"
 }
