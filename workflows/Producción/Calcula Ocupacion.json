@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-04T16:35:53.000Z",
-    "createdAt": "2026-02-04T16:35:34.122Z",
-    "versionId": "33f2eb2c-44e4-41cf-b8e9-4edb67365ec7",
+    "updatedAt": "2026-02-12T01:56:18.000Z",
+    "createdAt": "2026-02-12T01:55:46.094Z",
+    "versionId": "6e19862c-ba16-471a-b85e-39317f2e853d",
     "workflowId": "YUUJhIoCuRSeZUmY",
     "nodes": [
       {
@@ -158,7 +158,7 @@
                   "conditions": [
                     {
                       "id": "cd5c68d0-0ea7-4239-80a2-2913ffa030f4",
-                      "leftValue": "={{ \n['2025-12-24','2025-12-25','2025-12-31','2026-01-01'].includes($json.fecha_normalizada ) &&$json.hora >=16\n}}",
+                      "leftValue": "={{\n  ['2026-02-14'].includes($json.fecha_normalizada) && \n  $json.hora >= 19 && ((\n  $json.hora !== 20 && \n  $json.hora !== 22 ) || [21,22].includes($json.hora) && $json.minutos != 0 )\n\n}}",
                       "rightValue": "",
                       "operator": {
                         "type": "boolean",
@@ -170,7 +170,7 @@
                   "combinator": "and"
                 },
                 "renameOutput": true,
-                "outputKey": "Feriado"
+                "outputKey": "14 Febrero"
               },
               {
                 "conditions": {
@@ -478,7 +478,7 @@
         "typeVersion": 3.4,
         "position": [
           0,
-          736
+          752
         ],
         "id": "93f57b6d-7a3e-4a19-bc8c-d10590486542",
         "name": "Response Restricción"
@@ -577,7 +577,7 @@
               {
                 "id": "db09d781-335e-417d-806f-cfbce2455fa5",
                 "name": "Response",
-                "value": "=No se puede tomar la reserva. Local cerrado por día/horario feriado. Revisa los horarios del local. 24,25,31 diciembre y 1 de enero que cierra a las 16 hrs.",
+                "value": "=No se puede tomar la reserva. Por cena de San Valentín se manejan 2 horarios solamente: 20:00-22:00 y 22:00-23:59.",
                 "type": "string"
               }
             ]
@@ -767,11 +767,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 33f2eb2c",
+    "name": "Version 6e19862c",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "33f2eb2c-44e4-41cf-b8e9-4edb67365ec7",
+  "activeVersionId": "6e19862c-ba16-471a-b85e-39317f2e853d",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -1104,7 +1104,7 @@
                 "conditions": [
                   {
                     "id": "cd5c68d0-0ea7-4239-80a2-2913ffa030f4",
-                    "leftValue": "={{ \n['2025-12-24','2025-12-25','2025-12-31','2026-01-01'].includes($json.fecha_normalizada ) &&$json.hora >=16\n}}",
+                    "leftValue": "={{\n  ['2026-02-14'].includes($json.fecha_normalizada) && \n  $json.hora >= 19 && ((\n  $json.hora !== 20 && \n  $json.hora !== 22 ) || [21,22].includes($json.hora) && $json.minutos != 0 )\n\n}}",
                     "rightValue": "",
                     "operator": {
                       "type": "boolean",
@@ -1116,7 +1116,7 @@
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "Feriado"
+              "outputKey": "14 Febrero"
             },
             {
               "conditions": {
@@ -1424,7 +1424,7 @@
       "typeVersion": 3.4,
       "position": [
         0,
-        736
+        752
       ],
       "id": "93f57b6d-7a3e-4a19-bc8c-d10590486542",
       "name": "Response Restricción"
@@ -1523,7 +1523,7 @@
             {
               "id": "db09d781-335e-417d-806f-cfbce2455fa5",
               "name": "Response",
-              "value": "=No se puede tomar la reserva. Local cerrado por día/horario feriado. Revisa los horarios del local. 24,25,31 diciembre y 1 de enero que cierra a las 16 hrs.",
+              "value": "=No se puede tomar la reserva. Por cena de San Valentín se manejan 2 horarios solamente: 20:00-22:00 y 22:00-23:59.",
               "type": "string"
             }
           ]
@@ -1567,6 +1567,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-02-04T16:35:46.137Z",
-  "versionId": "33f2eb2c-44e4-41cf-b8e9-4edb67365ec7"
+  "updatedAt": "2026-02-12T01:56:05.257Z",
+  "versionId": "6e19862c-ba16-471a-b85e-39317f2e853d"
 }
