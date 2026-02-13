@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-04T15:40:18.000Z",
-    "createdAt": "2026-02-04T15:39:18.124Z",
-    "versionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667",
+    "updatedAt": "2026-02-12T15:41:58.000Z",
+    "createdAt": "2026-02-12T15:41:55.771Z",
+    "versionId": "0ccc78aa-def4-4191-abce-b72f79d7043d",
     "workflowId": "DLXqCjSAXyHORiTb",
     "nodes": [
       {
@@ -3117,7 +3117,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by estado asc, zona desc,  id asc ;",
+          "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \norder by estado asc, zona desc, hora_reservacion asc, id asc ;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -5118,11 +5118,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version f479e28f",
+    "name": "Version 0ccc78aa",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667",
+  "activeVersionId": "0ccc78aa-def4-4191-abce-b72f79d7043d",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -9149,7 +9149,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \n  order by estado asc, zona desc,  id asc ;",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \norder by estado asc, zona desc, hora_reservacion asc, id asc ;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -10267,6 +10267,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-02-04T15:39:18.121Z",
-  "versionId": "f479e28f-7c75-4a3e-949e-a07f35a8e667"
+  "updatedAt": "2026-02-12T15:41:55.761Z",
+  "versionId": "0ccc78aa-def4-4191-abce-b72f79d7043d"
 }
