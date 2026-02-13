@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-12T01:56:18.000Z",
-    "createdAt": "2026-02-12T01:55:46.094Z",
-    "versionId": "6e19862c-ba16-471a-b85e-39317f2e853d",
+    "updatedAt": "2026-02-12T15:39:14.000Z",
+    "createdAt": "2026-02-12T15:39:11.325Z",
+    "versionId": "4f0270e5-3e2e-497d-b000-3bb3c60c91e2",
     "workflowId": "YUUJhIoCuRSeZUmY",
     "nodes": [
       {
@@ -38,7 +38,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) >= $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
+          "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) = $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
           "options": {
             "queryReplacement": "={{ $('Code').item.json.fecha_normalizada }}, {{ $json.hora }}"
           }
@@ -767,11 +767,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 6e19862c",
+    "name": "Version 4f0270e5",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "6e19862c-ba16-471a-b85e-39317f2e853d",
+  "activeVersionId": "4f0270e5-3e2e-497d-b000-3bb3c60c91e2",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -984,7 +984,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) >= $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
+        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,\n    COALESCE(SUM(r.numero_personas), 0) as num_personas\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)\nLEFT JOIN {{ $('When Executed by Another Workflow').first().json.schema}}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1  -- ← Fecha de hoy\n    AND EXTRACT(HOUR FROM hora_reservacion) = $2  \n    AND (r.estado IS NULL OR r.estado != 'Cancelada')  -- ← Incluye NULLs\nGROUP BY v.zona_obj;",
         "options": {
           "queryReplacement": "={{ $('Code').item.json.fecha_normalizada }}, {{ $json.hora }}"
         }
@@ -1567,6 +1567,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-02-12T01:56:05.257Z",
-  "versionId": "6e19862c-ba16-471a-b85e-39317f2e853d"
+  "updatedAt": "2026-02-12T15:39:11.324Z",
+  "versionId": "4f0270e5-3e2e-497d-b000-3bb3c60c91e2"
 }
