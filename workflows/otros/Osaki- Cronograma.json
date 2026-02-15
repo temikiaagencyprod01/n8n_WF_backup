@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-14T03:24:33.000Z",
-    "createdAt": "2026-02-14T03:24:31.572Z",
-    "versionId": "68ec46a3-5a1b-4900-b4e1-39b0657c4730",
+    "updatedAt": "2026-02-15T04:13:42.000Z",
+    "createdAt": "2026-02-14T16:00:25.773Z",
+    "versionId": "e880e637-917b-4c7d-97ca-033fc4859b5e",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -8514,11 +8514,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 68ec46a3",
+    "name": "Version e880e637",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "68ec46a3-5a1b-4900-b4e1-39b0657c4730",
+  "activeVersionId": "e880e637-917b-4c7d-97ca-033fc4859b5e",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -17067,6 +17067,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2026-02-14T03:24:31.568Z",
-  "versionId": "68ec46a3-5a1b-4900-b4e1-39b0657c4730"
+  "updatedAt": "2026-02-14T16:00:25.769Z",
+  "versionId": "e880e637-917b-4c7d-97ca-033fc4859b5e"
 }
