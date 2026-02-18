@@ -1,0 +1,5144 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Agente Principal": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Datos": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Alta Clientes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Cliente AirTable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cliente AirTable": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "All Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Actualiza Cliente a Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Cliente a Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Crea Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Codigo Reserva Valido?1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update rows in a table1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All Fields": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Cliente": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Reserva": {
+      "main": [
+        [
+          {
+            "node": "Resume Encontradas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alta Clientes": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca reservaciones1": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Actualiza Reserva": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca reservaciones": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Update rows in a table1": {
+      "main": [
+        [
+          {
+            "node": "Get Reserv Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "All Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revisa Horarios": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Response Fecha Cercana",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Fecha Pasada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Local Cerrado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Nombre Incompleto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcula Ocupación": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lleno?": {
+      "main": [
+        [
+          {
+            "node": "Response Lleno",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Es Creación?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea Reserva": {
+      "main": [
+        [
+          {
+            "node": "Update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca reservaciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menos de 7?": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Response No Zona",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sushi Libre?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Cliente a Info": {
+      "main": [
+        [
+          {
+            "node": "Delete sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete sheet": {
+      "main": [
+        [
+          {
+            "node": "Create sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Codigo Reserva Valido?": {
+      "main": [
+        [
+          {
+            "node": "Busca reservaciones1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Es Creación?": {
+      "main": [
+        [
+          {
+            "node": "Busca Reserva",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Busca Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Codigo Reserva Valido?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Lleno?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcula Ocupación1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Lleno?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lleno?1": {
+      "main": [
+        [
+          {
+            "node": "Response Lleno1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Es Creación?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "Calcula Ocupación2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Calcula Ocupación1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sushi Libre?": {
+      "main": [
+        [
+          {
+            "node": "If9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Calcula Ocupación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sheet1": {
+      "main": [
+        [
+          {
+            "node": "Get Reserv",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Reserv": {
+      "main": [
+        [
+          {
+            "node": "Llena Documento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Llena Documento": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcula Ocupación2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Response No Zona1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Codigo Reserva Valido?1": {
+      "main": [
+        [
+          {
+            "node": "Busca reservaciones2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca reservaciones2": {
+      "main": [
+        [
+          {
+            "node": "If10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If10": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Reserva1": {
+      "main": [
+        [
+          {
+            "node": "Get Reserv Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reserva1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Cliente a Info2": {
+      "main": [
+        [
+          {
+            "node": "Delete sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Reserv Info": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Cliente a Info2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resume Encontradas": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Revisa Horarios",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-11T18:00:20.452Z",
+  "id": "DLXqCjSAXyHORiTb",
+  "isArchived": false,
+  "meta": null,
+  "name": "Gestiona Reservacion",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "reservacion"
+            },
+            {
+              "name": "telefono_solicita"
+            },
+            {
+              "name": "schema"
+            },
+            {
+              "name": "cliente_id",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "id": "4e5ae2cb-ae21-4f0e-bd8b-2879dd64b1e7",
+      "typeVersion": 1.1,
+      "name": "Agente Principal",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -1632,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const resultados = [];\n\nfor (const item of items) {\n  let resultadoFinal = null;\n  let errorLog = null;\n\n  // Obtenemos el valor crudo\n  const raw = item.json?.reservacion; \n\n  // CASO 0: Si es null o undefined, saltamos\n  if (!raw) {\n    resultados.push({ json: { error: \"Input vacío\" } });\n    continue;\n  }\n\n  // CASO 1: Si n8n ya lo detectó como Objeto, lo usamos directo\n  if (typeof raw === 'object') {\n    resultadoFinal = raw;\n  } else {\n    // Limpieza básica universal (Markdown y espacios)\n    const clean = String(raw).replace(/```json|```/g, '').trim();\n\n    try {\n      // --- INTENTO 1: Parseo Estándar ---\n      resultadoFinal = JSON.parse(clean);\n    } catch (e1) {\n      try {\n        // --- INTENTO 2: Parseo con Sanitize ---\n        const sanitized = clean\n          .replace(/\\n/g, \"\\\\n\")\n          .replace(/\\r/g, \"\\\\r\")\n          .replace(/\\t/g, \"\\\\t\");\n        \n        resultadoFinal = JSON.parse(sanitized);\n      } catch (e2) {\n        errorLog = e1.message;\n      }\n    }\n  }\n\n  // VALIDACIÓN Y NORMALIZACIÓN DE PERSONAS\n  if (resultadoFinal) {\n    // Normalizamos el campo personas\n    if (resultadoFinal.hasOwnProperty('personas')) {\n      resultadoFinal.personas = normalizarNumeroPersonas(resultadoFinal.personas);\n    }\n    \n    // También verificamos campos similares comunes\n    const camposPersonas = ['numero_personas', 'cantidad_personas', 'personas', 'pax', 'guests'];\n    for (const campo of camposPersonas) {\n      if (resultadoFinal.hasOwnProperty(campo)) {\n        resultadoFinal[campo] = normalizarNumeroPersonas(resultadoFinal[campo]);\n        break; // Solo normalizamos el primer campo que encontremos\n      }\n    }\n    \n    resultados.push({ json: resultadoFinal });\n  } else {\n    resultados.push({ \n      json: { \n        error: \"No se pudo parsear el JSON\",\n        detalles: errorLog,\n        input_recibido: raw \n      } \n    });\n  }\n}\n\n// Función auxiliar para normalizar el número de personas\nfunction normalizarNumeroPersonas(valor) {\n  if (valor === null || valor === undefined) return 1;\n  \n  // Convertimos a número\n  let numero;\n  if (typeof valor === 'number') {\n    numero = valor;\n  } else if (typeof valor === 'string') {\n    // Limpiamos la cadena y convertimos\n    const limpio = valor.toString().replace(/[^\\d.,]/g, '').replace(',', '.');\n    numero = parseFloat(limpio);\n  } else {\n    numero = Number(valor);\n  }\n  \n  // Validamos que sea un número válido y positivo\n  if (isNaN(numero) || !isFinite(numero) || numero <= 0) {\n    return 1; // Valor por defecto\n  }\n  \n  // Redondeamos al entero más cercano\n  return Math.max(1, Math.round(numero));\n}\n\nreturn resultados;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1424,
+        1360
+      ],
+      "id": "7a39c47b-7d10-4654-89de-f53f83ad8f68",
+      "name": "Normaliza Datos"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6e708043-a04e-4676-b16e-a486a458915b",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1952,
+        800
+      ],
+      "id": "df1db4ee-22f6-4171-8473-ac55a23b9ad7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2608,
+        880
+      ],
+      "id": "c5ec415c-d970-448f-b606-2760c92a3837",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7d9d484-05a7-4f1a-8f7f-a405af80f42f",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "a81abcf6-6a00-475e-8554-7aeea36d1c40",
+              "name": "total_reserv",
+              "value": "={{ $json.total_reservas }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2816,
+        880
+      ],
+      "id": "0859146a-291f-479a-9ab3-45768fe9c3a5",
+      "name": "Cliente AirTable"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c5d8ee6-3764-4faa-9219-41cf43cfdb5a",
+              "name": "fecha",
+              "value": "={{ $('Normaliza Datos').first().json.fecha }}",
+              "type": "string"
+            },
+            {
+              "id": "27e2aa1e-c162-40dc-b215-386d42c2a8b7",
+              "name": "hora",
+              "value": "={{ $('Crea Reserva').item.json.hora_reservacion }}",
+              "type": "string"
+            },
+            {
+              "id": "9c90660d-d6a0-4799-a7f4-3d16ee9e48fa",
+              "name": "cliente",
+              "value": "={{ $('Crea Reserva').item.json.cliente }}",
+              "type": "string"
+            },
+            {
+              "id": "98595a48-1f1c-4555-8301-3b284a1a140e",
+              "name": "personas",
+              "value": "={{ $('Crea Reserva').item.json.numero_personas }}",
+              "type": "number"
+            },
+            {
+              "id": "4d77d7ef-814e-42e0-883e-2701a6cef655",
+              "name": "notas",
+              "value": "={{ $('Crea Reserva').item.json.notas }}",
+              "type": "string"
+            },
+            {
+              "id": "615e1ded-ca87-4479-a87f-84db2eccd7b4",
+              "name": "estado",
+              "value": "={{ $('Crea Reserva').item.json.estado }}",
+              "type": "string"
+            },
+            {
+              "id": "d92abef2-e128-423a-9573-a36a45656146",
+              "name": "correo",
+              "value": "={{ $('Crea Reserva').item.json.correo || 'No proporcionado' }}",
+              "type": "string"
+            },
+            {
+              "id": "f0054bbd-48bb-43d6-b48a-e35d5818e11f",
+              "name": "=zona",
+              "value": "={{ $('Crea Reserva').item.json.zona }}",
+              "type": "string"
+            },
+            {
+              "id": "d27a110c-36b2-468a-ad9c-821c0034fdb8",
+              "name": "codigo_reserva",
+              "value": "={{ $('Crea Reserva').item.json.codigo_reserva }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2032,
+        1152
+      ],
+      "id": "024fa1b8-5c59-4a5e-9d70-3df4ff7e6e23",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Confirmación de Reserva en Osaki</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap\" rel=\"stylesheet\">\n    <style>\n        /* Estilos generales */\n        body {\n            margin: 0;\n            padding: 0;\n            -webkit-text-size-adjust: 100%;\n            -ms-text-size-adjust: 100%;\n            background-color: #1a1a1a;\n            font-family: 'Montserrat', Arial, sans-serif;\n        }\n\n        table {\n            border-spacing: 0;\n        }\n\n        td {\n            padding: 0;\n        }\n\n        img {\n            border: 0;\n        }\n\n        /* Contenedor principal */\n        .wrapper {\n            width: 100%;\n            table-layout: fixed;\n            background-color: #1a1a1a;\n            padding: 40px 0;\n        }\n\n        .main {\n            background-color: #000000;\n            margin: 0 auto;\n            width: 100%;\n            max-width: 600px;\n            border-spacing: 0;\n            font-family: 'Montserrat', Arial, sans-serif;\n            color: #cccccc;\n            border-radius: 8px;\n            overflow: hidden;\n        }\n        \n        /* Encabezado */\n        .header {\n            background-color: #000000;\n            padding: 30px 0;\n            text-align: center;\n        }\n\n        .logo {\n            width: 120px;\n            max-width: 100%;\n        }\n        \n        /* Contenido */\n        .content {\n            padding: 40px 30px;\n            text-align: left;\n        }\n        \n        h1 {\n            font-size: 24px;\n            margin-top: 0;\n            margin-bottom: 20px;\n            color: #ffffff;\n            font-weight: 700;\n        }\n        \n        p {\n            margin-top: 0;\n            margin-bottom: 16px;\n            line-height: 1.7;\n            font-size: 16px;\n            color: #cccccc;\n        }\n\n        /* Detalles de la reservación */\n        .reservation-details {\n            width: 100%;\n            margin: 30px 0;\n            border-collapse: collapse;\n        }\n\n        .reservation-details td {\n            padding: 15px 0;\n            font-size: 16px;\n            border-bottom: 1px solid #333333;\n        }\n        \n        .reservation-details tr:last-child td {\n            border-bottom: none;\n        }\n\n        .reservation-details strong {\n            color: #ffffff;\n            font-weight: 700;\n        }\n        \n        /* Botón de acción */\n        .button {\n            background-color: #DA291C; /* Rojo corporativo de Osaki */\n            color: #ffffff;\n            padding: 14px 28px;\n            text-decoration: none;\n            border-radius: 5px;\n            font-weight: 700;\n            display: inline-block;\n            font-size: 16px;\n        }\n\n        /* Pie de página */\n        .footer {\n            background-color: #000000;\n            padding: 30px;\n            text-align: center;\n            border-top: 1px solid #333333;\n        }\n\n        .footer p {\n            font-size: 12px;\n            margin-bottom: 8px;\n            color: #888888;\n        }\n\n        .footer a {\n            color: #DA291C;\n            text-decoration: none;\n        }\n\n    </style>\n</head>\n<body>\n    <center class=\"wrapper\">\n        <table class=\"main\" width=\"100%\">\n            <!-- ====== ENCABEZADO CON LOGO ====== -->\n            <tr>\n                <td>\n                    <table width=\"100%\">\n                        <tr>\n                            <td class=\"header\">\n                                <a href=\"https://osakisushi.com/\" target=\"_blank\">\n                                    <img src=\"https://osakisushi.com/wp-content/uploads/2023/12/logo-osaki.png\" alt=\"Logo Osaki Sushi\" class=\"logo\">\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n\n            <!-- ====== CONTENIDO PRINCIPAL ====== -->\n            <tr>\n                <td class=\"content\">\n                    <h1>Tu reserva está casi lista</h1>\n                    \n                    <!-- n8n usará esta expresión para obtener el nombre del cliente -->\n                    <p>Hola, <strong>{{$json.cliente}}</strong>,</p>\n                    \n                    <p>Hemos recibido tu solicitud de reserva en Osaki. A continuación, te mostramos los detalles. Tené en cuenta que el estado actual es <strong>'Pendiente'</strong>. Recibirás la confirmación final entre 2 y 3 horas antes del horario programado.</p>\n\n                    <!-- ====== TABLA DE DETALLES ====== -->\n                    <table class=\"reservation-details\">\n                        <tr>\n                            <td><strong>Fecha:</strong></td>\n                            <!-- Expresión para la fecha -->\n                            <td align=\"right\">{{$json.fecha}}</td>\n                        </tr>\n                        <tr>\n                            <td><strong>Hora:</strong></td>\n                            <!-- Expresión para la hora -->\n                            <td align=\"right\">{{$json.hora}}</td>\n                        </tr>\n                        <tr>\n                            <td><strong>Personas:</strong></td>\n                            <!-- Expresión para el número de personas -->\n                            <td align=\"right\">{{$json.personas}}</td>\n                        </tr>\n                        <tr>\n                            <td><strong>Zona:</strong></td>\n                             <!-- Expresión para las notas -->\n                            <td align=\"right\">{{$json.zona}}</td>\n                        </tr>\n                         <tr>\n                            <td><strong>Estado:</strong></td>\n                             <!-- Expresión para el estado -->\n                            <td align=\"right\"><strong>{{$json.estado}}</strong></td>\n                        </tr>\n                    </table>\n\n                    <p>Si necesitás hacer algún cambio o cancelar, por favor contactanos lo antes posible.</p>\n                    <p>Te esperamos.</p>\n\n                    <!-- ====== BOTÓN DE ACCIÓN ====== -->\n                    <table width=\"100%\" style=\"margin-top: 30px;\">\n                        <tr>\n                            <td style=\"text-align: center;\">\n                                <a href=\"https://osakisushi.com/menu/\" target=\"_blank\" class=\"button\">Conocé nuestro menú</a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n\n            <!-- ====== PIE DE PÁGINA ====== -->\n            <tr>\n                <td class=\"footer\">\n                    <p><strong>Nuestras sucursales</strong></p>\n                    <p>La Plata: Calle 47 N°717 | Palermo: Gorriti 4977</p>\n                    <p>\n                        © 2024 Osaki. Todos los derechos reservados.\n                        <br>\n                        <a href=\"https://osakisushi.com/sucursales/\" target=\"_blank\">Ver todas las sucursales</a>\n                    </p>\n                </td>\n            </tr>\n        </table>\n    </center>\n</body>\n</html>\n\n"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        2704,
+        1216
+      ],
+      "id": "7208d84e-817e-4fa7-bd02-17da5fd6fb16",
+      "name": "HTML",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c7a7b722-1cdc-4606-8482-c5271a7e8714",
+              "leftValue": "={{ $('Normaliza Datos').first().json.correo.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ab2015dd-ec4c-4a1e-ba74-90489d2927fb",
+              "leftValue": "={{ $('Normaliza Datos').first().json.correo }}",
+              "rightValue": "No proporcionado",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2448,
+        1328
+      ],
+      "id": "870310f4-2995-46f0-9948-3866fb9e114b",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Normaliza Datos').item.json.correo || $('All Fields').item.json.correo }}",
+        "subject": "=[Osaki Sushi] {{ $('Normaliza Datos').item.json.tipo }} de Cita - {{ $('All Fields').item.json.cliente }} ",
+        "message": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2880,
+        1216
+      ],
+      "id": "bf06102e-b504-4427-9543-dd0923feaec1",
+      "name": "Send a message",
+      "webhookId": "2ec87046-a0f2-408a-a142-c3dc31bca727",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7931de9a-83e9-4c31-81a6-58834edb9200",
+              "name": "Response",
+              "value": "={{\n  $('Normaliza Datos').first().json.tipo\n + \": OK\" +\n\n\"\\nNombre: \" + $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.cliente,\n  $('Get Reserv Info').item.json.cliente\n) +\n\n\"\\nReserva: \" + $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.fecha ?.slice(0,10),\n  $('Get Reserv Info').item.json.fecha_reservacion?.slice(0,10)\n)\n+ \" \"\n+ $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.hora,\n  $('Get Reserv Info').item.json.hora_reservacion\n) +\n\n\"\\nPersonas: \" + $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.personas,\n  $('Get Reserv Info').item.json.numero_personas\n) +\n\n\"\\nZona: \" + $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.zona,\n  $('Get Reserv Info').item.json.zona\n) +\n\n\"\\nCódigo: \" + $if(\n  $('All Fields').isExecuted,\n  $('All Fields').first().json.codigo_reserva,\n  $('Get Reserv Info').item.json.codigo_reserva\n) +\n\n\"\\n\\nImportante: Proporcionar el código al usuario para el seguimiento de su reservación.\"\n}}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4656,
+        1760
+      ],
+      "id": "6321a10e-a081-4432-9a6e-de43e14aa0ea",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb9644e3-019c-4cde-b54d-9373d31bb0b0",
+              "leftValue": "={{ $('Normaliza Datos').first().json.tipo }}",
+              "rightValue": "creacion",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "53b6b373-3544-427b-ac59-8ed0701ee7ea",
+              "leftValue": "={{ $json.total_reserv }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "daee3ffd-d29f-4d40-a2ee-5ca8f4faf32c",
+              "leftValue": "={{ $('Normaliza Datos').first().json.modo }}",
+              "rightValue": "=Forzada",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "9e2993e6-ae9c-4ed0-aef5-56321c91fed8",
+              "leftValue": "={{ $('Normaliza Datos').first().json.nombre_completo }}",
+              "rightValue": "Invitado Osaki",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3040,
+        880
+      ],
+      "id": "52655776-be7a-471e-9a09-ee017c4973b8",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c822e4f8-2713-4f24-943a-cce25ee3761b",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nEl cliente ({{ $('Normaliza Datos').first().json.nombre_completo }}) ya cuenta con al menos una futura activa -> Verificar con el usuario.\nReservaciones encontradas:\n{{ $('Resume Encontradas').item.json.lista_reservaciones.toJsonString()}}\nSi se desea una nueva para el mismo cliente llama de nuevo a la herramienta cambiando el `modo` a \"Forzada\" (uso interno del sistema).",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3248,
+        768
+      ],
+      "id": "22168bc3-8712-4d8e-8c89-52ee40faf4cd",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'creacion' || $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'modificacion' }}",
+                    "rightValue": "creacion",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "3acfaed1-14b0-4f19-a367-cf57fb0dc090"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Creación O Modificación"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8ceae83e-dffc-459c-9703-52f8ee55a2e5",
+                    "leftValue": "={{ $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '')  }}",
+                    "rightValue": "cancelacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cancelación"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fa79b9b7-a498-41f2-ae82-96dc2bcd8924",
+                    "leftValue": "={{ $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '')  }}",
+                    "rightValue": "confirmacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Búsqueda"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Otro"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1248,
+        1328
+      ],
+      "id": "731c731c-4b0b-4835-a936-709a1d0c0538",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a683569-77af-4513-838f-1090e69a084b",
+              "leftValue": "={{ $json.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1088,
+        1488
+      ],
+      "id": "1dd76759-1525-440a-a0b0-0730dfdd73d4",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        1744
+      ],
+      "id": "7c72649b-daf0-43d6-94c5-55e638b4169a",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1312,
+        1744
+      ],
+      "id": "bb341143-f159-44da-9970-fb3786844702",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1504,
+        1744
+      ],
+      "id": "cf8fe370-921d-49c2-b883-3fb159f72f4b",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1b870dee-b24c-4c69-a80e-640569eb59e9",
+              "leftValue": "={{ $json[\"Estado de Reservación\"] }}",
+              "rightValue": "Cancelada",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1312,
+        1472
+      ],
+      "id": "5746558a-88bb-4722-9395-0760850ae239",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25292be3-bf74-44c2-b93d-0ce1ba6e5469",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nLa reservación ya se encontraba Cancelada, nada que hacer",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        1456
+      ],
+      "id": "fc4a5412-e267-4020-b8ef-2d5742a7d2b4",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a683569-77af-4513-838f-1090e69a084b",
+              "leftValue": "={{ $json.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        1232
+      ],
+      "id": "8debba4c-fb3e-4a14-9bc2-f98b2cd5ba4d",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el id ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un código válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        1312
+      ],
+      "id": "06366a79-d488-4950-9cd7-00888b4bb571",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1296,
+        1312
+      ],
+      "id": "66eb4ee1-ca61-4c09-90d1-53f0567e5eb3",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        1312
+      ],
+      "id": "e8bb3d92-7c6c-4b30-ab79-26d250f91486",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2878d7bf-f508-4cba-b708-6fb6ff4f781d",
+              "name": "fecha",
+              "value": "={{ $json.fecha }}",
+              "type": "string"
+            },
+            {
+              "id": "f3f3779f-5437-4b22-830b-1fe7c4c9a705",
+              "name": "hora",
+              "value": "={{ $json.hora }}",
+              "type": "string"
+            },
+            {
+              "id": "0e428a9f-a2da-4f01-8164-e05f48d16576",
+              "name": "cliente",
+              "value": "={{ $json.cliente }}",
+              "type": "string"
+            },
+            {
+              "id": "bc9589e1-19ba-40a9-be4b-4930e2a837f1",
+              "name": "personas",
+              "value": "={{ $json.personas }}",
+              "type": "number"
+            },
+            {
+              "id": "a25d44c9-8c7c-4815-81b7-e6a6d92332ed",
+              "name": "notas",
+              "value": "={{ $json.notas }}",
+              "type": "string"
+            },
+            {
+              "id": "a31e3b72-a46c-4773-881d-c70fe4582217",
+              "name": "estado",
+              "value": "={{ $json.estado }}",
+              "type": "string"
+            },
+            {
+              "id": "fea67368-b880-4f6b-bd2e-832be4c86c3e",
+              "name": "correo",
+              "value": "={{ $json.correo }}",
+              "type": "string"
+            },
+            {
+              "id": "d745d432-6945-4edc-8827-a2c3872b552e",
+              "name": "zona",
+              "value": "={{ $json.zona }}",
+              "type": "string"
+            },
+            {
+              "id": "fa11193f-9906-4876-a43b-4460e43747b2",
+              "name": "codigo_reserva",
+              "value": "={{ $json.codigo_reserva }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2240,
+        1328
+      ],
+      "id": "74d22e22-de71-42f9-9baf-890503ba7206",
+      "name": "All Fields"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes_reserva",
+          "mode": "list",
+          "cachedResultName": "clientes_reserva"
+        },
+        "limit": 10,
+        "where": {
+          "values": [
+            {
+              "column": "nombre_completo",
+              "value": "={{ $('Revisa Horarios').first().json.nombre_completo }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1776,
+        800
+      ],
+      "id": "2398c032-a42a-4e1f-bf77-d20374679271",
+      "name": "Busca Cliente",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM {{ $('Agente Principal').first().json.schema }}.reservaciones\nWHERE cliente = '{{ $('Normaliza Datos').first().json.nombre_completo }}'\nAND fecha_reservacion >= '{{ (raw => {\n  const d = new Date(raw);\n  return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;\n})($('Normaliza Datos').first().json.fecha) }}'\nAND estado != 'Cancelada'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1776,
+        960
+      ],
+      "id": "b5e6aa0f-a3b6-4cfc-a0d7-28f1e713aef2",
+      "name": "Busca Reserva",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes_reserva",
+          "mode": "list",
+          "cachedResultName": "clientes_reserva"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nombre_completo": "={{ $('Normaliza Datos').first().json.nombre_completo }}",
+            "email": "={{ $('Normaliza Datos').first().json.correo }}",
+            "telefono_contacto": "={{ $('Normaliza Datos').first().json.telefono }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre_completo",
+              "displayName": "nombre_completo",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "clasificacion_cliente",
+              "displayName": "clasificacion_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ultima_fecha_reservacion",
+              "displayName": "ultima_fecha_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ultima_hora_reservacion",
+              "displayName": "ultima_hora_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2176,
+        752
+      ],
+      "id": "0175cfaa-fb89-485f-9035-27f698944b73",
+      "name": "Alta Clientes",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes_reserva",
+          "mode": "list",
+          "cachedResultName": "clientes_reserva"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Cliente AirTable').first().json.id }}",
+            "total_reservaciones": "={{ $('Cliente AirTable').first().json.total_reserv + 1 }}",
+            "ultima_fecha_reservacion": "={{ $json.fecha_reservacion }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nombre_completo",
+              "displayName": "nombre_completo",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "clasificacion_cliente",
+              "displayName": "clasificacion_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_fecha_reservacion",
+              "displayName": "ultima_fecha_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ultima_hora_reservacion",
+              "displayName": "ultima_hora_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3600,
+        944
+      ],
+      "id": "88529c5f-e8d8-42ef-92f9-7a9afbcb3200",
+      "name": "Update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "codigo_reserva",
+              "value": "={{ $('Normaliza Datos').first().json.codigo_reserva.replaceAll(' ','').trim() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        752,
+        1312
+      ],
+      "id": "9e968a8f-6b1c-4460-98a8-901b98a7faa0",
+      "name": "Busca reservaciones1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "hora_reservacion": "={{ $('Normaliza Datos').first().json.hora }}",
+            "fecha_reservacion": "={{ (raw => {\n  const d = new Date(raw);\n  return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;\n})($('Normaliza Datos').first().json.fecha) }}",
+            "estado": "Pendiente",
+            "dia_semana": "={{ new Date($('Normaliza Datos').first().json.fecha).getDay() }}",
+            "notas": "={{ $('Normaliza Datos').first().json.notas }}",
+            "zona": "={{ $('Normaliza Datos').first().json.zona }}",
+            "ubicacion": "={{ $('Normaliza Datos').first().json.ubicacion }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "codigo_reserva": "={{ $json.codigo_reserva.replaceAll(' ','').trim() }}",
+            "mesas_reserva": "={{\n  (function() {\n    const p = $('Normaliza Datos').first().json.personas;\n    return p <= 2 ? 1 : p <= 4 ? 2 : 3;\n  })()\n}}",
+            "numero_personas": "={{ $('Normaliza Datos').first().json.personas }}"
+          },
+          "matchingColumns": [
+            "codigo_reserva"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1296,
+        1152
+      ],
+      "id": "864eab86-3cf8-4518-8419-63f382682e06",
+      "name": "Actualiza Reserva",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "codigo_reserva",
+              "value": "={{ $json.codigo_reserva.replaceAll(' ','').trim() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        896,
+        1744
+      ],
+      "id": "0c98553f-5d5d-41c0-a3fc-022ca4ded02c",
+      "name": "Busca reservaciones",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "estado": "Cancelada",
+            "notas": "={{ $('Normaliza Datos').first().json.notas }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "codigo_reserva": "={{ $json.codigo_reserva.replaceAll(' ','').trim() }}",
+            "intento_confirmacion": "={{ true }}"
+          },
+          "matchingColumns": [
+            "codigo_reserva"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2192,
+        1616
+      ],
+      "id": "a3d41fff-7b45-4b7f-a7bc-29fb1920ef05",
+      "name": "Update rows in a table1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c5d8ee6-3764-4faa-9219-41cf43cfdb5a",
+              "name": "fecha",
+              "value": "={{ (raw => {\n  const d = new Date(raw);\n  return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;\n})($('Normaliza Datos').first().json.fecha) }}",
+              "type": "string"
+            },
+            {
+              "id": "27e2aa1e-c162-40dc-b215-386d42c2a8b7",
+              "name": "hora",
+              "value": "={{ $('Actualiza Reserva').first().json.hora_reservacion }}",
+              "type": "string"
+            },
+            {
+              "id": "9c90660d-d6a0-4799-a7f4-3d16ee9e48fa",
+              "name": "cliente",
+              "value": "={{ $('Actualiza Reserva').first().json.cliente }}",
+              "type": "string"
+            },
+            {
+              "id": "98595a48-1f1c-4555-8301-3b284a1a140e",
+              "name": "personas",
+              "value": "={{ $('Actualiza Reserva').first().json.numero_personas }}",
+              "type": "number"
+            },
+            {
+              "id": "4d77d7ef-814e-42e0-883e-2701a6cef655",
+              "name": "notas",
+              "value": "={{ $('Actualiza Reserva').first().json.notas }}",
+              "type": "string"
+            },
+            {
+              "id": "615e1ded-ca87-4479-a87f-84db2eccd7b4",
+              "name": "estado",
+              "value": "={{ $('Actualiza Reserva').first().json.estado }}",
+              "type": "string"
+            },
+            {
+              "id": "d92abef2-e128-423a-9573-a36a45656146",
+              "name": "correo",
+              "value": "={{ $('Actualiza Reserva').first().json.correo || 'No proporcionado' }}",
+              "type": "string"
+            },
+            {
+              "id": "f0054bbd-48bb-43d6-b48a-e35d5818e11f",
+              "name": "=zona",
+              "value": "={{ $('Actualiza Reserva').first().json.zona }}",
+              "type": "string"
+            },
+            {
+              "id": "7e1e05b9-4696-455f-87fa-699857595436",
+              "name": "codigo_reserva",
+              "value": "={{ $('Actualiza Reserva').first().json.codigo_reserva }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        1152
+      ],
+      "id": "63dde7b0-9e2a-443e-b2fa-213131c160c8",
+      "name": "Edit Fields8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25085d83-dbca-42c1-926e-ee68ed19cc8a",
+              "name": "Response",
+              "value": "Discúlpate con el usuario, te equivocaste; Informa al usuario que las reservas de 7 o más personas requiere VIP, canaliza con equipo del restaurante.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        992
+      ],
+      "id": "40edb698-1295-40a0-a9fb-d083768d453f",
+      "name": "Edit Fields9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n\n// Reglas de salida única (prioridad):\n// 1) CIERRE: Lunes (\"Día\") o Ventana (\"Horario\") -> { mensaje: \"Cerrado\", motivo: \"...\", ahora: \"...\" }\n// 2) Pasado/ahora: fecha/hora <= ahora -> { mensaje: \"Pasado\", ahora: \"<...>\" }\n// 3) Futura: fecha/hora > ahora + 3 meses -> { mensaje: \"Futuro\", ahora: \"<...>\" }\n// 4) Muy próxima: (ahora, ahora + 60 min) -> { mensaje: \"Cercano\", ahora: \"<...>\" }\n// 5) Válida: devolver input original + NUEVO CAMPO 'dia_semana'.\n\n// Zona horaria base: Argentina (UTC-3, sin DST).\n\nconst OFFSET_TZ_MIN = 3 * 60;    // Argentina UTC-3\nconst WINDOW_MIN = 60;           // \"Muy próxima\" = 60 minutos\nconst MAX_FUTURE_MONTHS = 3;     // Límite de meses en el futuro\n\n// Nombres de días para el nuevo campo\nconst DIAS_SEMANA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];\n\n// Ventanas de cierre en minutos desde medianoche (local ARG), [inicio, fin)\nconst CLOSED_WINDOWS = [\n  { startMin: 16 * 60,        endMin: 18 * 60 },       // 16:00–18:00\n  { startMin: 0,              endMin: 10 * 60 + 30 },  // 00:00–10:30\n];\n\n// --- FUNCIONES HELPER ---\n\nfunction parseDateParts(fechaStr) {\n  const clean = String(fechaStr || '').trim().replace(/-/g, '/');\n  const [y, m, d] = clean.split('/').map(n => parseInt(n, 10));\n  if (![y, m, d].every(Number.isFinite)) return null;\n  return { y, m, d };\n}\n\nfunction parseTimeParts(horaStr) {\n  const parts = String(horaStr || '').trim().split(':');\n  const hh = parseInt(parts[0], 10);\n  const mm = parseInt(parts[1] ?? '0', 10);\n  if (![hh, mm].every(Number.isFinite)) return null;\n  return { hh, mm };\n}\n\nfunction toUtcMsFromARG(fechaStr, horaStr) {\n  const d = parseDateParts(fechaStr);\n  const t = parseTimeParts(horaStr);\n  if (!d || !t) return NaN;\n  // Local ARG -> UTC (UTC = local + 3h)\n  return Date.UTC(d.y, d.m - 1, d.d, t.hh + Math.floor(OFFSET_TZ_MIN / 60), t.mm, 0, 0);\n}\n\n// [NUEVO] Obtiene el nombre del día en español\nfunction getDiaSemanaNombre(fechaStr) {\n  const d = parseDateParts(fechaStr);\n  if (!d) return null;\n  // Usamos UTC para evitar problemas de zona horaria al determinar el día exacto\n  const dow = new Date(Date.UTC(d.y, d.m - 1, d.d)).getUTCDay(); \n  return DIAS_SEMANA[dow];\n}\n\nfunction minutesFromMidnight(horaStr) {\n  const t = parseTimeParts(horaStr);\n  if (!t) return null;\n  return t.hh * 60 + t.mm;\n}\n\nfunction isWithinClosedWindow(horaStr) {\n  const mins = minutesFromMidnight(horaStr);\n  if (mins == null) return false;\n  return CLOSED_WINDOWS.some(w => mins >= w.startMin && mins < w.endMin);\n}\n\nfunction pad2(n){ return n < 10 ? '0' + n : '' + n; }\n\nfunction nowARGString() {\n  const nowUtcMs = Date.now();\n  const nowArgMs = nowUtcMs - OFFSET_TZ_MIN * 60 * 1000;\n  const d = new Date(nowArgMs);\n  const Y = d.getUTCFullYear();\n  const M = pad2(d.getUTCMonth() + 1);\n  const D = pad2(d.getUTCDate());\n  const h = pad2(d.getUTCHours());\n  const m = pad2(d.getUTCMinutes());\n  return `${Y}-${M}-${D} ${h}:${m}`;\n}\n\n// --- LÓGICA PRINCIPAL ---\n\nconst items = await $input.all();\n\n// Referencias de tiempo\nconst nowUtcMs = Date.now();\nconst soonLimitUtcMs = nowUtcMs + WINDOW_MIN * 60 * 1000;\nconst ahora = nowARGString();\n\nconst nowInUtc = new Date(nowUtcMs);\nconst futureLimitDate = new Date(nowInUtc.getTime());\nfutureLimitDate.setMonth(nowInUtc.getMonth() + MAX_FUTURE_MONTHS);\nconst futureLimitUtcMs = futureLimitDate.getTime();\n\nlet motivoCierre = null; \nlet hasPastOrNow = false;\nlet hasFuture = false;\nlet hasSoon = false;\n\nfor (const item of items) {\n  const { fecha, hora } = item.json || {};\n\n  // [NUEVO] Calculamos e inyectamos el día de la semana\n  const nombreDia = getDiaSemanaNombre(fecha);\n  if (item.json) {\n      item.json.dia_semana = nombreDia; // Ej: \"Miércoles\"\n  }\n\n  // Regla 1 (CIERRE)\n  // Chequeamos explícitamente si es Lunes\n  if (nombreDia === 'Lunes') {\n    motivoCierre = 'Lunes';\n    break; \n  }\n  \n  if (isWithinClosedWindow(hora)) {\n    motivoCierre = 'Horario';\n    break; \n  }\n\n  const targetUtcMs = toUtcMsFromARG(fecha, hora);\n\n  // Regla 2: Pasado/ahora\n  if (!Number.isFinite(targetUtcMs) || targetUtcMs <= nowUtcMs) {\n    hasPastOrNow = true;\n    break;\n  }\n\n  // Regla 3: Futura\n  if (targetUtcMs > futureLimitUtcMs) {\n    hasFuture = true;\n    break;\n  }\n\n  // Regla 4: Muy próxima\n  if (targetUtcMs < soonLimitUtcMs) {\n    hasSoon = true;\n  }\n}\n\n// Comprobar resultados en orden de prioridad\n\nif (motivoCierre) {\n  return [{ json: { \n      mensaje: 'Cerrado', \n      motivo: motivoCierre, \n      ahora \n  } }];\n}\n\nif (hasPastOrNow) {\n  return [{ json: { mensaje: 'Pasado', ahora } }];\n}\n\nif (hasFuture) {\n  return [{ json: { mensaje: 'Futuro', ahora } }];\n}\n\nif (hasSoon) {\n  return [{ json: { mensaje: 'Cercano', ahora } }];\n}\n\n// Regla 5: Válido (Devuelve el item original con el nuevo campo 'dia_semana')\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -608,
+        768
+      ],
+      "id": "532d1202-32c7-4688-aad0-3839b42e3fa7",
+      "name": "Revisa Horarios"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mensaje }}",
+                    "rightValue": "=Cercano",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3668be81-2050-40ba-983a-a1691781e241"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cercano"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2b3c51f2-6658-49d8-b10c-fdf9fe863332",
+                    "leftValue": "={{ $json.mensaje }}",
+                    "rightValue": "Pasado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pasado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "565499bf-bb35-4ed0-9b71-699f5eec818f",
+                    "leftValue": "={{ $json.mensaje }}",
+                    "rightValue": "Cerrado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cerrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1ede6c35-793e-4269-878a-325791500ea1",
+                    "leftValue": "={{ $json.mensaje }}",
+                    "rightValue": "Futuro",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Futuro"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "OK"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -416,
+        720
+      ],
+      "id": "10a8c04e-a200-4849-ab2f-d65f453d4359",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,        -- Cuenta coincidencias reales\n    COALESCE(SUM(r.numero_personas), 0) as num_personas -- Pone 0 si es NULL\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)  -- 1. Definimos las zonas obligatorias\nLEFT JOIN {{ $('Agente Principal').first().json.schema }}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1         -- 2. El filtro de fecha va AQUÍ, no en el WHERE\n    AND EXTRACT(HOUR FROM hora_reservacion) = $2  \n    AND r.estado != 'Cancelada'\nGROUP BY v.zona_obj;",
+        "options": {
+          "queryReplacement": "={{ $json.fecha }},{{ $json.hora.split(\":\")[0] }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        752,
+        864
+      ],
+      "id": "3fd44c2c-8047-4583-9945-49981bbfe817",
+      "name": "Calcula Ocupación",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
+              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1216,
+        864
+      ],
+      "id": "2ea7773a-00c8-4304-9997-a68e4133c366",
+      "name": "Lleno?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para reservaciones a las {{ $('Normaliza Datos').first().json.hora }}. Sugiere otra zona, fecha u horario. Si es día de evento ofrece otra fecha para la siguiente semana u otro día, revisa horarios de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1504,
+        720
+      ],
+      "id": "e38a6003-0404-4731-bd62-84f9190a1ac8",
+      "name": "Response Lleno"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "hora_reservacion": "={{ $('Normaliza Datos').first().json.hora }}",
+            "fecha_reservacion": "={{ (raw => {\n  const d = new Date(raw);\n  return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;\n})($('Normaliza Datos').first().json.fecha) }}",
+            "cliente": "={{ $('Normaliza Datos').first().json.nombre_completo }}",
+            "numero_personas": "={{ $('Normaliza Datos').first().json.personas }}",
+            "estado": "Pendiente",
+            "dia_semana": "={{ new Date($('Normaliza Datos').first().json.fecha).getDay() }}",
+            "email_contacto": "={{ $('Normaliza Datos').first().json.correo}}",
+            "telefono_contacto": "={{ $('Normaliza Datos').first().json.telefono}}",
+            "notas": "={{ $('Normaliza Datos').first().json.notas || 'Ninguna' }}",
+            "zona": "={{ $('Normaliza Datos').first().json.zona  }}",
+            "ubicacion": "={{ $('Normaliza Datos').first().json.ubicacion  }}",
+            "telefono_solicitante": "={{ $('Agente Principal').first().json.telefono_solicita  }}",
+            "created_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "codigo_reserva": "={{ `OSK-${new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires' }).slice(2).replace(/-/g, '')}-${Array.from({length: 4}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26))).join('')}` }}",
+            "mesas_reserva": "={{\n  (function() {\n    const p = $('Normaliza Datos').first().json.personas;\n    return p <= 2 ? 1 : p <= 4 ? 2 : 3;\n  })()\n}}",
+            "Canal": "WhatsApp"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3248,
+        944
+      ],
+      "id": "10652887-0692-4145-8257-8a3be72bb739",
+      "name": "Crea Reserva",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3c42f423-efec-448c-989c-86a47f11bda7",
+              "leftValue": "={{ /^OSK-\\d{6}-[A-Z]{4}$/.test($('Normaliza Datos').first().json.codigo_reserva) }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        1664
+      ],
+      "id": "105e62d4-be21-44ec-9c4f-af610d0f3dc8",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cc33b4df-2fae-4854-9644-7eb8df6236b2",
+              "name": "Response",
+              "value": "No proporcionaste un código válido, p. ej. \"OSK-YYMMDD-XXXX\". Corrige y vuelve a llamar a la herramienta.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        768,
+        1552
+      ],
+      "id": "5f05e9f0-f65e-412d-ac9d-f1a6601b683a",
+      "name": "Edit Fields10"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "166d3778-c7a9-4e0d-8e5d-9c9a2f6da6b4",
+              "leftValue": "={{ $json.personas }}",
+              "rightValue": 6,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1296,
+        768
+      ],
+      "id": "acd6d00a-23b5-454d-aa10-5f3abb7dbd9c",
+      "name": "Menos de 7?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "145a515a-382f-44a6-a14c-e0e33bf22e1f",
+              "leftValue": "={{ ['barra', 'salon'].includes(\n    $('Normaliza Datos').item.json.zona\n        .toLowerCase()\n        .normalize('NFD')\n        .replace(/[\\u0300-\\u036f]/g, '')\n        .replace(/[^a-z]/g, '')\n)}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        832
+      ],
+      "id": "3d079127-268a-4a71-bf8e-0bac4c1dfabd",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste una zona que no existe. Las únicas disponibles son \"Salón\" y \"Barra\". Si son más de 6 se habilita una zona \"VIP\" por medio de gestión con el equipo  del restaurante.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        480
+      ],
+      "id": "2c7f5521-4dae-4eb1-90a8-fabb514ae6d1",
+      "name": "Response No Zona"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Elegiste un {{ $json.motivo }} en el que el local está cerrado. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        224
+      ],
+      "id": "37ec9bce-e76a-4bfb-9232-236923018ae8",
+      "name": "Response Local Cerrado"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer hacía el pasado. Hora actual es {{ $json.ahora }}. Sugiere otra fecha u horario.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        112
+      ],
+      "id": "85a08ba6-cfbd-4975-9d62-3ec50de54f48",
+      "name": "Response Fecha Pasada"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones mínimas hacen para dentro de 1 hora hacía delante. Hora actual es {{ $('Revisa Horarios').item.json.ahora }}. Sugiere otra fecha u horario. Procura usar horas cerradas. Revisa horarios de atención.",
+              "type": "string"
+            },
+            {
+              "id": "35ddc4c7-c99f-4794-82b9-937a19825c22",
+              "name": "ahora",
+              "value": "=",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ef4c6e5a-9267-4125-8fec-32c141511a99",
+      "name": "Response Fecha Cercana"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Agente Principal').first().json.cliente_id }}",
+            "intencion": "Información",
+            "ult_reservacion": "={{ $('All Fields').item.json.fecha }}",
+            "pregunta_verifica_reserva": false
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3136,
+        1520
+      ],
+      "id": "ceb356ec-85c5-4d77-a4fd-8e748c5de4d5",
+      "name": "Actualiza Cliente a Info",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer más de 3 meses en el futuro. Hora actual es {{ $json.ahora }}. Sugiere otra fecha y horario.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        336,
+        352
+      ],
+      "id": "07b64f55-c7c5-420c-ba8a-e06f01b8b5cd",
+      "name": "Response Nombre Incompleto"
+    },
+    {
+      "parameters": {
+        "operation": "remove",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Normaliza Datos').first().json.fecha ||  $('Get Reserv Info').item.json.fecha_formateada }}",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3456,
+        1760
+      ],
+      "id": "fc0cbad8-e555-4079-b7c0-c043a358b9ad",
+      "name": "Delete sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3c42f423-efec-448c-989c-86a47f11bda7",
+              "leftValue": "={{ /^OSK-\\d{6}-[A-Z]{4}$/.test($('Normaliza Datos').first().json.codigo_reserva) }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        1328
+      ],
+      "id": "6d8d7f82-696f-4dfb-81a4-bb4b2d4320fa",
+      "name": "Codigo Reserva Valido?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b1b8ede7-4405-458b-9fbc-2389cc05040a",
+              "leftValue": "={{ $('Normaliza Datos').first().json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'creacion' }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        880
+      ],
+      "id": "655d7bb1-f9ce-4ea8-bf3b-84afa393f6ce",
+      "name": "Es Creación?"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Inicializamos el objeto vacío donde guardaremos los resultados\nconst resultado = {};\n\n// 2. Iteramos sobre todos los items que llegaron del nodo anterior\nfor (const item of $input.all()) {\n  const data = item.json;\n  \n  // Verificamos que la zona exista para evitar errores\n  if (data.zona) {\n    // 3. Asignamos la zona como clave (ej: \"Salón\" o \"Barra\")\n    resultado[data.zona] = {\n      num_mesas: data.num_mesas,\n      num_personas: data.num_personas\n    };\n  }\n}\n\n// 4. Retornamos el resultado en el formato estándar de n8n\nreturn [ { json: resultado } ];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        992,
+        864
+      ],
+      "id": "7a230e4d-0199-443d-9de2-42273b266b2a",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,        -- Cuenta coincidencias reales\n    COALESCE(SUM(r.numero_personas), 0) as num_personas -- Pone 0 si es NULL\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)  -- 1. Definimos las zonas obligatorias\nLEFT JOIN {{ $('Agente Principal').first().json.schema }}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1         -- 2. El filtro de fecha va AQUÍ, no en el WHERE\n    AND EXTRACT(HOUR FROM hora_reservacion) >=21  \n    AND r.estado != 'Cancelada'\nGROUP BY v.zona_obj;",
+        "options": {
+          "queryReplacement": "={{ $json.fecha }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        752,
+        672
+      ],
+      "id": "7493d6ef-0878-494d-9eb8-2730c8eb4d8b",
+      "name": "Calcula Ocupación1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Inicializamos el objeto vacío donde guardaremos los resultados\nconst resultado = {};\n\n// 2. Iteramos sobre todos los items que llegaron del nodo anterior\nfor (const item of $input.all()) {\n  const data = item.json;\n  \n  // Verificamos que la zona exista para evitar errores\n  if (data.zona) {\n    // 3. Asignamos la zona como clave (ej: \"Salón\" o \"Barra\")\n    resultado[data.zona] = {\n      num_mesas: data.num_mesas,\n      num_personas: data.num_personas\n    };\n  }\n}\n\n// 4. Retornamos el resultado en el formato estándar de n8n\nreturn [ { json: resultado } ];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        992,
+        672
+      ],
+      "id": "b6a0f233-9fce-4e2a-a29e-6e33eb563a5e",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c0cb9b0f-8e5c-441d-9163-633c69645a35",
+              "leftValue": "={{ ($('Normaliza Datos').first().json.zona == \"Salón\" && ($json[\"Salón\"].num_mesas) >= 12 ) ||  ($('Normaliza Datos').first().json.zona == \"Barra\" && ($json[\"Barra\"].num_personas) >= 12 ) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1216,
+        672
+      ],
+      "id": "60b7550f-d924-44c8-9a42-da5ccf870f66",
+      "name": "Lleno?1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nOcupaciones llenas en \"{{ $('Normaliza Datos').first().json.zona }}\" para el evento. Ofrece otra fecha o zona si hay disponible, revisa horarios y fechas de las promociones/eventos. \nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/16 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1504,
+        528
+      ],
+      "id": "bcd9fe27-1bb7-459a-9842-ed389d98f347",
+      "name": "Response Lleno1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
+              "name": "Response",
+              "value": "=Cambia la intención a \"Reservación\" y confirma los datos para la reservación de nuevo. Revisa el llamado a esta herramienta. Mensaje Interno: {{ $json.detalles }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -128,
+        2256
+      ],
+      "id": "b65b46ab-680f-4629-b38a-447017c27bfc",
+      "name": "Edit Fields11"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4c00a43b-e339-45c6-bcbe-7bba4aa6e8f8",
+              "leftValue": "={{ $json.hora.split(\":\")[0].toNumber() }}",
+              "rightValue": 21,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        656
+      ],
+      "id": "8ef96abf-d9ab-4543-b709-49f521a8b93b",
+      "name": "If9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. El evento Sushi Libre solo admite reservaciones a las 21 hrs con hasta 15 min de tolerancia.\nOcupación Actual:\nBarra: {{ $json.Barra.num_personas }}/12 (personas)\nSalón: {{ $json[\"Salón\"].num_mesas }}/12 (mesas)\n\n\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1200,
+        448
+      ],
+      "id": "dc816bf6-0727-483d-b999-59f0351c4c8a",
+      "name": "Response No Zona1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5a8173a-0304-48f7-9dfb-2f17d6b6ed17",
+              "leftValue": "={{ $json.evento }}",
+              "rightValue": "Sushi Libre",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "8532c9e3-c169-491a-bf94-7013d4d2e85e",
+              "leftValue": "={{ $json.dia_semana =='Miércoles' && ( $json.hora.split(\":\")[0].toNumber()>=21  || ( $json.hora.split(\":\")[0].toNumber()>=20 &&  $json.hora.split(\":\")[1].toNumber()>=30) )  }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        848
+      ],
+      "id": "2f3c1af1-f778-4282-9ab4-06e62f3f5463",
+      "name": "Sushi Libre?"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "title": "={{ $('Normaliza Datos').first().json.fecha ||  $('Get Reserv Info').item.json.fecha_formateada }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3696,
+        1760
+      ],
+      "id": "dc9d4a31-56f4-4534-8f4d-1657dff85106",
+      "name": "Create sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nSELECT \n    codigo_reserva, \n    cliente, \n    fecha_reservacion::text, \n    hora_reservacion::text, \n    CASE EXTRACT(DOW FROM fecha_reservacion)\n        WHEN 0 THEN 'Domingo'\n        WHEN 1 THEN 'Lunes'\n        WHEN 2 THEN 'Martes'\n        WHEN 3 THEN 'Miércoles'\n        WHEN 4 THEN 'Jueves'\n        WHEN 5 THEN 'Viernes'\n        WHEN 6 THEN 'Sábado'\n    END AS dia_semana,\n    numero_personas, \n    mesas_reserva as mesas_sugeridas,\n    zona, \n    email_contacto,\n    telefono_contacto,  \n    estado,\n  notas,\n  'No' as actualiza_base,\n    TO_CHAR(created_at, 'YYYY-MM-DD HH24:MI:SS') AS created_at\nFROM {{ $('Agente Principal').first().json.schema }}.reservaciones \n  WHERE fecha_reservacion = '{{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada}}'  \norder by estado asc, zona desc, hora_reservacion asc, id asc ;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3952,
+        1760
+      ],
+      "id": "5eab1738-f2ab-4340-aa53-a23ee68f3aad",
+      "name": "Get Reserv",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16_ULxHa4l-N5DHhhpIkytQdPY0hPqZF6_E2Xcu83_S0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $('Normaliza Datos').first().json.fecha || $('Get Reserv Info').item.json.fecha_formateada }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mesas_sugeridas",
+              "displayName": "mesas_sugeridas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "actualiza_base",
+              "displayName": "actualiza_base",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        4224,
+        1760
+      ],
+      "id": "439c52c4-34bd-4094-b462-d02a9ff4acfd",
+      "name": "Llena Documento",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OnTQvkOeBX8Kq3DU",
+          "name": "Google Sheets Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4432,
+        1760
+      ],
+      "id": "4986499d-a2be-4b79-b1eb-7856cbede9c2",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    v.zona_obj as zona,\n    coalesce(SUM(r.mesas_reserva),0) as num_mesas,        -- Cuenta coincidencias reales\n    COALESCE(SUM(r.numero_personas), 0) as num_personas -- Pone 0 si es NULL\nFROM (VALUES ('Salón'), ('Barra')) AS v(zona_obj)  -- 1. Definimos las zonas obligatorias\nLEFT JOIN {{ $('Agente Principal').first().json.schema }}.reservaciones r \n    ON v.zona_obj = r.zona \n    AND r.fecha_reservacion = $1         -- 2. El filtro de fecha va AQUÍ, no en el WHERE\n    AND EXTRACT(HOUR FROM hora_reservacion) >=21\nGROUP BY v.zona_obj;",
+        "options": {
+          "queryReplacement": "={{ $json.fecha }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        800,
+        448
+      ],
+      "id": "cc854a3b-6578-4d71-9ce5-ba53d6c67eb6",
+      "name": "Calcula Ocupación2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Inicializamos el objeto vacío donde guardaremos los resultados\nconst resultado = {};\n\n// 2. Iteramos sobre todos los items que llegaron del nodo anterior\nfor (const item of $input.all()) {\n  const data = item.json;\n  \n  // Verificamos que la zona exista para evitar errores\n  if (data.zona) {\n    // 3. Asignamos la zona como clave (ej: \"Salón\" o \"Barra\")\n    resultado[data.zona] = {\n      num_mesas: data.num_mesas,\n      num_personas: data.num_personas\n    };\n  }\n}\n\n// 4. Retornamos el resultado en el formato estándar de n8n\nreturn [ { json: resultado } ];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        992,
+        448
+      ],
+      "id": "602ba28d-c52d-4ba1-ab23-b4fee88975e6",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3c42f423-efec-448c-989c-86a47f11bda7",
+              "leftValue": "={{ /^OSK-\\d{6}-[A-Z]{4}$/.test($('Normaliza Datos').first().json.codigo_reserva) }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        336,
+        2032
+      ],
+      "id": "2e28593e-60e4-48ab-8fef-212dd78208f3",
+      "name": "Codigo Reserva Valido?1"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "codigo_reserva",
+              "value": "={{ $('Normaliza Datos').first().json.codigo_reserva.replaceAll(' ','').trim() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        752,
+        2304
+      ],
+      "id": "0511781f-91f1-4c31-ae13-239dd4cc3a29",
+      "name": "Busca reservaciones2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a683569-77af-4513-838f-1090e69a084b",
+              "leftValue": "={{ $json.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        976,
+        2176
+      ],
+      "id": "251bc639-5bcf-4c35-a7c3-3cd6504cd8dc",
+      "name": "If10"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e67be385-8e0f-484f-ae64-daa7292020f1",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nNo se encontró ninguna reservación con el código ingresado ({{ $('Normaliza Datos').first().json.codigo_reserva }}). Favor de proporcionar un id válido. {{ $json.data[1].error ?? 'Sin errores detectados'  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1632,
+        2304
+      ],
+      "id": "39d99647-77e4-437e-9f17-422ffdf8d800",
+      "name": "Edit Fields12"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1248,
+        2304
+      ],
+      "id": "0ec95335-0d04-4536-942d-ea953752d020",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        2304
+      ],
+      "id": "e5b6010a-8579-403c-bed3-d783a12abd80",
+      "name": "Aggregate4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "estado": "Confirmada",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "codigo_reserva": "={{ $json.codigo_reserva.replaceAll(' ','').trim() }}",
+            "intento_confirmacion": "={{ true }}"
+          },
+          "matchingColumns": [
+            "codigo_reserva"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2192,
+        1888
+      ],
+      "id": "e9081aef-efee-4c0b-a2d2-27402e33c92d",
+      "name": "Actualiza Reserva1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Configuración: Usamos el nombre oficial de la zona horaria (IANA)\n// Esto maneja automáticamente cambios de horario de verano/invierno si ocurren.\nconst timeZone = 'America/Argentina/Buenos_Aires';\n\nfor (const item of $input.all()) {\n\n  const fechaRaw = item.json.fecha_reservacion; // \"2025-12-04T00:00:00...\"\n  const horaRaw = item.json.hora_reservacion;   // \"22:00:00\"\n\n  if (fechaRaw && horaRaw) {\n    // -----------------------------------------------------------\n    // PASO 1: Normalizar la Fecha Objetivo (Reserva)\n    // -----------------------------------------------------------\n    // Extraemos YYYY-MM-DD\n    const fechaSolo = fechaRaw.split('T')[0];\n    \n    // Creamos una fecha \"ficticia\" en UTC con los datos de la reserva\n    // Le agregamos la 'Z' para forzar a JS a creer que es UTC.\n    // Hacemos esto para tener un punto de comparación matemático neutro.\n    const targetDateISO = `${fechaSolo}T${horaRaw}Z`; \n    const targetDate = new Date(targetDateISO);\n\n    // -----------------------------------------------------------\n    // PASO 2: Obtener la Hora Actual en Argentina Dinámicamente\n    // -----------------------------------------------------------\n    const now = new Date();\n\n    // Usamos Intl para descomponer la hora actual según la zona horaria de Argentina\n    const formatter = new Intl.DateTimeFormat('en-US', {\n      timeZone: timeZone,\n      year: 'numeric', month: '2-digit', day: '2-digit',\n      hour: '2-digit', minute: '2-digit', second: '2-digit',\n      hour12: false\n    });\n\n    // Extraemos las partes (año, mes, dia, hora...) de la hora actual argentina\n    const parts = formatter.formatToParts(now);\n    const mapping = {};\n    parts.forEach(p => mapping[p.type] = p.value);\n\n    // Reconstruimos la fecha actual de Argentina como si fuera UTC (para que coincida con el Paso 1)\n    // Formato: YYYY-MM-DDTHH:mm:ssZ\n    const nowArgISO = `${mapping.year}-${mapping.month}-${mapping.day}T${mapping.hour}:${mapping.minute}:${mapping.second}Z`;\n    const nowArgDate = new Date(nowArgISO);\n\n    // -----------------------------------------------------------\n    // PASO 3: Calcular Diferencia\n    // -----------------------------------------------------------\n    // Al restar dos objetos Date, obtenemos milisegundos\n    const diffMs = targetDate - nowArgDate;\n    const diferenciaHoras = diffMs / (1000 * 60 * 60);\n\n    // -----------------------------------------------------------\n    // PASO 4: Tu Lógica de Negocio\n    // -----------------------------------------------------------\n    \n    // Si la diferencia es positiva (futuro) Y es menor a 1 hora\n    if (diferenciaHoras > 0 && diferenciaHoras < 1) {\n      item.json.mensaje_validacion = \"Todo es correcto (Menor a 1h)\";\n      item.json.procede_actualizacion = \"Sí\";\n    \n    } else if (diferenciaHoras <= 0) {\n      item.json.mensaje_validacion = \"No es posible de confirmar (La reservación ya pasó: \"+targetDateISO+\")\";\n      item.json.procede_actualizacion = \"No\";\n      \n    } else {\n      item.json.mensaje_validacion = \"Informa al usuario que la reserva está asegurada pero la confirmación aún no es posible (Falta más de 1h).\";\n      item.json.procede_actualizacion = \"No\";\n    }\n\n    // Debug (opcional)\n    item.json.debug_target = targetDateISO;\n    item.json.debug_now_arg = nowArgISO;\n    item.json.debug_diff = diferenciaHoras;\n\n  } else {\n    item.json.mensaje_validacion = \"Error: Faltan datos\";\n    item.json.procede_actualizacion = \"No\";\n  }\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1248,
+        2032
+      ],
+      "id": "84792725-a376-41c5-8ea8-fb4b5f34be2c",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2b6afc51-55ff-4eb3-ba94-db89d55b8170",
+              "leftValue": "={{ $json.procede_actualizacion }}",
+              "rightValue": "Sí",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1456,
+        2032
+      ],
+      "id": "2667963c-a6be-4e57-a0d1-05b9a4ef4ddf",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c5d8ee6-3764-4faa-9219-41cf43cfdb5a",
+              "name": "Response",
+              "value": "={{ $json.mensaje_validacion }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1696,
+        2128
+      ],
+      "id": "11fdddb0-9174-4e5a-87a0-84aabd78467a",
+      "name": "Edit Fields14"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Agente Principal').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Agente Principal').first().json.cliente_id }}",
+            "intencion": "Información",
+            "pregunta_verifica_reserva": false,
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3136,
+        1760
+      ],
+      "id": "9d3df754-56aa-4f52-a7cc-9b8d46243976",
+      "name": "Actualiza Cliente a Info2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  const fechaOriginal = item.json.fecha_reservacion;\n\n  // Convertir a YYYY-MM-DD\n  const fechaFormateada = new Date(fechaOriginal).toISOString().slice(0, 10);\n\n  item.json.fecha_formateada = fechaFormateada;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2752,
+        1760
+      ],
+      "id": "76d9dbb8-a0a7-4217-a63d-e1fb0597fb08",
+      "name": "Get Reserv Info"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtiene todos los items\nconst items = $input.all();\n\n// --- CORRECCIÓN AQUÍ ---\n// Filtramos para quedarnos solo con los items que tengan datos reales (por ejemplo, que tengan \"id\")\nconst itemsReales = items.filter(item => item.json.id);\n\n// 1. Calcular la cantidad basándonos en los items REALES\nconst cantidad = itemsReales.length;\n\n// 2. Crear la lista y formatear la fecha usando solo los items reales\nconst listaDetalles = itemsReales.map(item => {\n  const fechaRaw = item.json.fecha_reservacion;\n  // Cortamos el string en la 'T' para obtener YYYY-MM-DD\n  const fechaFormateada = fechaRaw ? fechaRaw.split('T')[0] : null;\n\n  return {\n    fecha: fechaFormateada, \n    hora: item.json.hora_reservacion\n  };\n});\n\n// 3. Devolver resultado\nreturn [\n  {\n    json: {\n      total_reservas: cantidad,\n      lista_reservaciones: listaDetalles\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1984,
+        960
+      ],
+      "id": "2c0f5692-308d-4fc6-a776-974452138c48",
+      "name": "Resume Encontradas"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.personas }}",
+                    "rightValue": 6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    },
+                    "id": "d24457f4-836e-4ed0-baea-22e7341dffea"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Menos 6"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "eb7032c9-ba2f-458d-aa8a-a0dbe4ead1dd",
+                    "leftValue": "={{ $json.personas }}",
+                    "rightValue": 6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "VIP"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Otro"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1040,
+        976
+      ],
+      "id": "3d86c484-7f0f-4181-b391-eff5419b5bd0",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25085d83-dbca-42c1-926e-ee68ed19cc8a",
+              "name": "Response",
+              "value": "No se proporcionaron todos los datos que usa la herramienta, corrige y llámala de nuevo.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        1184
+      ],
+      "id": "5fc1243d-c911-48c7-8991-a8c75b892ceb",
+      "name": "Edit Fields13"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "ZpYgShc1li13uf3h"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-11T18:00:20.464Z",
+      "createdAt": "2025-12-11T18:00:20.464Z",
+      "role": "workflow:owner",
+      "workflowId": "DLXqCjSAXyHORiTb",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-17T14:30:33.407Z",
+  "versionId": "c727c5d6-c746-4606-be1f-bf9b8a7407a7"
+}
