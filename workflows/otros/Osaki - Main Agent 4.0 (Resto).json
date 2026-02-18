@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-14T19:20:23.000Z",
-    "createdAt": "2026-02-14T19:20:19.332Z",
-    "versionId": "9f9fac77-a16d-4b89-a431-45f42c79c14a",
+    "updatedAt": "2026-02-18T02:36:01.000Z",
+    "createdAt": "2026-02-18T02:35:56.704Z",
+    "versionId": "27df0fb2-8a83-484e-9a93-406a7152b0dd",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -372,7 +372,7 @@
               {
                 "id": "e50cd4c5-8123-4b3e-85d9-56c666063540",
                 "name": "sucursal",
-                "value": "Restó (Calle 47)",
+                "value": "Restó 47",
                 "type": "string"
               },
               {
@@ -2440,10 +2440,10 @@
         "parameters": {
           "workflowId": {
             "__rl": true,
-            "value": "DLXqCjSAXyHORiTb",
+            "value": "su5pBZNPEHVtuYnB",
             "mode": "list",
-            "cachedResultUrl": "/workflow/DLXqCjSAXyHORiTb",
-            "cachedResultName": "Gestiona Reservacion"
+            "cachedResultUrl": "/workflow/su5pBZNPEHVtuYnB",
+            "cachedResultName": "Gestiona Reservacion 2.0"
           },
           "workflowInputs": {
             "mappingMode": "defineBelow",
@@ -8769,11 +8769,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 9f9fac77",
+    "name": "Version 27df0fb2",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "9f9fac77-a16d-4b89-a431-45f42c79c14a",
+  "activeVersionId": "27df0fb2-8a83-484e-9a93-406a7152b0dd",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -10963,7 +10963,7 @@
             {
               "id": "e50cd4c5-8123-4b3e-85d9-56c666063540",
               "name": "sucursal",
-              "value": "Restó (Calle 47)",
+              "value": "Restó 47",
               "type": "string"
             },
             {
@@ -13031,10 +13031,10 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "DLXqCjSAXyHORiTb",
+          "value": "su5pBZNPEHVtuYnB",
           "mode": "list",
-          "cachedResultUrl": "/workflow/DLXqCjSAXyHORiTb",
-          "cachedResultName": "Gestiona Reservacion"
+          "cachedResultUrl": "/workflow/su5pBZNPEHVtuYnB",
+          "cachedResultName": "Gestiona Reservacion 2.0"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -17564,6 +17564,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-14T19:34:37.449Z",
-  "versionId": "9f9fac77-a16d-4b89-a431-45f42c79c14a"
+  "updatedAt": "2026-02-18T02:35:56.697Z",
+  "versionId": "27df0fb2-8a83-484e-9a93-406a7152b0dd"
 }
