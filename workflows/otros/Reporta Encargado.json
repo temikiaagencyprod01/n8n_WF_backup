@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-17T22:07:34.000Z",
-    "createdAt": "2026-02-17T22:07:28.565Z",
-    "versionId": "8bb3bf7c-1169-46d9-be8e-f033d81628ed",
+    "updatedAt": "2026-02-19T18:52:12.000Z",
+    "createdAt": "2026-02-19T18:51:47.426Z",
+    "versionId": "1761c61e-9256-48b6-95b9-5258b3745e1b",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -14,8 +14,8 @@
         "type": "n8n-nodes-base.aggregate",
         "typeVersion": 1,
         "position": [
-          -2336,
-          144
+          -1152,
+          48
         ],
         "id": "f0bd3235-9483-4035-a014-071e7c5b4b1e",
         "name": "Aggregate"
@@ -42,6 +42,9 @@
               },
               {
                 "name": "tabla_historica"
+              },
+              {
+                "name": "id_cliente"
               }
             ]
           }
@@ -51,8 +54,8 @@
         "name": "Flujo Agente Principal",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -2864,
-          144
+          -2032,
+          48
         ]
       },
       {
@@ -278,8 +281,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -1888,
-          368
+          -704,
+          240
         ],
         "id": "ecde03b7-af1b-4ca7-bc29-b8742db6985d",
         "name": "Registra Seguimiento",
@@ -298,8 +301,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -2112,
-          144
+          -928,
+          48
         ],
         "id": "d3e24591-96bf-40e6-83f5-8192893a4af8",
         "name": "Agrupa Conversacion"
@@ -311,8 +314,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -1888,
-          144
+          -704,
+          48
         ],
         "id": "feece544-a14a-497d-aa1c-0b399de7c5e8",
         "name": "Formatea Conversacion"
@@ -344,8 +347,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -400,
-          352
+          -480,
+          720
         ],
         "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
         "name": "If"
@@ -362,8 +365,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -624,
-          352
+          -704,
+          720
         ],
         "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
         "name": "Soporte",
@@ -387,8 +390,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          32,
-          176
+          -48,
+          544
         ],
         "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
         "name": "Osaki Resto",
@@ -409,8 +412,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -2560,
-          144
+          -1376,
+          48
         ],
         "id": "243928cd-1b09-4ca9-8e89-5376d456a131",
         "name": "Obtiene Chat Delivery",
@@ -428,8 +431,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -1664,
-          144
+          -480,
+          48
         ],
         "id": "1f4d147b-5f48-413a-83a8-5a169f69f920",
         "name": "Valida Texto"
@@ -439,14 +442,14 @@
           "promptType": "define",
           "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
           "options": {
-            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
+            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas\n- Tu salida será exclusivamente usando el formato json."
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3,
         "position": [
-          -2400,
-          368
+          -1280,
+          240
         ],
         "id": "d96524ad-1d58-4553-b6f2-cb25463e5303",
         "name": "AI Agent"
@@ -464,8 +467,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          -2448,
-          576
+          -1312,
+          400
         ],
         "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
         "name": "OpenAI Chat Model",
@@ -488,8 +491,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          32,
-          336
+          -48,
+          704
         ],
         "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
         "name": "Osaki Delivery Calle 9",
@@ -513,8 +516,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          32,
-          496
+          -48,
+          864
         ],
         "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
         "name": "Osaki Delivery Calle 47",
@@ -553,8 +556,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -224,
-          416
+          -304,
+          784
         ],
         "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
         "name": "If2"
@@ -571,8 +574,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          352,
-          336
+          272,
+          704
         ],
         "id": "a7891107-926d-4ed0-b87e-95938f034d44",
         "name": "Soporte1",
@@ -601,8 +604,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1072,
-          352
+          -1152,
+          720
         ],
         "id": "51617408-32d1-47a6-8615-42b2be9df13a",
         "name": "Crea Link WhatsApp"
@@ -624,8 +627,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -848,
-          352
+          -928,
+          720
         ],
         "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
         "name": "Crea Mensaje"
@@ -637,8 +640,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          -2096,
-          368
+          -928,
+          240
         ],
         "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
         "name": "Normaliza Analisis"
@@ -827,8 +830,8 @@
         "type": "n8n-nodes-base.airtable",
         "typeVersion": 2.1,
         "position": [
-          -1568,
-          352
+          -928,
+          480
         ],
         "id": "2b19c871-8bba-457d-a53e-09d23a2ec631",
         "name": "Create a record",
@@ -838,6 +841,344 @@
             "name": "Osaki Tablero"
           }
         }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "osaki_main",
+            "mode": "list",
+            "cachedResultName": "osaki_main"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "where": {
+            "values": [
+              {
+                "column": "id",
+                "value": "={{ $('Flujo Agente Principal').item.json.id_cliente }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1792,
+          48
+        ],
+        "id": "518794ee-f6a7-49da-a1ff-14c3be81b156",
+        "name": "Datos Cliente",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "value": "osaki_main",
+            "mode": "list",
+            "cachedResultName": "osaki_main"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "telefono": "={{ $json.fields[\"Teléfono\"] }}",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "notas": "={{ $json.fields.Notas }}",
+              "status": "Bloqueo Temporal",
+              "intencion": "={{ $json.fields[\"Intención\"] }}",
+              "tipo_cliente": "Cliente",
+              "sucursal_bloqueo": "=  {{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
+            },
+            "matchingColumns": [
+              "telefono"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal_bloqueo",
+                "displayName": "sucursal_bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -704,
+          480
+        ],
+        "id": "224c426d-21d7-4de0-85c6-9975a22d634c",
+        "name": "Actualiza Cliente",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Obtenemos los datos de los nodos anteriores\nconst datosCliente = $node[\"Datos Cliente\"].json;\nconst flujoAgente = $node[\"Flujo Agente Principal\"].json;\n\n// 1. Normalizar la sucursal actual\nlet sucursalActual = \"\";\nconst numero = flujoAgente.sucursal.match(/\\d+/)?.[0] || \"\";\n\n// Detectamos el tipo de canal por contenido, manteniendo el formato exacto solicitado\nif (flujoAgente.canal.includes(\"Restó\")) {\n  sucursalActual = `Restó ${numero}`;\n} else if (flujoAgente.canal.includes(\"Delivery\")) {\n  sucursalActual = `Delivery - ${numero}`;\n} else {\n  // Caso genérico por si el canal cambia en el futuro\n  sucursalActual = `${flujoAgente.canal.replace(/[^\\w\\sÀ-ÿ]/gi, '').trim()} ${numero}`;\n}\n\n// 2. Preparar el objeto de sucursal_bloqueo\n// Si el campo no existe o está vacío, inicializamos la estructura\nlet bloqueo = datosCliente.sucursal_bloqueo || { sucursales: [] };\n\n// Nos aseguramos de que 'sucursales' sea un array (en n8n a veces los objetos vacíos vienen raros)\nif (!bloqueo.sucursales || !Array.isArray(bloqueo.sucursales)) {\n  bloqueo.sucursales = [];\n}\n\n// 3. Agregar si no existe (evitar duplicados)\nif (!bloqueo.sucursales.includes(sucursalActual)) {\n  bloqueo.sucursales.push(sucursalActual);\n}\n\n// Retornamos el formato esperado por n8n\nreturn {\n  sucursal_bloqueo: bloqueo\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1584,
+          48
+        ],
+        "id": "fe4d1d05-1edf-4d85-80c5-07827963aa84",
+        "name": "Analiza Sucursales"
       }
     ],
     "connections": {
@@ -856,7 +1197,7 @@
         "main": [
           [
             {
-              "node": "Obtiene Chat Delivery",
+              "node": "Datos Cliente",
               "type": "main",
               "index": 0
             }
@@ -1064,20 +1405,47 @@
         "main": [
           [
             {
+              "node": "Actualiza Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Datos Cliente": {
+        "main": [
+          [
+            {
+              "node": "Analiza Sucursales",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Cliente": {
+        "main": [
+          [
+            {
               "node": "Crea Link WhatsApp",
               "type": "main",
               "index": 0
             }
           ]
         ]
+      },
+      "Analiza Sucursales": {
+        "main": [
+          []
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 8bb3bf7c",
+    "name": "Version 1761c61e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "8bb3bf7c-1169-46d9-be8e-f033d81628ed",
+  "activeVersionId": "1761c61e-9256-48b6-95b9-5258b3745e1b",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1094,7 +1462,7 @@
       "main": [
         [
           {
-            "node": "Obtiene Chat Delivery",
+            "node": "Datos Cliente",
             "type": "main",
             "index": 0
           }
@@ -1302,14 +1670,25 @@
       "main": [
         [
           {
-            "node": "Update rows in a table",
+            "node": "Actualiza Cliente",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update rows in a table": {
+    "Datos Cliente": {
+      "main": [
+        [
+          {
+            "node": "Analiza Sucursales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Cliente": {
       "main": [
         [
           {
@@ -1318,6 +1697,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Analiza Sucursales": {
+      "main": [
+        []
       ]
     }
   },
@@ -1337,8 +1721,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -2336,
-        144
+        -1152,
+        48
       ],
       "id": "f0bd3235-9483-4035-a014-071e7c5b4b1e",
       "name": "Aggregate"
@@ -1365,6 +1749,9 @@
             },
             {
               "name": "tabla_historica"
+            },
+            {
+              "name": "id_cliente"
             }
           ]
         }
@@ -1374,8 +1761,8 @@
       "name": "Flujo Agente Principal",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -2864,
-        144
+        -2032,
+        48
       ]
     },
     {
@@ -1601,8 +1988,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -1888,
-        368
+        -704,
+        240
       ],
       "id": "ecde03b7-af1b-4ca7-bc29-b8742db6985d",
       "name": "Registra Seguimiento",
@@ -1621,8 +2008,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2112,
-        144
+        -928,
+        48
       ],
       "id": "d3e24591-96bf-40e6-83f5-8192893a4af8",
       "name": "Agrupa Conversacion"
@@ -1634,8 +2021,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1888,
-        144
+        -704,
+        48
       ],
       "id": "feece544-a14a-497d-aa1c-0b399de7c5e8",
       "name": "Formatea Conversacion"
@@ -1667,8 +2054,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -400,
-        352
+        -480,
+        720
       ],
       "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
       "name": "If"
@@ -1685,8 +2072,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -624,
-        352
+        -704,
+        720
       ],
       "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
       "name": "Soporte",
@@ -1710,8 +2097,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        32,
-        176
+        -48,
+        544
       ],
       "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
       "name": "Osaki Resto",
@@ -1732,8 +2119,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -2560,
-        144
+        -1376,
+        48
       ],
       "id": "243928cd-1b09-4ca9-8e89-5376d456a131",
       "name": "Obtiene Chat Delivery",
@@ -1751,8 +2138,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1664,
-        144
+        -480,
+        48
       ],
       "id": "1f4d147b-5f48-413a-83a8-5a169f69f920",
       "name": "Valida Texto"
@@ -1762,14 +2149,14 @@
         "promptType": "define",
         "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
         "options": {
-          "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```"
+          "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas\n- Tu salida será exclusivamente usando el formato json."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        -2400,
-        368
+        -1280,
+        240
       ],
       "id": "d96524ad-1d58-4553-b6f2-cb25463e5303",
       "name": "AI Agent"
@@ -1787,8 +2174,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -2448,
-        576
+        -1312,
+        400
       ],
       "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
       "name": "OpenAI Chat Model",
@@ -1811,8 +2198,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        32,
-        336
+        -48,
+        704
       ],
       "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
       "name": "Osaki Delivery Calle 9",
@@ -1836,8 +2223,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        32,
-        496
+        -48,
+        864
       ],
       "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
       "name": "Osaki Delivery Calle 47",
@@ -1876,8 +2263,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -224,
-        416
+        -304,
+        784
       ],
       "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
       "name": "If2"
@@ -1894,8 +2281,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        352,
-        336
+        272,
+        704
       ],
       "id": "a7891107-926d-4ed0-b87e-95938f034d44",
       "name": "Soporte1",
@@ -1924,8 +2311,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1072,
-        352
+        -1152,
+        720
       ],
       "id": "51617408-32d1-47a6-8615-42b2be9df13a",
       "name": "Crea Link WhatsApp"
@@ -1947,8 +2334,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -848,
-        352
+        -928,
+        720
       ],
       "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
       "name": "Crea Mensaje"
@@ -1960,8 +2347,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2096,
-        368
+        -928,
+        240
       ],
       "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
       "name": "Normaliza Analisis"
@@ -2150,8 +2537,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -1568,
-        352
+        -928,
+        480
       ],
       "id": "2b19c871-8bba-457d-a53e-09d23a2ec631",
       "name": "Create a record",
@@ -2159,6 +2546,46 @@
         "airtableTokenApi": {
           "id": "KlZpJ3cetMbQRAcX",
           "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "osaki_main",
+          "mode": "list",
+          "cachedResultName": "osaki_main"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $('Flujo Agente Principal').item.json.id_cliente }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1792,
+        48
+      ],
+      "id": "518794ee-f6a7-49da-a1ff-14c3be81b156",
+      "name": "Datos Cliente",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
         }
       }
     },
@@ -2435,17 +2862,30 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -1360,
-        352
+        -704,
+        480
       ],
       "id": "224c426d-21d7-4de0-85c6-9975a22d634c",
-      "name": "Update rows in a table",
+      "name": "Actualiza Cliente",
       "credentials": {
         "postgres": {
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtenemos los datos de los nodos anteriores\nconst datosCliente = $node[\"Datos Cliente\"].json;\nconst flujoAgente = $node[\"Flujo Agente Principal\"].json;\n\n// 1. Normalizar la sucursal actual\nlet sucursalActual = \"\";\nconst numero = flujoAgente.sucursal.match(/\\d+/)?.[0] || \"\";\n\n// Detectamos el tipo de canal por contenido, manteniendo el formato exacto solicitado\nif (flujoAgente.canal.includes(\"Restó\")) {\n  sucursalActual = `Restó ${numero}`;\n} else if (flujoAgente.canal.includes(\"Delivery\")) {\n  sucursalActual = `Delivery - ${numero}`;\n} else {\n  // Caso genérico por si el canal cambia en el futuro\n  sucursalActual = `${flujoAgente.canal.replace(/[^\\w\\sÀ-ÿ]/gi, '').trim()} ${numero}`;\n}\n\n// 2. Preparar el objeto de sucursal_bloqueo\n// Si el campo no existe o está vacío, inicializamos la estructura\nlet bloqueo = datosCliente.sucursal_bloqueo || { sucursales: [] };\n\n// Nos aseguramos de que 'sucursales' sea un array (en n8n a veces los objetos vacíos vienen raros)\nif (!bloqueo.sucursales || !Array.isArray(bloqueo.sucursales)) {\n  bloqueo.sucursales = [];\n}\n\n// 3. Agregar si no existe (evitar duplicados)\nif (!bloqueo.sucursales.includes(sucursalActual)) {\n  bloqueo.sucursales.push(sucursalActual);\n}\n\n// Retornamos el formato esperado por n8n\nreturn {\n  sucursal_bloqueo: bloqueo\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1584,
+        48
+      ],
+      "id": "fe4d1d05-1edf-4d85-80c5-07827963aa84",
+      "name": "Analiza Sucursales"
     }
   ],
   "settings": {
@@ -2468,6 +2908,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-17T22:52:45.305Z",
-  "versionId": "27e2c015-41e7-4078-a719-29eb95cd9902"
+  "updatedAt": "2026-02-19T18:51:47.424Z",
+  "versionId": "1761c61e-9256-48b6-95b9-5258b3745e1b"
 }
