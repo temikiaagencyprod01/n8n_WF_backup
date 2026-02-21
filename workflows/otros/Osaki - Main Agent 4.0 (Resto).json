@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-19T22:47:14.000Z",
-    "createdAt": "2026-02-19T22:47:08.157Z",
-    "versionId": "df8d055b-6be9-47c6-b1ed-f21ed2463ad3",
+    "updatedAt": "2026-02-21T01:56:16.000Z",
+    "createdAt": "2026-02-21T01:56:13.239Z",
+    "versionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -4493,7 +4493,8 @@
               "sessionId": "={{ $('Data Filter').first().json.sessionId }}",
               "phone_number": "={{ $('Data Filter').first().json.phone_number }}",
               "sucursal": "=Calle 47",
-              "tabla_historica": "={{ $('Data Filter').first().json.schema }}.n8n_chat_histories"
+              "tabla_historica": "={{ $('Data Filter').first().json.schema }}.n8n_chat_histories",
+              "id_cliente": "={{ $('Datos Cliente').first().json.id}}"
             },
             "matchingColumns": [],
             "schema": [
@@ -4546,6 +4547,16 @@
               {
                 "id": "tabla_historica",
                 "displayName": "tabla_historica",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "id_cliente",
+                "displayName": "id_cliente",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -8769,11 +8780,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version df8d055b",
+    "name": "Version 1483ccf0",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "df8d055b-6be9-47c6-b1ed-f21ed2463ad3",
+  "activeVersionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -15084,7 +15095,8 @@
             "sessionId": "={{ $('Data Filter').first().json.sessionId }}",
             "phone_number": "={{ $('Data Filter').first().json.phone_number }}",
             "sucursal": "=Calle 47",
-            "tabla_historica": "={{ $('Data Filter').first().json.schema }}.n8n_chat_histories"
+            "tabla_historica": "={{ $('Data Filter').first().json.schema }}.n8n_chat_histories",
+            "id_cliente": "={{ $('Datos Cliente').first().json.id}}"
           },
           "matchingColumns": [],
           "schema": [
@@ -15137,6 +15149,16 @@
             {
               "id": "tabla_historica",
               "displayName": "tabla_historica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "id_cliente",
+              "displayName": "id_cliente",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -17564,6 +17586,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-19T22:47:08.151Z",
-  "versionId": "df8d055b-6be9-47c6-b1ed-f21ed2463ad3"
+  "updatedAt": "2026-02-21T01:56:13.234Z",
+  "versionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41"
 }
