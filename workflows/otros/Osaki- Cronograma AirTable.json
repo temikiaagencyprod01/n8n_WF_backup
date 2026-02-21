@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-19T22:03:05.000Z",
-    "createdAt": "2026-02-19T19:40:10.412Z",
-    "versionId": "d101b345-76d9-48ce-9168-a9669625dcf0",
+    "updatedAt": "2026-02-21T04:02:09.000Z",
+    "createdAt": "2026-02-21T04:02:03.972Z",
+    "versionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f",
     "workflowId": "3pVlvafqAUQGJAX4",
     "nodes": [
       {
@@ -3443,7 +3443,7 @@
       {
         "parameters": {
           "operation": "executeQuery",
-          "query": "UPDATE {{ $('Get Initial Data').first().json.schema }}.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
+          "query": "UPDATE osaki_main.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
           "options": {}
         },
         "type": "n8n-nodes-base.postgres",
@@ -4842,11 +4842,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version d101b345",
+    "name": "Version c8c71291",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d101b345-76d9-48ce-9168-a9669625dcf0",
+  "activeVersionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f",
   "connections": {
     "Get Clientes AirTable": {
       "main": [
@@ -8986,7 +8986,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE {{ $('Get Initial Data').first().json.schema }}.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
+        "query": "UPDATE osaki_main.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -9727,6 +9727,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-02-19T19:40:10.410Z",
-  "versionId": "d101b345-76d9-48ce-9168-a9669625dcf0"
+  "updatedAt": "2026-02-21T04:02:18.976Z",
+  "versionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f"
 }
