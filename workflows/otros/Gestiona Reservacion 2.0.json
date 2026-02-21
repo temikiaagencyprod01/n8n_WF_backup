@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-17T15:10:42.000Z",
-    "createdAt": "2026-02-17T15:10:21.408Z",
-    "versionId": "c208a41d-4c5b-4ab7-9ca5-dcaf1212c712",
+    "updatedAt": "2026-02-20T22:57:02.000Z",
+    "createdAt": "2026-02-20T22:56:56.540Z",
+    "versionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -1413,7 +1413,7 @@
       },
       {
         "parameters": {
-          "jsCode": "// n8n Code node (JavaScript)\n\n// Reglas de salida única (prioridad):\n// 1) CIERRE: Lunes (\"Día\") o Ventana (\"Horario\") -> { mensaje: \"Cerrado\", motivo: \"...\", ahora: \"...\" }\n// 2) Pasado/ahora: fecha/hora <= ahora -> { mensaje: \"Pasado\", ahora: \"<...>\" }\n// 3) Futura: fecha/hora > ahora + 3 meses -> { mensaje: \"Futuro\", ahora: \"<...>\" }\n// 4) Muy próxima: (ahora, ahora + 60 min) -> { mensaje: \"Cercano\", ahora: \"<...>\" }\n// 5) Válida: devolver input original + NUEVO CAMPO 'dia_semana'.\n\n// Zona horaria base: Argentina (UTC-3, sin DST).\n\nconst OFFSET_TZ_MIN = 3 * 60;    // Argentina UTC-3\nconst WINDOW_MIN = 60;           // \"Muy próxima\" = 60 minutos\nconst MAX_FUTURE_MONTHS = 3;     // Límite de meses en el futuro\n\n// Nombres de días para el nuevo campo\nconst DIAS_SEMANA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];\n\n// Ventanas de cierre en minutos desde medianoche (local ARG), [inicio, fin)\nconst CLOSED_WINDOWS = [\n  { startMin: 16 * 60,        endMin: 18 * 60 },       // 16:00–18:00\n  { startMin: 0,              endMin: 10 * 60 + 30 },  // 00:00–10:30\n];\n\n// --- FUNCIONES HELPER ---\n\nfunction parseDateParts(fechaStr) {\n  const clean = String(fechaStr || '').trim().replace(/-/g, '/');\n  const [y, m, d] = clean.split('/').map(n => parseInt(n, 10));\n  if (![y, m, d].every(Number.isFinite)) return null;\n  return { y, m, d };\n}\n\nfunction parseTimeParts(horaStr) {\n  const parts = String(horaStr || '').trim().split(':');\n  const hh = parseInt(parts[0], 10);\n  const mm = parseInt(parts[1] ?? '0', 10);\n  if (![hh, mm].every(Number.isFinite)) return null;\n  return { hh, mm };\n}\n\nfunction toUtcMsFromARG(fechaStr, horaStr) {\n  const d = parseDateParts(fechaStr);\n  const t = parseTimeParts(horaStr);\n  if (!d || !t) return NaN;\n  // Local ARG -> UTC (UTC = local + 3h)\n  return Date.UTC(d.y, d.m - 1, d.d, t.hh + Math.floor(OFFSET_TZ_MIN / 60), t.mm, 0, 0);\n}\n\n// [NUEVO] Obtiene el nombre del día en español\nfunction getDiaSemanaNombre(fechaStr) {\n  const d = parseDateParts(fechaStr);\n  if (!d) return null;\n  // Usamos UTC para evitar problemas de zona horaria al determinar el día exacto\n  const dow = new Date(Date.UTC(d.y, d.m - 1, d.d)).getUTCDay(); \n  return DIAS_SEMANA[dow];\n}\n\nfunction minutesFromMidnight(horaStr) {\n  const t = parseTimeParts(horaStr);\n  if (!t) return null;\n  return t.hh * 60 + t.mm;\n}\n\nfunction isWithinClosedWindow(horaStr) {\n  const mins = minutesFromMidnight(horaStr);\n  if (mins == null) return false;\n  return CLOSED_WINDOWS.some(w => mins >= w.startMin && mins < w.endMin);\n}\n\nfunction pad2(n){ return n < 10 ? '0' + n : '' + n; }\n\nfunction nowARGString() {\n  const nowUtcMs = Date.now();\n  const nowArgMs = nowUtcMs - OFFSET_TZ_MIN * 60 * 1000;\n  const d = new Date(nowArgMs);\n  const Y = d.getUTCFullYear();\n  const M = pad2(d.getUTCMonth() + 1);\n  const D = pad2(d.getUTCDate());\n  const h = pad2(d.getUTCHours());\n  const m = pad2(d.getUTCMinutes());\n  return `${Y}-${M}-${D} ${h}:${m}`;\n}\n\n// --- LÓGICA PRINCIPAL ---\n\nconst items = await $input.all();\n\n// Referencias de tiempo\nconst nowUtcMs = Date.now();\nconst soonLimitUtcMs = nowUtcMs + WINDOW_MIN * 60 * 1000;\nconst ahora = nowARGString();\n\nconst nowInUtc = new Date(nowUtcMs);\nconst futureLimitDate = new Date(nowInUtc.getTime());\nfutureLimitDate.setMonth(nowInUtc.getMonth() + MAX_FUTURE_MONTHS);\nconst futureLimitUtcMs = futureLimitDate.getTime();\n\nlet motivoCierre = null; \nlet hasPastOrNow = false;\nlet hasFuture = false;\nlet hasSoon = false;\n\nfor (const item of items) {\n  const { fecha, hora } = item.json || {};\n\n  // [NUEVO] Calculamos e inyectamos el día de la semana\n  const nombreDia = getDiaSemanaNombre(fecha);\n  if (item.json) {\n      item.json.dia_semana = nombreDia; // Ej: \"Miércoles\"\n  }\n\n  // Regla 1 (CIERRE)\n  // Chequeamos explícitamente si es Lunes\n  if (nombreDia === 'Lunes') {\n    motivoCierre = 'Lunes';\n    break; \n  }\n  \n  if (isWithinClosedWindow(hora)) {\n    motivoCierre = 'Horario';\n    break; \n  }\n\n  const targetUtcMs = toUtcMsFromARG(fecha, hora);\n\n  // Regla 2: Pasado/ahora\n  if (!Number.isFinite(targetUtcMs) || targetUtcMs <= nowUtcMs) {\n    hasPastOrNow = true;\n    break;\n  }\n\n  // Regla 3: Futura\n  if (targetUtcMs > futureLimitUtcMs) {\n    hasFuture = true;\n    break;\n  }\n\n  // Regla 4: Muy próxima\n  if (targetUtcMs < soonLimitUtcMs) {\n    hasSoon = true;\n  }\n}\n\n// Comprobar resultados en orden de prioridad\n\nif (motivoCierre) {\n  return [{ json: { \n      mensaje: 'Cerrado', \n      motivo: motivoCierre, \n      ahora \n  } }];\n}\n\nif (hasPastOrNow) {\n  return [{ json: { mensaje: 'Pasado', ahora } }];\n}\n\nif (hasFuture) {\n  return [{ json: { mensaje: 'Futuro', ahora } }];\n}\n\nif (hasSoon) {\n  return [{ json: { mensaje: 'Cercano', ahora } }];\n}\n\n// Regla 5: Válido (Devuelve el item original con el nuevo campo 'dia_semana')\nreturn items;"
+          "jsCode": "// n8n Code node (JavaScript)\n\n// Reglas de salida única (prioridad):\n// 1) CIERRE: Lunes (\"Día\") o Ventana (\"Horario\") -> { mensaje: \"Cerrado\", motivo: \"...\", ahora: \"...\" }\n// 2) FORMATO HORA: Solo bloques de :00 o :30 -> { mensaje: \"FormatoHora\", detalle: \"Solo bloques de 30 min\", ahora: \"...\" }\n// 3) Pasado/ahora: fecha/hora <= ahora -> { mensaje: \"Pasado\", ahora: \"<...>\" }\n// 4) Futura: fecha/hora > ahora + 3 meses -> { mensaje: \"Futuro\", ahora: \"<...>\" }\n// 5) Muy próxima: (ahora, ahora + 60 min) -> { mensaje: \"Cercano\", ahora: \"<...>\" }\n// 6) Válida: devolver input original + NUEVO CAMPO 'dia_semana'.\n\nconst OFFSET_TZ_MIN = 3 * 60;    // Argentina UTC-3\nconst WINDOW_MIN = 60;           // \"Muy próxima\" = 60 minutos\nconst MAX_FUTURE_MONTHS = 3;     // Límite de meses en el futuro\n\nconst DIAS_SEMANA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];\n\nconst CLOSED_WINDOWS = [\n  { startMin: 16 * 60,        endMin: 18 * 60 },       // 16:00–18:00\n  { startMin: 0,              endMin: 10 * 60 + 30 },  // 00:00–10:30\n];\n\n// --- FUNCIONES HELPER ---\n\nfunction parseDateParts(fechaStr) {\n  const clean = String(fechaStr || '').trim().replace(/-/g, '/');\n  const [y, m, d] = clean.split('/').map(n => parseInt(n, 10));\n  if (![y, m, d].every(Number.isFinite)) return null;\n  return { y, m, d };\n}\n\nfunction parseTimeParts(horaStr) {\n  const parts = String(horaStr || '').trim().split(':');\n  const hh = parseInt(parts[0], 10);\n  const mm = parseInt(parts[1] ?? '0', 10);\n  if (![hh, mm].every(Number.isFinite)) return null;\n  return { hh, mm };\n}\n\n// [NUEVO] Valida si los minutos son 00 o 30\nfunction isValidMinuteBlock(horaStr) {\n  const t = parseTimeParts(horaStr);\n  if (!t) return false;\n  return t.mm === 0 || t.mm === 30;\n}\n\nfunction toUtcMsFromARG(fechaStr, horaStr) {\n  const d = parseDateParts(fechaStr);\n  const t = parseTimeParts(horaStr);\n  if (!d || !t) return NaN;\n  return Date.UTC(d.y, d.m - 1, d.d, t.hh + Math.floor(OFFSET_TZ_MIN / 60), t.mm, 0, 0);\n}\n\nfunction getDiaSemanaNombre(fechaStr) {\n  const d = parseDateParts(fechaStr);\n  if (!d) return null;\n  const dow = new Date(Date.UTC(d.y, d.m - 1, d.d)).getUTCDay(); \n  return DIAS_SEMANA[dow];\n}\n\nfunction isWithinClosedWindow(horaStr) {\n  const mins = (t => t ? t.hh * 60 + t.mm : null)(parseTimeParts(horaStr));\n  if (mins == null) return false;\n  return CLOSED_WINDOWS.some(w => mins >= w.startMin && mins < w.endMin);\n}\n\nfunction pad2(n){ return n < 10 ? '0' + n : '' + n; }\n\nfunction nowARGString() {\n  const d = new Date(Date.now() - OFFSET_TZ_MIN * 60 * 1000);\n  return `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(d.getUTCDate())} ${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`;\n}\n\n// --- LÓGICA PRINCIPAL ---\n\nconst items = await $input.all();\nconst nowUtcMs = Date.now();\nconst soonLimitUtcMs = nowUtcMs + WINDOW_MIN * 60 * 1000;\nconst ahora = nowARGString();\n\nconst futureLimitDate = new Date();\nfutureLimitDate.setMonth(futureLimitDate.getMonth() + MAX_FUTURE_MONTHS);\nconst futureLimitUtcMs = futureLimitDate.getTime();\n\nlet motivoCierre = null; \nlet hasInvalidBlock = false;\nlet hasPastOrNow = false;\nlet hasFuture = false;\nlet hasSoon = false;\n\nfor (const item of items) {\n  const { fecha, hora } = item.json || {};\n  const nombreDia = getDiaSemanaNombre(fecha);\n  \n  if (item.json) item.json.dia_semana = nombreDia;\n\n  // Regla 1: CIERRE\n  if (nombreDia === 'Lunes') { motivoCierre = 'Lunes'; break; }\n  if (isWithinClosedWindow(hora)) { motivoCierre = 'Horario'; break; }\n\n  // Regla 2: [NUEVA] Validación de bloques de 30 min\n  if (!isValidMinuteBlock(hora)) {\n    hasInvalidBlock = true;\n    break;\n  }\n\n  const targetUtcMs = toUtcMsFromARG(fecha, hora);\n\n  // Regla 3: Pasado\n  if (!Number.isFinite(targetUtcMs) || targetUtcMs <= nowUtcMs) { hasPastOrNow = true; break; }\n\n  // Regla 4: Futura\n  if (targetUtcMs > futureLimitUtcMs) { hasFuture = true; break; }\n\n  // Regla 5: Muy próxima\n  if (targetUtcMs < soonLimitUtcMs) { hasSoon = true; }\n}\n\n// Retornos por prioridad\nif (motivoCierre) return [{ json: { mensaje: 'Cerrado', motivo: motivoCierre, ahora } }];\nif (hasInvalidBlock) return [{ json: { mensaje: 'FormatoHora', detalle: 'Solo se aceptan bloques de 00 o 30 minutos', ahora } }];\nif (hasPastOrNow) return [{ json: { mensaje: 'Pasado', ahora } }];\nif (hasFuture) return [{ json: { mensaje: 'Futuro', ahora } }];\nif (hasSoon) return [{ json: { mensaje: 'Cercano', ahora } }];\n\nreturn items;"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -1526,6 +1526,30 @@
                 },
                 "renameOutput": true,
                 "outputKey": "Futuro"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "a8e5178e-b0e4-4276-afa8-502624efcab7",
+                      "leftValue": "={{ $json.mensaje }}",
+                      "rightValue": "FormatoHora",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Formato Hora"
               }
             ]
           },
@@ -1789,7 +1813,7 @@
         "typeVersion": 3.4,
         "position": [
           224,
-          224
+          -16
         ],
         "id": "a48dbdd6-933e-4b28-b07a-9f159a05a91e",
         "name": "Response Local Cerrado"
@@ -1812,7 +1836,7 @@
         "typeVersion": 3.4,
         "position": [
           112,
-          112
+          -128
         ],
         "id": "cbeba0dc-0c22-4331-9c65-1521bf0a674d",
         "name": "Response Fecha Pasada"
@@ -1841,7 +1865,7 @@
         "typeVersion": 3.4,
         "position": [
           0,
-          0
+          -240
         ],
         "id": "e8409aaf-28a2-46dd-b51b-c88ad2ca5afa",
         "name": "Response Fecha Cercana"
@@ -2140,7 +2164,7 @@
         "typeVersion": 3.4,
         "position": [
           336,
-          352
+          112
         ],
         "id": "af6d0f97-6c5c-45c5-9482-41ba311c02c0",
         "name": "Response Nombre Incompleto"
@@ -8298,6 +8322,29 @@
             "name": "Osaki Tablero"
           }
         }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+                "name": "Response",
+                "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer en bloques de minutos 00 y 30, ejemplo: 21:30, 20:00.",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          432,
+          288
+        ],
+        "id": "179d5d8b-d6c0-4155-a7f5-fb72ce1bf43d",
+        "name": "Response Formato Hora 00 30"
       }
     ],
     "connections": {
@@ -8650,6 +8697,13 @@
           [
             {
               "node": "Response Nombre Incompleto",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Response Formato Hora 00 30",
               "type": "main",
               "index": 0
             }
@@ -9187,11 +9241,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c208a41d",
+    "name": "Version 79aa5917",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c208a41d-4c5b-4ab7-9ca5-dcaf1212c712",
+  "activeVersionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -9542,6 +9596,13 @@
         [
           {
             "node": "Response Nombre Incompleto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Response Formato Hora 00 30",
             "type": "main",
             "index": 0
           }
@@ -11491,7 +11552,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// n8n Code node (JavaScript)\n\n// Reglas de salida única (prioridad):\n// 1) CIERRE: Lunes (\"Día\") o Ventana (\"Horario\") -> { mensaje: \"Cerrado\", motivo: \"...\", ahora: \"...\" }\n// 2) Pasado/ahora: fecha/hora <= ahora -> { mensaje: \"Pasado\", ahora: \"<...>\" }\n// 3) Futura: fecha/hora > ahora + 3 meses -> { mensaje: \"Futuro\", ahora: \"<...>\" }\n// 4) Muy próxima: (ahora, ahora + 60 min) -> { mensaje: \"Cercano\", ahora: \"<...>\" }\n// 5) Válida: devolver input original + NUEVO CAMPO 'dia_semana'.\n\n// Zona horaria base: Argentina (UTC-3, sin DST).\n\nconst OFFSET_TZ_MIN = 3 * 60;    // Argentina UTC-3\nconst WINDOW_MIN = 60;           // \"Muy próxima\" = 60 minutos\nconst MAX_FUTURE_MONTHS = 3;     // Límite de meses en el futuro\n\n// Nombres de días para el nuevo campo\nconst DIAS_SEMANA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];\n\n// Ventanas de cierre en minutos desde medianoche (local ARG), [inicio, fin)\nconst CLOSED_WINDOWS = [\n  { startMin: 16 * 60,        endMin: 18 * 60 },       // 16:00–18:00\n  { startMin: 0,              endMin: 10 * 60 + 30 },  // 00:00–10:30\n];\n\n// --- FUNCIONES HELPER ---\n\nfunction parseDateParts(fechaStr) {\n  const clean = String(fechaStr || '').trim().replace(/-/g, '/');\n  const [y, m, d] = clean.split('/').map(n => parseInt(n, 10));\n  if (![y, m, d].every(Number.isFinite)) return null;\n  return { y, m, d };\n}\n\nfunction parseTimeParts(horaStr) {\n  const parts = String(horaStr || '').trim().split(':');\n  const hh = parseInt(parts[0], 10);\n  const mm = parseInt(parts[1] ?? '0', 10);\n  if (![hh, mm].every(Number.isFinite)) return null;\n  return { hh, mm };\n}\n\nfunction toUtcMsFromARG(fechaStr, horaStr) {\n  const d = parseDateParts(fechaStr);\n  const t = parseTimeParts(horaStr);\n  if (!d || !t) return NaN;\n  // Local ARG -> UTC (UTC = local + 3h)\n  return Date.UTC(d.y, d.m - 1, d.d, t.hh + Math.floor(OFFSET_TZ_MIN / 60), t.mm, 0, 0);\n}\n\n// [NUEVO] Obtiene el nombre del día en español\nfunction getDiaSemanaNombre(fechaStr) {\n  const d = parseDateParts(fechaStr);\n  if (!d) return null;\n  // Usamos UTC para evitar problemas de zona horaria al determinar el día exacto\n  const dow = new Date(Date.UTC(d.y, d.m - 1, d.d)).getUTCDay(); \n  return DIAS_SEMANA[dow];\n}\n\nfunction minutesFromMidnight(horaStr) {\n  const t = parseTimeParts(horaStr);\n  if (!t) return null;\n  return t.hh * 60 + t.mm;\n}\n\nfunction isWithinClosedWindow(horaStr) {\n  const mins = minutesFromMidnight(horaStr);\n  if (mins == null) return false;\n  return CLOSED_WINDOWS.some(w => mins >= w.startMin && mins < w.endMin);\n}\n\nfunction pad2(n){ return n < 10 ? '0' + n : '' + n; }\n\nfunction nowARGString() {\n  const nowUtcMs = Date.now();\n  const nowArgMs = nowUtcMs - OFFSET_TZ_MIN * 60 * 1000;\n  const d = new Date(nowArgMs);\n  const Y = d.getUTCFullYear();\n  const M = pad2(d.getUTCMonth() + 1);\n  const D = pad2(d.getUTCDate());\n  const h = pad2(d.getUTCHours());\n  const m = pad2(d.getUTCMinutes());\n  return `${Y}-${M}-${D} ${h}:${m}`;\n}\n\n// --- LÓGICA PRINCIPAL ---\n\nconst items = await $input.all();\n\n// Referencias de tiempo\nconst nowUtcMs = Date.now();\nconst soonLimitUtcMs = nowUtcMs + WINDOW_MIN * 60 * 1000;\nconst ahora = nowARGString();\n\nconst nowInUtc = new Date(nowUtcMs);\nconst futureLimitDate = new Date(nowInUtc.getTime());\nfutureLimitDate.setMonth(nowInUtc.getMonth() + MAX_FUTURE_MONTHS);\nconst futureLimitUtcMs = futureLimitDate.getTime();\n\nlet motivoCierre = null; \nlet hasPastOrNow = false;\nlet hasFuture = false;\nlet hasSoon = false;\n\nfor (const item of items) {\n  const { fecha, hora } = item.json || {};\n\n  // [NUEVO] Calculamos e inyectamos el día de la semana\n  const nombreDia = getDiaSemanaNombre(fecha);\n  if (item.json) {\n      item.json.dia_semana = nombreDia; // Ej: \"Miércoles\"\n  }\n\n  // Regla 1 (CIERRE)\n  // Chequeamos explícitamente si es Lunes\n  if (nombreDia === 'Lunes') {\n    motivoCierre = 'Lunes';\n    break; \n  }\n  \n  if (isWithinClosedWindow(hora)) {\n    motivoCierre = 'Horario';\n    break; \n  }\n\n  const targetUtcMs = toUtcMsFromARG(fecha, hora);\n\n  // Regla 2: Pasado/ahora\n  if (!Number.isFinite(targetUtcMs) || targetUtcMs <= nowUtcMs) {\n    hasPastOrNow = true;\n    break;\n  }\n\n  // Regla 3: Futura\n  if (targetUtcMs > futureLimitUtcMs) {\n    hasFuture = true;\n    break;\n  }\n\n  // Regla 4: Muy próxima\n  if (targetUtcMs < soonLimitUtcMs) {\n    hasSoon = true;\n  }\n}\n\n// Comprobar resultados en orden de prioridad\n\nif (motivoCierre) {\n  return [{ json: { \n      mensaje: 'Cerrado', \n      motivo: motivoCierre, \n      ahora \n  } }];\n}\n\nif (hasPastOrNow) {\n  return [{ json: { mensaje: 'Pasado', ahora } }];\n}\n\nif (hasFuture) {\n  return [{ json: { mensaje: 'Futuro', ahora } }];\n}\n\nif (hasSoon) {\n  return [{ json: { mensaje: 'Cercano', ahora } }];\n}\n\n// Regla 5: Válido (Devuelve el item original con el nuevo campo 'dia_semana')\nreturn items;"
+        "jsCode": "// n8n Code node (JavaScript)\n\n// Reglas de salida única (prioridad):\n// 1) CIERRE: Lunes (\"Día\") o Ventana (\"Horario\") -> { mensaje: \"Cerrado\", motivo: \"...\", ahora: \"...\" }\n// 2) FORMATO HORA: Solo bloques de :00 o :30 -> { mensaje: \"FormatoHora\", detalle: \"Solo bloques de 30 min\", ahora: \"...\" }\n// 3) Pasado/ahora: fecha/hora <= ahora -> { mensaje: \"Pasado\", ahora: \"<...>\" }\n// 4) Futura: fecha/hora > ahora + 3 meses -> { mensaje: \"Futuro\", ahora: \"<...>\" }\n// 5) Muy próxima: (ahora, ahora + 60 min) -> { mensaje: \"Cercano\", ahora: \"<...>\" }\n// 6) Válida: devolver input original + NUEVO CAMPO 'dia_semana'.\n\nconst OFFSET_TZ_MIN = 3 * 60;    // Argentina UTC-3\nconst WINDOW_MIN = 60;           // \"Muy próxima\" = 60 minutos\nconst MAX_FUTURE_MONTHS = 3;     // Límite de meses en el futuro\n\nconst DIAS_SEMANA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];\n\nconst CLOSED_WINDOWS = [\n  { startMin: 16 * 60,        endMin: 18 * 60 },       // 16:00–18:00\n  { startMin: 0,              endMin: 10 * 60 + 30 },  // 00:00–10:30\n];\n\n// --- FUNCIONES HELPER ---\n\nfunction parseDateParts(fechaStr) {\n  const clean = String(fechaStr || '').trim().replace(/-/g, '/');\n  const [y, m, d] = clean.split('/').map(n => parseInt(n, 10));\n  if (![y, m, d].every(Number.isFinite)) return null;\n  return { y, m, d };\n}\n\nfunction parseTimeParts(horaStr) {\n  const parts = String(horaStr || '').trim().split(':');\n  const hh = parseInt(parts[0], 10);\n  const mm = parseInt(parts[1] ?? '0', 10);\n  if (![hh, mm].every(Number.isFinite)) return null;\n  return { hh, mm };\n}\n\n// [NUEVO] Valida si los minutos son 00 o 30\nfunction isValidMinuteBlock(horaStr) {\n  const t = parseTimeParts(horaStr);\n  if (!t) return false;\n  return t.mm === 0 || t.mm === 30;\n}\n\nfunction toUtcMsFromARG(fechaStr, horaStr) {\n  const d = parseDateParts(fechaStr);\n  const t = parseTimeParts(horaStr);\n  if (!d || !t) return NaN;\n  return Date.UTC(d.y, d.m - 1, d.d, t.hh + Math.floor(OFFSET_TZ_MIN / 60), t.mm, 0, 0);\n}\n\nfunction getDiaSemanaNombre(fechaStr) {\n  const d = parseDateParts(fechaStr);\n  if (!d) return null;\n  const dow = new Date(Date.UTC(d.y, d.m - 1, d.d)).getUTCDay(); \n  return DIAS_SEMANA[dow];\n}\n\nfunction isWithinClosedWindow(horaStr) {\n  const mins = (t => t ? t.hh * 60 + t.mm : null)(parseTimeParts(horaStr));\n  if (mins == null) return false;\n  return CLOSED_WINDOWS.some(w => mins >= w.startMin && mins < w.endMin);\n}\n\nfunction pad2(n){ return n < 10 ? '0' + n : '' + n; }\n\nfunction nowARGString() {\n  const d = new Date(Date.now() - OFFSET_TZ_MIN * 60 * 1000);\n  return `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(d.getUTCDate())} ${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`;\n}\n\n// --- LÓGICA PRINCIPAL ---\n\nconst items = await $input.all();\nconst nowUtcMs = Date.now();\nconst soonLimitUtcMs = nowUtcMs + WINDOW_MIN * 60 * 1000;\nconst ahora = nowARGString();\n\nconst futureLimitDate = new Date();\nfutureLimitDate.setMonth(futureLimitDate.getMonth() + MAX_FUTURE_MONTHS);\nconst futureLimitUtcMs = futureLimitDate.getTime();\n\nlet motivoCierre = null; \nlet hasInvalidBlock = false;\nlet hasPastOrNow = false;\nlet hasFuture = false;\nlet hasSoon = false;\n\nfor (const item of items) {\n  const { fecha, hora } = item.json || {};\n  const nombreDia = getDiaSemanaNombre(fecha);\n  \n  if (item.json) item.json.dia_semana = nombreDia;\n\n  // Regla 1: CIERRE\n  if (nombreDia === 'Lunes') { motivoCierre = 'Lunes'; break; }\n  if (isWithinClosedWindow(hora)) { motivoCierre = 'Horario'; break; }\n\n  // Regla 2: [NUEVA] Validación de bloques de 30 min\n  if (!isValidMinuteBlock(hora)) {\n    hasInvalidBlock = true;\n    break;\n  }\n\n  const targetUtcMs = toUtcMsFromARG(fecha, hora);\n\n  // Regla 3: Pasado\n  if (!Number.isFinite(targetUtcMs) || targetUtcMs <= nowUtcMs) { hasPastOrNow = true; break; }\n\n  // Regla 4: Futura\n  if (targetUtcMs > futureLimitUtcMs) { hasFuture = true; break; }\n\n  // Regla 5: Muy próxima\n  if (targetUtcMs < soonLimitUtcMs) { hasSoon = true; }\n}\n\n// Retornos por prioridad\nif (motivoCierre) return [{ json: { mensaje: 'Cerrado', motivo: motivoCierre, ahora } }];\nif (hasInvalidBlock) return [{ json: { mensaje: 'FormatoHora', detalle: 'Solo se aceptan bloques de 00 o 30 minutos', ahora } }];\nif (hasPastOrNow) return [{ json: { mensaje: 'Pasado', ahora } }];\nif (hasFuture) return [{ json: { mensaje: 'Futuro', ahora } }];\nif (hasSoon) return [{ json: { mensaje: 'Cercano', ahora } }];\n\nreturn items;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -11604,6 +11665,30 @@
               },
               "renameOutput": true,
               "outputKey": "Futuro"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a8e5178e-b0e4-4276-afa8-502624efcab7",
+                    "leftValue": "={{ $json.mensaje }}",
+                    "rightValue": "FormatoHora",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Formato Hora"
             }
           ]
         },
@@ -11867,7 +11952,7 @@
       "typeVersion": 3.4,
       "position": [
         224,
-        224
+        -16
       ],
       "id": "a48dbdd6-933e-4b28-b07a-9f159a05a91e",
       "name": "Response Local Cerrado"
@@ -11890,7 +11975,7 @@
       "typeVersion": 3.4,
       "position": [
         112,
-        112
+        -128
       ],
       "id": "cbeba0dc-0c22-4331-9c65-1521bf0a674d",
       "name": "Response Fecha Pasada"
@@ -11919,7 +12004,7 @@
       "typeVersion": 3.4,
       "position": [
         0,
-        0
+        -240
       ],
       "id": "e8409aaf-28a2-46dd-b51b-c88ad2ca5afa",
       "name": "Response Fecha Cercana"
@@ -12218,7 +12303,7 @@
       "typeVersion": 3.4,
       "position": [
         336,
-        352
+        112
       ],
       "id": "af6d0f97-6c5c-45c5-9482-41ba311c02c0",
       "name": "Response Nombre Incompleto"
@@ -18376,6 +18461,29 @@
           "name": "Osaki Tablero"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db09d781-335e-417d-806f-cfbce2455fa5",
+              "name": "Response",
+              "value": "={{ $('Normaliza Datos').first().json.tipo }}: NO exitoso.\nTe equivocaste en la gestión, discúlpate con el usuario. Las reservaciones no se pueden hacer en bloques de minutos 00 y 30, ejemplo: 21:30, 20:00.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        288
+      ],
+      "id": "179d5d8b-d6c0-4155-a7f5-fb72ce1bf43d",
+      "name": "Response Formato Hora 00 30"
     }
   ],
   "settings": {
@@ -18398,6 +18506,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-17T15:10:21.406Z",
-  "versionId": "c208a41d-4c5b-4ab7-9ca5-dcaf1212c712"
+  "updatedAt": "2026-02-20T22:56:56.538Z",
+  "versionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6"
 }
