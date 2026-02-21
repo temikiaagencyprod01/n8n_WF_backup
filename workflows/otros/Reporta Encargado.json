@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-19T18:52:12.000Z",
-    "createdAt": "2026-02-19T18:51:47.426Z",
-    "versionId": "1761c61e-9256-48b6-95b9-5258b3745e1b",
+    "updatedAt": "2026-02-21T01:59:16.000Z",
+    "createdAt": "2026-02-21T01:58:08.617Z",
+    "versionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -1436,16 +1436,22 @@
       },
       "Analiza Sucursales": {
         "main": [
-          []
+          [
+            {
+              "node": "Obtiene Chat Delivery",
+              "type": "main",
+              "index": 0
+            }
+          ]
         ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 1761c61e",
+    "name": "Version c88320e2",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1761c61e-9256-48b6-95b9-5258b3745e1b",
+  "activeVersionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1701,7 +1707,13 @@
     },
     "Analiza Sucursales": {
       "main": [
-        []
+        [
+          {
+            "node": "Obtiene Chat Delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -2908,6 +2920,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-19T18:51:47.424Z",
-  "versionId": "1761c61e-9256-48b6-95b9-5258b3745e1b"
+  "updatedAt": "2026-02-21T01:58:08.616Z",
+  "versionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634"
 }
