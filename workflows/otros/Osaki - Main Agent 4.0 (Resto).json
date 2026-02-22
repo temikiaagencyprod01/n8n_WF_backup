@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-21T01:56:16.000Z",
-    "createdAt": "2026-02-21T01:56:13.239Z",
-    "versionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41",
+    "updatedAt": "2026-02-21T16:12:23.000Z",
+    "createdAt": "2026-02-21T16:12:16.754Z",
+    "versionId": "938fa496-7fcd-4267-b41f-d74d2697976c",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -4561,7 +4561,7 @@
                 "defaultMatch": false,
                 "display": true,
                 "canBeUsedToMatch": true,
-                "type": "string",
+                "type": "number",
                 "removed": false
               }
             ],
@@ -8780,11 +8780,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 1483ccf0",
+    "name": "Version 938fa496",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41",
+  "activeVersionId": "938fa496-7fcd-4267-b41f-d74d2697976c",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -15163,7 +15163,7 @@
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "type": "string",
+              "type": "number",
               "removed": false
             }
           ],
@@ -17586,6 +17586,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-21T01:56:13.234Z",
-  "versionId": "1483ccf0-f3b8-4672-a479-6e0ce1bf1b41"
+  "updatedAt": "2026-02-21T16:12:16.750Z",
+  "versionId": "938fa496-7fcd-4267-b41f-d74d2697976c"
 }
