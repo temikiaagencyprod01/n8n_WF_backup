@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-21T01:59:16.000Z",
-    "createdAt": "2026-02-21T01:58:08.617Z",
-    "versionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634",
+    "updatedAt": "2026-02-21T16:11:35.000Z",
+    "createdAt": "2026-02-21T16:11:32.053Z",
+    "versionId": "658dcf03-a585-4edf-8aea-8a1990be47f6",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -44,7 +44,8 @@
                 "name": "tabla_historica"
               },
               {
-                "name": "id_cliente"
+                "name": "id_cliente",
+                "type": "number"
               }
             ]
           }
@@ -1447,11 +1448,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c88320e2",
+    "name": "Version 658dcf03",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634",
+  "activeVersionId": "658dcf03-a585-4edf-8aea-8a1990be47f6",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1763,7 +1764,8 @@
               "name": "tabla_historica"
             },
             {
-              "name": "id_cliente"
+              "name": "id_cliente",
+              "type": "number"
             }
           ]
         }
@@ -2920,6 +2922,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-21T01:58:08.616Z",
-  "versionId": "c88320e2-9b05-43ff-abd5-7f06b5d47634"
+  "updatedAt": "2026-02-21T16:15:41.464Z",
+  "versionId": "08af9845-b1da-4881-a428-8a4c625770cd"
 }
