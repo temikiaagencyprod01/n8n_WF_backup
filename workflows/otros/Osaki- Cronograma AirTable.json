@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-21T04:02:09.000Z",
-    "createdAt": "2026-02-21T04:02:03.972Z",
-    "versionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f",
+    "updatedAt": "2026-02-22T04:01:58.000Z",
+    "createdAt": "2026-02-22T04:01:53.838Z",
+    "versionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6",
     "workflowId": "3pVlvafqAUQGJAX4",
     "nodes": [
       {
@@ -3108,35 +3108,6 @@
       },
       {
         "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
-                "name": "Fecha_3_meses",
-                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
-                "type": "string"
-              },
-              {
-                "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
-                "name": "Fecha_7_dias",
-                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          -1056,
-          1664
-        ],
-        "id": "90b12207-3543-4ecd-ab7f-804b2d6b0a8f",
-        "name": "Edit Fields2"
-      },
-      {
-        "parameters": {
           "options": {}
         },
         "type": "n8n-nodes-base.splitInBatches",
@@ -4145,6 +4116,41 @@
         "typeVersion": 1,
         "id": "5f296df2-8283-4c82-bfe7-92d6c5c1034c",
         "name": "Sticky Note2"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
+                "name": "Fecha_3_meses",
+                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
+                "type": "string"
+              },
+              {
+                "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
+                "name": "Fecha_7_dias",
+                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
+                "type": "string"
+              },
+              {
+                "id": "4dfe68f0-cdd4-42f8-bea0-896d32cbfe81",
+                "name": "schema",
+                "value": "osaki_main",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1056,
+          1664
+        ],
+        "id": "90b12207-3543-4ecd-ab7f-804b2d6b0a8f",
+        "name": "Get Initial Data"
       }
     ],
     "connections": {
@@ -4484,42 +4490,6 @@
           ]
         ]
       },
-      "Edit Fields2": {
-        "main": [
-          [
-            {
-              "node": "Obtiene Escalaciones Históricas",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Obtiene Reservas Históricas",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Obtiene Historial a Borrar Deli Calle 47",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Obtiene Historial a Borrar Deli Calle 9",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "ACtualiza Intentos Negativos",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "Busca Bloqueo Temporal",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Loop Over Items3": {
         "main": [
           [],
@@ -4552,7 +4522,7 @@
         "main": [
           [
             {
-              "node": "Edit Fields2",
+              "node": "Get Initial Data",
               "type": "main",
               "index": 0
             }
@@ -4839,14 +4809,50 @@
             }
           ]
         ]
+      },
+      "Get Initial Data": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Escalaciones Históricas",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Reservas Históricas",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Historial a Borrar Deli Calle 47",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Historial a Borrar Deli Calle 9",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "ACtualiza Intentos Negativos",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Busca Bloqueo Temporal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c8c71291",
+    "name": "Version 2b06ad1e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f",
+  "activeVersionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6",
   "connections": {
     "Get Clientes AirTable": {
       "main": [
@@ -5184,42 +5190,6 @@
         ]
       ]
     },
-    "Edit Fields2": {
-      "main": [
-        [
-          {
-            "node": "Obtiene Escalaciones Históricas",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Obtiene Reservas Históricas",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Obtiene Historial a Borrar Deli Calle 47",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Obtiene Historial a Borrar Deli Calle 9",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "ACtualiza Intentos Negativos",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Busca Bloqueo Temporal",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items3": {
       "main": [
         [],
@@ -5252,7 +5222,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields2",
+            "node": "Get Initial Data",
             "type": "main",
             "index": 0
           }
@@ -5534,6 +5504,42 @@
         [
           {
             "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Initial Data": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Escalaciones Históricas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Reservas Históricas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Historial a Borrar Deli Calle 47",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Historial a Borrar Deli Calle 9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ACtualiza Intentos Negativos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Busca Bloqueo Temporal",
             "type": "main",
             "index": 0
           }
@@ -8651,35 +8657,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
-              "name": "Fecha_3_meses",
-              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
-              "type": "string"
-            },
-            {
-              "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
-              "name": "Fecha_7_dias",
-              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -1056,
-        1664
-      ],
-      "id": "90b12207-3543-4ecd-ab7f-804b2d6b0a8f",
-      "name": "Edit Fields2"
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "type": "n8n-nodes-base.splitInBatches",
@@ -9688,6 +9665,41 @@
       "typeVersion": 1,
       "id": "5f296df2-8283-4c82-bfe7-92d6c5c1034c",
       "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
+              "name": "Fecha_3_meses",
+              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
+              "type": "string"
+            },
+            {
+              "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
+              "name": "Fecha_7_dias",
+              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
+              "type": "string"
+            },
+            {
+              "id": "4dfe68f0-cdd4-42f8-bea0-896d32cbfe81",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1056,
+        1664
+      ],
+      "id": "90b12207-3543-4ecd-ab7f-804b2d6b0a8f",
+      "name": "Get Initial Data"
     }
   ],
   "settings": {
@@ -9727,6 +9739,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-02-21T04:02:18.976Z",
-  "versionId": "c8c71291-a5c2-42c9-83e5-c668910ccf0f"
+  "updatedAt": "2026-02-22T04:01:53.836Z",
+  "versionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6"
 }
