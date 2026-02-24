@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-22T04:01:58.000Z",
-    "createdAt": "2026-02-22T04:01:53.838Z",
-    "versionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6",
+    "updatedAt": "2026-02-23T22:15:58.000Z",
+    "createdAt": "2026-02-23T22:08:12.747Z",
+    "versionId": "93f4cbe7-a088-453f-8f85-30dac55ec858",
     "workflowId": "3pVlvafqAUQGJAX4",
     "nodes": [
       {
@@ -2666,7 +2666,7 @@
                 "defaultMatch": false,
                 "canBeUsedToMatch": true,
                 "display": true,
-                "type": "string",
+                "type": "number",
                 "readOnly": false,
                 "removed": true
               },
@@ -2836,7 +2836,7 @@
             "cachedResultName": "Clientes",
             "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
           },
-          "filterByFormula": "={Teléfono}='{{ (() => {     const tel = $json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}'",
+          "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
           "options": {}
         },
         "type": "n8n-nodes-base.airtable",
@@ -2909,7 +2909,7 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Teléfono": "={{ (() => {     const tel = $('Loop Over Items2').item.json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}",
+              "Teléfono": "={{ $('Loop Over Items2').item.json.telefono }}",
               "Tipo": "Cliente",
               "Atención": "Humano",
               "Bloqueo": "Temporal",
@@ -2924,7 +2924,7 @@
                 "defaultMatch": false,
                 "canBeUsedToMatch": true,
                 "display": true,
-                "type": "string",
+                "type": "number",
                 "readOnly": false,
                 "removed": false
               },
@@ -3033,7 +3033,7 @@
                 "display": true,
                 "type": "dateTime",
                 "readOnly": false,
-                "removed": false
+                "removed": true
               }
             ],
             "attemptToConvertTypes": false,
@@ -3114,7 +3114,7 @@
         "typeVersion": 3,
         "position": [
           112,
-          1056
+          1072
         ],
         "id": "86c6de90-f94c-444e-a54a-4d9330376bb6",
         "name": "Loop Over Items3"
@@ -3167,7 +3167,7 @@
         "typeVersion": 3,
         "position": [
           112,
-          1264
+          1280
         ],
         "id": "9432305f-7cae-493c-92c4-9b3b7d70e54f",
         "name": "Loop Over Items4"
@@ -3195,7 +3195,7 @@
         "typeVersion": 2.1,
         "position": [
           352,
-          1072
+          1088
         ],
         "id": "af815603-cf3f-460f-9d8b-227a2a1bc68a",
         "name": "Limpia Reservas Historicas",
@@ -3229,7 +3229,7 @@
         "typeVersion": 2.1,
         "position": [
           352,
-          1280
+          1296
         ],
         "id": "c4047300-3a9a-4aba-933b-31a977c62b06",
         "name": "Limpia Escalaciones Historicos",
@@ -3257,14 +3257,14 @@
             "cachedResultName": "Reservaciones",
             "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
           },
-          "filterByFormula": "={Fecha}<'{{ $json.Fecha }}'",
+          "filterByFormula": "={Fecha}<'{{ $json.Fecha_3_meses }}'",
           "options": {}
         },
         "type": "n8n-nodes-base.airtable",
         "typeVersion": 2.1,
         "position": [
           -96,
-          1056
+          1072
         ],
         "id": "97c776d9-b28a-40c9-826c-5e702133ad61",
         "name": "Obtiene Reservas Históricas",
@@ -3299,7 +3299,7 @@
         "typeVersion": 2.1,
         "position": [
           -96,
-          1264
+          1280
         ],
         "id": "f743189a-65df-40dd-9d18-0e6cfc1044cc",
         "name": "Obtiene Escalaciones Históricas",
@@ -3728,7 +3728,7 @@
             "cachedResultName": "Clientes",
             "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
           },
-          "filterByFormula": "={Teléfono}='{{ (() => {     const tel = $json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}'",
+          "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
           "options": {}
         },
         "type": "n8n-nodes-base.airtable",
@@ -4848,11 +4848,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 2b06ad1e",
+    "name": "Version 93f4cbe7",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6",
+  "activeVersionId": "93f4cbe7-a088-453f-8f85-30dac55ec858",
   "connections": {
     "Get Clientes AirTable": {
       "main": [
@@ -8215,7 +8215,7 @@
               "defaultMatch": false,
               "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
+              "type": "number",
               "readOnly": false,
               "removed": true
             },
@@ -8385,7 +8385,7 @@
           "cachedResultName": "Clientes",
           "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
         },
-        "filterByFormula": "={Teléfono}='{{ (() => {     const tel = $json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}'",
+        "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
         "options": {}
       },
       "type": "n8n-nodes-base.airtable",
@@ -8458,7 +8458,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Teléfono": "={{ (() => {     const tel = $('Loop Over Items2').item.json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}",
+            "Teléfono": "={{ $('Loop Over Items2').item.json.telefono }}",
             "Tipo": "Cliente",
             "Atención": "Humano",
             "Bloqueo": "Temporal",
@@ -8473,7 +8473,7 @@
               "defaultMatch": false,
               "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
+              "type": "number",
               "readOnly": false,
               "removed": false
             },
@@ -8582,7 +8582,7 @@
               "display": true,
               "type": "dateTime",
               "readOnly": false,
-              "removed": false
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -8663,7 +8663,7 @@
       "typeVersion": 3,
       "position": [
         112,
-        1056
+        1072
       ],
       "id": "86c6de90-f94c-444e-a54a-4d9330376bb6",
       "name": "Loop Over Items3"
@@ -8716,7 +8716,7 @@
       "typeVersion": 3,
       "position": [
         112,
-        1264
+        1280
       ],
       "id": "9432305f-7cae-493c-92c4-9b3b7d70e54f",
       "name": "Loop Over Items4"
@@ -8744,7 +8744,7 @@
       "typeVersion": 2.1,
       "position": [
         352,
-        1072
+        1088
       ],
       "id": "af815603-cf3f-460f-9d8b-227a2a1bc68a",
       "name": "Limpia Reservas Historicas",
@@ -8778,7 +8778,7 @@
       "typeVersion": 2.1,
       "position": [
         352,
-        1280
+        1296
       ],
       "id": "c4047300-3a9a-4aba-933b-31a977c62b06",
       "name": "Limpia Escalaciones Historicos",
@@ -8806,14 +8806,14 @@
           "cachedResultName": "Reservaciones",
           "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
         },
-        "filterByFormula": "={Fecha}<'{{ $json.Fecha }}'",
+        "filterByFormula": "={Fecha}<'{{ $json.Fecha_3_meses }}'",
         "options": {}
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
         -96,
-        1056
+        1072
       ],
       "id": "97c776d9-b28a-40c9-826c-5e702133ad61",
       "name": "Obtiene Reservas Históricas",
@@ -8848,7 +8848,7 @@
       "typeVersion": 2.1,
       "position": [
         -96,
-        1264
+        1280
       ],
       "id": "f743189a-65df-40dd-9d18-0e6cfc1044cc",
       "name": "Obtiene Escalaciones Históricas",
@@ -9277,7 +9277,7 @@
           "cachedResultName": "Clientes",
           "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
         },
-        "filterByFormula": "={Teléfono}='{{ (() => {     const tel = $json.telefono.toString();     return `(${tel.substring(0,3)}) ${tel.substring(3,6)}-${tel.substring(6)}`;   })() }}'",
+        "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
         "options": {}
       },
       "type": "n8n-nodes-base.airtable",
@@ -9739,6 +9739,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-02-22T04:01:53.836Z",
-  "versionId": "2b06ad1e-2211-4da3-a1f8-53fa602a87d6"
+  "updatedAt": "2026-02-23T22:08:12.745Z",
+  "versionId": "93f4cbe7-a088-453f-8f85-30dac55ec858"
 }
