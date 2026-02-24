@@ -2370,8 +2370,7 @@
           "id": "ekkn7I2G8DZI9Ar7",
           "name": "Gmail DeliveryOsaki"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {},
@@ -2469,6 +2468,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-19T17:23:38.080Z",
-  "versionId": "59e6cdab-d29c-4f71-bf46-9d9dd0d27d4a"
+  "updatedAt": "2026-02-23T18:47:14.851Z",
+  "versionId": "3a8c9ef5-8fdd-4cda-bdb1-b769ad527f28"
 }
