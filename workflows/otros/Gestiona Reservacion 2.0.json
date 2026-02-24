@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-20T22:57:02.000Z",
-    "createdAt": "2026-02-20T22:56:56.540Z",
-    "versionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6",
+    "updatedAt": "2026-02-23T19:50:36.000Z",
+    "createdAt": "2026-02-23T16:38:59.466Z",
+    "versionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -3293,7 +3293,7 @@
       },
       {
         "parameters": {
-          "jsCode": "// Obtiene todos los items\nconst items = $input.all();\n\n// --- CORRECCIÓN AQUÍ ---\n// Filtramos para quedarnos solo con los items que tengan datos reales (por ejemplo, que tengan \"id\")\nconst itemsReales = items.filter(item => item.json.id);\n\n// 1. Calcular la cantidad basándonos en los items REALES\nconst cantidad = itemsReales.length;\n\n// 2. Crear la lista y formatear la fecha usando solo los items reales\nconst listaDetalles = itemsReales.map(item => {\n  const fechaRaw = item.json.fecha_reservacion;\n  // Cortamos el string en la 'T' para obtener YYYY-MM-DD\n  const fechaFormateada = fechaRaw ? fechaRaw.split('T')[0] : null;\n\n  return {\n    fecha: fechaFormateada, \n    hora: item.json.hora_reservacion\n  };\n});\n\n// 3. Devolver resultado\nreturn [\n  {\n    json: {\n      total_reservas: cantidad,\n      lista_reservaciones: listaDetalles\n    }\n  }\n];"
+          "jsCode": "// Obtiene todos los items\nconst items = $input.all();\n\n// --- CORRECCIÓN AQUÍ ---\n// Filtramos para quedarnos solo con los items que tengan datos reales (por ejemplo, que tengan \"id\")\nconst itemsReales = items.filter(item => item.json.id);\n\n// 1. Calcular la cantidad basándonos en los items REALES\nconst cantidad = itemsReales.length;\n\n// 2. Crear la lista y formatear la fecha usando solo los items reales\nconst listaDetalles = itemsReales.map(item => {\n  const fechaRaw = item.json.fecha_reservacion;\n  // Cortamos el string en la 'T' para obtener YYYY-MM-DD\n  const fechaFormateada = fechaRaw ? fechaRaw.split('T')[0] : null;\n  // const codigo = item.json.codigo_reserva;\n\n  return {\n    fecha: fechaFormateada, \n    hora: item.json.hora_reservacion,\n    codigo: item.json.codigo_reserva\n  };\n});\n\n// 3. Devolver resultado\nreturn [\n  {\n    json: {\n      total_reservas: cantidad,\n      lista_reservaciones: listaDetalles\n    }\n  }\n];"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -3696,7 +3696,7 @@
               "Hora": "={{ $('Normaliza Datos').first().json.hora }}",
               "Personas": "={{ $('Normaliza Datos').first().json.personas }}",
               "Zona": "={{ $('Normaliza Datos').first().json.zona }}",
-              "Teléfono": "={{ $('Normaliza Datos').item.json.telefono }}",
+              "Teléfono": "={{ $('Normaliza Datos').item.json.telefono.toNumber() }}",
               "Estado": "Pendiente",
               "Notas": "={{ $('Normaliza Datos').item.json.notas }}"
             },
@@ -4963,7 +4963,7 @@
                 "defaultMatch": false,
                 "canBeUsedToMatch": true,
                 "display": true,
-                "type": "string",
+                "type": "number",
                 "readOnly": false,
                 "removed": false
               },
@@ -9241,11 +9241,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 79aa5917",
+    "name": "Version c4f5d3ab",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6",
+  "activeVersionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -13432,7 +13432,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Obtiene todos los items\nconst items = $input.all();\n\n// --- CORRECCIÓN AQUÍ ---\n// Filtramos para quedarnos solo con los items que tengan datos reales (por ejemplo, que tengan \"id\")\nconst itemsReales = items.filter(item => item.json.id);\n\n// 1. Calcular la cantidad basándonos en los items REALES\nconst cantidad = itemsReales.length;\n\n// 2. Crear la lista y formatear la fecha usando solo los items reales\nconst listaDetalles = itemsReales.map(item => {\n  const fechaRaw = item.json.fecha_reservacion;\n  // Cortamos el string en la 'T' para obtener YYYY-MM-DD\n  const fechaFormateada = fechaRaw ? fechaRaw.split('T')[0] : null;\n\n  return {\n    fecha: fechaFormateada, \n    hora: item.json.hora_reservacion\n  };\n});\n\n// 3. Devolver resultado\nreturn [\n  {\n    json: {\n      total_reservas: cantidad,\n      lista_reservaciones: listaDetalles\n    }\n  }\n];"
+        "jsCode": "// Obtiene todos los items\nconst items = $input.all();\n\n// --- CORRECCIÓN AQUÍ ---\n// Filtramos para quedarnos solo con los items que tengan datos reales (por ejemplo, que tengan \"id\")\nconst itemsReales = items.filter(item => item.json.id);\n\n// 1. Calcular la cantidad basándonos en los items REALES\nconst cantidad = itemsReales.length;\n\n// 2. Crear la lista y formatear la fecha usando solo los items reales\nconst listaDetalles = itemsReales.map(item => {\n  const fechaRaw = item.json.fecha_reservacion;\n  // Cortamos el string en la 'T' para obtener YYYY-MM-DD\n  const fechaFormateada = fechaRaw ? fechaRaw.split('T')[0] : null;\n  // const codigo = item.json.codigo_reserva;\n\n  return {\n    fecha: fechaFormateada, \n    hora: item.json.hora_reservacion,\n    codigo: item.json.codigo_reserva\n  };\n});\n\n// 3. Devolver resultado\nreturn [\n  {\n    json: {\n      total_reservas: cantidad,\n      lista_reservaciones: listaDetalles\n    }\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -13835,7 +13835,7 @@
             "Hora": "={{ $('Normaliza Datos').first().json.hora }}",
             "Personas": "={{ $('Normaliza Datos').first().json.personas }}",
             "Zona": "={{ $('Normaliza Datos').first().json.zona }}",
-            "Teléfono": "={{ $('Normaliza Datos').item.json.telefono }}",
+            "Teléfono": "={{ $('Normaliza Datos').item.json.telefono.toNumber() }}",
             "Estado": "Pendiente",
             "Notas": "={{ $('Normaliza Datos').item.json.notas }}"
           },
@@ -15102,7 +15102,7 @@
               "defaultMatch": false,
               "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
+              "type": "number",
               "readOnly": false,
               "removed": false
             },
@@ -18506,6 +18506,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-20T22:56:56.538Z",
-  "versionId": "79aa5917-b34b-41a5-bbbb-1a8599a764a6"
+  "updatedAt": "2026-02-23T19:50:34.151Z",
+  "versionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968"
 }
