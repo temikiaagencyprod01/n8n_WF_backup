@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-23T22:15:58.000Z",
-    "createdAt": "2026-02-23T22:08:12.747Z",
-    "versionId": "93f4cbe7-a088-453f-8f85-30dac55ec858",
+    "updatedAt": "2026-02-24T13:24:16.000Z",
+    "createdAt": "2026-02-24T13:24:04.284Z",
+    "versionId": "37cd7a10-9aba-49fb-8129-36efc006bb71",
     "workflowId": "3pVlvafqAUQGJAX4",
     "nodes": [
       {
@@ -236,7 +236,7 @@
                     {
                       "id": "95e85c73-f384-4f9c-91fb-e3c369900341",
                       "leftValue": "=Bloqueo {{ $('Loop Over Items').item.json.Bloqueo }}",
-                      "rightValue": "=Bloqueo {{ $json.status }}",
+                      "rightValue": "={{ $json.status }}",
                       "operator": {
                         "type": "string",
                         "operation": "notEquals"
@@ -4848,11 +4848,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 93f4cbe7",
+    "name": "Version 37cd7a10",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "93f4cbe7-a088-453f-8f85-30dac55ec858",
+  "activeVersionId": "37cd7a10-9aba-49fb-8129-36efc006bb71",
   "connections": {
     "Get Clientes AirTable": {
       "main": [
@@ -5785,7 +5785,7 @@
                   {
                     "id": "95e85c73-f384-4f9c-91fb-e3c369900341",
                     "leftValue": "=Bloqueo {{ $('Loop Over Items').item.json.Bloqueo }}",
-                    "rightValue": "=Bloqueo {{ $json.status }}",
+                    "rightValue": "={{ $json.status }}",
                     "operator": {
                       "type": "string",
                       "operation": "notEquals"
@@ -9739,6 +9739,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-02-23T22:08:12.745Z",
-  "versionId": "93f4cbe7-a088-453f-8f85-30dac55ec858"
+  "updatedAt": "2026-02-24T13:24:04.281Z",
+  "versionId": "37cd7a10-9aba-49fb-8129-36efc006bb71"
 }
