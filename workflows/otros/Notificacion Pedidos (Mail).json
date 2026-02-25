@@ -1,7 +1,2444 @@
 {
-  "active": false,
-  "activeVersion": null,
-  "activeVersionId": null,
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-02-24T20:55:10.000Z",
+    "createdAt": "2026-02-24T20:52:51.761Z",
+    "versionId": "90d7eb91-96b7-4cc5-846c-39aab22d26ab",
+    "workflowId": "1rF03M1hskg0Bbju",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT \n    'Calle 47' as sucursal,\n    a.idventa,\n    CASE \n        WHEN A.CodigoPedidoPlataforma IS NULL THEN 'TAKE AWAY' \n        WHEN A.CodigoPedidoPlataforma = '' THEN 'TAKE AWAY' \n        ELSE A.CodigoPedidoPlataforma \n    END AS CodigoPedidoPlataforma,\n    REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') as plataforma,\n    CASE \n        WHEN a.EntregaTipo = '1' THEN 'Delivery Propio' \n        WHEN a.EntregaTipo = '2' THEN 'Mostrador' \n        WHEN a.EntregaTipo = '3' THEN 'Delivery Externo' \n    END AS TipoEntrega,\n    CASE \n        WHEN b.Etapa = 'EP' THEN 'En Preparación'\n        WHEN b.Etapa = 'PR' THEN 'Preparado'\n        WHEN b.Etapa = 'PE' THEN 'Por Entregar'\n        WHEN b.Etapa = 'EV' THEN 'En Viaje'\n        WHEN b.Etapa = 'E' THEN 'Entregado'\n        WHEN b.Etapa = 'RG' THEN 'Pedido Cancelado'\n        ELSE 'Sin Clasificación' \n    END AS etapaPedido,\n    d.nombre,\n    c.Telefono,\n    d.Email,\n    CONCAT(c.Calle, ';', c.Numero) AS direccion,\n    b.FechaHoraApertura,\n    b.FechaHoraCierre,\n    a.FechaHoraEntrega\nFROM osakisucursal5.ventas_datospedido a\nJOIN osakisucursal5.ventas b \n    ON (b.IdVenta = a.IdVenta)\nJOIN osakisucursal5.clientespedidos_lugaresentrega c \n    ON (a.IdClientePedido = c.IdClientePedido AND a.IdLugarEntrega = c.IdLugarEntrega)\nJOIN osakisucursal5.clientespedidos d \n    ON (a.IdClientePedido = d.IdClientePedido)\nJOIN osakicentral.tvc_pedidos_plataformas e \n    ON (e.IdIntegracionPedidos = a.IdIntegracionPedidos)\n/* CAMBIO AQUÍ: Filtra por FechaHoraApertura en las últimas 4 horas desde AHORA mismo */\nWHERE REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') NOT LIKE 'Pedidos%'\n  AND b.FechaHoraApertura >= DATE_SUB(NOW(), INTERVAL 24 HOUR)\n-- and a.idventa=59277\nUNION ALL\n\nSELECT \n    'Calle 9' as Sucursal,\n    a.idventa,\n    CASE \n        WHEN A.CodigoPedidoPlataforma IS NULL THEN 'TAKE AWAY' \n        WHEN A.CodigoPedidoPlataforma = '' THEN 'TAKE AWAY' \n        ELSE A.CodigoPedidoPlataforma \n    END AS CodigoPedidoPlataforma,\n    REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') as plataforma,\n    CASE \n        WHEN a.EntregaTipo = '1' THEN 'Delivery Propio' \n        WHEN a.EntregaTipo = '2' THEN 'Mostrador' \n        WHEN a.EntregaTipo = '3' THEN 'Delivery Externo' \n    END AS TipoEntrega,\n    CASE \n        WHEN b.Etapa = 'EP' THEN 'En Preparación'\n        WHEN b.Etapa = 'PR' THEN 'Preparado'\n        WHEN b.Etapa = 'PE' THEN 'Por Entregar'\n        WHEN b.Etapa = 'EV' THEN 'En Viaje'\n        WHEN b.Etapa = 'E' THEN 'Entregado'\n        WHEN b.Etapa = 'RG' THEN 'Pedido Cancelado'\n        ELSE 'Sin Clasificación' \n    END AS etapaPedido,\n    d.nombre,\n    c.Telefono,\n    d.Email,\n    CONCAT(c.Calle, ' ; ', c.Numero) AS direccion,\n    b.FechaHoraApertura,\n    b.FechaHoraCierre,\n    a.FechaHoraEntrega\nFROM osakisucursal4.ventas_datospedido a\nJOIN osakisucursal4.ventas b \n    ON (b.IdVenta = a.IdVenta)\nJOIN osakisucursal4.clientespedidos_lugaresentrega c \n    ON (a.IdClientePedido = c.IdClientePedido AND a.IdLugarEntrega = c.IdLugarEntrega)\nJOIN osakisucursal4.clientespedidos d \n    ON (a.IdClientePedido = d.IdClientePedido)\nJOIN osakicentral.tvc_pedidos_plataformas e \n    ON (e.IdIntegracionPedidos = a.IdIntegracionPedidos)\n/* CAMBIO AQUÍ: Filtra por FechaHoraApertura en las últimas 4 horas desde AHORA mismo */\nWHERE REPLACE(REPLACE(e.descripcion, 'Osaki2-', ''), 'Osaki-', '') NOT LIKE 'Pedidos%'\n  AND b.FechaHoraApertura >= DATE_SUB(NOW(), INTERVAL 24 HOUR)\n-- and a.idventa=59277\n  order by sucursal asc , idventa asc;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 2.5,
+        "position": [
+          -3296,
+          352
+        ],
+        "id": "c92fc604-b99c-4d61-ba59-617820c12dc3",
+        "name": "Obtiene Registros osakisucursal",
+        "alwaysOutputData": true,
+        "credentials": {
+          "mySql": {
+            "id": "sFauwBpvViqW5yF3",
+            "name": "MySQL Osaki-Ayres"
+          }
+        },
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Contenedor para los resultados\nconst results = [];\n\n// Set para evitar teléfonos repetidos\nconst seenNumbers = new Set();\n\nfor (const item of items) {\n  try {\n    const json = item.json;\n    \n    // --- LÓGICA 1: PROCESAMIENTO DE TELÉFONO ---\n    const rawPhone = json.Telefono;\n    \n    // Si no hay teléfono, descartamos la fila (según lógica anterior)\n    if (!rawPhone) continue;\n\n    // Separamos por barra, coma o guión\n    // NO invertimos, porque queremos el PRIMERO (Izquierda)\n    const phoneParts = String(rawPhone).split(/[\\/|,]/);\n    let finalPhone = null;\n\n    for (const part of phoneParts) {\n      // Dejar solo números\n      const digits = part.replace(/\\D/g, '');\n\n      // Regla: Mínimo 10 dígitos\n      if (digits.length >= 10) {\n        // Tomamos los últimos 10\n        finalPhone = digits.slice(-10);\n        // Break inmediato: Tomamos el PRIMERO válido que encontramos\n        break; \n      }\n    }\n\n    // Si no encontramos un teléfono válido, saltamos al siguiente item\n    if (!finalPhone) continue;\n\n    // Regla: \"Sin repetirse\" (Deduplicación por teléfono)\n    if (seenNumbers.has(finalPhone)) continue;\n    \n    // Si es único, lo guardamos en el set y procedemos\n    seenNumbers.add(finalPhone);\n\n    // --- NUEVO CAMPO: CONSTRUCCIÓN DE SESSION ID ---\n    // Construir sessionId en formato: 5492215709598@s.whatsapp.net\n    // Usando el número de teléfono procesado\n    const sessionId = `549${finalPhone}@s.whatsapp.net`;\n\n    // --- LÓGICA 2: PROCESAMIENTO CÓDIGO DE PEDIDO ---\n    // Regla: \"Cuando tenga '/' muestre lo que está después\" (Derecha)\n    let finalCode = json.CodigoPedidoPlataforma; // Valor por defecto\n\n    if (finalCode) {\n      const codeStr = String(finalCode);\n      if (codeStr.includes('/')) {\n        const codeParts = codeStr.split('/');\n        // Tomamos el ÚLTIMO elemento (lo que está después de la barra)\n        // .trim() elimina espacios en blanco accidentales\n        finalCode = codeParts[codeParts.length - 1].trim();\n      }\n    }\n\n    // --- CONSTRUCCIÓN DE SALIDA ---\n    // Clonamos el objeto original\n    const newItem = { ...json };\n    \n    // Actualizamos ambos campos con los valores limpios\n    newItem.Telefono = finalPhone;\n    newItem.CodigoPedidoPlataforma = finalCode;\n    \n    // Agregamos el nuevo campo sessionId\n    newItem.sessionId = sessionId;\n\n    results.push({ json: newItem });\n\n  } catch (error) {\n    console.log(`Error procesando fila ID ${item.json.idventa || '?'}:`, error);\n  }\n}\n\nreturn results;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -3696,
+          656
+        ],
+        "id": "c7877021-72e5-4afd-84c0-e497e5a47ebb",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -3472,
+          656
+        ],
+        "id": "727ffa34-c4b9-4e72-b1bf-160a9ccf9db3",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "21f3249c-0daa-4ac1-9be2-e89b189dffbd",
+                "leftValue": "={{ $json.isEmpty()}}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -896,
+          1104
+        ],
+        "id": "b5ef878c-79e0-4df7-94d2-ab342067f2bc",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "canal": "Whatsapp",
+              "telefono": "={{ $('Loop Over Items').item.json.Telefono }}",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "tipo_atencion": "IA",
+              "notas": "Seguimiento Pedido",
+              "status": "Notificación Pedido Listo",
+              "tipo_cliente": "Pedidos",
+              "intencion": "Pedido"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -656,
+          1040
+        ],
+        "id": "28c534a7-9d40-4c07-a90a-1243ec513fa8",
+        "name": "Registra Cliente",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "id": "={{ $json.id }}",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "intencion": "Pedido",
+              "tipo_atencion": "IA"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -656,
+          1168
+        ],
+        "id": "8dbc20f4-58ae-45eb-acb3-0bc75774fa2e",
+        "name": "Actualiza Clientes",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -432,
+          1104
+        ],
+        "id": "3b21849a-eb74-4906-bccf-020d12eb537b",
+        "name": "Wait",
+        "webhookId": "cb992816-9b5a-4198-81ab-d5c12b40142d"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "notificacion_pedidos",
+            "mode": "list",
+            "cachedResultName": "notificacion_pedidos"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "notificacion_flag": false,
+              "idventa": "={{ $('Loop Over Items').item.json.idventa }}",
+              "telefono": "={{ $('Loop Over Items').item.json.Telefono }}",
+              "plataforma": "={{ $('Loop Over Items').item.json.plataforma }}",
+              "tipoentrega": "={{ $('Loop Over Items').item.json.TipoEntrega }}",
+              "etapapedido": "={{ $('Loop Over Items').item.json.etapaPedido }}",
+              "nombre": "={{ $('Loop Over Items').item.json.nombre }}",
+              "fechahoraapertura": "={{ \n  $('Loop Over Items').item.json.FechaHoraApertura\n    ? $('Loop Over Items').item.json.FechaHoraApertura.replace(' ', 'T') + '.000Z'\n    : null\n}}",
+              "fechahoracierre": "={{ \n  $('Loop Over Items').item.json.FechaHoraCierre \n    ? $('Loop Over Items').item.json.FechaHoraCierre.replace(' ', 'T') + '.000Z' \n    : null \n}}",
+              "fechahoraentrega": "={{ \n  $('Loop Over Items').item.json.FechaHoraEntrega\n    ? $('Loop Over Items').item.json.FechaHoraEntrega.replace(' ', 'T') + '.000Z'\n    : null\n}}",
+              "sucursal": "={{ $('Loop Over Items').item.json.sucursal }}",
+              "codigo_pedido": "={{ $('Loop Over Items').item.json.CodigoPedidoPlataforma}}",
+              "direccion": "={{ $('Loop Over Items').item.json.direccion }}",
+              "correo": "={{ $('Loop Over Items').item.json.Email }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "idventa",
+                "displayName": "idventa",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "codigo_pedido",
+                "displayName": "codigo_pedido",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "plataforma",
+                "displayName": "plataforma",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipoentrega",
+                "displayName": "tipoentrega",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "etapapedido",
+                "displayName": "etapapedido",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fechahoraapertura",
+                "displayName": "fechahoraapertura",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fechahoracierre",
+                "displayName": "fechahoracierre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fechahoraentrega",
+                "displayName": "fechahoraentrega",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notificacion_flag",
+                "displayName": "notificacion_flag",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "direccion",
+                "displayName": "direccion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -2784,
+          416
+        ],
+        "id": "b923122d-6e42-4d21-af7e-67862656ddfe",
+        "name": "Registra Pedido",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "0603ee14-2bc5-48d1-ac69-9e3614d5c1aa",
+                      "leftValue": "={{ $('Loop Over Items').item.json.etapaPedido == 'En Viaje' || $('Loop Over Items').item.json.etapaPedido == 'En Reparto' }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "En Viaje"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $json.pedido.tipoentrega == 'Mostrador' && ($('Loop Over Items').item.json.etapaPedido == 'Entregado' || $('Loop Over Items').item.json.etapaPedido == 'Preparado') }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      },
+                      "id": "e8fee587-2e55-4b3c-b80b-a08295d1d9ba"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Mostrador Entregado"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "456069de-59be-408d-9d02-c0d7b8b45b97",
+                      "leftValue": "={{ $('Loop Over Items').item.json.etapaPedido =='Entregado' && $('Loop Over Items').item.json.plataforma == 'MasDelivery'}}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "MasDelivery Entregado"
+              }
+            ]
+          },
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "Extra"
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.3,
+        "position": [
+          -2032,
+          640
+        ],
+        "id": "39a8718c-e27d-4184-add7-5571087aa24a",
+        "name": "Switch1"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "sucursales",
+            "mode": "list",
+            "cachedResultName": "sucursales"
+          },
+          "where": {
+            "values": [
+              {
+                "column": "nombre",
+                "value": "={{ $('Loop Over Items').item.json.sucursal }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -2416,
+          672
+        ],
+        "id": "4a04def3-485f-4efe-8f8a-c67117994f59",
+        "name": "Get Data Sucursal",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "notificacion_pedidos",
+            "mode": "list",
+            "cachedResultName": "notificacion_pedidos"
+          },
+          "returnAll": true,
+          "where": {
+            "values": [
+              {
+                "column": "idventa",
+                "value": "={{ $('Loop Over Items').item.json.idventa }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -3232,
+          672
+        ],
+        "id": "cb6ecca3-6370-4927-8751-fff9c6d8c67d",
+        "name": "Consulta Pedido",
+        "alwaysOutputData": true,
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Code node (JS)\n\nconst listaPedidos = $('Consulta Pedido').all();\nconst infoSucursales = $('Get Data Sucursal').all();\n\nconst pad2 = (n) => String(n).padStart(2, '0');\n\nfunction formatYMDHM(iso) {\n  if (!iso) return null;\n  const d = new Date(iso);\n  if (isNaN(d.getTime())) return null;\n\n  // UTC para no depender del timezone del server\n  const yyyy = d.getUTCFullYear();\n  const mm = pad2(d.getUTCMonth() + 1);\n  const dd = pad2(d.getUTCDate());\n  const HH = pad2(d.getUTCHours());\n  const MI = pad2(d.getUTCMinutes());\n\n  return `${yyyy}/${mm}/${dd} ${HH}:${MI}`;\n}\n\nfunction horaHHMI(iso) {\n  if (!iso) return null;\n  const d = new Date(iso);\n  if (isNaN(d.getTime())) return null;\n  return `${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`;\n}\n\nfunction recortaAntesDeParentesis(txt) {\n  if (typeof txt !== 'string') return txt;\n  const idx = txt.indexOf('(');\n  return (idx === -1 ? txt : txt.slice(0, idx)).trim();\n}\n\nconst lenP = listaPedidos.length;\nconst lenS = infoSucursales.length;\nconst targetLen = Math.max(lenP, lenS);\n\nreturn Array.from({ length: targetLen }, (_, i) => {\n  const pedido = (listaPedidos[Math.min(i, Math.max(lenP - 1, 0))]?.json) ?? {};\n  const sucursal = (infoSucursales[Math.min(i, Math.max(lenS - 1, 0))]?.json) ?? {};\n\n  const entregaISO = pedido.fechahoraentrega ?? null;\n\n  return {\n    json: {\n      pedido: {\n        ...pedido,\n        fechahoraapertura: formatYMDHM(pedido.fechahoraapertura ?? null),\n        fechahoraentrega: formatYMDHM(entregaISO),\n        HoraSalida: horaHHMI(entregaISO),\n      },\n      sucursal: {\n        ...sucursal,\n        horarios: recortaAntesDeParentesis(sucursal.horarios),\n      },\n    },\n  };\n});\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -2240,
+          672
+        ],
+        "id": "e63581e3-c58f-4a98-8aa9-3fe3d0875d9e",
+        "name": "Normaliza Datos"
+      },
+      {
+        "parameters": {
+          "html": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Tu pedido está en camino - Osaki</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap\" rel=\"stylesheet\">\n    <style>\n        /* Estilos base para clientes de correo */\n        body {\n            margin: 0;\n            padding: 0;\n            width: 100% !important;\n            -webkit-text-size-adjust: 100%;\n            -ms-text-size-adjust: 100%;\n            background-color: #000000;\n            font-family: 'Montserrat', Arial, sans-serif;\n        }\n\n        table {\n            border-spacing: 0;\n            border-collapse: collapse;\n            mso-table-lspace: 0pt;\n            mso-table-rspace: 0pt;\n        }\n\n        td {\n            padding: 0;\n        }\n\n        img {\n            border: 0;\n            height: auto;\n            line-height: 100%;\n            outline: none;\n            text-decoration: none;\n            display: block;\n        }\n\n        .wrapper {\n            width: 100%;\n            table-layout: fixed;\n            background-color: #000000;\n            padding: 40px 10px;\n        }\n\n        .main {\n            background-color: #000000;\n            margin: 0 auto;\n            width: 100%;\n            max-width: 600px;\n            border-radius: 12px;\n            overflow: hidden;\n            border: 1px solid #1a1a1a;\n        }\n\n        /* Tipografía y Color */\n        .text-white { color: #ffffff; }\n        .text-gray { color: #a0a0a0; }\n        .text-red { color: #DA291C; }\n        \n        /* Secciones */\n        .content-padding {\n            padding: 40px 35px;\n        }\n\n        .header {\n            background-color: #000000;\n            padding: 40px 0;\n            text-align: center;\n            border-bottom: 1px solid #1a1a1a;\n        }\n\n        .status-badge {\n            display: inline-block;\n            background-color: #DA291C;\n            color: #ffffff;\n            padding: 8px 16px;\n            border-radius: 50px;\n            font-size: 14px;\n            font-weight: 700;\n            text-transform: uppercase;\n            letter-spacing: 1px;\n            margin-bottom: 20px;\n        }\n\n        h1 {\n            font-size: 26px;\n            margin: 0 0 15px 0;\n            color: #ffffff;\n            font-weight: 700;\n        }\n\n        p {\n            font-size: 16px;\n            line-height: 1.6;\n            margin: 0 0 15px 0;\n            color: #a0a0a0;\n        }\n\n        /* Caja de Tiempo */\n        .estimate-card {\n            background-color: #0a0a0a;\n            border: 1px solid #222222;\n            border-radius: 10px;\n            padding: 20px;\n            text-align: center;\n            margin: 25px 0;\n        }\n\n        /* Tabla de Pedido */\n        .order-info {\n            width: 100%;\n            background-color: #050505;\n            border-radius: 8px;\n            margin-bottom: 30px;\n            border: 1px solid #1a1a1a;\n        }\n\n        .order-info td {\n            padding: 12px 15px;\n            border-bottom: 1px solid #1a1a1a;\n            font-size: 14px;\n        }\n\n        /* Bloque de Reseña */\n        .review-block {\n            background-color: #000000;\n            padding: 45px 35px;\n            text-align: center;\n            color: #ffffff;\n            border-top: 1px solid #1a1a1a;\n        }\n\n        .review-title {\n            font-size: 20px;\n            font-weight: 700;\n            margin-bottom: 10px;\n            color: #ffffff;\n        }\n\n        .review-text {\n            font-size: 15px;\n            color: #a0a0a0;\n            margin-bottom: 20px;\n        }\n\n        .review-link {\n            display: block;\n            font-size: 12px;\n            color: #444444;\n            margin-top: 15px;\n            text-decoration: none;\n            word-break: break-all;\n        }\n\n        /* Botones */\n        .btn {\n            text-decoration: none;\n            font-weight: 700;\n            display: inline-block;\n            border-radius: 6px;\n            text-align: center;\n            transition: opacity 0.2s;\n        }\n\n        .btn-red {\n            background-color: #DA291C;\n            color: #ffffff;\n        }\n\n        .btn-white {\n            background-color: #ffffff;\n            color: #000000;\n        }\n\n        /* Tamaños de Botón */\n        .btn-lg {\n            padding: 15px 35px;\n            font-size: 15px;\n        }\n\n        .btn-sm {\n            padding: 8px 18px;\n            font-size: 12px;\n            letter-spacing: 0.5px;\n        }\n\n        .footer {\n            padding: 40px 35px;\n            text-align: center;\n            background-color: #000000;\n            border-top: 1px solid #1a1a1a;\n        }\n\n        .footer-text {\n            font-size: 12px;\n            color: #666666;\n            line-height: 1.5;\n        }\n\n        /* Responsive */\n        @media screen and (max-width: 600px) {\n            .content-padding { padding: 30px 20px; }\n            .review-block { padding: 30px 20px; }\n        }\n    </style>\n</head>\n<body>\n    <center class=\"wrapper\">\n        <table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n            \n            <!-- HEADER -->\n            <tr>\n                <td class=\"header\">\n                    <a href=\"https://osakisushi.com/\" target=\"_blank\">\n                        <img src=\"https://i.ibb.co/GQHtxt6D/Osaki-Sushi.png\" alt=\"Osaki Sushi\" width=\"180\" style=\"margin: 0 auto;\">\n                    </a>\n                </td>\n            </tr>\n\n            <!-- CONTENIDO PRINCIPAL -->\n            <tr>\n                <td class=\"content-padding\">\n                    <div style=\"text-align: center;\">\n                        <span class=\"status-badge\">¡Pedido Despachado!</span>\n                        <h1>Tu pedido va en camino</h1>\n                        <p>Hola <strong>{{$json.pedido.nombre}}</strong>, tenemos todo listo. Nuestra cocina ya entregó tu pedido al repartidor y está en camino hacia tu dirección.</p>\n                    </div>\n\n                    <!-- ESTIMADO -->\n                    <div class=\"estimate-card\">\n                        <p style=\"margin:0; font-size: 13px; color: #666666; text-transform: uppercase; letter-spacing: 1px;\">Llegada Estimada</p>\n                        <p style=\"margin:5px 0 0 0; font-size: 28px; font-weight: 700; color: #ffffff;\">20 - 30 min</p>\n                    </div>\n\n                    <!-- DETALLES DEL PEDIDO -->\n                    <table class=\"order-info\" width=\"100%\">\n                        <tr>\n                            <td class=\"text-gray\" width=\"40%\">N° de Pedido</td>\n                            <td class=\"text-white\" align=\"right\">#{{$json.pedido.codigo_pedido}}</td>\n                        </tr>\n                        <tr>\n                            <td class=\"text-gray\">Dirección</td>\n                            <td class=\"text-white\" align=\"right\">{{$json.pedido.direccion}}</td>\n                        </tr>\n                        <tr>\n                            <td class=\"text-gray\">Origen</td>\n                            <td class=\"text-white\" align=\"right\">{{$json.pedido.plataforma}}</td>\n                        </tr>\n                        <tr>\n                            <td class=\"text-gray\">Estado</td>\n                            <td class=\"text-red\" align=\"right\" style=\"font-weight: 700;\">{{ $('Loop Over Items').item.json.etapaPedido }}</td>\n                        </tr>\n                    </table>\n\n                    <p style=\"font-size: 13px; color: #444; text-align: center; font-style: italic;\">\n                        * Te sugerimos estar atento al timbre o a tu celular por si el repartidor necesita contactarte.\n                    </p>\n                </td>\n            </tr>\n\n            <!-- BLOQUE INDEPENDIENTE: RESEÑAS GOOGLE -->\n            <tr>\n                <td class=\"review-block\">\n                    <div class=\"review-title\">¿Qué te parece la experiencia Osaki?</div>\n                    <p class=\"review-text\">Tu opinión nos ayuda a seguir mejorando. Una vez que disfrutes tu pedido, nos encantaría que nos dejes una reseña en Google.</p>\n                    \n                    <table width=\"100%\">\n                        <tr>\n                            <td align=\"center\">\n                                <a href=\"https://n8n-n8n.2hxkvh.easypanel.host/webhook/review-click?type=review&sucursal={{$json.sucursal.nombre}}&pedido={{$json.pedido.codigo_pedido}}&email={{$json.pedido.correo}}&nombre={{$json.pedido.nombre}}&dest={{$json.sucursal.gmap_link}}\" class=\"btn btn-white btn-lg\" target=\"_blank\">\n                                    DEJANOS TU RESEÑA\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n\n            <!-- FOOTER -->\n            <tr>\n                <td class=\"footer\">\n                    <p style=\"color: #ffffff; font-weight: 700; font-size: 14px; margin-bottom: 5px;\">\n                        Osaki {{$json.sucursal.nombre}}\n                    </p>\n                    <p class=\"footer-text\">\n                        {{$json.sucursal.direccion}}<br>\n                        Tel: {{$json.sucursal.telefono_fijo}} | Horario: {{$json.sucursal.horarios}}\n                    </p>\n                    \n                    <!-- BOTÓN CONTACTAR SUCURSAL (PEQUEÑO Y ABAJO) -->\n                    <table width=\"100%\" style=\"margin-top: 15px; margin-bottom: 10px;\">\n                        <tr>\n                            <td align=\"center\">\n                                <a href=\"https://wa.me/{{$json.sucursal.whatsapp}}\" class=\"btn btn-red btn-sm\" target=\"_blank\">\n                                    Contactar Sucursal\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n\n                    <div style=\"margin: 25px 0 20px 0; border-top: 1px solid #1a1a1a;\"></div>\n                    \n                    <p class=\"footer-text\">\n                        © 2025 Osaki Sushi. Todos los derechos reservados.<br>\n                        <a href=\"https://osakisushi.com\" style=\"color: #DA291C; text-decoration: none;\">Visitar sitio web</a>\n                    </p>\n                                      <!-- LEYENDA DE UNSUBSCRIBE SOLICITADA -->\n                    <p class=\"unsub-text\">\n                        Este correo fue enviado automáticamente por la gestión de tu pedido en Osaki.<br>\n                        Si no deseas recibir más actualizaciones, haz clic aquí para \n                        <a href=\"mailto:delivery.osakisushi@gmail.com?subject=Unsubscribe%20Pedido%20{{$json.pedido.codigo_pedido}}\" class=\"unsub-link\">darte de baja</a>.\n                    </p>\n                </td>\n            </tr>\n\n        </table>\n    </center>\n</body>\n</html>"
+        },
+        "type": "n8n-nodes-base.html",
+        "typeVersion": 1.2,
+        "position": [
+          -1328,
+          336
+        ],
+        "id": "18e4f5cf-fd13-484c-93b3-f4305ac72b99",
+        "name": "HTML En Viaje"
+      },
+      {
+        "parameters": {
+          "html": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Tu pedido está listo - Osaki</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap\" rel=\"stylesheet\">\n    <style>\n        /* Estilos base para clientes de correo */\n        body {\n            margin: 0;\n            padding: 0;\n            width: 100% !important;\n            -webkit-text-size-adjust: 100%;\n            -ms-text-size-adjust: 100%;\n            background-color: #000000;\n            font-family: 'Montserrat', Arial, sans-serif;\n        }\n\n        table {\n            border-spacing: 0;\n            border-collapse: collapse;\n            mso-table-lspace: 0pt;\n            mso-table-rspace: 0pt;\n        }\n\n        td {\n            padding: 0;\n        }\n\n        img {\n            border: 0;\n            height: auto;\n            line-height: 100%;\n            outline: none;\n            text-decoration: none;\n            display: block;\n        }\n\n        .wrapper {\n            width: 100%;\n            table-layout: fixed;\n            background-color: #000000;\n            padding: 40px 10px;\n        }\n\n        .main {\n            background-color: #000000;\n            margin: 0 auto;\n            width: 100%;\n            max-width: 600px;\n            border-radius: 12px;\n            overflow: hidden;\n            border: 1px solid #1a1a1a;\n        }\n\n        /* Tipografía y Color */\n        .text-white { color: #ffffff; }\n        .text-gray { color: #a0a0a0; }\n        .text-red { color: #DA291C; }\n        \n        /* Secciones */\n        .content-padding {\n            padding: 40px 35px;\n        }\n\n        .header {\n            background-color: #000000;\n            padding: 40px 0;\n            text-align: center;\n            border-bottom: 1px solid #1a1a1a;\n        }\n\n        .status-badge {\n            display: inline-block;\n            background-color: #DA291C;\n            color: #ffffff;\n            padding: 8px 16px;\n            border-radius: 50px;\n            font-size: 14px;\n            font-weight: 700;\n            text-transform: uppercase;\n            letter-spacing: 1px;\n            margin-bottom: 20px;\n        }\n\n        h1 {\n            font-size: 26px;\n            margin: 0 0 15px 0;\n            color: #ffffff;\n            font-weight: 700;\n        }\n\n        p {\n            font-size: 16px;\n            line-height: 1.6;\n            margin: 0 0 15px 0;\n            color: #a0a0a0;\n        }\n\n        /* Caja de Retiro */\n        .address-card {\n            background-color: #0a0a0a;\n            border: 1px solid #222222;\n            border-left: 4px solid #DA291C;\n            border-radius: 8px;\n            padding: 20px;\n            margin: 25px 0;\n            text-align: left;\n        }\n\n        /* Tabla de Pedido */\n        .order-info {\n            width: 100%;\n            background-color: #050505;\n            border-radius: 8px;\n            margin-bottom: 30px;\n            border: 1px solid #1a1a1a;\n        }\n\n        .order-info td {\n            padding: 12px 15px;\n            border-bottom: 1px solid #1a1a1a;\n            font-size: 14px;\n        }\n\n        /* Bloque de Reseña */\n        .review-block {\n            background-color: #000000;\n            padding: 45px 35px;\n            text-align: center;\n            color: #ffffff;\n            border-top: 1px solid #1a1a1a;\n        }\n\n        .review-title {\n            font-size: 20px;\n            font-weight: 700;\n            margin-bottom: 10px;\n            color: #ffffff;\n        }\n\n        .review-text {\n            font-size: 15px;\n            color: #a0a0a0;\n            margin-bottom: 25px;\n        }\n\n        .review-link {\n            display: block;\n            font-size: 12px;\n            color: #444444;\n            margin-top: 15px;\n            text-decoration: none;\n            word-break: break-all;\n        }\n\n        /* Botones */\n        .btn {\n            text-decoration: none;\n            font-weight: 700;\n            display: inline-block;\n            border-radius: 6px;\n            text-align: center;\n        }\n\n        .btn-red {\n            background-color: #DA291C;\n            color: #ffffff;\n        }\n\n        .btn-white {\n            background-color: #ffffff;\n            color: #000000;\n        }\n\n        /* Tamaños de Botón */\n        .btn-lg {\n            padding: 15px 35px;\n            font-size: 15px;\n        }\n\n        .btn-sm {\n            padding: 8px 18px;\n            font-size: 12px;\n            letter-spacing: 0.5px;\n        }\n\n        .footer {\n            padding: 40px 35px;\n            text-align: center;\n            background-color: #000000;\n            border-top: 1px solid #1a1a1a;\n        }\n\n        .footer-text {\n            font-size: 12px;\n            color: #666666;\n            line-height: 1.5;\n        }\n\n        /* Responsive */\n        @media screen and (max-width: 600px) {\n            .content-padding { padding: 30px 20px; }\n            .review-block { padding: 30px 20px; }\n        }\n    </style>\n</head>\n<body>\n    <center class=\"wrapper\">\n        <table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n            \n            <!-- HEADER -->\n            <tr>\n                <td class=\"header\">\n                    <!-- <a href=\"https://osakisushi.com/\" target=\"_blank\">\n                        <img src=\"https://i.ibb.co/GQHtxt6D/Osaki-Sushi.png\" alt=\"Osaki Sushi\" width=\"180\" style=\"margin: 0 auto;\">\n                    </a> -->\n                </td>\n            </tr>\n\n            <!-- CONTENIDO PRINCIPAL -->\n            <tr>\n                <td class=\"content-padding\">\n                    <div style=\"text-align: center;\">\n                        <span class=\"status-badge\">¡Pedido Listo!</span>\n                        <h1>Tu pedido te espera</h1>\n                        <p>Hola <strong>{{$json.pedido.nombre}}</strong>, tenemos excelentes noticias. Tu pedido ya está listo en nuestra sucursal. ¡Podes pasar a buscarlo cuando quieras!</p>\n                    </div>\n\n                    <!-- CAJA DE RETIRO -->\n                    <div class=\"address-card\">\n                        <p style=\"margin:0; font-size: 12px; color: #DA291C; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;\">Retirar en Osaki {{$json.sucursal.nombre}}:</p>\n                        <p style=\"margin:8px 0 0 0; font-size: 18px; font-weight: 600; color: #ffffff;\">{{$json.sucursal.direccion}}</p>\n                    </div>\n\n                    <!-- DETALLES DEL PEDIDO -->\n                    <table class=\"order-info\" width=\"100%\">\n                        <tr>\n                            <td class=\"text-gray\" width=\"40%\">N° de Pedido</td>\n                            <td class=\"text-white\" align=\"right\">#{{$json.pedido.codigo_pedido}}</td>\n                        </tr>\n                        <tr>\n                            <td class=\"text-gray\">Plataforma</td>\n                            <td class=\"text-white\" align=\"right\">{{$json.pedido.plataforma}}</td>\n                        </tr>\n                        <tr>\n                            <td class=\"text-gray\">Estado Actual</td>\n                            <td class=\"text-red\" align=\"right\" style=\"font-weight: 700;\">Listo para retirar</td>\n                        </tr>\n                    </table>\n\n                    <p style=\"font-size: 13px; color: #444; text-align: center; font-style: italic;\">\n                        * Recordá tener a mano tu número de pedido o nombre al momento de retirar en mostrador.\n                    </p>\n                </td>\n            </tr>\n\n            <!-- BLOQUE INDEPENDIENTE: RESEÑAS GOOGLE -->\n            <tr>\n                <td class=\"review-block\">\n                    <div class=\"review-title\">¿Qué te parece la experiencia Osaki?</div>\n                    <p class=\"review-text\">Tu opinión es fundamental para nosotros. Una vez que disfrutes tu pedido, nos encantaría que nos dejes una reseña en Google.</p>\n                    \n                    <table width=\"100%\">\n                        <tr>\n                            <td align=\"center\">\n                                <a href=\"https://n8n-n8n.2hxkvh.easypanel.host/webhook/review-click?type=review&sucursal={{$json.sucursal.nombre}}&pedido={{$json.pedido.codigo_pedido}}&email={{$json.pedido.correo}}&nombre={{$json.pedido.nombre}}&dest={{$json.sucursal.gmap_link}}\" class=\"btn btn-white btn-lg\" target=\"_blank\">\n                                    DEJANOS TU RESEÑA\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n                </td>\n            </tr>\n\n            <!-- FOOTER -->\n            <tr>\n                <td class=\"footer\">\n                    <p style=\"color: #ffffff; font-weight: 700; font-size: 14px; margin-bottom: 5px;\">\n                        Osaki {{$json.sucursal.nombre}}\n                    </p>\n                    <p class=\"footer-text\">\n                        {{$json.sucursal.direccion}}<br>\n                        Tel: {{$json.sucursal.telefono_fijo}} | Horario: {{$json.sucursal.horarios}}\n                    </p>\n                    \n                    <!-- BOTÓN CONTACTAR SUCURSAL (PEQUEÑO Y ABAJO) -->\n                    <table width=\"100%\" style=\"margin-top: 15px; margin-bottom: 10px;\">\n                        <tr>\n                            <td align=\"center\">\n                                <a href=\"https://wa.me/{{$json.sucursal.whatsapp}}\" class=\"btn btn-red btn-sm\" target=\"_blank\">\n                                    Contactar Sucursal\n                                </a>\n                            </td>\n                        </tr>\n                    </table>\n\n                    <div style=\"margin: 25px 0 20px 0; border-top: 1px solid #1a1a1a;\"></div>\n                    \n                    <p class=\"footer-text\">\n                        © 2025 Osaki Sushi. Todos los derechos reservados.<br>\n                        <a href=\"https://osakisushi.com\" style=\"color: #DA291C; text-decoration: none;\">Visitar sitio web</a>\n                    </p>\n                                      <!-- LEYENDA DE UNSUBSCRIBE SOLICITADA -->\n                    <p class=\"unsub-text\">\n                        Este correo fue enviado automáticamente por la gestión de tu pedido en Osaki.<br>\n                        Si no deseas recibir más actualizaciones, haz clic aquí para \n                        <a href=\"mailto:delivery.osakisushi@gmail.com?subject=Unsubscribe%20Pedido%20{{$json.pedido.codigo_pedido}}\" class=\"unsub-link\">darte de baja</a>.\n                    </p>\n                </td>\n            </tr>\n\n        </table>\n    </center>\n</body>\n</html>"
+        },
+        "type": "n8n-nodes-base.html",
+        "typeVersion": 1.2,
+        "position": [
+          -1328,
+          480
+        ],
+        "id": "e93f1fec-a6d4-4469-862a-6dd18864e1cd",
+        "name": "HTML Preparado"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "=n8n_chat_histories_delivery_{{ $('Normaliza Datos').item.json.pedido.sucursal.replace(' ','_').toLowerCase() }}",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "session_id": "={{ $('Loop Over Items').item.json.sessionId }}",
+              "message": "={\n  \"type\": \"ai\",\n  \"content\": \"Correo enviado: OK\\nNombre: {{ $('Normaliza Datos').item.json.pedido.nombre }}\\nCodPedido: {{  $('Normaliza Datos').item.json.pedido.codigo_pedido }}\\nPlataforma: {{  $('Normaliza Datos').item.json.pedido.plataforma }}\\nTipoEntrega:{{  $('Normaliza Datos').item.json.pedido.tipoentrega }}\\nEstado: {{  $('Loop Over Items').item.json.etapaPedido }}\\nSucursal:{{ $('Normaliza Datos').item.json.pedido.sucursal }}\",\n  \"tool_calls\": [],\n  \"additional_kwargs\": {},\n  \"response_metadata\": {},\n  \"invalid_tool_calls\": []\n}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "session_id",
+                "displayName": "session_id",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "message",
+                "displayName": "message",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "fec_registro",
+                "displayName": "fec_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -976,
+          688
+        ],
+        "id": "18b52854-d68f-4bc1-a95a-f30f5cc870ce",
+        "name": "Ingresa Registro ReConfirmacion3",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "77d1c36a-901f-46ce-bb1b-36ed256548f9",
+                "name": "fecha_hoy",
+                "value": "={{ new Date().toLocaleString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }) }}",
+                "type": "string"
+              },
+              {
+                "id": "4c0d264c-a98f-418c-b424-81ce227f92d8",
+                "name": "=hora_ahora",
+                "value": "={{ new Date().toLocaleString('en-GB', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) }}",
+                "type": "string"
+              },
+              {
+                "id": "5beed38e-1087-4ec6-8ffb-c77119e18396",
+                "name": "schema",
+                "value": "osaki_main",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3520,
+          352
+        ],
+        "id": "105dea98-5719-4daf-b94c-e4ca759c5a26",
+        "name": "Get Data Inicial"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "51693c2c-b946-4364-8c9f-79caadca0408",
+                "name": "html",
+                "value": "={{ $json.html }}",
+                "type": "string"
+              },
+              {
+                "id": "d13f7ada-2d97-4058-9066-24b5121926e8",
+                "name": "subject",
+                "value": "=[Osaki Sushi {{ $('Normaliza Datos').item.json.pedido.sucursal }}] Salida de Pedido #{{ $('Normaliza Datos').item.json.pedido.codigo_pedido }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -976,
+          336
+        ],
+        "id": "c49bf13a-6524-4627-a5be-3425b851c4f4",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "51693c2c-b946-4364-8c9f-79caadca0408",
+                "name": "html",
+                "value": "={{ $json.html }}",
+                "type": "string"
+              },
+              {
+                "id": "d13f7ada-2d97-4058-9066-24b5121926e8",
+                "name": "subject",
+                "value": "=[Osaki Sushi {{ $('Normaliza Datos').item.json.pedido.sucursal }}] Pedido Listo Para Retirar #{{ $('Normaliza Datos').item.json.pedido.codigo_pedido }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -976,
+          480
+        ],
+        "id": "1003459a-9a13-4458-9667-aaac0bf663c1",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "where": {
+            "values": [
+              {
+                "column": "telefono",
+                "value": "={{ $('Loop Over Items').item.json.Telefono }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -1120,
+          1104
+        ],
+        "id": "7b3eac34-06a7-4547-a03b-f4aea459be43",
+        "name": "Busca Cliente",
+        "alwaysOutputData": true,
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "notificacion_pedidos",
+            "mode": "list",
+            "cachedResultName": "notificacion_pedidos"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "notificacion_flag": "={{ true }}",
+              "id": "={{ $('Consulta Pedido').item.json.id }}",
+              "fechahoracierre": "={{ $('Loop Over Items').item.json.FechaHoraCierre }}",
+              "fechanotificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "idventa",
+                "displayName": "idventa",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "codigo_pedido",
+                "displayName": "codigo_pedido",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "plataforma",
+                "displayName": "plataforma",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipoentrega",
+                "displayName": "tipoentrega",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "etapapedido",
+                "displayName": "etapapedido",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fechahoraapertura",
+                "displayName": "fechahoraapertura",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fechahoracierre",
+                "displayName": "fechahoracierre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "fechahoraentrega",
+                "displayName": "fechahoraentrega",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "notificacion_flag",
+                "displayName": "notificacion_flag",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "direccion",
+                "displayName": "direccion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fechanotificacion",
+                "displayName": "fechanotificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -672,
+          864
+        ],
+        "id": "c81348c1-03d9-431d-b95b-7ec0940396b6",
+        "name": "Marca Notificacion True",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "UPDATE {{ $('Get Data Inicial').first().json.schema}}.notificacion_pedidos\nset etapapedido=$1\nwhere id=$2",
+          "options": {
+            "queryReplacement": "={{ $('Loop Over Items').item.json.etapaPedido }}, {{ $json.id }}"
+          }
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -2800,
+          608
+        ],
+        "id": "fcbc7bae-5ad2-4e08-a7cc-7d36bebdb15d",
+        "name": "Actualiza Estado",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ Object.keys($json).length === 0 }}",
+                      "rightValue": "",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      },
+                      "id": "753c2dd9-2c32-4f55-9362-1b08a93cd3a9"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "No Existe"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "8b4b12c9-d25d-4444-afaa-18265e6e927f",
+                      "leftValue": "={{ $json.etapapedido}}",
+                      "rightValue": "={{$('Loop Over Items').item.json.etapaPedido}}",
+                      "operator": {
+                        "type": "string",
+                        "operation": "notEquals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Cambio Estado"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "6d2798e3-9f39-4122-947e-03f50d35a64f",
+                      "leftValue": "={{ $json.notificacion_flag }}",
+                      "rightValue": false,
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "false",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Notificación False"
+              }
+            ]
+          },
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "Sin Cambios"
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -3024,
+          640
+        ],
+        "id": "cf388dff-3475-4240-868d-80eab360b4a3",
+        "name": "Switch"
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 * 00,10-23 * * * "
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -3744,
+          352
+        ],
+        "id": "d60e7385-fa28-4732-86af-f3b6c6141bf0",
+        "name": "Cada 1  min"
+      },
+      {
+        "parameters": {
+          "amount": 3
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -1600,
+          880
+        ],
+        "id": "48742223-045d-4b6f-beee-a41a10d2677b",
+        "name": "Wait1",
+        "webhookId": "d2da1faa-8f9e-43da-911e-b5ce59e38e29"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "=Un pedido fuera de lógica, revisar... \n* Cod_Pedido: {{ $('Normaliza Datos').item.json.pedido.codigo_pedido }}\n* Id_Venta: {{ $('Normaliza Datos').item.json.pedido.idventa }}\n* Tipo: {{ $json.pedido.tipoentrega }}\n* Estado: {{ $('Loop Over Items').item.json.etapaPedido }}\n",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -1424,
+          880
+        ],
+        "id": "6fbb760a-e637-4d28-978e-372451b5952c",
+        "name": "Soporte1",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "367abdd4-a285-4946-bd8f-a2c65b539b25",
+                "name": "idventa",
+                "value": "={{ $('Loop Over Items').item.json.idventa }}",
+                "type": "number"
+              },
+              {
+                "id": "2ba07251-98d9-4986-9af6-2f169ab75a03",
+                "name": "CodigoPedidoPlataforma",
+                "value": "={{ $('Loop Over Items').item.json.CodigoPedidoPlataforma }}",
+                "type": "string"
+              },
+              {
+                "id": "30c6d30f-9af1-413a-a66d-ba05eac08499",
+                "name": "TipoEntrega",
+                "value": "={{ $('Loop Over Items').item.json.TipoEntrega }}",
+                "type": "string"
+              },
+              {
+                "id": "4c42b4d3-125f-4c81-a058-8375bca00331",
+                "name": "etapaPedido",
+                "value": "={{ $('Loop Over Items').item.json.etapaPedido }}",
+                "type": "string"
+              },
+              {
+                "id": "2a350cd3-c82c-473c-953a-f50badfb7fe8",
+                "name": "nombre",
+                "value": "={{ $('Loop Over Items').item.json.nombre }}",
+                "type": "string"
+              },
+              {
+                "id": "f05c9b62-1f7d-44de-b290-3235354325dc",
+                "name": "sucursal",
+                "value": "={{ $('Loop Over Items').item.json.sucursal }}",
+                "type": "string"
+              },
+              {
+                "id": "9d6dc562-b2fd-40a4-9fb3-613f1a3d3ed6",
+                "name": "HoraActual",
+                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -224,
+          1104
+        ],
+        "id": "2049a66c-b21f-4594-a708-776636b26637",
+        "name": "Edit Fields2"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Data Inicial').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "=n8n_chat_histories_delivery_{{ $json.pedido.sucursal.replace(' ','_').toLowerCase() }}",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "session_id": "={{ $('Loop Over Items').item.json.sessionId }}",
+              "message": "={\n  \"type\": \"ai\",\n  \"content\": \"Pedido entregado: OK\\nNombre: {{ $('Normaliza Datos').item.json.pedido.nombre }}\\nCodPedido: {{  $('Normaliza Datos').item.json.pedido.codigo_pedido }}\\nPlataforma: {{  $('Normaliza Datos').item.json.pedido.plataforma }}\\nTipoEntrega:{{  $('Normaliza Datos').item.json.pedido.tipoentrega }}\\nEstado: {{  $('Loop Over Items').item.json.etapaPedido }}\\nSucursal:{{ $('Normaliza Datos').item.json.pedido.sucursal }}\",\n  \"tool_calls\": [],\n  \"additional_kwargs\": {},\n  \"response_metadata\": {},\n  \"invalid_tool_calls\": []\n}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "session_id",
+                "displayName": "session_id",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "message",
+                "displayName": "message",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -976,
+          864
+        ],
+        "id": "c8be21d8-207c-4dcb-982e-690d964122ec",
+        "name": "Ingresa Registro ReConfirmacion",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "e14a991c-4c08-46f6-ba66-cdea2a258d36",
+                "leftValue": "={{ $('Consulta Pedido').item.json.notificacion_flag }}",
+                "rightValue": false,
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              },
+              {
+                "id": "6f5a77ec-eadd-490a-83e7-3ca98d835fe3",
+                "leftValue": "={{ $('Consulta Pedido').item.json.plataforma }}",
+                "rightValue": "MasDelivery",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "207203a1-dc51-48f7-aaec-a25664e379d8",
+                "leftValue": "={{ ['En Preparación','Por Entregar'].includes($json.etapapedido) }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2608,
+          688
+        ],
+        "id": "f8561529-eae4-46b5-9843-d4ca96b0d189",
+        "name": "If6"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "9939efb9-918d-4173-9a0f-afd77a5d5757",
+                "leftValue": "={{ $json.pedido.plataforma }}",
+                "rightValue": "MasDelivery",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "351fd760-ad14-4db9-843e-f6a043ff1bfd",
+                "leftValue": "={{ $('Loop Over Items').item.json.etapaPedido }}",
+                "rightValue": "Preparado",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -1840,
+          800
+        ],
+        "id": "9469a143-0426-4c5f-aafa-94c68c225e9a",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "=Serividor de MySQL Caído",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -3056,
+          368
+        ],
+        "id": "f34a3b2a-7e11-4b58-a959-7cfe6ac1a9c1",
+        "name": "Soporte",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "sendTo": "={{ $('Normaliza Datos').item.json.pedido.correo }}",
+          "subject": "={{ $json.subject }}",
+          "message": "={{ $json.html }}",
+          "options": {
+            "appendAttribution": false,
+            "senderName": "=Osaki {{ $('Normaliza Datos').item.json.sucursal.nombre}}"
+          }
+        },
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.2,
+        "position": [
+          -400,
+          432
+        ],
+        "id": "f0fe7781-85ef-4fa5-95e1-87d96fcaa97f",
+        "name": "Send a message",
+        "webhookId": "a2e87fa7-2bbb-47b1-83b6-183eac8e9872",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "ekkn7I2G8DZI9Ar7",
+            "name": "Gmail DeliveryOsaki"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -2080,
+          336
+        ],
+        "id": "3180f94a-1350-4806-a9c0-4af477a86c64",
+        "name": "Normaliza Datos1"
+      },
+      {
+        "parameters": {
+          "fromEmail": "Delivery I Love Sushi <delivery@ilovesushiok.com>",
+          "toEmail": "cheshire.zol@gmail.com",
+          "subject": "={{ $json.subject }}",
+          "emailFormat": "both",
+          "text": "={{ $json.text }}",
+          "html": "={{ $json.html }}",
+          "options": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
+        "position": [
+          -224,
+          288
+        ],
+        "id": "3aac007b-bd7a-43f1-a810-64d535cb5235",
+        "name": "Send email",
+        "webhookId": "d0d930f0-7331-433d-beed-47f993b62b89",
+        "credentials": {
+          "smtp": {
+            "id": "Tb5Kma6EadIYHsAO",
+            "name": "SMTP ILoveSushi"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Capturamos los datos de entrada\nconst inputJson = items[0].json;\nconst htmlContent = inputJson.html || \"\";\nconst subject = inputJson.subject || \"Actualización de tu pedido\"; // Valor por defecto si no existe\n\n/**\n * Función para convertir HTML a Texto Plano de forma limpia\n */\nfunction htmlToText(html) {\n    let text = html;\n\n    // 1. Eliminar bloques de <style> y <head>\n    text = text.replace(/<style([\\s\\S]*?)<\\/style>/gi, '');\n    text = text.replace(/<head([\\s\\S]*?)<\\/head>/gi, '');\n    \n    // 2. Reemplazar cierres de bloques por saltos de línea para mantener estructura\n    text = text.replace(/<\\/p>|<\\/div>|<tr>|<\\/h1>|<\\/h2>/gi, '\\n');\n    text = text.replace(/<br\\s*\\/?>/gi, '\\n');\n    \n    // 3. Eliminar todas las etiquetas HTML\n    text = text.replace(/<[^>]+>/g, '');\n    \n    // 4. Decodificar entidades HTML comunes\n    const entities = {\n        '&nbsp;': ' ', '&aacute;': 'á', '&eacute;': 'é', '&iacute;': 'í', \n        '&oacute;': 'ó', '&uacute;': 'ú', '&ntilde;': 'ñ', '&Aacute;': 'Á',\n        '&Eacute;': 'É', '&Iacute;': 'Í', '&Oacute;': 'Ó', '&Uacute;': 'Ú', '&Ntilde;': 'Ñ'\n    };\n    \n    Object.keys(entities).forEach(key => {\n        text = text.replace(new RegExp(key, 'g'), entities[key]);\n    });\n\n    // 5. Limpiar espacios en blanco laterales y reducir saltos de línea múltiples\n    return text.trim().replace(/\\n\\s*\\n/g, '\\n\\n');\n}\n\n// Generamos la versión de texto plano\nconst plainText = htmlToText(htmlContent);\n\n// Retornamos el objeto final para el nodo de Email\nreturn [\n  {\n    json: {\n      subject: subject, // Pasa sin transformación\n      html: htmlContent,\n      text: plainText\n    }\n  }\n];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -704,
+          432
+        ],
+        "id": "8e535c8f-e0cd-4794-81a5-7894f8da11fb",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -400,
+          672
+        ],
+        "id": "b7f8e9a0-c55e-449a-a29c-94106d1d9713",
+        "name": "Wait2",
+        "webhookId": "b89ed435-4bbf-4cba-afa1-a107432e4b8d"
+      }
+    ],
+    "connections": {
+      "Obtiene Registros osakisucursal": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Soporte",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Consulta Pedido",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Registra Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Actualiza Clientes",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Cliente": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Clientes": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registra Pedido": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch1": {
+        "main": [
+          [
+            {
+              "node": "HTML En Viaje",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "HTML Preparado",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Ingresa Registro ReConfirmacion",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Data Sucursal": {
+        "main": [
+          [
+            {
+              "node": "Normaliza Datos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Consulta Pedido": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normaliza Datos": {
+        "main": [
+          [
+            {
+              "node": "Switch1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTML En Viaje": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTML Preparado": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ingresa Registro ReConfirmacion3": {
+        "main": [
+          [
+            {
+              "node": "Marca Notificacion True",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Data Inicial": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Registros osakisucursal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca Cliente": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Marca Notificacion True": {
+        "main": [
+          [
+            {
+              "node": "Busca Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Estado": {
+        "main": [
+          [
+            {
+              "node": "If6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "Registra Pedido",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Actualiza Estado",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "If6",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Cada 1  min": {
+        "main": [
+          [
+            {
+              "node": "Get Data Inicial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "Soporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Soporte1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields2": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ingresa Registro ReConfirmacion": {
+        "main": [
+          [
+            {
+              "node": "Marca Notificacion True",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If6": {
+        "main": [
+          [
+            {
+              "node": "Get Data Sucursal",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a message": {
+        "main": [
+          [
+            {
+              "node": "Ingresa Registro ReConfirmacion3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normaliza Datos1": {
+        "main": [
+          []
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Wait2",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send email": {
+        "main": [
+          []
+        ]
+      },
+      "Wait2": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": "Version 90d7eb91",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "90d7eb91-96b7-4cc5-846c-39aab22d26ab",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -2468,6 +4905,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-23T18:47:14.851Z",
-  "versionId": "3a8c9ef5-8fdd-4cda-bdb1-b769ad527f28"
+  "updatedAt": "2026-02-24T20:52:51.758Z",
+  "versionId": "90d7eb91-96b7-4cc5-846c-39aab22d26ab"
 }
