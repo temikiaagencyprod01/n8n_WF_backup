@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-21T16:11:35.000Z",
-    "createdAt": "2026-02-21T16:11:32.053Z",
-    "versionId": "658dcf03-a585-4edf-8aea-8a1990be47f6",
+    "updatedAt": "2026-02-24T21:07:20.000Z",
+    "createdAt": "2026-02-24T21:06:53.267Z",
+    "versionId": "19ccdd49-3f43-4d5f-9394-7e9b640e8b6a",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -667,7 +667,7 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Teléfono": "={{ $json.num_telefono }}",
+              "Teléfono": "={{ $json.num_telefono.toNumber() }}",
               "Intención": "={{ $json.resumen_intencion }}",
               "Estado": "={{ $json.estado_seguimiento }}",
               "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
@@ -685,7 +685,7 @@
                 "defaultMatch": false,
                 "canBeUsedToMatch": true,
                 "display": true,
-                "type": "string",
+                "type": "number",
                 "readOnly": false,
                 "removed": false
               },
@@ -770,6 +770,42 @@
                   {
                     "name": "alta",
                     "value": "alta"
+                  },
+                  {
+                    "name": "nivel_urgencia",
+                    "value": "nivel_urgencia"
+                  },
+                  {
+                    "name": "6",
+                    "value": "6"
+                  },
+                  {
+                    "name": "5",
+                    "value": "5"
+                  },
+                  {
+                    "name": "8",
+                    "value": "8"
+                  },
+                  {
+                    "name": "9",
+                    "value": "9"
+                  },
+                  {
+                    "name": "2",
+                    "value": "2"
+                  },
+                  {
+                    "name": "7",
+                    "value": "7"
+                  },
+                  {
+                    "name": "3",
+                    "value": "3"
+                  },
+                  {
+                    "name": "1",
+                    "value": "1"
                   }
                 ],
                 "readOnly": false,
@@ -795,6 +831,34 @@
                   {
                     "name": "Restó-Calle 47",
                     "value": "Restó-Calle 47"
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "whatsapp",
+                    "value": "whatsapp"
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "sucursal",
+                    "value": "sucursal"
                   }
                 ],
                 "readOnly": false,
@@ -1448,11 +1512,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 658dcf03",
+    "name": "Version 19ccdd49",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "658dcf03-a585-4edf-8aea-8a1990be47f6",
+  "activeVersionId": "19ccdd49-3f43-4d5f-9394-7e9b640e8b6a",
   "connections": {
     "Aggregate": {
       "main": [
@@ -2387,7 +2451,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Teléfono": "={{ $json.num_telefono }}",
+            "Teléfono": "={{ $json.num_telefono.toNumber() }}",
             "Intención": "={{ $json.resumen_intencion }}",
             "Estado": "={{ $json.estado_seguimiento }}",
             "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
@@ -2405,7 +2469,7 @@
               "defaultMatch": false,
               "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
+              "type": "number",
               "readOnly": false,
               "removed": false
             },
@@ -2490,6 +2554,42 @@
                 {
                   "name": "alta",
                   "value": "alta"
+                },
+                {
+                  "name": "nivel_urgencia",
+                  "value": "nivel_urgencia"
+                },
+                {
+                  "name": "6",
+                  "value": "6"
+                },
+                {
+                  "name": "5",
+                  "value": "5"
+                },
+                {
+                  "name": "8",
+                  "value": "8"
+                },
+                {
+                  "name": "9",
+                  "value": "9"
+                },
+                {
+                  "name": "2",
+                  "value": "2"
+                },
+                {
+                  "name": "7",
+                  "value": "7"
+                },
+                {
+                  "name": "3",
+                  "value": "3"
+                },
+                {
+                  "name": "1",
+                  "value": "1"
                 }
               ],
               "readOnly": false,
@@ -2515,6 +2615,34 @@
                 {
                   "name": "Restó-Calle 47",
                   "value": "Restó-Calle 47"
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "whatsapp",
+                  "value": "whatsapp"
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "sucursal",
+                  "value": "sucursal"
                 }
               ],
               "readOnly": false,
@@ -2922,6 +3050,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-21T16:15:41.464Z",
-  "versionId": "08af9845-b1da-4881-a428-8a4c625770cd"
+  "updatedAt": "2026-02-24T21:06:53.266Z",
+  "versionId": "19ccdd49-3f43-4d5f-9394-7e9b640e8b6a"
 }
