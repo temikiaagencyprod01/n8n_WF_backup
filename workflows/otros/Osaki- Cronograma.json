@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-23T22:16:02.000Z",
-    "createdAt": "2026-02-17T22:15:24.715Z",
-    "versionId": "75ece487-e59b-441c-ac23-3db14ebd1b79",
+    "updatedAt": "2026-02-26T16:52:27.000Z",
+    "createdAt": "2026-02-26T16:52:13.847Z",
+    "versionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -2477,7 +2477,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2498,7 +2499,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2519,7 +2521,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2563,7 +2566,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2576,7 +2580,8 @@
           2032
         ],
         "id": "daaf6e30-3ae3-4a50-8967-36dabc9a1ec1",
-        "name": "Loop Over Items4"
+        "name": "Loop Over Items4",
+        "disabled": true
       },
       {
         "parameters": {
@@ -2591,7 +2596,8 @@
         ],
         "typeVersion": 1,
         "id": "fd0468ce-883a-4e96-abb6-3e709ec7b2a3",
-        "name": "Sticky Note6"
+        "name": "Sticky Note6",
+        "disabled": true
       },
       {
         "parameters": {
@@ -2970,7 +2976,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2983,7 +2990,8 @@
           2240
         ],
         "id": "0ebc1a6a-b52e-4937-be85-3467923fc564",
-        "name": "Loop Over Items8"
+        "name": "Loop Over Items8",
+        "disabled": true
       },
       {
         "parameters": {
@@ -3003,8 +3011,7 @@
           1888
         ],
         "id": "365a7b76-dffd-4ef4-b2cf-06fef1541fd2",
-        "name": "1 am",
-        "disabled": true
+        "name": "1 am"
       },
       {
         "parameters": {
@@ -3038,7 +3045,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3072,7 +3080,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3085,7 +3094,8 @@
           2448
         ],
         "id": "24d1b399-43ae-4bd3-88ae-3ace0a5ad9c0",
-        "name": "Loop Over Items11"
+        "name": "Loop Over Items11",
+        "disabled": true
       },
       {
         "parameters": {
@@ -3106,7 +3116,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3127,7 +3138,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3148,7 +3160,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3169,7 +3182,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3213,7 +3227,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -3257,7 +3272,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -6227,7 +6243,7 @@
       },
       {
         "parameters": {
-          "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+          "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString().trim() : '';\n  // Normalizar fecha: convierte a Date y luego a ISO o usa un reemplazo simple\n  const fechaLimpia = item.fecha_reporte.replace(/\\s(\\d):/, ' 0$1:'); // Agrega el 0 si falta\n  return `${fechaLimpia}|${tel}|${item.resumen_intencion.trim()}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -6724,7 +6740,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -6758,7 +6775,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       }
     ],
     "connections": {
@@ -8515,11 +8533,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 75ece487",
+    "name": "Version f86b52e2",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "75ece487-e59b-441c-ac23-3db14ebd1b79",
+  "activeVersionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -12752,7 +12770,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -12773,7 +12792,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -12794,7 +12814,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -12838,7 +12859,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -12851,7 +12873,8 @@
         2032
       ],
       "id": "daaf6e30-3ae3-4a50-8967-36dabc9a1ec1",
-      "name": "Loop Over Items4"
+      "name": "Loop Over Items4",
+      "disabled": true
     },
     {
       "parameters": {
@@ -12866,7 +12889,8 @@
       ],
       "typeVersion": 1,
       "id": "fd0468ce-883a-4e96-abb6-3e709ec7b2a3",
-      "name": "Sticky Note6"
+      "name": "Sticky Note6",
+      "disabled": true
     },
     {
       "parameters": {
@@ -13245,7 +13269,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13258,7 +13283,8 @@
         2240
       ],
       "id": "0ebc1a6a-b52e-4937-be85-3467923fc564",
-      "name": "Loop Over Items8"
+      "name": "Loop Over Items8",
+      "disabled": true
     },
     {
       "parameters": {
@@ -13278,8 +13304,7 @@
         1888
       ],
       "id": "365a7b76-dffd-4ef4-b2cf-06fef1541fd2",
-      "name": "1 am",
-      "disabled": true
+      "name": "1 am"
     },
     {
       "parameters": {
@@ -13313,7 +13338,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13347,7 +13373,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13360,7 +13387,8 @@
         2448
       ],
       "id": "24d1b399-43ae-4bd3-88ae-3ace0a5ad9c0",
-      "name": "Loop Over Items11"
+      "name": "Loop Over Items11",
+      "disabled": true
     },
     {
       "parameters": {
@@ -13381,7 +13409,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13402,7 +13431,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13423,7 +13453,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13444,7 +13475,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13488,7 +13520,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -13532,7 +13565,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -16502,7 +16536,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString() : '';\n  return `${item.fecha_reporte}|${tel}|${item.resumen_intencion}|${item.sucursal}|${item.resumen_datos_clave}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
+        "jsCode": "// 1. Obtenemos los datos de los nodos de entrada\nconst postgresItems = $(\"Obtiene Postgres\").all().map(i => i.json);\nconst googleSheetsItems = $(\"Obtiene Google Sheets\").all().map(i => i.json);\n\n// Función para generar la llave única de comparación\nconst createKey = (item) => {\n  const tel = item.num_telefono ? item.num_telefono.toString().trim() : '';\n  // Normalizar fecha: convierte a Date y luego a ISO o usa un reemplazo simple\n  const fechaLimpia = item.fecha_reporte.replace(/\\s(\\d):/, ' 0$1:'); // Agrega el 0 si falta\n  return `${fechaLimpia}|${tel}|${item.resumen_intencion.trim()}`;\n};\n\n// 2. Mapeamos Google Sheets para búsqueda eficiente\nconst gsMap = new Map();\ngoogleSheetsItems.forEach(item => {\n  gsMap.set(createKey(item), item);\n});\n\nconst nuevos = [];\nconst actualizaciones = [];\n\n// 3. Comparación lógica\npostgresItems.forEach(pg => {\n  const key = createKey(pg);\n  const gsMatch = gsMap.get(key);\n\n  if (!gsMatch) {\n    // Es nuevo: está en Postgres pero no en Sheets\n    nuevos.push({\n      ...pg\n    });\n  } else if (pg.estado_seguimiento !== gsMatch.estado_seguimiento) {\n    // Es actualización: el estado en Sheets es distinto al de Postgres\n    actualizaciones.push({\n      id: pg.id,\n      num_telefono: pg.num_telefono.toString(),\n      fecha_reporte: pg.fecha_reporte,\n      nuevo_estado: gsMatch.estado_seguimiento,\n      row_number: gsMatch.row_number,\n      estado_pg: pg.estado_seguimiento\n    });\n  }\n});\n\n// 4. Construimos el resultado final condicionalmente\nconst resultado = [];\n\nif (nuevos.length > 0) {\n  resultado.push({\n    tipo: \"nuevo\",\n    items: nuevos\n  });\n}\n\nif (actualizaciones.length > 0) {\n  resultado.push({\n    tipo: \"actualizacion\",\n    items: actualizaciones\n  });\n}\n\nreturn resultado;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -16999,7 +17033,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -17033,7 +17068,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     }
   ],
   "settings": {
@@ -17068,7 +17104,7 @@
     }
   },
   "tags": [],
-  "triggerCount": 2,
-  "updatedAt": "2026-02-24T17:49:32.068Z",
-  "versionId": "75ece487-e59b-441c-ac23-3db14ebd1b79"
+  "triggerCount": 3,
+  "updatedAt": "2026-02-26T16:52:13.844Z",
+  "versionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3"
 }
