@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-24T13:24:16.000Z",
-    "createdAt": "2026-02-24T13:24:04.284Z",
-    "versionId": "37cd7a10-9aba-49fb-8129-36efc006bb71",
+    "updatedAt": "2026-03-01T02:33:14.000Z",
+    "createdAt": "2026-03-01T02:33:06.085Z",
+    "versionId": "f03a2846-e764-4506-b158-3d12f6858dbd",
     "workflowId": "3pVlvafqAUQGJAX4",
     "nodes": [
       {
@@ -4506,12 +4506,12 @@
         "main": [
           [
             {
-              "node": "Get Reservas",
+              "node": "Get Clientes AirTable",
               "type": "main",
               "index": 0
             },
             {
-              "node": "Get Clientes AirTable",
+              "node": "Get Reservas",
               "type": "main",
               "index": 0
             }
@@ -4848,11 +4848,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 37cd7a10",
+    "name": "Version f03a2846",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "37cd7a10-9aba-49fb-8129-36efc006bb71",
+  "activeVersionId": "f03a2846-e764-4506-b158-3d12f6858dbd",
   "connections": {
     "Get Clientes AirTable": {
       "main": [
@@ -5206,12 +5206,12 @@
       "main": [
         [
           {
-            "node": "Get Reservas",
+            "node": "Get Clientes AirTable",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Get Clientes AirTable",
+            "node": "Get Reservas",
             "type": "main",
             "index": 0
           }
@@ -9739,6 +9739,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-02-24T13:24:04.281Z",
-  "versionId": "37cd7a10-9aba-49fb-8129-36efc006bb71"
+  "updatedAt": "2026-03-01T02:33:06.083Z",
+  "versionId": "f03a2846-e764-4506-b158-3d12f6858dbd"
 }
