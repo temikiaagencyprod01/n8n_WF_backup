@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-23T19:50:36.000Z",
-    "createdAt": "2026-02-23T16:38:59.466Z",
-    "versionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968",
+    "updatedAt": "2026-03-02T21:22:49.000Z",
+    "createdAt": "2026-03-02T21:22:46.172Z",
+    "versionId": "6d82812c-efd4-4b7f-a87d-b83e184e6172",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -11,7 +11,8 @@
           "workflowInputs": {
             "values": [
               {
-                "name": "reservacion"
+                "name": "reservacion",
+                "type": "any"
               },
               {
                 "name": "telefono_solicita"
@@ -9241,11 +9242,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c4f5d3ab",
+    "name": "Version 6d82812c",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968",
+  "activeVersionId": "6d82812c-efd4-4b7f-a87d-b83e184e6172",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -10150,7 +10151,8 @@
         "workflowInputs": {
           "values": [
             {
-              "name": "reservacion"
+              "name": "reservacion",
+              "type": "any"
             },
             {
               "name": "telefono_solicita"
@@ -18506,6 +18508,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-23T19:50:34.151Z",
-  "versionId": "c4f5d3ab-e897-453e-af4f-caf7e6688968"
+  "updatedAt": "2026-03-02T21:22:46.167Z",
+  "versionId": "6d82812c-efd4-4b7f-a87d-b83e184e6172"
 }
