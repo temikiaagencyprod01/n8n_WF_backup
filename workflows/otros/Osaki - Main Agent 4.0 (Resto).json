@@ -10209,17 +10209,6 @@
         ]
       ]
     },
-    "OpenAI": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Agente Reservaciones",
-            "type": "ai_languageModel",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Gemini": {
       "ai_languageModel": [
         [
@@ -10595,6 +10584,17 @@
             "node": "Random Num",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Reservaciones",
+            "type": "ai_languageModel",
+            "index": 1
           }
         ]
       ]
@@ -16643,39 +16643,14 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "responsesApiEnabled": false,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        7712,
-        1168
-      ],
-      "id": "4c3039a7-d8de-4596-8c49-37cf91d59a45",
-      "name": "OpenAI",
-      "credentials": {
-        "openAiApi": {
-          "id": "fATP1TjAWkMAqBDc",
-          "name": "OpenAi Osaki-TemikiaProd01"
-        }
-      }
-    },
-    {
-      "parameters": {
         "modelName": "models/gemini-flash-latest",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        7632,
-        1168
+        7568,
+        1248
       ],
       "id": "84608a42-f244-4a3f-89c4-b2ae120344ee",
       "name": "Gemini",
@@ -17564,6 +17539,31 @@
       ],
       "id": "e2982b69-4b5c-4bc3-b0f6-41d5df1e392b",
       "name": "Agente Clientes Negativos1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        7664,
+        1248
+      ],
+      "id": "4c3039a7-d8de-4596-8c49-37cf91d59a45",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
     }
   ],
   "settings": {
@@ -17586,6 +17586,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-02-21T16:12:16.750Z",
-  "versionId": "938fa496-7fcd-4267-b41f-d74d2697976c"
+  "updatedAt": "2026-03-02T21:21:37.111Z",
+  "versionId": "b6f820f4-a4a2-41e8-89e8-4684bb7b2638"
 }
