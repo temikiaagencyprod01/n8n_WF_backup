@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-04T13:50:04.000Z",
-    "createdAt": "2026-03-04T13:50:02.956Z",
-    "versionId": "249004f6-1a9a-44fe-8176-4a4db5f5ecc4",
+    "updatedAt": "2026-03-06T22:33:42.000Z",
+    "createdAt": "2026-03-06T22:33:40.603Z",
+    "versionId": "4572abb9-1362-4f44-87d5-081a0365f3aa",
     "workflowId": "1rF03M1hskg0Bbju",
     "nodes": [
       {
@@ -1960,8 +1960,8 @@
         "type": "n8n-nodes-base.emailSend",
         "typeVersion": 2.1,
         "position": [
-          -224,
-          288
+          -64,
+          784
         ],
         "id": "3aac007b-bd7a-43f1-a810-64d535cb5235",
         "name": "Send email",
@@ -2434,11 +2434,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 249004f6",
+    "name": "Version 4572abb9",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "249004f6-1a9a-44fe-8176-4a4db5f5ecc4",
+  "activeVersionId": "4572abb9-1362-4f44-87d5-081a0365f3aa",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -4905,6 +4905,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-04T13:50:15.136Z",
-  "versionId": "aa8ba2be-89e1-4f29-a15a-9e1b9d44531a"
+  "updatedAt": "2026-03-06T22:33:40.602Z",
+  "versionId": "4572abb9-1362-4f44-87d5-081a0365f3aa"
 }
