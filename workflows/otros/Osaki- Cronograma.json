@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-02-26T16:52:27.000Z",
-    "createdAt": "2026-02-26T16:52:13.847Z",
-    "versionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3",
+    "updatedAt": "2026-03-07T15:02:46.000Z",
+    "createdAt": "2026-03-07T15:02:42.560Z",
+    "versionId": "3245082f-4720-4306-a4ed-2571c36f4a1e",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -3045,8 +3045,7 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        },
-        "disabled": true
+        }
       },
       {
         "parameters": {
@@ -3080,8 +3079,7 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        },
-        "disabled": true
+        }
       },
       {
         "parameters": {
@@ -6740,8 +6738,7 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        },
-        "disabled": true
+        }
       },
       {
         "parameters": {
@@ -6775,8 +6772,7 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        },
-        "disabled": true
+        }
       }
     ],
     "connections": {
@@ -8533,11 +8529,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version f86b52e2",
+    "name": "Version 3245082f",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3",
+  "activeVersionId": "3245082f-4720-4306-a4ed-2571c36f4a1e",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -13338,8 +13334,7 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -13373,8 +13368,7 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -17033,8 +17027,7 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -17068,8 +17061,7 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     }
   ],
   "settings": {
@@ -17105,6 +17097,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2026-02-26T16:52:13.844Z",
-  "versionId": "f86b52e2-9db5-48e2-90b3-d9c3b77ee9b3"
+  "updatedAt": "2026-03-07T15:02:42.557Z",
+  "versionId": "3245082f-4720-4306-a4ed-2571c36f4a1e"
 }
