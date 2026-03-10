@@ -1,0 +1,102 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-09T16:40:29.148Z",
+  "id": "cMlUEVDRlCu45P00",
+  "isArchived": false,
+  "meta": null,
+  "name": "Reportes Mensuales",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        -32
+      ],
+      "id": "8aa39ed7-0a20-4e47-bb78-323e3cd6e8ab",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f85628b7-5a04-4420-a49e-2a3c3e4962bf",
+              "name": "canal",
+              "value": "WhatsApp",
+              "type": "string"
+            },
+            {
+              "id": "c8003a48-3650-49f4-aad9-a1095fdd9c1d",
+              "name": "sucursal",
+              "value": "Restó Calle 47",
+              "type": "string"
+            },
+            {
+              "id": "69addca3-74c8-4aa9-b908-3ae457509d9e",
+              "name": "periodo_inicio",
+              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('dd/MM/yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "44accf68-e2d6-4ac6-a615-b5ba78a17659",
+              "name": "periodo_fin",
+              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('dd/MM/yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "1cb67591-2e02-4be6-9df0-fb8cbbbcb8e8",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -448,
+        -32
+      ],
+      "id": "2977476c-6df1-48aa-8165-ddb16a703ef6",
+      "name": "Edit Fields"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-09T16:40:29.159Z",
+      "createdAt": "2026-03-09T16:40:29.159Z",
+      "role": "workflow:owner",
+      "workflowId": "cMlUEVDRlCu45P00",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-09T16:45:52.079Z",
+  "versionId": "b1fa4d09-deef-4bba-9aca-6d89aa36216d"
+}
