@@ -13,12 +13,36 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-09T16:40:29.148Z",
   "id": "cMlUEVDRlCu45P00",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Reportes Mensuales",
   "nodes": [
     {
@@ -26,8 +50,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -656,
-        -32
+        -624,
+        -144
       ],
       "id": "8aa39ed7-0a20-4e47-bb78-323e3cd6e8ab",
       "name": "When clicking ‘Execute workflow’"
@@ -38,7 +62,7 @@
           "assignments": [
             {
               "id": "f85628b7-5a04-4420-a49e-2a3c3e4962bf",
-              "name": "canal",
+              "name": "=canal",
               "value": "WhatsApp",
               "type": "string"
             },
@@ -51,19 +75,25 @@
             {
               "id": "69addca3-74c8-4aa9-b908-3ae457509d9e",
               "name": "periodo_inicio",
-              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('dd/MM/yyyy') }}",
+              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('yyyy-MM-dd') }}",
               "type": "string"
             },
             {
               "id": "44accf68-e2d6-4ac6-a615-b5ba78a17659",
               "name": "periodo_fin",
-              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('dd/MM/yyyy') }}",
+              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('yyyy-MM-dd') }}",
               "type": "string"
             },
             {
               "id": "1cb67591-2e02-4be6-9df0-fb8cbbbcb8e8",
               "name": "schema",
               "value": "osaki_main",
+              "type": "string"
+            },
+            {
+              "id": "75903675-b6f5-4449-9ec7-647465e36d46",
+              "name": "schema_analytics",
+              "value": "osaki_analytics",
               "type": "string"
             }
           ]
@@ -73,11 +103,63 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -448,
-        -32
+        -416,
+        -144
       ],
       "id": "2977476c-6df1-48aa-8165-ddb16a703ef6",
       "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $json.schema_analytics }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "vw_scorecard_mensual_reservas",
+          "mode": "list",
+          "cachedResultName": "vw_scorecard_mensual_reservas"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "mes",
+              "value": "=2026-01-01"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -96,
+        -144
+      ],
+      "id": "3cbeabcb-df37-4e96-9ae8-99c284f095bc",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Reporte de Desempeño IA - Osaki</title>\n    <style>\n        :root {\n            --primary-red: #D32F2F;\n            --dark-black: #1A1A1A;\n            --soft-gray: #F5F5F5;\n            --border-color: #EEEEEE;\n            --white: #FFFFFF;\n            --alert-red: #B71C1C;\n        }\n\n        body {\n            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n            color: var(--dark-black);\n            margin: 0;\n            padding: 0;\n            background-color: var(--soft-gray);\n        }\n\n        .container {\n            width: 800px; /* Optimizado para exportación PDF A4 */\n            margin: 0 auto;\n            background-color: var(--white);\n            padding: 40px;\n            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n        }\n\n        /* Header */\n        .header {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            border-bottom: 3px solid var(--primary-red);\n            padding-bottom: 20px;\n            margin-bottom: 30px;\n        }\n\n        .header-title h1 {\n            margin: 0;\n            font-size: 24px;\n            text-transform: uppercase;\n            color: var(--dark-black);\n        }\n\n        .header-title p {\n            margin: 5px 0 0 0;\n            color: var(--primary-red);\n            font-weight: bold;\n            font-size: 14px;\n        }\n\n        .header-meta {\n            text-align: right;\n            font-size: 12px;\n            color: #666;\n        }\n\n        /* Summary Cards */\n        .summary-grid {\n            display: grid;\n            grid-template-columns: repeat(4, 1fr);\n            gap: 15px;\n            margin-bottom: 30px;\n        }\n\n        .card {\n            background-color: var(--soft-gray);\n            padding: 15px;\n            border-radius: 4px;\n            text-align: center;\n        }\n\n        .card-value {\n            display: block;\n            font-size: 20px;\n            font-weight: bold;\n            color: var(--primary-red);\n        }\n\n        .card-label {\n            display: block;\n            font-size: 10px;\n            color: #555;\n            text-transform: uppercase;\n            margin-top: 5px;\n        }\n\n        /* Sections */\n        .section {\n            margin-bottom: 35px;\n            page-break-inside: avoid;\n        }\n\n        .section-header {\n            background-color: var(--dark-black);\n            color: var(--white);\n            padding: 10px 15px;\n            font-size: 14px;\n            font-weight: bold;\n            text-transform: uppercase;\n            margin-bottom: 15px;\n            display: flex;\n            justify-content: space-between;\n        }\n\n        /* Data Layouts */\n        .data-row {\n            display: flex;\n            border-bottom: 1px solid var(--border-color);\n            padding: 10px 0;\n            align-items: center;\n        }\n\n        .data-label {\n            flex: 2;\n            font-size: 13px;\n            font-weight: 500;\n        }\n\n        .data-value {\n            flex: 1;\n            text-align: right;\n            font-weight: bold;\n            font-size: 13px;\n        }\n\n        .data-desc {\n            flex: 3;\n            font-size: 11px;\n            color: #777;\n            padding-left: 20px;\n            font-style: italic;\n        }\n\n        /* Badges/Highlights */\n        .highlight-critical {\n            color: var(--alert-red);\n            background-color: #FFEBEE;\n            padding: 2px 6px;\n            border-radius: 3px;\n        }\n\n        .stars {\n            color: #FFC107;\n            font-size: 16px;\n        }\n\n        /* Footer */\n        .footer {\n            margin-top: 50px;\n            padding-top: 20px;\n            border-top: 1px solid var(--border-color);\n            text-align: center;\n            font-size: 10px;\n            color: #999;\n        }\n\n        .footer b { color: var(--primary-red); }\n\n    </style>\n</head>\n<body>\n\n<div class=\"container\">\n    <!-- Identificación del Corte -->\n    <div class=\"header\">\n        <div class=\"header-title\">\n            <h1>Scorecard de IA: Osaki</h1>\n            <p>{{ $json[\"sucursal_canon\"] }} — Canal: {{ $json[\"canal_canon\"] }}</p>\n        </div>\n        <div class=\"header-meta\">\n            Corte Mensual: <b>Enero 2026</b><br>\n            ID Reporte: OSA-{{ new Date().getTime() }}\n        </div>\n    </div>\n\n    <!-- KPIs Principales -->\n    <div class=\"summary-grid\">\n        <div class=\"card\">\n            <span class=\"card-value\">{{ $json[\"chats_totales\"] }}</span>\n            <span class=\"card-label\">Chats Totales</span>\n        </div>\n        <div class=\"card\">\n            <span class=\"card-value\">{{ $json[\"reservas_confirmadas_chat\"] }}</span>\n            <span class=\"card-label\">Reservas x Chat</span>\n        </div>\n        <div class=\"card\">\n            <span class=\"card-value\">{{ $json[\"reservas_confirmadas_por_100_chats_reserva\"] }}%</span>\n            <span class=\"card-label\">Conversión Funnel</span>\n        </div>\n        <div class=\"card\">\n            <span class=\"card-value\">{{ $json[\"encuesta_calificacion_promedio\"] }} / 5</span>\n            <span class=\"card-label\">Satisfacción (CSAT)</span>\n        </div>\n    </div>\n\n    <!-- Funnel y Eficiencia -->\n    <div class=\"section\">\n        <div class=\"section-header\">\n            <span>Eficiencia del Funnel de Reserva</span>\n            <span>Conversión Principal: {{ $json[\"reservas_confirmadas_por_100_chats_reserva\"] }}%</span>\n        </div>\n        \n        <div class=\"data-row\">\n            <div class=\"data-label\">Intención de Reserva</div>\n            <div class=\"data-value\">{{ $json[\"chats_funnel_reserva\"] }} chats</div>\n            <div class=\"data-desc\">Conversaciones con intención real detectada por IA.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Drop-off (Abandono)</div>\n            <div class=\"data-value\">{{ $json[\"dropoff_total_pct\"] }}%</div>\n            <div class=\"data-desc\">Usuarios que abandonaron sin completar la reserva ni ser escalados.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Data Captura Completa</div>\n            <div class=\"data-value\">{{ $json[\"reserva_completa_pct\"] }}%</div>\n            <div class=\"data-desc\">Porcentaje de chats con Pax, Zona, Fecha y Hora capturados.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Tiempo Mediano (p50)</div>\n            <div class=\"data-value\">{{ Math.round($json[\"tiempo_confirmacion_p50_sec\"] / 60) }} min</div>\n            <div class=\"data-desc\">Tiempo desde inicio hasta confirmación en el 50% de casos.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Tiempo Lento (p90)</div>\n            <div class=\"data-value\">{{ Math.round($json[\"tiempo_confirmacion_p90_sec\"] / 60) }} min</div>\n            <div class=\"data-desc\">Tiempo de resolución para los casos más complejos.</div>\n        </div>\n    </div>\n\n    <!-- Escalaciones e Intervención -->\n    <div class=\"section\">\n        <div class=\"section-header\">\n            <span>Escalaciones e Intervención Humana</span>\n            <span>Tasa de Escalación: {{ $json[\"escalado_auditoria_pct\"] }}%</span>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Total Escalaciones</div>\n            <div class=\"data-value\">{{ $json[\"escaladas_auditoria_total\"] }}</div>\n            <div class=\"data-desc\">Chats que requirieron apoyo de un agente humano.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Tickets Generados</div>\n            <div class=\"data-value\">{{ $json[\"tickets_humanos_total\"] }}</div>\n            <div class=\"data-desc\">Registros operativos creados para seguimiento humano.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Calidad del Handoff</div>\n            <div class=\"data-value\">{{ $json[\"handoff_quality_promedio\"] }}</div>\n            <div class=\"data-desc\">Puntaje de contexto transferido de IA a Humano.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Momento de Quiebre</div>\n            <div class=\"data-value\">Turno {{ $json[\"escalacion_turno_promedio\"] }}</div>\n            <div class=\"data-desc\">Turno promedio en el que la IA solicita intervención.</div>\n        </div>\n    </div>\n\n    <!-- Cumplimiento y Riesgo -->\n    <div class=\"section\">\n        <div class=\"section-header\" style=\"background-color: var(--primary-red);\">\n            <span>Control de Calidad y Riesgo Operativo</span>\n            <span>Error Detectado: {{ $json[\"error_detectado_pct\"] }}%</span>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Confirmación Explícita</div>\n            <div class=\"data-value\">{{ $json[\"confirmacion_explicita_pct\"] }}%</div>\n            <div class=\"data-desc\">Nivel de certeza en el cierre de la reserva.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Riesgo de Negocio Alto</div>\n            <div class=\"data-value\">{{ $json[\"riesgo_high_pct\"] }}%</div>\n            <div class=\"data-desc\">Chats con potencial impacto negativo crítico detectado.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Claridad del Siguiente Paso</div>\n            <div class=\"data-value\">{{ $json[\"claridad_promedio\"] }} / 2.0</div>\n            <div class=\"data-desc\">Capacidad de la IA para guiar al usuario al cierre.</div>\n        </div>\n    </div>\n\n    <!-- Operación Real -->\n    <div class=\"section\">\n        <div class=\"section-header\">\n            <span>Resultados Operativos (Data Final)</span>\n            <span>Total Comensales: {{ $json[\"comensales_totales\"] }}</span>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Reservas en Sistema</div>\n            <div class=\"data-value\">{{ $json[\"reservas_operacion_total\"] }}</div>\n            <div class=\"data-desc\">Total de registros reales en la tabla de operaciones.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Cancelaciones</div>\n            <div class=\"data-value\">{{ $json[\"cancelaciones_operacion_pct\"] }}%</div>\n            <div class=\"data-desc\">Tasa de cancelación operativa tras la confirmación inicial.</div>\n        </div>\n        <div class=\"data-row\">\n            <div class=\"data-label\">Calificación promedio</div>\n            <div class=\"data-value\">\n                <span class=\"stars\">★★★★★</span> ({{ $json[\"encuesta_calificacion_promedio\"] }})\n            </div>\n            <div class=\"data-desc\">Basado en {{ $json[\"encuestas_total\"] }} encuestas recibidas.</div>\n        </div>\n    </div>\n\n    <div class=\"footer\">\n        Este documento es un reporte automatizado generado por <b>Temikia Agency</b> para <b>Osaki</b>.<br>\n        Confidencial &copy; 2026 Temikia Ops.\n    </div>\n</div>\n\n</body>\n</html>"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        528,
+        -144
+      ],
+      "id": "79bb4f2f-4318-4175-a4ee-a5d7dcfea517",
+      "name": "HTML"
     }
   ],
   "settings": {
@@ -97,6 +179,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-09T16:45:52.079Z",
-  "versionId": "b1fa4d09-deef-4bba-9aca-6d89aa36216d"
+  "updatedAt": "2026-03-10T22:46:12.617Z",
+  "versionId": "69476a67-4e0c-4f7e-af81-643df27413e3"
 }
