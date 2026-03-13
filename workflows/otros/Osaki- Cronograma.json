@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-07T15:02:46.000Z",
-    "createdAt": "2026-03-07T15:02:42.560Z",
-    "versionId": "3245082f-4720-4306-a4ed-2571c36f4a1e",
+    "updatedAt": "2026-03-12T21:53:26.000Z",
+    "createdAt": "2026-03-12T19:09:24.238Z",
+    "versionId": "e8237f1d-05ae-4d0c-b7cd-5d585df84851",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -1486,7 +1486,7 @@
             "conditions": [
               {
                 "id": "5ea1bd40-00d3-45ae-b9a6-9370f82a09c4",
-                "leftValue": "={{ $if($('Check New').isExecuted,'Nuevo') }}",
+                "leftValue": "={{ $if($('Check New').isExecuted,'Nuevo').toString() }}",
                 "rightValue": "Nuevo",
                 "operator": {
                   "type": "string",
@@ -2437,26 +2437,6 @@
         "id": "74101a03-2172-4633-b217-80eff92b71a6",
         "name": "Wait",
         "webhookId": "85600c23-88ca-4c42-a276-c8139577c939"
-      },
-      {
-        "parameters": {
-          "rule": {
-            "interval": [
-              {
-                "field": "cronExpression",
-                "expression": "0 */10 10-23 * * *"
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.scheduleTrigger",
-        "typeVersion": 1.2,
-        "position": [
-          -2640,
-          480
-        ],
-        "id": "f1855aba-ea0d-402f-97ba-90fdddac021d",
-        "name": "Cada 10 min"
       },
       {
         "parameters": {
@@ -6773,6 +6753,26 @@
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
         }
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 */10 10-23 * * *"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -2688,
+          480
+        ],
+        "id": "9ed07cbe-17c0-452d-b021-d65b285d7790",
+        "name": "Cada 1 min"
       }
     ],
     "connections": {
@@ -7233,17 +7233,6 @@
           [
             {
               "node": "Loop Over Items",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Cada 10 min": {
-        "main": [
-          [
-            {
-              "node": "Calcula Fecha y Hora Actual",
               "type": "main",
               "index": 0
             }
@@ -8526,14 +8515,25 @@
             }
           ]
         ]
+      },
+      "Cada 1 min": {
+        "main": [
+          [
+            {
+              "node": "Calcula Fecha y Hora Actual",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 3245082f",
+    "name": "Version e8237f1d",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "3245082f-4720-4306-a4ed-2571c36f4a1e",
+  "activeVersionId": "e8237f1d-05ae-4d0c-b7cd-5d585df84851",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -8992,17 +8992,6 @@
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cada 10 min": {
-      "main": [
-        [
-          {
-            "node": "Calcula Fecha y Hora Actual",
             "type": "main",
             "index": 0
           }
@@ -10280,6 +10269,17 @@
         [
           {
             "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cada 1 min": {
+      "main": [
+        [
+          {
+            "node": "Calcula Fecha y Hora Actual",
             "type": "main",
             "index": 0
           }
@@ -11563,14 +11563,14 @@
     {
       "parameters": {
         "content": "## Inserta Nuevos Registros\n\n- Aquellos registros que existan en Excel y no existan en la base de datos\n- Se insertan en la base de datos\n- Si el cliente no existe se da de alta",
-        "height": 80,
+        "height": 448,
         "width": 2160,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -304,
-        176
+        -224
       ],
       "typeVersion": 1,
       "id": "f1ae3452-c71a-4631-a918-8d672ac7334b",
@@ -11775,7 +11775,7 @@
           "conditions": [
             {
               "id": "5ea1bd40-00d3-45ae-b9a6-9370f82a09c4",
-              "leftValue": "={{ $if($('Check New').isExecuted,'Nuevo') }}",
+              "leftValue": "={{ $if($('Check New').isExecuted,'Nuevo').toString() }}",
               "rightValue": "Nuevo",
               "operator": {
                 "type": "string",
@@ -12726,26 +12726,6 @@
       "id": "74101a03-2172-4633-b217-80eff92b71a6",
       "name": "Wait",
       "webhookId": "85600c23-88ca-4c42-a276-c8139577c939"
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "cronExpression",
-              "expression": "0 */10 10-23 * * *"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -2640,
-        480
-      ],
-      "id": "f1855aba-ea0d-402f-97ba-90fdddac021d",
-      "name": "Cada 10 min"
     },
     {
       "parameters": {
@@ -17062,6 +17042,26 @@
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */10 10-23 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -2688,
+        480
+      ],
+      "id": "9ed07cbe-17c0-452d-b021-d65b285d7790",
+      "name": "Cada 1 min"
     }
   ],
   "settings": {
@@ -17093,10 +17093,13 @@
     },
     "node:1 am": {
       "recurrenceRules": []
+    },
+    "node:Cada 1 min": {
+      "recurrenceRules": []
     }
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2026-03-07T15:02:42.557Z",
-  "versionId": "3245082f-4720-4306-a4ed-2571c36f4a1e"
+  "updatedAt": "2026-03-13T01:19:53.334Z",
+  "versionId": "ce95b8dd-9369-465d-a454-403a06e3ca61"
 }
