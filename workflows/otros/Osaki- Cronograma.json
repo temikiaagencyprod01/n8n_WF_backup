@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-12T21:53:26.000Z",
-    "createdAt": "2026-03-12T19:09:24.238Z",
-    "versionId": "e8237f1d-05ae-4d0c-b7cd-5d585df84851",
+    "updatedAt": "2026-03-13T15:00:10.000Z",
+    "createdAt": "2026-03-13T01:19:53.338Z",
+    "versionId": "ce95b8dd-9369-465d-a454-403a06e3ca61",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -1274,14 +1274,14 @@
       {
         "parameters": {
           "content": "## Inserta Nuevos Registros\n\n- Aquellos registros que existan en Excel y no existan en la base de datos\n- Se insertan en la base de datos\n- Si el cliente no existe se da de alta",
-          "height": 80,
+          "height": 448,
           "width": 2160,
           "color": 5
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
           -304,
-          176
+          -224
         ],
         "typeVersion": 1,
         "id": "f1ae3452-c71a-4631-a918-8d672ac7334b",
@@ -8529,11 +8529,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version e8237f1d",
+    "name": "Version ce95b8dd",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "e8237f1d-05ae-4d0c-b7cd-5d585df84851",
+  "activeVersionId": "ce95b8dd-9369-465d-a454-403a06e3ca61",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
