@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-12T18:40:50.000Z",
-    "createdAt": "2026-03-12T18:40:46.143Z",
-    "versionId": "e0af4fa9-623b-451a-930f-b74fb6bed028",
+    "updatedAt": "2026-03-17T03:07:40.000Z",
+    "createdAt": "2026-03-17T03:07:31.939Z",
+    "versionId": "e8c275f8-1098-4771-88c6-0842fe0f0282",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -4595,7 +4595,7 @@
               {
                 "id": "fecha_registro",
                 "displayName": "fecha_registro",
-                "required": true,
+                "required": false,
                 "defaultMatch": false,
                 "display": true,
                 "type": "dateTime",
@@ -4811,6 +4811,16 @@
                 "type": "string",
                 "canBeUsedToMatch": true,
                 "removed": false
+              },
+              {
+                "id": "sucursal_bloqueo",
+                "displayName": "sucursal_bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true,
+                "removed": true
               }
             ],
             "attemptToConvertTypes": false,
@@ -8779,11 +8789,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version e0af4fa9",
+    "name": "Version e8c275f8",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "e0af4fa9-623b-451a-930f-b74fb6bed028",
+  "activeVersionId": "e8c275f8-1098-4771-88c6-0842fe0f0282",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -15219,7 +15229,7 @@
             {
               "id": "fecha_registro",
               "displayName": "fecha_registro",
-              "required": true,
+              "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "dateTime",
@@ -15435,6 +15445,16 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": false
+            },
+            {
+              "id": "sucursal_bloqueo",
+              "displayName": "sucursal_bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -17584,6 +17604,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-12T18:40:46.136Z",
-  "versionId": "e0af4fa9-623b-451a-930f-b74fb6bed028"
+  "updatedAt": "2026-03-17T03:07:31.932Z",
+  "versionId": "e8c275f8-1098-4771-88c6-0842fe0f0282"
 }
