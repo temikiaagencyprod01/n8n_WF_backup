@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-09T17:58:11.000Z",
-    "createdAt": "2026-01-09T17:58:09.575Z",
-    "versionId": "573fd3d5-c14a-4756-b3bb-d90f34bcb87f",
+    "updatedAt": "2026-03-18T00:27:42.000Z",
+    "createdAt": "2026-03-18T00:27:05.717Z",
+    "versionId": "96cb122b-87c4-42fb-8a1f-b48b75e7a51c",
     "workflowId": "tmpnJJIMz4aESgXF",
     "nodes": [
       {
@@ -45,7 +45,7 @@
                   },
                   "conditions": [
                     {
-                      "leftValue": "={{ $json.codigo_reserva.isNotEmpty() }}",
+                      "leftValue": "={{ $json.codigo_reserva.isNotEmpty() && $json.codigo_reserva != 'None' }}",
                       "rightValue": "",
                       "operator": {
                         "type": "boolean",
@@ -71,7 +71,7 @@
                   "conditions": [
                     {
                       "id": "aa39cc4b-9351-4191-bf91-12acac59b07f",
-                      "leftValue": "={{ $json.nombre_cliente.isNotEmpty() }}",
+                      "leftValue": "={{ $json.nombre_cliente.isNotEmpty() && $json.nombre_cliente != 'None' }}",
                       "rightValue": "",
                       "operator": {
                         "type": "boolean",
@@ -380,11 +380,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 573fd3d5",
+    "name": "Version 96cb122b",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "573fd3d5-c14a-4756-b3bb-d90f34bcb87f",
+  "activeVersionId": "96cb122b-87c4-42fb-8a1f-b48b75e7a51c",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -521,7 +521,7 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.codigo_reserva.isNotEmpty() }}",
+                    "leftValue": "={{ $json.codigo_reserva.isNotEmpty() && $json.codigo_reserva != 'None' }}",
                     "rightValue": "",
                     "operator": {
                       "type": "boolean",
@@ -547,7 +547,7 @@
                 "conditions": [
                   {
                     "id": "aa39cc4b-9351-4191-bf91-12acac59b07f",
-                    "leftValue": "={{ $json.nombre_cliente.isNotEmpty() }}",
+                    "leftValue": "={{ $json.nombre_cliente.isNotEmpty() && $json.nombre_cliente != 'None' }}",
                     "rightValue": "",
                     "operator": {
                       "type": "boolean",
@@ -793,6 +793,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T21:19:42.828Z",
-  "versionId": "573fd3d5-c14a-4756-b3bb-d90f34bcb87f"
+  "updatedAt": "2026-03-18T00:27:05.716Z",
+  "versionId": "96cb122b-87c4-42fb-8a1f-b48b75e7a51c"
 }
