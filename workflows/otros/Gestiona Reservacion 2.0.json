@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-03T21:41:44.000Z",
-    "createdAt": "2026-03-03T21:41:26.846Z",
-    "versionId": "6e7ff180-cb11-4565-93c1-6f0b33dbd76c",
+    "updatedAt": "2026-03-20T18:34:16.000Z",
+    "createdAt": "2026-03-20T18:32:13.398Z",
+    "versionId": "f03bb1ec-6380-4909-88d9-7f43645fc110",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -2385,7 +2385,7 @@
               {
                 "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
                 "name": "Response",
-                "value": "=Cambia la intención a \"Reservación\" y confirma los datos para la reservación de nuevo. Revisa el llamado a esta herramienta. Mensaje Interno: {{ $json.detalles }}",
+                "value": "=Error: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean los correctos y completos de acuerdo a lo solicitado. Mensaje Interno: {{ $json.detalles }}",
                 "type": "string"
               }
             ]
@@ -7058,11 +7058,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 6e7ff180",
+    "name": "Version f03bb1ec",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "6e7ff180-cb11-4565-93c1-6f0b33dbd76c",
+  "activeVersionId": "f03bb1ec-6380-4909-88d9-7f43645fc110",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -10341,7 +10341,7 @@
             {
               "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
               "name": "Response",
-              "value": "=Cambia la intención a \"Reservación\" y confirma los datos para la reservación de nuevo. Revisa el llamado a esta herramienta. Usa el formato JSON válido. Mensaje Interno: {{ $json.detalles }}",
+              "value": "=Error: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean los correctos y completos de acuerdo a lo solicitado. Mensaje Interno: {{ $json.detalles }}",
               "type": "string"
             }
           ]
@@ -14126,7 +14126,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -14140,6 +14141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-18T00:12:44.108Z",
-  "versionId": "f4e08fce-9001-4556-837d-f34e50d0fd63"
+  "updatedAt": "2026-03-21T01:37:15.109Z",
+  "versionId": "f03bb1ec-6380-4909-88d9-7f43645fc110"
 }
