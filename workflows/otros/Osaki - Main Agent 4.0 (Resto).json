@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-18T00:27:55.000Z",
-    "createdAt": "2026-03-18T00:26:08.079Z",
-    "versionId": "9cde0dc4-3ae1-473b-813e-3333c2b317b7",
+    "updatedAt": "2026-03-20T21:56:15.000Z",
+    "createdAt": "2026-03-20T18:26:42.062Z",
+    "versionId": "eac97b6a-fc4a-4a91-b64a-7239be3a6a06",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -2436,8 +2436,7 @@
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
-                "canBeUsedToMatch": true,
-                "type": "string"
+                "canBeUsedToMatch": true
               },
               {
                 "id": "telefono_solicita",
@@ -8789,11 +8788,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 9cde0dc4",
+    "name": "Version eac97b6a",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "9cde0dc4-3ae1-473b-813e-3333c2b317b7",
+  "activeVersionId": "eac97b6a-fc4a-4a91-b64a-7239be3a6a06",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -13070,8 +13069,7 @@
               "required": false,
               "defaultMatch": false,
               "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
+              "canBeUsedToMatch": true
             },
             {
               "id": "telefono_solicita",
@@ -17590,7 +17588,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -17604,6 +17603,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-18T00:26:08.072Z",
-  "versionId": "9cde0dc4-3ae1-473b-813e-3333c2b317b7"
+  "updatedAt": "2026-03-20T18:26:42.056Z",
+  "versionId": "eac97b6a-fc4a-4a91-b64a-7239be3a6a06"
 }
