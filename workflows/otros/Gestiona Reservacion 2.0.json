@@ -7988,7 +7988,7 @@
       "name": "Agente Principal",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -1632,
+        -1888,
         1360
       ]
     },
@@ -7999,7 +7999,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1424,
+        -1680,
         1360
       ],
       "id": "626ac3ba-7354-4f64-b70b-82d38d08831d",
@@ -14141,6 +14141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-21T01:37:15.109Z",
-  "versionId": "f03bb1ec-6380-4909-88d9-7f43645fc110"
+  "updatedAt": "2026-03-25T21:34:56.222Z",
+  "versionId": "a69e5d71-ff94-40a1-92c7-f12f67830cd3"
 }
