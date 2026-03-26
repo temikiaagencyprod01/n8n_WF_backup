@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-23T16:39:27.000Z",
-    "createdAt": "2026-03-23T16:39:22.734Z",
-    "versionId": "cc0f93fc-7681-494e-a0c7-4ec887de588f",
+    "updatedAt": "2026-03-25T21:16:27.000Z",
+    "createdAt": "2026-03-25T21:16:20.031Z",
+    "versionId": "144a493e-813f-42a8-9e29-8e7819fc319e",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -5944,8 +5944,9 @@
         "parameters": {
           "model": {
             "__rl": true,
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "value": "gpt-4.1-mini"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "responsesApiEnabled": false,
           "options": {}
@@ -6065,9 +6066,9 @@
         "parameters": {
           "model": {
             "__rl": true,
-            "value": "gpt-5.2-chat-latest",
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "cachedResultName": "gpt-5.2-chat-latest"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "responsesApiEnabled": false,
           "options": {}
@@ -6562,9 +6563,9 @@
         "parameters": {
           "model": {
             "__rl": true,
-            "value": "gpt-4.1-mini",
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "cachedResultName": "gpt-4.1-mini"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "options": {}
         },
@@ -6740,9 +6741,9 @@
         "parameters": {
           "model": {
             "__rl": true,
-            "value": "gpt-5.2-chat-latest",
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "cachedResultName": "gpt-5.2-chat-latest"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "options": {}
         },
@@ -6842,8 +6843,9 @@
         "parameters": {
           "model": {
             "__rl": true,
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "value": "gpt-4.1-mini"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "responsesApiEnabled": false,
           "options": {}
@@ -6889,9 +6891,9 @@
         "parameters": {
           "model": {
             "__rl": true,
-            "value": "gpt-5.2-chat-latest",
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "cachedResultName": "gpt-5.2-chat-latest"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "responsesApiEnabled": false,
           "options": {}
@@ -8788,11 +8790,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version cc0f93fc",
+    "name": "Version 144a493e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "cc0f93fc-7681-494e-a0c7-4ec887de588f",
+  "activeVersionId": "144a493e-813f-42a8-9e29-8e7819fc319e",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -16577,8 +16579,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "value": "gpt-4.1-mini"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "responsesApiEnabled": false,
         "options": {}
@@ -16698,9 +16701,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-5.2-chat-latest",
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "cachedResultName": "gpt-5.2-chat-latest"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "responsesApiEnabled": false,
         "options": {}
@@ -17195,9 +17198,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4.1-mini",
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "options": {}
       },
@@ -17373,9 +17376,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-5.2-chat-latest",
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "cachedResultName": "gpt-5.2-chat-latest"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "options": {}
       },
@@ -17475,8 +17478,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "value": "gpt-4.1-mini"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "responsesApiEnabled": false,
         "options": {}
@@ -17522,9 +17526,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-5.2-chat-latest",
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "cachedResultName": "gpt-5.2-chat-latest"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "responsesApiEnabled": false,
         "options": {}
@@ -17603,6 +17607,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-23T16:39:22.726Z",
-  "versionId": "cc0f93fc-7681-494e-a0c7-4ec887de588f"
+  "updatedAt": "2026-03-25T21:16:20.024Z",
+  "versionId": "144a493e-813f-42a8-9e29-8e7819fc319e"
 }
