@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-23T22:31:07.000Z",
-    "createdAt": "2026-03-06T22:33:40.603Z",
-    "versionId": "4572abb9-1362-4f44-87d5-081a0365f3aa",
+    "updatedAt": "2026-03-28T14:53:37.000Z",
+    "createdAt": "2026-03-28T14:53:34.920Z",
+    "versionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94",
     "workflowId": "1rF03M1hskg0Bbju",
     "nodes": [
       {
@@ -1631,7 +1631,8 @@
         ],
         "id": "48742223-045d-4b6f-beee-a41a10d2677b",
         "name": "Wait1",
-        "webhookId": "d2da1faa-8f9e-43da-911e-b5ce59e38e29"
+        "webhookId": "d2da1faa-8f9e-43da-911e-b5ce59e38e29",
+        "disabled": true
       },
       {
         "parameters": {
@@ -1656,7 +1657,8 @@
             "id": "KmmVDBdxNsFsr80s",
             "name": "Telegram Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2434,11 +2436,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 4572abb9",
+    "name": "Version b26c5b31",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "4572abb9-1362-4f44-87d5-081a0365f3aa",
+  "activeVersionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -4506,7 +4508,8 @@
       ],
       "id": "48742223-045d-4b6f-beee-a41a10d2677b",
       "name": "Wait1",
-      "webhookId": "d2da1faa-8f9e-43da-911e-b5ce59e38e29"
+      "webhookId": "d2da1faa-8f9e-43da-911e-b5ce59e38e29",
+      "disabled": true
     },
     {
       "parameters": {
@@ -4531,7 +4534,8 @@
           "id": "KmmVDBdxNsFsr80s",
           "name": "Telegram Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -4881,7 +4885,8 @@
     "availableInMCP": false,
     "errorWorkflow": "ZpYgShc1li13uf3h",
     "timezone": "America/Argentina/Buenos_Aires",
-    "saveManualExecutions": true
+    "saveManualExecutions": true,
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -4905,6 +4910,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-06T22:33:40.602Z",
-  "versionId": "4572abb9-1362-4f44-87d5-081a0365f3aa"
+  "updatedAt": "2026-03-28T14:53:34.918Z",
+  "versionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94"
 }
