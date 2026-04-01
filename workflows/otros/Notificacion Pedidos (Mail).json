@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-28T14:53:37.000Z",
-    "createdAt": "2026-03-28T14:53:34.920Z",
-    "versionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94",
+    "updatedAt": "2026-04-01T00:37:18.000Z",
+    "createdAt": "2026-04-01T00:37:12.592Z",
+    "versionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc",
     "workflowId": "1rF03M1hskg0Bbju",
     "nodes": [
       {
@@ -1908,7 +1908,8 @@
             "id": "KmmVDBdxNsFsr80s",
             "name": "Telegram Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -2436,11 +2437,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version b26c5b31",
+    "name": "Version b870e96f",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94",
+  "activeVersionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -4785,7 +4786,8 @@
           "id": "KmmVDBdxNsFsr80s",
           "name": "Telegram Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -4910,6 +4912,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-03-28T14:53:34.918Z",
-  "versionId": "b26c5b31-934e-4d48-b48f-f14b7f6e9f94"
+  "updatedAt": "2026-04-01T00:37:12.591Z",
+  "versionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc"
 }
