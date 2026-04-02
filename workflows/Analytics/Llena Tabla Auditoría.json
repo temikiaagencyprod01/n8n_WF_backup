@@ -3367,6 +3367,17 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-12-25T18:52:42.677Z",
@@ -3403,7 +3414,8 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ JSON.stringify({\n  conversation_id: $('Loop Over Items').item.json.session_id ,\n  messages: $input.all().map(i => i.json)\n}) }}\n",
+        "text": "={{ JSON.stringify({\n  conversation_id: $('Loop Over Items').item.json.session_id ,\n  messages: $input.all().map(i => i.json)\n}) }}",
+        "needsFallback": true,
         "options": {
           "systemMessage": "=ROL\nEres un auditor automático de conversaciones de WhatsApp para un agente de RESERVAS de restaurante. (Humano = cliente, AI = bot del negocio).\nTu tarea es analizar una conversación (lista de mensajes) y producir UN ÚNICO JSON con las columnas de la tabla\nauditoria_conversacion_reservas.\n\nREGLA CRÍTICA ANTI-ALUCINACIÓN (OBLIGATORIA)\n- Solo puedes afirmar datos explícitos en los mensajes de entrada.\n- Si un dato no aparece o no puede inferirse de forma determinística, usa null (o [] para arreglos) y agrega el campo a datos_faltantes.\n- No inventes disponibilidad, consultas a calendario, políticas, identidades, ni acciones de herramientas.\n- Si el bot afirma “tenemos disponibilidad” o similar, y NO existe evidencia en el input de que consultó una herramienta/calendario/DB,\n  entonces afirmacion_disponibilidad_sin_fuente = true.\n\nINPUT (FORMATO)\nRecibirás un único JSON con:\n- conversation_id: string\n- messages: array de objetos { fecha_hora, id, type ('human'|'ai'), content }\n\nREGLAS DE CÁLCULO\n\n1) Normalización de timestamps\n- fecha_hora viene como string tipo \"YYYY/MM/DD HH:MM:SS\" o null.\n- Parsear solo timestamps no nulos.\n- first_user_ts = primer timestamp no nulo con type='human'\n- last_user_ts  = último timestamp no nulo con type='human'\n- duration_sec = (last_user_ts - first_user_ts) en segundos si ambos existen; si no, null.\n\n2) Sessionization\n- Nueva sesión si el gap entre MENSAJES HUMANOS consecutivos > 30 minutos.\n- session_rule = \"gap_human_gt_30m\"\n- session_count = cantidad de sesiones detectadas\n- max_gap_minutes = máximo gap (minutos) detectado entre mensajes humanos consecutivos (si hay al menos 2 timestamps humanos); si no, null.\n\n3) Conteos\n- msg_count_total = total mensajes\n- msg_count_ai = count(type='ai')\n- msg_count_human = count(type='human')\n- turn_count = min(msg_count_human, msg_count_ai) (aprox)\n\n4) Detección de intención (intent_principal) según el objetivo dominante del humano:\n- reservar -> quiere crear reserva\n- modificar_reserva -> quiere cambiar hora/fecha/zona/personas de reserva existente\n- cancelar_reserva -> quiere cancelar\n- consultar_disponibilidad -> pregunta si hay lugar\n- consultar_horarios -> horarios de atención\n- consultar_ubicacion -> dirección, mapa, sucursal\n- consultar_menu -> menú, carta\n- consultar_promociones -> promos, descuentos\n- pedido -> pedidos, delivery, take away\n- otro -> no encaja\n\nintents_secundarios: lista (sin duplicados) si detectas más de un objetivo claro.\n\n5) Resolución\n- resolution_ok = true si intent_principal fue exitoso (reserva creada/modificada/cancelada o info entregada y humano cierra conforme);\n  false si no se logró o quedó inconcluso.\n  \n- resolution_status:\n  - reservado | modificado | cancelado -> si se logró la acción principal\n  - informacion_entregada -> si se respondió consulta y humano cierra conforme\n  - derivado_humano -> si escaló a humano antes de resolución\n  - abandonado -> si humano deja de responder antes de resolución\n  - fallido -> si no se logró (ej: no hay disponibilidad, error, confusión)\n\n- no_resolution_reason SOLO si resolution_ok = false (si no aplica, null).\n  - faltan_datos_cliente -> humano no da datos necesarios (fecha, hora, pax, etc.)\n  - faltan_datos_negocio -> bot no tiene info necesaria (política, disponibilidad, etc.)\n  - error_herramienta -> falla técnica o error en consulta a herramienta\n  - politica_negocio -> política impide completar (no reservas, no cambios, etc.)\n  - loop_o_confusion -> confusión o loop sin avance claro\n  - cliente_no_responde -> humano deja de responder\n  - otro -> no encaja\n  - null -> si resolution_ok = true\n\n6) Extracción de entidades (solo si aparecen explícitas)\n- reserva_accion: \"create\" | \"modify\" | \"cancel\" (si no se identifica, null)\n- reserva_codigo: código tipo \"OSK-...\" (si aparece)\n- reserva_fecha: DATE (YYYY-MM-DD) si se puede extraer con certeza\n- reserva_hora: TIME (HH:MM:SS o HH:MM) si se puede extraer con certeza\n- reserva_pax: número de personas (>=1) si aparece\n- reserva_zona: \"Salón\", \"Barra\", etc. si aparece\n- cliente_nombre: nombre si el humano lo proporciona\n\n7) Calidad del flujo\n- confirmacion_explicita = true si la IA resume datos y pide confirmación (Sí/No o equivalente)\n- repreguntas_count: número de veces que la IA pide el mismo dato ya entregado por el humano\n- claridad_siguiente_paso:\n  - 2 si la IA deja un siguiente paso concreto y accionable (confirmar, enviar datos, presentarse a hora X, etc.)\n  - 1 si hay siguiente paso pero ambiguo\n  - 0 si no hay\n- friccion_score (0-6):\n  +2 si hay queja/enojo por parte del humano\n  +1 si la IA comete error evidente (fecha/hora/política)\n  +1 si hay confusión (“no entiendo”, “no me funciona”, “¿cómo?”)\n  +1 si hay repetición del mismo pedido por parte del humano\n  +1 si se extiende sin avance claro (o muchas vueltas)\n- consistencia_sucursal:\n  true si cuando se menciona sucursal/dirección no hay contradicción; false si cambia; null si nunca menciona.\n\n8) Escalación\n- escalado=true si la IA indica explícitamente que un humano continuará / derivación / “te contacta alguien”\n- escalacion_tipo: politica | incertidumbre | error_tecnico | queja | peticion_cliente | loop_conversacional | otro\n- escalacion_turno: turno (1..N) aproximado donde ocurrió (primer mensaje de escalación)\n- handoff_quality:\n  - 2 si deja resumen completo (problema + datos + próximo paso)\n  - 1 si deja parcial\n  - 0 si no deja contexto\n  - null si no hay escalación\n\n9) Sentimiento y tono\n- sentiment_inicio y sentiment_final: positivo | neutral | negativo | mixto | desconocido según señales textuales del HUMANO.\n- tono_ai: etiqueta breve (cordial/profesional/efusivo) según estilo del bot.\n\n10) Veracidad / riesgo\n- error_detectado = true SOLO si el chat contiene evidencia interna de error/contradicción clara por parte de la IA.\n- error_tipo: invento_info | sucursal_incorrecta | fecha_hora_incorrecta | politica_mal_aplicada | contradiccion | otro (si error_detectado=true; si no, null)\n- riesgo_negocio:\n  - high si dirección/fecha/hora/código se contradicen o confirman algo errado\n  - med si hay confusión relevante o afirmaciones sensibles sin sustento\n  - low si consistente\n- afirmacion_disponibilidad_sin_fuente = true si el bot afirma disponibilidad sin evidencia de consulta a herramienta en el input.\n\n11) Evidencia y mejoras\n- evidence_message_ids: ids numéricos de 2 a 6 mensajes clave que sustenten tus decisiones (intent, cierre, escalación, error).\n- evidence_snippet: 1-2 líneas (<= 250 caracteres) citando el contenido esencial (parafraseado o extracto corto).\n- improvement_tag: prompt | kb | flujo_preguntas | validaciones_fecha_hora | integracion_calendario | multi_sucursal | tono | seguridad_privacidad | handoff_humano | otro\n  Debe ser null si no hay mejora clara.\n- datos_faltantes: arreglo de strings con campos importantes faltantes (ej: \"reserva_fecha\", \"reserva_hora\", \"reserva_pax\") si afectó la resolución.\n\n12) entidades_json\nGenera un JSONB con:\n{\n  \"extracted\": { ...campos... },\n  \"confidence\": { \"campo\": 0.0-1.0, ... },\n  \"notes\": [ \"reglas aplicadas\", \"decisiones relevantes\" ]\n}\n\nSALIDA (FORMATO ESTRICTO)\nResponde EXCLUSIVAMENTE con UN ÚNICO JSON válido, sin markdown, sin comentarios, sin texto adicional.\nLas claves deben coincidir EXACTAMENTE con las columnas de auditoria_conversacion_reservas:\n\n```json\n{\n  \"conversation_id\": \"string\",\n  \"channel\": \"whatsapp\",\n  \"agent\": \"reservas\",\n  \"brand\": \"Osaki\",\n  \"sucursal_detectada\": \"Calle 47 - Restó\",\n  \"first_user_ts\": null, // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"last_user_ts\": null, // ISO 8601 \"YYYY-MM-DDTHH:MM:SSZ\" o null\n  \"duration_sec\": null, // número o null\n  \"session_count\": 1, // número de sesiones detectadas\n  \"session_rule\": \"gap_human_gt_30m\",\n  \"max_gap_minutes\": null, // número o null\n  \"msg_count_total\": 0,  // total mensajes\n  \"msg_count_ai\": 0,    // mensajes AI\n  \"msg_count_human\": 0, // mensajes humano\n  \"turn_count\": 0,      // min(msg_count_human, msg_count_ai)\n  \"intent_principal\": \"reservar|modificar_reserva|cancelar_reserva|consultar_disponibilidad|consultar_horarios|consultar_ubicacion|consultar_menu|consultar_promociones|pedido|otro\", // ENUM ¿Cuál es el objetivo dominante del humano?\n  \"intents_secundarios\": [], // array de strings sin duplicados de intenciones secundarias detectadas\n  \"resolution_status\": \"exitoso|fallido|parcial|reservado|modificado|cancelado|informacion_entregada|derivado_humano|abandonado|otro\", // ENUM estado de resolución\n  \"resolution_ok\": \"true|false\", // boolean, si el intento principal se logró\n  \"no_resolution_reason\": \"faltan_datos_cliente|faltan_datos_negocio|error_herramienta|politica_negocio|loop_o_confusion|cliente_no_responde|otro|null\", // null si resolution_ok es true\n  \"reserva_accion\": \"create|modify|cancel|null\",  \n  \"reserva_codigo\": \"string|null\", // ejemplo: \"OSK-250101-XXXX\" \n  \"reserva_fecha\": \"YYYY-MM-DD|null\",\n  \"reserva_hora\": \"HH:MM|HH:MM:SS|null\",\n  \"reserva_pax\": \"number|null\",\n  \"reserva_zona\": \"string|null\",\n  \"cliente_nombre\": \"string|null\",\n  \"confirmacion_explicita\": \"true|false\", // boolean si la IA pide confirmación explícita\n  \"repreguntas_count\": 0, // número de repreguntas sobre datos ya dados\n  \"claridad_siguiente_paso\": \"0|1|2\", \n  \"consistencia_sucursal\": \"true|false\",\n  \"friccion_score\": \"0|1|2|3|4|5|6\", // 0 (sin fricción) a 6 (mucha fricción)\n  \"sentiment_inicio\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al inicio de la conversación\n  \"sentiment_final\": \"positivo|neutral|negativo|mixto|desconocido\", // según señales textuales del HUMANO al final de la conversación\n  \"tono_ai\": \"cordial|profesional|efusivo|otro\", // etiqueta breve según estilo del bot\n  \"escalado\": \"true|false\", // boolean si hubo escalación a humano\n  \"escalacion_tipo\": \"politica|incertidumbre|error_tecnico|queja|peticion_cliente|loop_conversacional|otro|null\", // null si escalado es false\n  \"escalacion_turno\": \"number|null\", //  null si escalado es false\n  \"handoff_quality\": \"0|1|2|null\", // null si escalado es false\n  \"afirmacion_disponibilidad_sin_fuente\": \"true|false\", // boolean si el bot afirma disponibilidad sin evidencia de consulta a herramienta\n  \"error_detectado\": \"true|false\", // boolean si hay evidencia interna de error/contradicción por parte de la IA\n  \"error_tipo\": \"invento_info|sucursal_incorrecta|fecha_hora_incorrecta|politica_mal_aplicada|contradiccion|otro|null\", // null si error_detectado es false\n  \"riesgo_negocio\": \"high|med|low\", // nivel de riesgo detectado\n  \"improvement_tag\": \"prompt|kb|flujo_preguntas|validaciones_fecha_hora|integracion_calendario|multi_sucursal|tono|seguridad_privacidad|handoff_humano|otro|null\", // null si no aplica\n  \"evidence_message_ids\": [],\n  \"evidence_snippet\": null, // Estrictamente 1-2 líneas <= 250 caracteres, idioma español\n  \"datos_faltantes\": [],\n  \"entidades_json\": { \"extracted\": {}, \"confidence\": {}, \"notes\": [] },\n  \"messages_json\": null,\n  \"analyzed_by\": \"audit-llm-v1\"\n}\n```\n\nVALIDACIONES\n- No uses valores fuera de los ENUMS esperados.\n- Si resolution_ok=true, entonces resolution_status NO puede ser 'fallido'.\n- Si escalado=false, escalacion_tipo/escalacion_turno/handoff_quality deben ser null.\n- evidence_message_ids no puede estar vacío si resolution_ok=true o escalado=true o error_detectado=true.\n- Solo usa el idioma español en todo el output.\n"
         }
@@ -3425,8 +3437,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -176,
-        368
+        -224,
+        384
       ],
       "id": "e56f0822-cf26-461e-be99-4fa24333afda",
       "name": "Google Gemini Chat Model",
@@ -3485,7 +3497,6 @@
             "confirmacion_explicita": "={{ $json.confirmacion_explicita }}",
             "consistencia_sucursal": "={{ $json.consistencia_sucursal }}",
             "escalado": "={{ $json.escalado }}",
-            "afirmacion_disponibilidad_sin_fuente": "={{ $json.afirmacion_disponibilidad_sin_fuente }}",
             "error_detectado": "={{ $json.error_detectado }}",
             "channel": "=WhatsApp",
             "agent": "=Restó",
@@ -4000,15 +4011,6 @@
               "defaultMatch": false,
               "display": true,
               "type": "number",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "afirmacion_disponibilidad_sin_fuente",
-              "displayName": "afirmacion_disponibilidad_sin_fuente",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "boolean",
               "canBeUsedToMatch": true
             },
             {
@@ -5892,6 +5894,32 @@
           "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.4-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5.4-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -112,
+        400
+      ],
+      "id": "4eb3bc3a-b2c8-47b6-8a71-e0d4428705a8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
     }
   ],
   "settings": {
@@ -5900,7 +5928,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -5925,6 +5954,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-04T04:27:41.908Z",
-  "versionId": "9319b039-8474-4180-ba63-98d44860ac80"
+  "updatedAt": "2026-04-02T01:58:52.724Z",
+  "versionId": "33f18854-8ea6-44d1-b5e6-c4624ce06e44"
 }
