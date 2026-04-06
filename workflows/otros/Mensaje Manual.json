@@ -1,0 +1,120 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Marcar mensagens como lidas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marcar mensagens como lidas1": {
+      "main": [
+        [
+          {
+            "node": "Enviar texto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-05T23:48:59.857Z",
+  "id": "IxwweqZC2vvoE8J9",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Mensaje Manual",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "17d1c013-9aba-4dbc-a9a8-469b2cdc8572",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "chat-api",
+        "operation": "read-messages",
+        "instanceName": "=Osaki-Resto",
+        "remoteJid": "=5492241500320@s.whatsapp.net",
+        "messageId": "=ACD1E170D83714B4906F694072565D44"
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "ef4b29d5-d708-4d9a-9b71-f6573a0e3c8b",
+      "name": "Marcar mensagens como lidas1",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "evolutionApi": {
+          "id": "9xktnR3DFRTQS3QC",
+          "name": "Evolution Osaki"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "=Osaki-Resto",
+        "remoteJid": "=5492241500320@s.whatsapp.net",
+        "messageText": "=¡Excelente, Tamara! Tu reserva para el *Sushi Libre** quedó confirmada. 🍣✨\\n\\nTu código de reserva es: *OSK-260405-SJTW*\\n\\nTe esperamos este miércoles *08/04 a las 21:00 hs* en nuestro Restó de *Calle 47 N°717* (entre 9 y Diag 74). Recordá que tenemos una tolerancia máxima de 15 minutos para que la experiencia sea perfecta para todos. 🍶🥢\\n\\n¿Te gustaría que te envíe nuestra carta de bebidas y el menú general (aunque la carta de comida esté cerrada durante el evento, podés ver nuestras opciones)?\\n\\n¡Muchas gracias por elegirnos! Antes de terminar, ¿te gustaría responder una breve encuesta de satisfacción? 😊",
+        "options_message": {
+          "delay": "={{ 2500 }}"
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        656,
+        0
+      ],
+      "id": "168b2dd8-96bf-45aa-b69d-e72d73e7b5e8",
+      "name": "Enviar texto1",
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "evolutionApi": {
+          "id": "9xktnR3DFRTQS3QC",
+          "name": "Evolution Osaki"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-05T23:48:59.863Z",
+      "createdAt": "2026-04-05T23:48:59.863Z",
+      "role": "workflow:owner",
+      "workflowId": "IxwweqZC2vvoE8J9",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-05T23:55:03.099Z",
+  "versionId": "cb88b5c1-d3d1-4a74-962c-ed4c8ff3ace1"
+}
