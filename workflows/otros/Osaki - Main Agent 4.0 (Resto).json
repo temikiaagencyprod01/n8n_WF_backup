@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-25T21:16:27.000Z",
-    "createdAt": "2026-03-25T21:16:20.031Z",
-    "versionId": "144a493e-813f-42a8-9e29-8e7819fc319e",
+    "updatedAt": "2026-04-06T21:38:47.000Z",
+    "createdAt": "2026-04-06T21:38:45.513Z",
+    "versionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -8790,11 +8790,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 144a493e",
+    "name": "Version 3294b4ac",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "144a493e-813f-42a8-9e29-8e7819fc319e",
+  "activeVersionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -14915,8 +14915,7 @@
         992
       ],
       "id": "bfe4c8c4-f9de-4bdf-af50-c2f677cf9044",
-      "name": "Edit Fields",
-      "disabled": true
+      "name": "Edit Fields"
     },
     {
       "parameters": {
@@ -14929,8 +14928,7 @@
         688
       ],
       "id": "d73f72e4-5170-421c-8e0e-8d25fe1391cc",
-      "name": "Split In Batches",
-      "disabled": true
+      "name": "Split In Batches"
     },
     {
       "parameters": {
@@ -14943,8 +14941,7 @@
         688
       ],
       "id": "670fb290-7ca3-4d25-afc4-4a868bcc4ec6",
-      "name": "Code1",
-      "disabled": true
+      "name": "Code1"
     },
     {
       "parameters": {
@@ -14979,8 +14976,7 @@
         688
       ],
       "id": "c584d9c1-307a-48b6-b2e2-2fa6bd4c135c",
-      "name": "Edit Fields1",
-      "disabled": true
+      "name": "Edit Fields1"
     },
     {
       "parameters": {
@@ -14995,8 +14991,7 @@
         608
       ],
       "id": "36e36ea6-736f-4bf1-927d-f59713a7bfb0",
-      "name": "Sticky Note8",
-      "disabled": true
+      "name": "Sticky Note8"
     },
     {
       "parameters": {
@@ -15012,8 +15007,7 @@
         928
       ],
       "id": "3caea667-6ab7-4f7e-9033-27100b1dfa91",
-      "name": "Sticky Note9",
-      "disabled": true
+      "name": "Sticky Note9"
     },
     {
       "parameters": {
@@ -15036,8 +15030,7 @@
         688
       ],
       "id": "2f38f152-7801-4dc8-ab57-373e3423a4fe",
-      "name": "Edit Fields2",
-      "disabled": true
+      "name": "Edit Fields2"
     },
     {
       "parameters": {
@@ -15076,8 +15069,7 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15091,8 +15083,7 @@
         784
       ],
       "id": "e36a73e9-657b-4974-a3b6-0830c26590e3",
-      "name": "Aggregate1",
-      "disabled": true
+      "name": "Aggregate1"
     },
     {
       "parameters": {
@@ -15197,8 +15188,7 @@
         688
       ],
       "id": "126bf741-07bf-4754-978d-bba090087c0d",
-      "name": "Reporta a Encargado",
-      "disabled": true
+      "name": "Reporta a Encargado"
     },
     {
       "parameters": {
@@ -15485,8 +15475,7 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15499,8 +15488,7 @@
         1056
       ],
       "id": "95d167f8-c122-481f-b6c3-8719c9f3c54f",
-      "name": "Loop Over Items1",
-      "disabled": true
+      "name": "Loop Over Items1"
     },
     {
       "parameters": {
@@ -15513,8 +15501,7 @@
         1056
       ],
       "id": "c26516c4-916f-4356-b641-d484a10e2b6f",
-      "name": "Get Stored Messages",
-      "disabled": true
+      "name": "Get Stored Messages"
     },
     {
       "parameters": {
@@ -15540,8 +15527,7 @@
           "id": "9xktnR3DFRTQS3QC",
           "name": "Evolution Osaki"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15568,8 +15554,7 @@
           "id": "9xktnR3DFRTQS3QC",
           "name": "Evolution Osaki"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15596,8 +15581,7 @@
           "id": "9xktnR3DFRTQS3QC",
           "name": "Evolution Osaki"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15624,8 +15608,7 @@
           "id": "9xktnR3DFRTQS3QC",
           "name": "Evolution Osaki"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -15645,8 +15628,7 @@
         976
       ],
       "id": "cd5fee0b-761a-482c-af01-0b44e5a3f813",
-      "name": "Aggregate5",
-      "disabled": true
+      "name": "Aggregate5"
     },
     {
       "parameters": {
@@ -15660,8 +15642,7 @@
       ],
       "id": "7d90f1c0-be90-4fcf-8fe5-d769a5d0f5ee",
       "name": "Wait3",
-      "webhookId": "c5d7eca4-e19b-4637-8fac-7c9ad81e49b0",
-      "disabled": true
+      "webhookId": "c5d7eca4-e19b-4637-8fac-7c9ad81e49b0"
     },
     {
       "parameters": {
@@ -17000,8 +16981,7 @@
         976
       ],
       "id": "8d8c98e3-6c0b-4aa0-9598-3cf265d633c4",
-      "name": "If",
-      "disabled": true
+      "name": "If"
     },
     {
       "parameters": {
@@ -17035,8 +17015,7 @@
         784
       ],
       "id": "8317c73e-dded-47bf-8e99-559356bebcf9",
-      "name": "If5",
-      "disabled": true
+      "name": "If5"
     },
     {
       "parameters": {
@@ -17628,6 +17607,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-05T23:46:59.959Z",
-  "versionId": "f8946e37-4ec3-449a-8a45-e27d0223472d"
+  "updatedAt": "2026-04-06T21:38:45.505Z",
+  "versionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca"
 }
