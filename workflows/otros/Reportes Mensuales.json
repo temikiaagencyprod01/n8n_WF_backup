@@ -993,8 +993,8 @@
       "type": "n8n-nodes-base.html",
       "typeVersion": 1.2,
       "position": [
-        752,
-        1456
+        1168,
+        800
       ],
       "id": "ec3e9f85-db9b-47b5-af52-9a07ada3885d",
       "name": "HTML1"
@@ -1017,6 +1017,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-02T18:04:13.677Z",
-  "versionId": "18de557d-fdff-4131-882b-70fc965c9d39"
+  "updatedAt": "2026-04-06T19:36:30.776Z",
+  "versionId": "e8141588-adff-4b0e-b1ba-26876b44c3c2"
 }
