@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-06T16:29:36.000Z",
-    "createdAt": "2026-03-25T21:29:02.685Z",
-    "versionId": "a69e5d71-ff94-40a1-92c7-f12f67830cd3",
+    "updatedAt": "2026-04-08T15:01:22.000Z",
+    "createdAt": "2026-04-08T15:01:11.614Z",
+    "versionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -2385,7 +2385,7 @@
               {
                 "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
                 "name": "Response",
-                "value": "=Error: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean los correctos y completos de acuerdo a lo solicitado. Mensaje Interno: {{ $json.detalles }}",
+                "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado. ",
                 "type": "string"
               }
             ]
@@ -7058,11 +7058,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version a69e5d71",
+    "name": "Version c8f8a050",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "a69e5d71-ff94-40a1-92c7-f12f67830cd3",
+  "activeVersionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -10341,7 +10341,7 @@
             {
               "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
               "name": "Response",
-              "value": "=Error: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean los correctos y completos de acuerdo a lo solicitado. Mensaje Interno: {{ $json.detalles }}",
+              "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado. ",
               "type": "string"
             }
           ]
@@ -14141,6 +14141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-06T16:29:24.504Z",
-  "versionId": "a69e5d71-ff94-40a1-92c7-f12f67830cd3"
+  "updatedAt": "2026-04-08T15:01:11.610Z",
+  "versionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278"
 }
