@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-13T15:00:10.000Z",
-    "createdAt": "2026-03-13T01:19:53.338Z",
-    "versionId": "ce95b8dd-9369-465d-a454-403a06e3ca61",
+    "updatedAt": "2026-04-13T21:12:44.000Z",
+    "createdAt": "2026-04-13T21:12:39.139Z",
+    "versionId": "fe148908-8cf5-481c-a44c-488871b9c4a8",
     "workflowId": "VLP59OWZ9ExHBRXx",
     "nodes": [
       {
@@ -4219,7 +4219,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -4321,6 +4322,7 @@
             "name": "Postgres Osaki-TemikiaProd01"
           }
         },
+        "disabled": true,
         "onError": "continueRegularOutput"
       },
       {
@@ -4427,7 +4429,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -4467,7 +4470,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -4499,7 +4503,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -4512,7 +4517,8 @@
           4880
         ],
         "id": "599f46ee-696d-47ef-9575-ddce1c3e1548",
-        "name": "Variables 9"
+        "name": "Variables 9",
+        "disabled": true
       },
       {
         "parameters": {
@@ -4525,7 +4531,8 @@
           4880
         ],
         "id": "e03c8dda-c60f-41f3-8ad3-6fafeb735238",
-        "name": "Reverse 9"
+        "name": "Reverse 9",
+        "disabled": true
       },
       {
         "parameters": {
@@ -4551,7 +4558,8 @@
           4592
         ],
         "id": "a2d06fae-ef8d-4b29-90a9-c729870b24fd",
-        "name": "Loop Over Items13"
+        "name": "Loop Over Items13",
+        "disabled": true
       },
       {
         "parameters": {
@@ -4826,7 +4834,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -4866,7 +4875,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -5139,7 +5149,8 @@
             "id": "sk75eTZ4yDkbl8mt",
             "name": "Postgres Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -5183,7 +5194,8 @@
           4608
         ],
         "id": "869eae78-de12-4ff5-a197-fb5bd005ff52",
-        "name": "If14"
+        "name": "If14",
+        "disabled": true
       },
       {
         "parameters": {
@@ -5216,7 +5228,8 @@
           4640
         ],
         "id": "d00014aa-0d3c-4eb2-8844-b369a16862ce",
-        "name": "If15"
+        "name": "If15",
+        "disabled": true
       },
       {
         "parameters": {
@@ -5250,7 +5263,8 @@
             "id": "OnTQvkOeBX8Kq3DU",
             "name": "Google Sheets Osaki-TemikiaProd01"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -5607,7 +5621,8 @@
           4880
         ],
         "id": "3c5e8606-23b7-4cb0-8972-ed48eee0a733",
-        "name": "Switch2"
+        "name": "Switch2",
+        "disabled": true
       },
       {
         "parameters": {
@@ -5620,7 +5635,8 @@
           4880
         ],
         "id": "516c3f61-1d40-4aef-b620-2d4da2730b1f",
-        "name": "Loop Over Items7"
+        "name": "Loop Over Items7",
+        "disabled": true
       },
       {
         "parameters": {
@@ -5648,7 +5664,8 @@
         ],
         "id": "b546b867-f22a-43cd-aa6d-4bf547cb8c0b",
         "name": "Wait3",
-        "webhookId": "c8017ecc-bb42-4c4e-985d-b0ef8e72d48f"
+        "webhookId": "c8017ecc-bb42-4c4e-985d-b0ef8e72d48f",
+        "disabled": true
       },
       {
         "parameters": {
@@ -5682,7 +5699,8 @@
           4592
         ],
         "id": "b8b823f5-3e9c-4c25-a732-e6cc3ee6c450",
-        "name": "If16"
+        "name": "If16",
+        "disabled": true
       },
       {
         "parameters": {
@@ -8529,11 +8547,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version ce95b8dd",
+    "name": "Version fe148908",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "ce95b8dd-9369-465d-a454-403a06e3ca61",
+  "activeVersionId": "fe148908-8cf5-481c-a44c-488871b9c4a8",
   "connections": {
     "Get Reserv Sheets": {
       "main": [
@@ -14508,7 +14526,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -14610,6 +14629,7 @@
           "name": "Postgres Osaki-TemikiaProd01"
         }
       },
+      "disabled": true,
       "onError": "continueRegularOutput"
     },
     {
@@ -14716,7 +14736,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -14756,7 +14777,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -14788,7 +14810,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -14801,7 +14824,8 @@
         4880
       ],
       "id": "599f46ee-696d-47ef-9575-ddce1c3e1548",
-      "name": "Variables 9"
+      "name": "Variables 9",
+      "disabled": true
     },
     {
       "parameters": {
@@ -14814,7 +14838,8 @@
         4880
       ],
       "id": "e03c8dda-c60f-41f3-8ad3-6fafeb735238",
-      "name": "Reverse 9"
+      "name": "Reverse 9",
+      "disabled": true
     },
     {
       "parameters": {
@@ -14840,7 +14865,8 @@
         4592
       ],
       "id": "a2d06fae-ef8d-4b29-90a9-c729870b24fd",
-      "name": "Loop Over Items13"
+      "name": "Loop Over Items13",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15115,7 +15141,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -15155,7 +15182,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -15428,7 +15456,8 @@
           "id": "sk75eTZ4yDkbl8mt",
           "name": "Postgres Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -15472,7 +15501,8 @@
         4608
       ],
       "id": "869eae78-de12-4ff5-a197-fb5bd005ff52",
-      "name": "If14"
+      "name": "If14",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15505,7 +15535,8 @@
         4640
       ],
       "id": "d00014aa-0d3c-4eb2-8844-b369a16862ce",
-      "name": "If15"
+      "name": "If15",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15539,7 +15570,8 @@
           "id": "OnTQvkOeBX8Kq3DU",
           "name": "Google Sheets Osaki-TemikiaProd01"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -15896,7 +15928,8 @@
         4880
       ],
       "id": "3c5e8606-23b7-4cb0-8972-ed48eee0a733",
-      "name": "Switch2"
+      "name": "Switch2",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15909,7 +15942,8 @@
         4880
       ],
       "id": "516c3f61-1d40-4aef-b620-2d4da2730b1f",
-      "name": "Loop Over Items7"
+      "name": "Loop Over Items7",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15937,7 +15971,8 @@
       ],
       "id": "b546b867-f22a-43cd-aa6d-4bf547cb8c0b",
       "name": "Wait3",
-      "webhookId": "c8017ecc-bb42-4c4e-985d-b0ef8e72d48f"
+      "webhookId": "c8017ecc-bb42-4c4e-985d-b0ef8e72d48f",
+      "disabled": true
     },
     {
       "parameters": {
@@ -15971,7 +16006,8 @@
         4592
       ],
       "id": "b8b823f5-3e9c-4c25-a732-e6cc3ee6c450",
-      "name": "If16"
+      "name": "If16",
+      "disabled": true
     },
     {
       "parameters": {
@@ -17070,7 +17106,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -17100,6 +17137,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2026-03-13T01:19:53.334Z",
-  "versionId": "ce95b8dd-9369-465d-a454-403a06e3ca61"
+  "updatedAt": "2026-04-13T21:12:39.136Z",
+  "versionId": "fe148908-8cf5-481c-a44c-488871b9c4a8"
 }
