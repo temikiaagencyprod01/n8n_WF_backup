@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-08T15:01:22.000Z",
-    "createdAt": "2026-04-08T15:01:11.614Z",
-    "versionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278",
+    "updatedAt": "2026-04-14T23:13:21.000Z",
+    "createdAt": "2026-04-14T23:13:03.292Z",
+    "versionId": "52d794d2-831d-4487-8cf0-a419682a7a04",
     "workflowId": "su5pBZNPEHVtuYnB",
     "nodes": [
       {
@@ -32,7 +32,7 @@
         "name": "Agente Principal",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -1888,
+          -2016,
           1360
         ]
       },
@@ -2385,7 +2385,7 @@
               {
                 "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
                 "name": "Response",
-                "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado. ",
+                "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado.\nEjemplo:\n\n{\n\"tipo\": \"creacion|modificacion\",        \n\"modo\": \"Normal\",                           \n\"nombre_completo\": \"<Nombre y apellido>\",   \n\"telefono\": \"\",\n\"fecha\": \"<YYYY-MM-DD>\",\n\"hora\": \"<HH:MM>\",\n\"personas\": \"<Número de personas>\",\n\"ubicacion\": \"\",\n\"zona\": \"Salón|Barra\",\n\"correo\": \"<Correo electrónico>|No proporcionado\",\n\"notas\": \"\"                                       \n}",
                 "type": "string"
               }
             ]
@@ -2395,8 +2395,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -128,
-          2256
+          -624,
+          2208
         ],
         "id": "4244a5f3-fc21-4afe-bb84-731edad1a816",
         "name": "Edit Fields11"
@@ -7058,11 +7058,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version c8f8a050",
+    "name": "Version 52d794d2",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278",
+  "activeVersionId": "52d794d2-831d-4487-8cf0-a419682a7a04",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -7988,7 +7988,7 @@
       "name": "Agente Principal",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -1888,
+        -2016,
         1360
       ]
     },
@@ -10341,7 +10341,7 @@
             {
               "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
               "name": "Response",
-              "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado. ",
+              "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\nMensaje Interno: {{ $json.detalles }}\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado.\nEjemplo:\n\n{\n\"tipo\": \"creacion|modificacion\",        \n\"modo\": \"Normal\",                           \n\"nombre_completo\": \"<Nombre y apellido>\",   \n\"telefono\": \"\",\n\"fecha\": \"<YYYY-MM-DD>\",\n\"hora\": \"<HH:MM>\",\n\"personas\": \"<Número de personas>\",\n\"ubicacion\": \"\",\n\"zona\": \"Salón|Barra\",\n\"correo\": \"<Correo electrónico>|No proporcionado\",\n\"notas\": \"\"                                       \n}",
               "type": "string"
             }
           ]
@@ -10351,8 +10351,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -128,
-        2256
+        -624,
+        2208
       ],
       "id": "4244a5f3-fc21-4afe-bb84-731edad1a816",
       "name": "Edit Fields11"
@@ -14141,6 +14141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-08T15:01:11.610Z",
-  "versionId": "c8f8a050-11a3-41aa-ada3-b74558cc8278"
+  "updatedAt": "2026-04-14T23:13:03.289Z",
+  "versionId": "52d794d2-831d-4487-8cf0-a419682a7a04"
 }
