@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-06T21:38:47.000Z",
-    "createdAt": "2026-04-06T21:38:45.513Z",
-    "versionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca",
+    "updatedAt": "2026-04-18T00:47:54.000Z",
+    "createdAt": "2026-04-18T00:47:50.401Z",
+    "versionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -4574,8 +4574,9 @@
             "value": {
               "id": "={{ $('Datos Cliente').first().json.id }}",
               "num_mensaje_largo": 0,
-              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
-              "chatid": "={{ $('Data Filter').first().json.chat_id }}"
+              "negativos_intentos": 0,
+              "fecha_modificacion": "={{    \n    (() => {    \n    const d = new Date($now);    \n    const fechaHora = d.toLocaleString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false }).replace(/-/g, '/');    \n    const fechaLarga = d.toLocaleDateString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });    \n    return `${fechaHora}`;    \n    })()\n    \n    }}",
+              "chatid": "={{ $('Data Filter').first().json.sessionId }}"
             },
             "matchingColumns": [
               "id"
@@ -4739,7 +4740,7 @@
                 "display": true,
                 "type": "number",
                 "canBeUsedToMatch": true,
-                "removed": true
+                "removed": false
               },
               {
                 "id": "preferencias_alimentarias",
@@ -8790,11 +8791,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 3294b4ac",
+    "name": "Version 86e7a35e",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca",
+  "activeVersionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -15209,8 +15210,9 @@
           "value": {
             "id": "={{ $('Datos Cliente').first().json.id }}",
             "num_mensaje_largo": 0,
-            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
-            "chatid": "={{ $('Data Filter').first().json.chat_id }}"
+            "negativos_intentos": 0,
+            "fecha_modificacion": "={{    \n    (() => {    \n    const d = new Date($now);    \n    const fechaHora = d.toLocaleString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false }).replace(/-/g, '/');    \n    const fechaLarga = d.toLocaleDateString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });    \n    return `${fechaHora}`;    \n    })()\n    \n    }}",
+            "chatid": "={{ $('Data Filter').first().json.sessionId }}"
           },
           "matchingColumns": [
             "id"
@@ -15374,7 +15376,7 @@
               "display": true,
               "type": "number",
               "canBeUsedToMatch": true,
-              "removed": true
+              "removed": false
             },
             {
               "id": "preferencias_alimentarias",
@@ -17607,6 +17609,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-06T21:38:45.505Z",
-  "versionId": "3294b4ac-19ab-480d-a72f-c461c11ceeca"
+  "updatedAt": "2026-04-18T00:47:50.395Z",
+  "versionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725"
 }
