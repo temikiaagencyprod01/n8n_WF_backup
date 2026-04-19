@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-18T00:47:54.000Z",
-    "createdAt": "2026-04-18T00:47:50.401Z",
-    "versionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725",
+    "updatedAt": "2026-04-18T17:38:31.000Z",
+    "createdAt": "2026-04-18T17:38:28.080Z",
+    "versionId": "faf4b49c-3154-4416-a418-6468dafc08db",
     "workflowId": "yjhUSAZ6ifGf1dtN",
     "nodes": [
       {
@@ -2215,7 +2215,7 @@
                     {
                       "id": "16d6b069-1fce-411d-b479-caa5e804e172",
                       "leftValue": "={{ $json.escenario }}",
-                      "rightValue": "Fuera de Contexto",
+                      "rightValue": "FUERA_DE_CONTEXTO",
                       "operator": {
                         "type": "string",
                         "operation": "equals",
@@ -8791,11 +8791,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 86e7a35e",
+    "name": "Version faf4b49c",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725",
+  "activeVersionId": "faf4b49c-3154-4416-a418-6468dafc08db",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -12851,7 +12851,7 @@
                   {
                     "id": "16d6b069-1fce-411d-b479-caa5e804e172",
                     "leftValue": "={{ $json.escenario }}",
-                    "rightValue": "Fuera de Contexto",
+                    "rightValue": "FUERA_DE_CONTEXTO",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -17609,6 +17609,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-18T00:47:50.395Z",
-  "versionId": "86e7a35e-6dce-42b2-a370-1e1d111eb725"
+  "updatedAt": "2026-04-18T17:38:28.071Z",
+  "versionId": "faf4b49c-3154-4416-a418-6468dafc08db"
 }
