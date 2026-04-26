@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-11T18:34:51.577Z",
-    "createdAt": "2025-12-11T18:34:51.577Z",
-    "versionId": "fbe9a103-be84-4c43-ad73-04c12064a42c",
+    "updatedAt": "2026-04-26T04:29:57.000Z",
+    "createdAt": "2026-04-26T04:29:56.344Z",
+    "versionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d",
     "workflowId": "ZpYgShc1li13uf3h",
     "nodes": [
       {
@@ -16,48 +16,6 @@
         ],
         "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
         "name": "Error Trigger"
-      },
-      {
-        "parameters": {
-          "method": "POST",
-          "url": "=https://evolution-api-evolution-api.m6iigx.easypanel.host/message/sendText/Temikia",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "apikey",
-                "value": "=90E7214218F8-4725-8CA7-85C2BCDAEE8A"
-              }
-            ]
-          },
-          "sendBody": true,
-          "bodyParameters": {
-            "parameters": [
-              {
-                "name": "number",
-                "value": "=5215546389518@s.whatsapp.net"
-              },
-              {
-                "name": "text",
-                "value": "={{ \"‼ *ERROR* ‼\\nThere was an error in a workflow execution:\\n\\nName: \"+$json.workflowName +\"\\nid: \"+$json.id +\"\\nNode Name: \"+$json.nodeName+\"\\nNode Type: \"+$json.nodeType+\"\\nMessage: \"+$json.message+\"\\nURL: \"+$json.urlExecution+\"\\nMessages:\"+ $json.messages}}\n"
-              },
-              {
-                "name": "delay",
-                "value": "={{ parseInt(10000) }}"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          432,
-          -80
-        ],
-        "id": "4eeac33b-eb5e-46d5-a4ac-7a534fe0c87c",
-        "name": "HTTP Request1",
-        "disabled": true
       },
       {
         "parameters": {
@@ -112,7 +70,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          32,
+          -48,
           -80
         ],
         "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
@@ -120,7 +78,7 @@
       },
       {
         "parameters": {
-          "chatId": "67869519",
+          "chatId": "-1003789740019",
           "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
           "additionalFields": {
             "appendAttribution": false,
@@ -130,8 +88,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          448,
-          176
+          176,
+          -80
         ],
         "id": "5d850d9d-7617-4569-b31f-28a62046c0cb",
         "name": "Send Report",
@@ -160,11 +118,6 @@
         "main": [
           [
             {
-              "node": "HTTP Request1",
-              "type": "main",
-              "index": 0
-            },
-            {
               "node": "Send Report",
               "type": "main",
               "index": 0
@@ -174,11 +127,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": null,
-    "description": null,
-    "autosaved": false
+    "name": "Version 200ca0c0",
+    "description": "",
+    "autosaved": true
   },
-  "activeVersionId": "fbe9a103-be84-4c43-ad73-04c12064a42c",
+  "activeVersionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d",
   "connections": {
     "Error Trigger": {
       "main": [
@@ -194,11 +147,6 @@
     "Edit Fields": {
       "main": [
         [
-          {
-            "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "Send Report",
             "type": "main",
@@ -226,48 +174,6 @@
       ],
       "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
       "name": "Error Trigger"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://evolution-api-evolution-api.m6iigx.easypanel.host/message/sendText/Temikia",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "=90E7214218F8-4725-8CA7-85C2BCDAEE8A"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "number",
-              "value": "=5215546389518@s.whatsapp.net"
-            },
-            {
-              "name": "text",
-              "value": "={{ \"‼ *ERROR* ‼\\nThere was an error in a workflow execution:\\n\\nName: \"+$json.workflowName +\"\\nid: \"+$json.id +\"\\nNode Name: \"+$json.nodeName+\"\\nNode Type: \"+$json.nodeType+\"\\nMessage: \"+$json.message+\"\\nURL: \"+$json.urlExecution+\"\\nMessages:\"+ $json.messages}}\n"
-            },
-            {
-              "name": "delay",
-              "value": "={{ parseInt(10000) }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        432,
-        -80
-      ],
-      "id": "4eeac33b-eb5e-46d5-a4ac-7a534fe0c87c",
-      "name": "HTTP Request1",
-      "disabled": true
     },
     {
       "parameters": {
@@ -322,7 +228,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        32,
+        -48,
         -80
       ],
       "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
@@ -330,7 +236,7 @@
     },
     {
       "parameters": {
-        "chatId": "67869519",
+        "chatId": "-1003789740019",
         "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
         "additionalFields": {
           "appendAttribution": false,
@@ -340,8 +246,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        448,
-        176
+        176,
+        -80
       ],
       "id": "5d850d9d-7617-4569-b31f-28a62046c0cb",
       "name": "Send Report",
@@ -355,7 +261,8 @@
     }
   ],
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -376,6 +283,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T21:21:22.440Z",
-  "versionId": "fbe9a103-be84-4c43-ad73-04c12064a42c"
+  "updatedAt": "2026-04-26T04:29:56.343Z",
+  "versionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d"
 }
