@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-20T16:11:12.000Z",
-    "createdAt": "2026-04-20T16:09:41.772Z",
-    "versionId": "03caa885-e875-4aaa-bba4-0f0138b0a335",
+    "updatedAt": "2026-04-25T16:15:47.000Z",
+    "createdAt": "2026-04-25T16:15:34.688Z",
+    "versionId": "86e665a1-73c0-451b-83ad-9476f32f4149",
     "workflowId": "XVX6W8rkSJtoXnOz",
     "nodes": [
       {
@@ -33,18 +33,18 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
           -2016,
-          1360
+          1376
         ]
       },
       {
         "parameters": {
-          "jsCode": "const resultados = [];\n\n// Función auxiliar para normalizar nombres y evitar fallos en BD o JSON\nfunction normalizarTexto(valor) {\n  if (valor === null || valor === undefined) return null;\n  \n  if (typeof valor === 'string') {\n    let limpio = valor\n      // Elimina comillas simples/apóstrofes (la principal causa de error con \"D'Angelo\")\n      .replace(/['`´]/g, '')\n      // Elimina comas (por si llega un error de tipeo tipo \"Sergio, D Angelo\")\n      .replace(/,/g, '')\n      // Elimina punto y coma y comillas dobles (prevención de inyección o saltos en JSON)\n      .replace(/[\";]/g, '')\n      // Limpia espacios dobles y espacios al inicio/final\n      .replace(/\\s+/g, ' ')\n      .trim();\n      \n    // Si la cadena queda como 'null' (texto), siempre lo devolvemos como literal null (sin comillas)\n    if (limpio.toLowerCase() === 'null' || limpio === '') {\n      return null;\n    }\n    \n    return limpio;\n  }\n  \n  return valor;\n}\n\n// Función auxiliar para normalizar el número de personas\nfunction normalizarNumeroPersonas(valor) {\n  if (valor === null || valor === undefined) return 1;\n  \n  let numero;\n  if (typeof valor === 'number') {\n    numero = valor;\n  } else if (typeof valor === 'string') {\n    const limpio = valor.toString().replace(/[^\\d.,]/g, '').replace(',', '.');\n    numero = parseFloat(limpio);\n  } else {\n    numero = Number(valor);\n  }\n  \n  if (isNaN(numero) || !isFinite(numero) || numero <= 0) {\n    return 1; \n  }\n  \n  return Math.max(1, Math.round(numero));\n}\n\nfor (const item of items) {\n  let resultadoFinal = null;\n  let errorLog = null;\n\n  const raw = item.json?.reservacion; \n\n  if (!raw) {\n    resultados.push({ json: { error: \"Input vacío\" } });\n    continue;\n  }\n\n  if (typeof raw === 'object') {\n    resultadoFinal = raw;\n  } else {\n    const clean = String(raw).replace(/```json|```/g, '').trim();\n\n    try {\n      resultadoFinal = JSON.parse(clean);\n    } catch (e1) {\n      try {\n        const sanitized = clean\n          .replace(/\\n/g, \"\\\\n\")\n          .replace(/\\r/g, \"\\\\r\")\n          .replace(/\\t/g, \"\\\\t\");\n        \n        resultadoFinal = JSON.parse(sanitized);\n      } catch (e2) {\n        errorLog = e1.message;\n      }\n    }\n  }\n\n  if (resultadoFinal) {\n    // 1. Normalizamos Personas\n    if (resultadoFinal.hasOwnProperty('personas')) {\n      resultadoFinal.personas = normalizarNumeroPersonas(resultadoFinal.personas);\n    }\n    const camposPersonas = ['numero_personas', 'cantidad_personas', 'personas', 'pax', 'guests'];\n    for (const campo of camposPersonas) {\n      if (resultadoFinal.hasOwnProperty(campo)) {\n        resultadoFinal[campo] = normalizarNumeroPersonas(resultadoFinal[campo]);\n        break; \n      }\n    }\n    \n    // 2. Normalizamos el Nombre Completo (Blindaje)\n    if (resultadoFinal.hasOwnProperty('nombre_completo')) {\n      resultadoFinal.nombre_completo = normalizarTexto(resultadoFinal.nombre_completo);\n    }\n    \n    // Si tuvieras un esquema donde el campo principal falla y necesitas un fallback:\n    // resultadoFinal.nombre_completo = resultadoFinal.nombre_completo || resultadoFinal.first_name || null;\n    \n    resultados.push({ json: resultadoFinal });\n  } else {\n    resultados.push({ \n      json: { \n        error: \"No se pudo parsear el JSON\",\n        detalles: errorLog,\n        input_recibido: raw \n      } \n    });\n  }\n}\n\nreturn resultados;"
+          "jsCode": "const resultados = [];\n\n// ======================================================================\n// 1. NORMALIZADORES BÁSICOS\n// ======================================================================\n\nfunction normalizarTexto(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  if (typeof valor === 'string') {\n    let limpio = valor\n      .replace(/['`´]/g, '')\n      .replace(/,/g, '')\n      .replace(/[\";]/g, '')\n      .replace(/\\s+/g, ' ')\n      .trim();\n\n    if (limpio.toLowerCase() === 'null' || limpio === '') {\n      return null;\n    }\n\n    return limpio;\n  }\n\n  return valor;\n}\n\n// Importante:\n// Ya no devuelve 1 si viene vacío.\n// Si falta, debe quedar null para que la validación lo detecte.\nfunction normalizarNumeroPersonas(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  if (typeof valor === 'number') {\n    if (!isNaN(valor) && isFinite(valor)) {\n      return Math.round(valor);\n    }\n    return valor;\n  }\n\n  if (typeof valor === 'string') {\n    const texto = valor.trim();\n\n    if (\n      texto === '' ||\n      texto.toLowerCase() === 'null' ||\n      texto.toLowerCase() === 'undefined'\n    ) {\n      return null;\n    }\n\n    const limpio = texto.replace(/[^\\d.,]/g, '').replace(',', '.');\n\n    if (limpio === '') {\n      return texto;\n    }\n\n    const numero = parseFloat(limpio);\n\n    if (isNaN(numero) || !isFinite(numero)) {\n      return texto;\n    }\n\n    return Math.round(numero);\n  }\n\n  return valor;\n}\n\nfunction normalizarTipo(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  const tipo = String(valor)\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .trim()\n    .toLowerCase();\n\n  const mapa = {\n    creacion: 'creacion',\n    crear: 'creacion',\n    nueva: 'creacion',\n    nuevo: 'creacion',\n\n    modificacion: 'modificacion',\n    modificar: 'modificacion',\n    cambio: 'modificacion',\n    actualizar: 'modificacion',\n\n    cancelacion: 'cancelacion',\n    cancelar: 'cancelacion',\n    cancelada: 'cancelacion',\n\n    confirmacion: 'confirmacion',\n    confirmar: 'confirmacion',\n    confirmada: 'confirmacion'\n  };\n\n  return mapa[tipo] || tipo;\n}\n\n// ======================================================================\n// 2. UTILIDADES DE VALIDACIÓN DE COMPLETITUD\n// ======================================================================\n\nfunction valorFaltante(valor) {\n  if (valor === null || valor === undefined) return true;\n\n  if (typeof valor === 'string') {\n    const limpio = valor.trim().toLowerCase();\n\n    return [\n      '',\n      'null',\n      'undefined',\n      'no proporcionado',\n      'no_proporcionado',\n      'sin proporcionar',\n      'sin dato',\n      'sin datos',\n      'n/a',\n      'na'\n    ].includes(limpio);\n  }\n\n  return false;\n}\n\nfunction primerValorDisponible(objetos, campos) {\n  for (const obj of objetos) {\n    if (!obj || typeof obj !== 'object') continue;\n\n    for (const campo of campos) {\n      if (Object.prototype.hasOwnProperty.call(obj, campo)) {\n        const valor = obj[campo];\n\n        if (!valorFaltante(valor)) {\n          return valor;\n        }\n      }\n    }\n  }\n\n  return null;\n}\n\nfunction obtenerFaltantes(obj, camposRequeridos) {\n  const faltantes = [];\n\n  for (const campo of camposRequeridos) {\n    if (valorFaltante(obj[campo])) {\n      faltantes.push(campo);\n    }\n  }\n\n  return faltantes;\n}\n\n// ======================================================================\n// 3. CAMPOS REQUERIDOS POR OPERACIÓN\n// ======================================================================\n\n// Ajusta aquí si cambia la lógica del agente o del flujo de BD.\nconst REQUERIDOS_POR_TIPO = {\n  creacion: [\n    'tipo',\n    'nombre_completo',\n    'telefono',\n    'fecha',\n    'hora',\n    'personas',\n    'ubicacion'\n  ],\n\n  modificacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo',\n    'fecha',\n    'hora',\n    'personas',\n    'ubicacion'\n  ],\n\n  cancelacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo'\n  ],\n\n  confirmacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo'\n  ]\n};\n\n// ======================================================================\n// 4. PARSEO ROBUSTO DEL CAMPO reservacion\n// ======================================================================\n\nfunction parsearReservacion(raw) {\n  if (!raw) {\n    return {\n      ok: false,\n      data: null,\n      error: 'Input vacío'\n    };\n  }\n\n  if (typeof raw === 'object') {\n    return {\n      ok: true,\n      data: raw,\n      error: null\n    };\n  }\n\n  const clean = String(raw)\n    .replace(/```json|```/g, '')\n    .trim();\n\n  try {\n    return {\n      ok: true,\n      data: JSON.parse(clean),\n      error: null\n    };\n  } catch (e1) {\n    try {\n      const sanitized = clean\n        .replace(/\\n/g, \"\\\\n\")\n        .replace(/\\r/g, \"\\\\r\")\n        .replace(/\\t/g, \"\\\\t\");\n\n      return {\n        ok: true,\n        data: JSON.parse(sanitized),\n        error: null\n      };\n    } catch (e2) {\n      return {\n        ok: false,\n        data: null,\n        error: e1.message\n      };\n    }\n  }\n}\n\n// ======================================================================\n// 5. PROCESAMIENTO PRINCIPAL\n// ======================================================================\n\nfor (const item of items) {\n  const itemOriginal = item.json || {};\n  const raw = itemOriginal?.reservacion;\n\n  const parseo = parsearReservacion(raw);\n\n  if (!parseo.ok) {\n    resultados.push({\n      json: {\n        error: 'No se pudo parsear la reservación',\n        detalles: parseo.error,\n        input_recibido: raw,\n        validacion: {\n          esta_completo: false,\n          operacion: null,\n          requeridos: [],\n          faltantes: ['reservacion'],\n          accion_sugerida: 'reconstruir_payload_reservacion'\n        }\n      }\n    });\n\n    continue;\n  }\n\n  let resultadoFinal = parseo.data || {};\n\n  // ====================================================================\n  // 6. CANONICALIZACIÓN DE CAMPOS\n  // ====================================================================\n\n  // Tipo\n  resultadoFinal.tipo = normalizarTipo(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['tipo', 'operacion', 'accion']\n    )\n  );\n\n  // Código de reserva\n  resultadoFinal.codigo_reserva = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['codigo_reserva', 'codigo_reservacion', 'codigo', 'reservation_code']\n    )\n  );\n\n  // Nombre completo\n  resultadoFinal.nombre_completo = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['nombre_completo', 'nombre', 'cliente', 'full_name']\n    )\n  );\n\n  // Teléfono\n  // Puede venir dentro de reservacion o fuera del objeto, como telefono_solicita.\n  resultadoFinal.telefono = primerValorDisponible(\n    [resultadoFinal, itemOriginal],\n    ['telefono', 'telefono_solicita', 'phone_number', 'phone']\n  );\n\n  // Fecha\n  resultadoFinal.fecha = primerValorDisponible(\n    [resultadoFinal],\n    ['fecha', 'date']\n  );\n\n  // Hora\n  resultadoFinal.hora = primerValorDisponible(\n    [resultadoFinal],\n    ['hora', 'time']\n  );\n\n  // Personas\n  resultadoFinal.personas = normalizarNumeroPersonas(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['personas', 'numero_personas', 'cantidad_personas', 'pax', 'guests']\n    )\n  );\n\n  // Ubicación / sucursal\n  resultadoFinal.ubicacion = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['ubicacion', 'sucursal', 'branch', 'location']\n    )\n  );\n\n  // Campos opcionales\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'correo')) {\n    resultadoFinal.correo = normalizarTexto(resultadoFinal.correo);\n  }\n\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'notas')) {\n    resultadoFinal.notas = normalizarTexto(resultadoFinal.notas);\n  }\n\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'modo')) {\n    resultadoFinal.modo = normalizarTexto(resultadoFinal.modo);\n  }\n\n  // ====================================================================\n  // 7. CONSERVAR METADATA EXTERNA DEL ITEM ORIGINAL\n  // ====================================================================\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'telefono_solicita')) {\n    resultadoFinal.telefono_solicita = itemOriginal.telefono_solicita;\n  }\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'schema')) {\n    resultadoFinal.schema = itemOriginal.schema;\n  }\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'cliente_id')) {\n    resultadoFinal.cliente_id = itemOriginal.cliente_id;\n  }\n\n  // ====================================================================\n  // 8. VALIDACIÓN DE COMPLETITUD SEGÚN OPERACIÓN\n  // ====================================================================\n\n  const tipo = resultadoFinal.tipo;\n  const requeridos = REQUERIDOS_POR_TIPO[tipo] || [];\n  let faltantes = [];\n\n  if (!tipo) {\n    faltantes.push('tipo');\n  } else if (!REQUERIDOS_POR_TIPO[tipo]) {\n    faltantes.push('tipo_operacion_no_soportado');\n  } else {\n    faltantes = obtenerFaltantes(resultadoFinal, requeridos);\n  }\n\n  const estaCompleto = faltantes.length === 0;\n\n  resultadoFinal.validacion = {\n    esta_completo: estaCompleto,\n    operacion: tipo || null,\n    requeridos,\n    faltantes,\n    accion_sugerida: estaCompleto\n      ? 'ejecutar_operacion'\n      : 'solicitar_o_reconstruir_campos_faltantes'\n  };\n\n  resultados.push({\n    json: resultadoFinal\n  });\n}\n\nreturn resultados;"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
           -1664,
-          1360
+          1376
         ],
         "id": "7e9e5c65-719e-45c6-897b-1c0e33061f07",
         "name": "Normaliza Datos"
@@ -318,6 +318,31 @@
                   },
                   "conditions": [
                     {
+                      "id": "a75bf00a-9733-4ba6-9067-57108d84c5e8",
+                      "leftValue": "={{ $json.validacion.esta_completo }}",
+                      "rightValue": "false",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "false",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "JSON inválido"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
                       "leftValue": "={{ $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'creacion' || $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'modificacion' }}",
                       "rightValue": "creacion",
                       "operator": {
@@ -393,7 +418,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.2,
         "position": [
-          -1248,
+          -1344,
           1328
         ],
         "id": "34fcb2c9-dc2c-45ca-ab3b-f53e2ae9b30b",
@@ -1642,39 +1667,6 @@
         ],
         "id": "446aaa48-caae-4075-90b8-502703a8fd8a",
         "name": "Edit Fields10"
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "strict",
-              "version": 2
-            },
-            "conditions": [
-              {
-                "id": "166d3778-c7a9-4e0d-8e5d-9c9a2f6da6b4",
-                "leftValue": "={{ $json.personas }}",
-                "rightValue": 6,
-                "operator": {
-                  "type": "number",
-                  "operation": "lte"
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.2,
-        "position": [
-          -1296,
-          768
-        ],
-        "id": "e0eab145-bcb6-47a4-bbd3-40a8b6e10942",
-        "name": "Menos de 7?"
       },
       {
         "parameters": {
@@ -3243,7 +3235,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          -1040,
+          -880,
           976
         ],
         "id": "dac7429c-0d32-4045-9875-11ddb7c70afb",
@@ -4974,6 +4966,29 @@
             "name": "Postgres Osaki-TemikiaProd01"
           }
         }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
+                "name": "Response",
+                "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\n\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado.\nPosibles Faltantes: {{ $json.validacion.faltantes.toJsonString() }}\nEjemplo:\n\n{\n\"tipo\": \"creacion|modificacion\",\n\"modo\": \"Normal\",                           \n\"nombre_completo\": \"<Nombre y apellido>\",   \n\"telefono\": \"\",\n\"fecha\": \"<YYYY-MM-DD>\",\n\"hora\": \"<HH:MM>\",\n\"personas\": \"<Número de personas>\",\n\"ubicacion\": \"\",\n\"zona\": \"Salón|Barra\",\n\"correo\": \"<Correo electrónico>|No proporcionado\",\n\"notas\": \"\"                                       \n}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1040,
+          848
+        ],
+        "id": "02861692-91a6-4ca2-b3f6-8ed5d02761aa",
+        "name": "Edit Fields15"
       }
     ],
     "connections": {
@@ -5070,6 +5085,13 @@
       },
       "Switch": {
         "main": [
+          [
+            {
+              "node": "Edit Fields15",
+              "type": "main",
+              "index": 0
+            }
+          ],
           [
             {
               "node": "Switch2",
@@ -5373,12 +5395,6 @@
               "index": 0
             }
           ]
-        ]
-      },
-      "Menos de 7?": {
-        "main": [
-          [],
-          []
         ]
       },
       "Actualiza Cliente a Info": {
@@ -5834,11 +5850,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 03caa885",
+    "name": "Version 86e665a1",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "03caa885-e875-4aaa-bba4-0f0138b0a335",
+  "activeVersionId": "86e665a1-73c0-451b-83ad-9476f32f4149",
   "connections": {
     "Agente Principal": {
       "main": [
@@ -5933,6 +5949,13 @@
     },
     "Switch": {
       "main": [
+        [
+          {
+            "node": "Edit Fields15",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Switch2",
@@ -6236,12 +6259,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Menos de 7?": {
-      "main": [
-        [],
-        []
       ]
     },
     "Actualiza Cliente a Info": {
@@ -6729,18 +6746,18 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
         -2016,
-        1360
+        1376
       ]
     },
     {
       "parameters": {
-        "jsCode": "const resultados = [];\n\n// Función auxiliar para normalizar nombres y evitar fallos en BD o JSON\nfunction normalizarTexto(valor) {\n  if (valor === null || valor === undefined) return null;\n  \n  if (typeof valor === 'string') {\n    let limpio = valor\n      // Elimina comillas simples/apóstrofes (la principal causa de error con \"D'Angelo\")\n      .replace(/['`´]/g, '')\n      // Elimina comas (por si llega un error de tipeo tipo \"Sergio, D Angelo\")\n      .replace(/,/g, '')\n      // Elimina punto y coma y comillas dobles (prevención de inyección o saltos en JSON)\n      .replace(/[\";]/g, '')\n      // Limpia espacios dobles y espacios al inicio/final\n      .replace(/\\s+/g, ' ')\n      .trim();\n      \n    // Si la cadena queda como 'null' (texto), siempre lo devolvemos como literal null (sin comillas)\n    if (limpio.toLowerCase() === 'null' || limpio === '') {\n      return null;\n    }\n    \n    return limpio;\n  }\n  \n  return valor;\n}\n\n// Función auxiliar para normalizar el número de personas\nfunction normalizarNumeroPersonas(valor) {\n  if (valor === null || valor === undefined) return 1;\n  \n  let numero;\n  if (typeof valor === 'number') {\n    numero = valor;\n  } else if (typeof valor === 'string') {\n    const limpio = valor.toString().replace(/[^\\d.,]/g, '').replace(',', '.');\n    numero = parseFloat(limpio);\n  } else {\n    numero = Number(valor);\n  }\n  \n  if (isNaN(numero) || !isFinite(numero) || numero <= 0) {\n    return 1; \n  }\n  \n  return Math.max(1, Math.round(numero));\n}\n\nfor (const item of items) {\n  let resultadoFinal = null;\n  let errorLog = null;\n\n  const raw = item.json?.reservacion; \n\n  if (!raw) {\n    resultados.push({ json: { error: \"Input vacío\" } });\n    continue;\n  }\n\n  if (typeof raw === 'object') {\n    resultadoFinal = raw;\n  } else {\n    const clean = String(raw).replace(/```json|```/g, '').trim();\n\n    try {\n      resultadoFinal = JSON.parse(clean);\n    } catch (e1) {\n      try {\n        const sanitized = clean\n          .replace(/\\n/g, \"\\\\n\")\n          .replace(/\\r/g, \"\\\\r\")\n          .replace(/\\t/g, \"\\\\t\");\n        \n        resultadoFinal = JSON.parse(sanitized);\n      } catch (e2) {\n        errorLog = e1.message;\n      }\n    }\n  }\n\n  if (resultadoFinal) {\n    // 1. Normalizamos Personas\n    if (resultadoFinal.hasOwnProperty('personas')) {\n      resultadoFinal.personas = normalizarNumeroPersonas(resultadoFinal.personas);\n    }\n    const camposPersonas = ['numero_personas', 'cantidad_personas', 'personas', 'pax', 'guests'];\n    for (const campo of camposPersonas) {\n      if (resultadoFinal.hasOwnProperty(campo)) {\n        resultadoFinal[campo] = normalizarNumeroPersonas(resultadoFinal[campo]);\n        break; \n      }\n    }\n    \n    // 2. Normalizamos el Nombre Completo (Blindaje)\n    if (resultadoFinal.hasOwnProperty('nombre_completo')) {\n      resultadoFinal.nombre_completo = normalizarTexto(resultadoFinal.nombre_completo);\n    }\n    \n    // Si tuvieras un esquema donde el campo principal falla y necesitas un fallback:\n    // resultadoFinal.nombre_completo = resultadoFinal.nombre_completo || resultadoFinal.first_name || null;\n    \n    resultados.push({ json: resultadoFinal });\n  } else {\n    resultados.push({ \n      json: { \n        error: \"No se pudo parsear el JSON\",\n        detalles: errorLog,\n        input_recibido: raw \n      } \n    });\n  }\n}\n\nreturn resultados;"
+        "jsCode": "const resultados = [];\n\n// ======================================================================\n// 1. NORMALIZADORES BÁSICOS\n// ======================================================================\n\nfunction normalizarTexto(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  if (typeof valor === 'string') {\n    let limpio = valor\n      .replace(/['`´]/g, '')\n      .replace(/,/g, '')\n      .replace(/[\";]/g, '')\n      .replace(/\\s+/g, ' ')\n      .trim();\n\n    if (limpio.toLowerCase() === 'null' || limpio === '') {\n      return null;\n    }\n\n    return limpio;\n  }\n\n  return valor;\n}\n\n// Importante:\n// Ya no devuelve 1 si viene vacío.\n// Si falta, debe quedar null para que la validación lo detecte.\nfunction normalizarNumeroPersonas(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  if (typeof valor === 'number') {\n    if (!isNaN(valor) && isFinite(valor)) {\n      return Math.round(valor);\n    }\n    return valor;\n  }\n\n  if (typeof valor === 'string') {\n    const texto = valor.trim();\n\n    if (\n      texto === '' ||\n      texto.toLowerCase() === 'null' ||\n      texto.toLowerCase() === 'undefined'\n    ) {\n      return null;\n    }\n\n    const limpio = texto.replace(/[^\\d.,]/g, '').replace(',', '.');\n\n    if (limpio === '') {\n      return texto;\n    }\n\n    const numero = parseFloat(limpio);\n\n    if (isNaN(numero) || !isFinite(numero)) {\n      return texto;\n    }\n\n    return Math.round(numero);\n  }\n\n  return valor;\n}\n\nfunction normalizarTipo(valor) {\n  if (valor === null || valor === undefined) return null;\n\n  const tipo = String(valor)\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .trim()\n    .toLowerCase();\n\n  const mapa = {\n    creacion: 'creacion',\n    crear: 'creacion',\n    nueva: 'creacion',\n    nuevo: 'creacion',\n\n    modificacion: 'modificacion',\n    modificar: 'modificacion',\n    cambio: 'modificacion',\n    actualizar: 'modificacion',\n\n    cancelacion: 'cancelacion',\n    cancelar: 'cancelacion',\n    cancelada: 'cancelacion',\n\n    confirmacion: 'confirmacion',\n    confirmar: 'confirmacion',\n    confirmada: 'confirmacion'\n  };\n\n  return mapa[tipo] || tipo;\n}\n\n// ======================================================================\n// 2. UTILIDADES DE VALIDACIÓN DE COMPLETITUD\n// ======================================================================\n\nfunction valorFaltante(valor) {\n  if (valor === null || valor === undefined) return true;\n\n  if (typeof valor === 'string') {\n    const limpio = valor.trim().toLowerCase();\n\n    return [\n      '',\n      'null',\n      'undefined',\n      'no proporcionado',\n      'no_proporcionado',\n      'sin proporcionar',\n      'sin dato',\n      'sin datos',\n      'n/a',\n      'na'\n    ].includes(limpio);\n  }\n\n  return false;\n}\n\nfunction primerValorDisponible(objetos, campos) {\n  for (const obj of objetos) {\n    if (!obj || typeof obj !== 'object') continue;\n\n    for (const campo of campos) {\n      if (Object.prototype.hasOwnProperty.call(obj, campo)) {\n        const valor = obj[campo];\n\n        if (!valorFaltante(valor)) {\n          return valor;\n        }\n      }\n    }\n  }\n\n  return null;\n}\n\nfunction obtenerFaltantes(obj, camposRequeridos) {\n  const faltantes = [];\n\n  for (const campo of camposRequeridos) {\n    if (valorFaltante(obj[campo])) {\n      faltantes.push(campo);\n    }\n  }\n\n  return faltantes;\n}\n\n// ======================================================================\n// 3. CAMPOS REQUERIDOS POR OPERACIÓN\n// ======================================================================\n\n// Ajusta aquí si cambia la lógica del agente o del flujo de BD.\nconst REQUERIDOS_POR_TIPO = {\n  creacion: [\n    'tipo',\n    'nombre_completo',\n    'telefono',\n    'fecha',\n    'hora',\n    'personas',\n    'ubicacion'\n  ],\n\n  modificacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo',\n    'fecha',\n    'hora',\n    'personas',\n    'ubicacion'\n  ],\n\n  cancelacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo'\n  ],\n\n  confirmacion: [\n    'tipo',\n    'codigo_reserva',\n    'nombre_completo'\n  ]\n};\n\n// ======================================================================\n// 4. PARSEO ROBUSTO DEL CAMPO reservacion\n// ======================================================================\n\nfunction parsearReservacion(raw) {\n  if (!raw) {\n    return {\n      ok: false,\n      data: null,\n      error: 'Input vacío'\n    };\n  }\n\n  if (typeof raw === 'object') {\n    return {\n      ok: true,\n      data: raw,\n      error: null\n    };\n  }\n\n  const clean = String(raw)\n    .replace(/```json|```/g, '')\n    .trim();\n\n  try {\n    return {\n      ok: true,\n      data: JSON.parse(clean),\n      error: null\n    };\n  } catch (e1) {\n    try {\n      const sanitized = clean\n        .replace(/\\n/g, \"\\\\n\")\n        .replace(/\\r/g, \"\\\\r\")\n        .replace(/\\t/g, \"\\\\t\");\n\n      return {\n        ok: true,\n        data: JSON.parse(sanitized),\n        error: null\n      };\n    } catch (e2) {\n      return {\n        ok: false,\n        data: null,\n        error: e1.message\n      };\n    }\n  }\n}\n\n// ======================================================================\n// 5. PROCESAMIENTO PRINCIPAL\n// ======================================================================\n\nfor (const item of items) {\n  const itemOriginal = item.json || {};\n  const raw = itemOriginal?.reservacion;\n\n  const parseo = parsearReservacion(raw);\n\n  if (!parseo.ok) {\n    resultados.push({\n      json: {\n        error: 'No se pudo parsear la reservación',\n        detalles: parseo.error,\n        input_recibido: raw,\n        validacion: {\n          esta_completo: false,\n          operacion: null,\n          requeridos: [],\n          faltantes: ['reservacion'],\n          accion_sugerida: 'reconstruir_payload_reservacion'\n        }\n      }\n    });\n\n    continue;\n  }\n\n  let resultadoFinal = parseo.data || {};\n\n  // ====================================================================\n  // 6. CANONICALIZACIÓN DE CAMPOS\n  // ====================================================================\n\n  // Tipo\n  resultadoFinal.tipo = normalizarTipo(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['tipo', 'operacion', 'accion']\n    )\n  );\n\n  // Código de reserva\n  resultadoFinal.codigo_reserva = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['codigo_reserva', 'codigo_reservacion', 'codigo', 'reservation_code']\n    )\n  );\n\n  // Nombre completo\n  resultadoFinal.nombre_completo = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['nombre_completo', 'nombre', 'cliente', 'full_name']\n    )\n  );\n\n  // Teléfono\n  // Puede venir dentro de reservacion o fuera del objeto, como telefono_solicita.\n  resultadoFinal.telefono = primerValorDisponible(\n    [resultadoFinal, itemOriginal],\n    ['telefono', 'telefono_solicita', 'phone_number', 'phone']\n  );\n\n  // Fecha\n  resultadoFinal.fecha = primerValorDisponible(\n    [resultadoFinal],\n    ['fecha', 'date']\n  );\n\n  // Hora\n  resultadoFinal.hora = primerValorDisponible(\n    [resultadoFinal],\n    ['hora', 'time']\n  );\n\n  // Personas\n  resultadoFinal.personas = normalizarNumeroPersonas(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['personas', 'numero_personas', 'cantidad_personas', 'pax', 'guests']\n    )\n  );\n\n  // Ubicación / sucursal\n  resultadoFinal.ubicacion = normalizarTexto(\n    primerValorDisponible(\n      [resultadoFinal],\n      ['ubicacion', 'sucursal', 'branch', 'location']\n    )\n  );\n\n  // Campos opcionales\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'correo')) {\n    resultadoFinal.correo = normalizarTexto(resultadoFinal.correo);\n  }\n\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'notas')) {\n    resultadoFinal.notas = normalizarTexto(resultadoFinal.notas);\n  }\n\n  if (Object.prototype.hasOwnProperty.call(resultadoFinal, 'modo')) {\n    resultadoFinal.modo = normalizarTexto(resultadoFinal.modo);\n  }\n\n  // ====================================================================\n  // 7. CONSERVAR METADATA EXTERNA DEL ITEM ORIGINAL\n  // ====================================================================\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'telefono_solicita')) {\n    resultadoFinal.telefono_solicita = itemOriginal.telefono_solicita;\n  }\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'schema')) {\n    resultadoFinal.schema = itemOriginal.schema;\n  }\n\n  if (Object.prototype.hasOwnProperty.call(itemOriginal, 'cliente_id')) {\n    resultadoFinal.cliente_id = itemOriginal.cliente_id;\n  }\n\n  // ====================================================================\n  // 8. VALIDACIÓN DE COMPLETITUD SEGÚN OPERACIÓN\n  // ====================================================================\n\n  const tipo = resultadoFinal.tipo;\n  const requeridos = REQUERIDOS_POR_TIPO[tipo] || [];\n  let faltantes = [];\n\n  if (!tipo) {\n    faltantes.push('tipo');\n  } else if (!REQUERIDOS_POR_TIPO[tipo]) {\n    faltantes.push('tipo_operacion_no_soportado');\n  } else {\n    faltantes = obtenerFaltantes(resultadoFinal, requeridos);\n  }\n\n  const estaCompleto = faltantes.length === 0;\n\n  resultadoFinal.validacion = {\n    esta_completo: estaCompleto,\n    operacion: tipo || null,\n    requeridos,\n    faltantes,\n    accion_sugerida: estaCompleto\n      ? 'ejecutar_operacion'\n      : 'solicitar_o_reconstruir_campos_faltantes'\n  };\n\n  resultados.push({\n    json: resultadoFinal\n  });\n}\n\nreturn resultados;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         -1664,
-        1360
+        1376
       ],
       "id": "7e9e5c65-719e-45c6-897b-1c0e33061f07",
       "name": "Normaliza Datos"
@@ -7014,6 +7031,31 @@
                 },
                 "conditions": [
                   {
+                    "id": "a75bf00a-9733-4ba6-9067-57108d84c5e8",
+                    "leftValue": "={{ $json.validacion.esta_completo }}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "JSON inválido"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
                     "leftValue": "={{ $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'creacion' || $('Normaliza Datos').item.json.tipo.replace(/ó/g, 'o').toLowerCase().replace(/\\s/g, '') == 'modificacion' }}",
                     "rightValue": "creacion",
                     "operator": {
@@ -7089,7 +7131,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1248,
+        -1344,
         1328
       ],
       "id": "34fcb2c9-dc2c-45ca-ab3b-f53e2ae9b30b",
@@ -8338,39 +8380,6 @@
       ],
       "id": "446aaa48-caae-4075-90b8-502703a8fd8a",
       "name": "Edit Fields10"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "166d3778-c7a9-4e0d-8e5d-9c9a2f6da6b4",
-              "leftValue": "={{ $json.personas }}",
-              "rightValue": 6,
-              "operator": {
-                "type": "number",
-                "operation": "lte"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -1296,
-        768
-      ],
-      "id": "e0eab145-bcb6-47a4-bbd3-40a8b6e10942",
-      "name": "Menos de 7?"
     },
     {
       "parameters": {
@@ -9939,7 +9948,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -1040,
+        -880,
         976
       ],
       "id": "dac7429c-0d32-4045-9875-11ddb7c70afb",
@@ -10268,7 +10277,7 @@
             "Nombre": "={{ $('Normaliza Datos').item.json.nombre_completo }}",
             "Fecha": "={{ $json.fecha_reservacion }}",
             "Hora": "={{ $('Normaliza Datos').first().json.hora }}",
-            "Teléfono": "={{ $('Normaliza Datos').item.json.telefono.toNumber() }}",
+            "Teléfono": "={{ $('Normaliza Datos').item.json.telefono }}",
             "Estado": "={{ $json.estado }}",
             "Notas": "={{ $('Normaliza Datos').item.json.notas }}"
           },
@@ -11670,6 +11679,29 @@
           "name": "Postgres Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59ed34f2-56f2-4d29-8469-866100e4b4e2",
+              "name": "Response",
+              "value": "=Error: NO SE PUDO COMPLETAR LA GESTIÓN DE LA RESERVACIÓN.\n\nDiagnóstico: Revisa el llamado a esta herramienta. Usa el formato JSON válido y que los datos/items sean correctos y completos de acuerdo a lo solicitado.\nPosibles Faltantes: {{ $json.validacion.faltantes.toJsonString() }}\nEjemplo:\n\n{\n\"tipo\": \"creacion|modificacion\",\n\"modo\": \"Normal\",                           \n\"nombre_completo\": \"<Nombre y apellido>\",   \n\"telefono\": \"\",\n\"fecha\": \"<YYYY-MM-DD>\",\n\"hora\": \"<HH:MM>\",\n\"personas\": \"<Número de personas>\",\n\"ubicacion\": \"\",\n\"zona\": \"Salón|Barra\",\n\"correo\": \"<Correo electrónico>|No proporcionado\",\n\"notas\": \"\"                                       \n}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1040,
+        848
+      ],
+      "id": "02861692-91a6-4ca2-b3f6-8ed5d02761aa",
+      "name": "Edit Fields15"
     }
   ],
   "settings": {
@@ -11693,6 +11725,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-20T16:10:11.777Z",
-  "versionId": "03caa885-e875-4aaa-bba4-0f0138b0a335"
+  "updatedAt": "2026-04-25T17:31:57.970Z",
+  "versionId": "cdfbefcc-b563-4d8e-946d-6aff11f5adad"
 }
