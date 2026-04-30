@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-25T20:19:24.000Z",
-    "createdAt": "2026-04-25T20:19:20.443Z",
-    "versionId": "646a9bf2-3d1c-4ee7-bb71-54acf5d1b375",
+    "updatedAt": "2026-04-29T23:14:57.000Z",
+    "createdAt": "2026-04-29T23:14:44.797Z",
+    "versionId": "637c7802-b7d2-4868-8258-7100ae96cb50",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -348,8 +348,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.2,
         "position": [
-          -480,
-          720
+          -528,
+          1024
         ],
         "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
         "name": "If"
@@ -366,8 +366,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -704,
-          720
+          -752,
+          1024
         ],
         "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
         "name": "Soporte",
@@ -391,8 +391,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -48,
-          544
+          -96,
+          848
         ],
         "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
         "name": "Osaki Resto",
@@ -493,8 +493,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -48,
-          704
+          -96,
+          1008
         ],
         "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
         "name": "Osaki Delivery Calle 9",
@@ -518,8 +518,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -48,
-          864
+          -96,
+          1168
         ],
         "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
         "name": "Osaki Delivery Calle 47",
@@ -558,8 +558,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -304,
-          784
+          -352,
+          1088
         ],
         "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
         "name": "If2"
@@ -576,8 +576,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          272,
-          704
+          176,
+          1008
         ],
         "id": "a7891107-926d-4ed0-b87e-95938f034d44",
         "name": "Soporte1",
@@ -606,8 +606,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1152,
-          720
+          -96,
+          640
         ],
         "id": "51617408-32d1-47a6-8615-42b2be9df13a",
         "name": "Crea Link WhatsApp"
@@ -629,8 +629,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -928,
-          720
+          128,
+          640
         ],
         "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
         "name": "Crea Mensaje"
@@ -647,266 +647,6 @@
         ],
         "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
         "name": "Normaliza Analisis"
-      },
-      {
-        "parameters": {
-          "operation": "create",
-          "base": {
-            "__rl": true,
-            "value": "apprK9MtBIY9lyLQT",
-            "mode": "list",
-            "cachedResultName": "Sistema Osaki",
-            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
-          },
-          "table": {
-            "__rl": true,
-            "value": "tblz86YzR25zM2bPt",
-            "mode": "list",
-            "cachedResultName": "Escalaciones",
-            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "Teléfono": "={{ $json.num_telefono.toNumber() }}",
-              "Intención": "={{ $json.resumen_intencion }}",
-              "Estado": "={{ $json.estado_seguimiento }}",
-              "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
-              "Urgencia": "={{ $json.notas_urgencia }}",
-              "Sucursal": "={{ $json.sucursal }}",
-              "Fecha Reporte": "={{ $json.fecha_reporte }}",
-              "Notas": "={{ $json.resumen_datos_clave }}"
-            },
-            "matchingColumns": [],
-            "schema": [
-              {
-                "id": "Teléfono",
-                "displayName": "Teléfono",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "number",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Intención",
-                "displayName": "Intención",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Estado",
-                "displayName": "Estado",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "options",
-                "options": [
-                  {
-                    "name": "Pendiente",
-                    "value": "Pendiente"
-                  },
-                  {
-                    "name": "En Proceso",
-                    "value": "En Proceso"
-                  },
-                  {
-                    "name": "Atendido",
-                    "value": "Atendido"
-                  }
-                ],
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Tono Sentimiento",
-                "displayName": "Tono Sentimiento",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "options",
-                "options": [
-                  {
-                    "name": "neutral",
-                    "value": "neutral"
-                  },
-                  {
-                    "name": "negativo",
-                    "value": "negativo"
-                  },
-                  {
-                    "name": "positivo",
-                    "value": "positivo"
-                  }
-                ],
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Urgencia",
-                "displayName": "Urgencia",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "options",
-                "options": [
-                  {
-                    "name": "baja",
-                    "value": "baja"
-                  },
-                  {
-                    "name": "media",
-                    "value": "media"
-                  },
-                  {
-                    "name": "alta",
-                    "value": "alta"
-                  },
-                  {
-                    "name": "nivel_urgencia",
-                    "value": "nivel_urgencia"
-                  },
-                  {
-                    "name": "6",
-                    "value": "6"
-                  },
-                  {
-                    "name": "5",
-                    "value": "5"
-                  },
-                  {
-                    "name": "8",
-                    "value": "8"
-                  },
-                  {
-                    "name": "9",
-                    "value": "9"
-                  },
-                  {
-                    "name": "2",
-                    "value": "2"
-                  },
-                  {
-                    "name": "7",
-                    "value": "7"
-                  },
-                  {
-                    "name": "3",
-                    "value": "3"
-                  },
-                  {
-                    "name": "1",
-                    "value": "1"
-                  }
-                ],
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Sucursal",
-                "displayName": "Sucursal",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "options",
-                "options": [
-                  {
-                    "name": "Delivery-Calle 47",
-                    "value": "Delivery-Calle 47"
-                  },
-                  {
-                    "name": "Delivery-Calle 9",
-                    "value": "Delivery-Calle 9"
-                  },
-                  {
-                    "name": "Restó-Calle 47",
-                    "value": "Restó-Calle 47"
-                  },
-                  {
-                    "name": "",
-                    "value": ""
-                  },
-                  {
-                    "name": "",
-                    "value": ""
-                  },
-                  {
-                    "name": "",
-                    "value": ""
-                  },
-                  {
-                    "name": "whatsapp",
-                    "value": "whatsapp"
-                  },
-                  {
-                    "name": "",
-                    "value": ""
-                  },
-                  {
-                    "name": "",
-                    "value": ""
-                  },
-                  {
-                    "name": "sucursal",
-                    "value": "sucursal"
-                  }
-                ],
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Fecha Reporte",
-                "displayName": "Fecha Reporte",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "dateTime",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "Notas",
-                "displayName": "Notas",
-                "required": false,
-                "defaultMatch": false,
-                "canBeUsedToMatch": true,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.airtable",
-        "typeVersion": 2.1,
-        "position": [
-          -928,
-          480
-        ],
-        "id": "2b19c871-8bba-457d-a53e-09d23a2ec631",
-        "name": "Create a record",
-        "credentials": {
-          "airtableTokenApi": {
-            "id": "KlZpJ3cetMbQRAcX",
-            "name": "Osaki Tablero"
-          }
-        }
       },
       {
         "parameters": {
@@ -968,11 +708,11 @@
             "value": {
               "telefono": "={{ $json.fields[\"Teléfono\"] }}",
               "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
-              "notas": "={{ $json.fields.Notas }}",
+              "notas": "={{ $('Normaliza Analisis').item.json.datos_clave }}",
               "status": "Bloqueo Temporal",
-              "intencion": "={{ $json.fields[\"Intención\"] }}",
+              "intencion": "={{ $('Normaliza Analisis').item.json.intencion }}",
               "tipo_cliente": "Cliente",
-              "sucursal_bloqueo": "=  {{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
+              "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
             },
             "matchingColumns": [
               "telefono"
@@ -1221,8 +961,8 @@
         "type": "n8n-nodes-base.postgres",
         "typeVersion": 2.6,
         "position": [
-          -704,
-          480
+          -352,
+          640
         ],
         "id": "224c426d-21d7-4de0-85c6-9975a22d634c",
         "name": "Actualiza Cliente",
@@ -1245,6 +985,693 @@
         ],
         "id": "fe4d1d05-1edf-4d85-80c5-07827963aa84",
         "name": "Analiza Sucursales"
+      },
+      {
+        "parameters": {
+          "operation": "create",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblz86YzR25zM2bPt",
+            "mode": "list",
+            "cachedResultName": "Escalaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Intención": "={{ $json.resumen_intencion }}",
+              "Estado": "Pendiente",
+              "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
+              "Urgencia": "={{ $json.notas_urgencia }}",
+              "Sucursal": "={{ $json.sucursal }}",
+              "Notas": "={{ $json.resumen_datos_clave }}",
+              "Fecha Reporte": "={{ $json.fecha_reporte }}",
+              "Teléfono": "={{ $('Flujo Agente Principal').item.json.phone_number }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "Teléfono",
+                "displayName": "Teléfono",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Intención",
+                "displayName": "Intención",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Estado",
+                "displayName": "Estado",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Pendiente",
+                    "value": "Pendiente"
+                  },
+                  {
+                    "name": "En Proceso",
+                    "value": "En Proceso"
+                  },
+                  {
+                    "name": "Atendido",
+                    "value": "Atendido"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Tono Sentimiento",
+                "displayName": "Tono Sentimiento",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "neutral",
+                    "value": "neutral"
+                  },
+                  {
+                    "name": "negativo",
+                    "value": "negativo"
+                  },
+                  {
+                    "name": "positivo",
+                    "value": "positivo"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Urgencia",
+                "displayName": "Urgencia",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "baja",
+                    "value": "baja"
+                  },
+                  {
+                    "name": "media",
+                    "value": "media"
+                  },
+                  {
+                    "name": "alta",
+                    "value": "alta"
+                  },
+                  {
+                    "name": "nivel_urgencia",
+                    "value": "nivel_urgencia"
+                  },
+                  {
+                    "name": "6",
+                    "value": "6"
+                  },
+                  {
+                    "name": "5",
+                    "value": "5"
+                  },
+                  {
+                    "name": "8",
+                    "value": "8"
+                  },
+                  {
+                    "name": "9",
+                    "value": "9"
+                  },
+                  {
+                    "name": "2",
+                    "value": "2"
+                  },
+                  {
+                    "name": "7",
+                    "value": "7"
+                  },
+                  {
+                    "name": "3",
+                    "value": "3"
+                  },
+                  {
+                    "name": "1",
+                    "value": "1"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Sucursal",
+                "displayName": "Sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Delivery-Calle 47",
+                    "value": "Delivery-Calle 47"
+                  },
+                  {
+                    "name": "Delivery-Calle 9",
+                    "value": "Delivery-Calle 9"
+                  },
+                  {
+                    "name": "Restó-Calle 47",
+                    "value": "Restó-Calle 47"
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "whatsapp",
+                    "value": "whatsapp"
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "",
+                    "value": ""
+                  },
+                  {
+                    "name": "sucursal",
+                    "value": "sucursal"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Fecha Reporte",
+                "displayName": "Fecha Reporte",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "dateTime",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Notas",
+                "displayName": "Notas",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Notas Operación",
+                "displayName": "Notas Operación",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          -1552,
+          624
+        ],
+        "id": "8d99b8aa-ce11-4119-9726-e4007739b410",
+        "name": "Create a record",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "filterByFormula": "={Teléfono} = \"{{ $json.fields[\"Teléfono\"] }}\"",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.2,
+        "position": [
+          -1360,
+          624
+        ],
+        "id": "dc362231-6cae-41ba-bbb3-4023378dfbe0",
+        "name": "Search records",
+        "alwaysOutputData": true,
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "02b40b9c-84de-46e6-864e-f98b1f704a51",
+                "leftValue": "={{ $json.isEmpty() }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -1136,
+          624
+        ],
+        "id": "b3bc318f-8a46-4da9-918b-60e38bf4bb79",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "id": "={{$json.id}}",
+              "Atención": "Humano",
+              "Fecha de Bloqueo": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "Tipo": "Cliente",
+              "Bloqueo": "Temporal",
+              "Sucursal": "={{ $json.fields.Sucursal.toJsonString() }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": true
+              },
+              {
+                "id": "Teléfono",
+                "displayName": "Teléfono",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Tipo",
+                "displayName": "Tipo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Administración",
+                    "value": "Administración"
+                  },
+                  {
+                    "name": "Cliente",
+                    "value": "Cliente"
+                  },
+                  {
+                    "name": "Staff",
+                    "value": "Staff"
+                  },
+                  {
+                    "name": "Otro",
+                    "value": "Otro"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Atención",
+                "displayName": "Atención",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Humano",
+                    "value": "Humano"
+                  },
+                  {
+                    "name": "IA",
+                    "value": "IA"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Bloqueo",
+                "displayName": "Bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Definitivo",
+                    "value": "Definitivo"
+                  },
+                  {
+                    "name": "Temporal",
+                    "value": "Temporal"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Sucursal",
+                "displayName": "Sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "array",
+                "options": [
+                  {
+                    "name": "Nonna, ho fame!",
+                    "value": "Nonna, ho fame!"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Fecha de Bloqueo",
+                "displayName": "Fecha de Bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "dateTime",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.2,
+        "position": [
+          -720,
+          528
+        ],
+        "id": "9a604b0e-7092-4d72-a054-5f448274a06e",
+        "name": "Update record",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "create",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Atención": "Humano",
+              "Fecha de Bloqueo": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "Teléfono": "={{ $('Flujo Agente Principal').item.json.phone_number }}",
+              "Bloqueo": "Temporal",
+              "Sucursal": "=[ '{{ $('Create a record').item.json.fields.Sucursal }}']",
+              "Tipo": "Cliente"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "Teléfono",
+                "displayName": "Teléfono",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Tipo",
+                "displayName": "Tipo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Administración",
+                    "value": "Administración"
+                  },
+                  {
+                    "name": "Cliente",
+                    "value": "Cliente"
+                  },
+                  {
+                    "name": "Staff",
+                    "value": "Staff"
+                  },
+                  {
+                    "name": "Otro",
+                    "value": "Otro"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Atención",
+                "displayName": "Atención",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Humano",
+                    "value": "Humano"
+                  },
+                  {
+                    "name": "IA",
+                    "value": "IA"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Bloqueo",
+                "displayName": "Bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Definitivo",
+                    "value": "Definitivo"
+                  },
+                  {
+                    "name": "Temporal",
+                    "value": "Temporal"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Sucursal",
+                "displayName": "Sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "array",
+                "options": [
+                  {
+                    "name": "Nonna, ho fame!",
+                    "value": "Nonna, ho fame!"
+                  }
+                ],
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Fecha de Bloqueo",
+                "displayName": "Fecha de Bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "dateTime",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.2,
+        "position": [
+          -720,
+          640
+        ],
+        "id": "9b6049dc-e012-44b9-a9f2-f4737791dfef",
+        "name": "Create a record1",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Code Node\n// Entrada esperada:\n// - $input.all() = registros encontrados en AirTable\n// - Nodo \"Flujo Agente Principal\" = evento actual del agente\n\nconst registros = $input.all();\nconst flujo = $('Flujo Agente Principal').first().json;\n\n// -----------------------------\n// Normalizadores\n// -----------------------------\nfunction limpiarCanal(canal) {\n  const texto = String(canal || '')\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^\\p{L}\\p{N}\\s]/gu, '')\n    .trim()\n    .toLowerCase();\n\n  if (texto.includes('resto') || texto.includes('salon')) return 'Restó';\n  if (texto.includes('delivery')) return 'Delivery';\n  if (texto.includes('take')) return 'Delivery';\n\n  // Fallback controlado\n  return String(canal || '')\n    .replace(/[^\\p{L}\\p{N}\\s]/gu, '')\n    .trim();\n}\n\nfunction limpiarSucursal(sucursal) {\n  return String(sucursal || '').trim();\n}\n\nfunction obtenerArraySucursal(valor) {\n  if (Array.isArray(valor)) {\n    return valor\n      .map(v => String(v).trim())\n      .filter(Boolean);\n  }\n\n  if (typeof valor === 'string' && valor.trim()) {\n    return [valor.trim()];\n  }\n\n  return [];\n}\n\n// -----------------------------\n// Construcción de nueva opción\n// -----------------------------\nconst canal = limpiarCanal(flujo.canal);\nconst sucursal = limpiarSucursal(flujo.sucursal);\n\nif (!canal || !sucursal) {\n  throw new Error('Falta canal o sucursal desde el nodo \"Flujo Agente Principal\".');\n}\n\nconst nuevaOpcionSucursal = `${canal}-${sucursal}`;\n\n// -----------------------------\n// Procesar registros Airtable\n// -----------------------------\nreturn registros.map(item => {\n  const record = item.json;\n\n  const sucursalesActuales = obtenerArraySucursal(record.fields?.Sucursal);\n\n  const yaExiste = sucursalesActuales.includes(nuevaOpcionSucursal);\n\n  const sucursalesFinales = yaExiste\n    ? sucursalesActuales\n    : [...sucursalesActuales, nuevaOpcionSucursal];\n\n  return {\n    json: {\n      id: record.id,\n\n      fields: {\n        Sucursal: sucursalesFinales\n      },\n\n      telefono: record.fields?.['Teléfono'] ?? flujo.phone_number,\n      sucursal_recibida: nuevaOpcionSucursal,\n      sucursales_anteriores: sucursalesActuales,\n      sucursales_finales: sucursalesFinales,\n      requiere_actualizacion: !yaExiste\n    }\n  };\n});"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -928,
+          528
+        ],
+        "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
+        "name": "Code in JavaScript"
       }
     ],
     "connections": {
@@ -1467,17 +1894,6 @@
           ]
         ]
       },
-      "Create a record": {
-        "main": [
-          [
-            {
-              "node": "Actualiza Cliente",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Datos Cliente": {
         "main": [
           [
@@ -1510,14 +1926,87 @@
             }
           ]
         ]
+      },
+      "Create a record": {
+        "main": [
+          [
+            {
+              "node": "Search records",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Search records": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Create a record1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update record": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a record1": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Update record",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 646a9bf2",
+    "name": "Version 637c7802",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "646a9bf2-3d1c-4ee7-bb71-54acf5d1b375",
+  "activeVersionId": "637c7802-b7d2-4868-8258-7100ae96cb50",
   "connections": {
     "Aggregate": {
       "main": [
@@ -1738,17 +2227,6 @@
         ]
       ]
     },
-    "Create a record": {
-      "main": [
-        [
-          {
-            "node": "Actualiza Cliente",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Datos Cliente": {
       "main": [
         [
@@ -1776,6 +2254,79 @@
         [
           {
             "node": "Obtiene Chat Delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Search records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record1": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update record",
             "type": "main",
             "index": 0
           }
@@ -2133,8 +2684,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -480,
-        720
+        -528,
+        1024
       ],
       "id": "700c8357-28b6-4b99-aaa0-0545b0225995",
       "name": "If"
@@ -2151,8 +2702,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -704,
-        720
+        -752,
+        1024
       ],
       "id": "dafdc291-1fad-46fb-bb0d-9df90456cb96",
       "name": "Soporte",
@@ -2176,8 +2727,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -48,
-        544
+        -96,
+        848
       ],
       "id": "0f2b1604-e25c-43e2-8029-06fab79112a1",
       "name": "Osaki Resto",
@@ -2278,8 +2829,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -48,
-        704
+        -96,
+        1008
       ],
       "id": "a5b3587d-3620-41e4-91fc-5ff2f0025193",
       "name": "Osaki Delivery Calle 9",
@@ -2303,8 +2854,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -48,
-        864
+        -96,
+        1168
       ],
       "id": "e6802657-ed5b-4f05-9fc4-8dcacded7094",
       "name": "Osaki Delivery Calle 47",
@@ -2343,8 +2894,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -304,
-        784
+        -352,
+        1088
       ],
       "id": "9cdb9e64-24d2-46eb-80d9-1636c44ea6e6",
       "name": "If2"
@@ -2361,8 +2912,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        272,
-        704
+        176,
+        1008
       ],
       "id": "a7891107-926d-4ed0-b87e-95938f034d44",
       "name": "Soporte1",
@@ -2391,8 +2942,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1152,
-        720
+        -96,
+        640
       ],
       "id": "51617408-32d1-47a6-8615-42b2be9df13a",
       "name": "Crea Link WhatsApp"
@@ -2414,8 +2965,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -928,
-        720
+        128,
+        640
       ],
       "id": "2f8eb8e7-1370-4ff3-9463-98ef0abd7cd5",
       "name": "Crea Mensaje"
@@ -2432,266 +2983,6 @@
       ],
       "id": "49cb7d4c-878c-4fd1-99ed-2e1b9efcd1cb",
       "name": "Normaliza Analisis"
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "apprK9MtBIY9lyLQT",
-          "mode": "list",
-          "cachedResultName": "Sistema Osaki",
-          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblz86YzR25zM2bPt",
-          "mode": "list",
-          "cachedResultName": "Escalaciones",
-          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Teléfono": "={{ $json.num_telefono.toNumber() }}",
-            "Intención": "={{ $json.resumen_intencion }}",
-            "Estado": "={{ $json.estado_seguimiento }}",
-            "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
-            "Urgencia": "={{ $json.notas_urgencia }}",
-            "Sucursal": "={{ $json.sucursal }}",
-            "Fecha Reporte": "={{ $json.fecha_reporte }}",
-            "Notas": "={{ $json.resumen_datos_clave }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Teléfono",
-              "displayName": "Teléfono",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Intención",
-              "displayName": "Intención",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Estado",
-              "displayName": "Estado",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pendiente",
-                  "value": "Pendiente"
-                },
-                {
-                  "name": "En Proceso",
-                  "value": "En Proceso"
-                },
-                {
-                  "name": "Atendido",
-                  "value": "Atendido"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Tono Sentimiento",
-              "displayName": "Tono Sentimiento",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "neutral",
-                  "value": "neutral"
-                },
-                {
-                  "name": "negativo",
-                  "value": "negativo"
-                },
-                {
-                  "name": "positivo",
-                  "value": "positivo"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Urgencia",
-              "displayName": "Urgencia",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "baja",
-                  "value": "baja"
-                },
-                {
-                  "name": "media",
-                  "value": "media"
-                },
-                {
-                  "name": "alta",
-                  "value": "alta"
-                },
-                {
-                  "name": "nivel_urgencia",
-                  "value": "nivel_urgencia"
-                },
-                {
-                  "name": "6",
-                  "value": "6"
-                },
-                {
-                  "name": "5",
-                  "value": "5"
-                },
-                {
-                  "name": "8",
-                  "value": "8"
-                },
-                {
-                  "name": "9",
-                  "value": "9"
-                },
-                {
-                  "name": "2",
-                  "value": "2"
-                },
-                {
-                  "name": "7",
-                  "value": "7"
-                },
-                {
-                  "name": "3",
-                  "value": "3"
-                },
-                {
-                  "name": "1",
-                  "value": "1"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Sucursal",
-              "displayName": "Sucursal",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Delivery-Calle 47",
-                  "value": "Delivery-Calle 47"
-                },
-                {
-                  "name": "Delivery-Calle 9",
-                  "value": "Delivery-Calle 9"
-                },
-                {
-                  "name": "Restó-Calle 47",
-                  "value": "Restó-Calle 47"
-                },
-                {
-                  "name": "",
-                  "value": ""
-                },
-                {
-                  "name": "",
-                  "value": ""
-                },
-                {
-                  "name": "",
-                  "value": ""
-                },
-                {
-                  "name": "whatsapp",
-                  "value": "whatsapp"
-                },
-                {
-                  "name": "",
-                  "value": ""
-                },
-                {
-                  "name": "",
-                  "value": ""
-                },
-                {
-                  "name": "sucursal",
-                  "value": "sucursal"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Fecha Reporte",
-              "displayName": "Fecha Reporte",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "Notas",
-              "displayName": "Notas",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -928,
-        480
-      ],
-      "id": "2b19c871-8bba-457d-a53e-09d23a2ec631",
-      "name": "Create a record",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "KlZpJ3cetMbQRAcX",
-          "name": "Osaki Tablero"
-        }
-      }
     },
     {
       "parameters": {
@@ -2753,9 +3044,9 @@
           "value": {
             "telefono": "={{ $json.fields[\"Teléfono\"] }}",
             "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
-            "notas": "={{ $json.fields.Notas }}",
+            "notas": "={{ $('Normaliza Analisis').item.json.datos_clave }}",
             "status": "Bloqueo Temporal",
-            "intencion": "={{ $json.fields[\"Intención\"] }}",
+            "intencion": "={{ $('Normaliza Analisis').item.json.intencion }}",
             "tipo_cliente": "Cliente",
             "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
           },
@@ -3006,8 +3297,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -704,
-        480
+        -352,
+        640
       ],
       "id": "224c426d-21d7-4de0-85c6-9975a22d634c",
       "name": "Actualiza Cliente",
@@ -3030,6 +3321,693 @@
       ],
       "id": "fe4d1d05-1edf-4d85-80c5-07827963aa84",
       "name": "Analiza Sucursales"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblz86YzR25zM2bPt",
+          "mode": "list",
+          "cachedResultName": "Escalaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Intención": "={{ $json.resumen_intencion }}",
+            "Estado": "Pendiente",
+            "Tono Sentimiento": "={{ $json.notas_tono_sentimiento }}",
+            "Urgencia": "={{ $json.notas_urgencia }}",
+            "Sucursal": "={{ $json.sucursal }}",
+            "Notas": "={{ $json.resumen_datos_clave }}",
+            "Fecha Reporte": "={{ $json.fecha_reporte }}",
+            "Teléfono": "={{ $('Flujo Agente Principal').item.json.phone_number }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Intención",
+              "displayName": "Intención",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pendiente",
+                  "value": "Pendiente"
+                },
+                {
+                  "name": "En Proceso",
+                  "value": "En Proceso"
+                },
+                {
+                  "name": "Atendido",
+                  "value": "Atendido"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tono Sentimiento",
+              "displayName": "Tono Sentimiento",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "neutral",
+                  "value": "neutral"
+                },
+                {
+                  "name": "negativo",
+                  "value": "negativo"
+                },
+                {
+                  "name": "positivo",
+                  "value": "positivo"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Urgencia",
+              "displayName": "Urgencia",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "baja",
+                  "value": "baja"
+                },
+                {
+                  "name": "media",
+                  "value": "media"
+                },
+                {
+                  "name": "alta",
+                  "value": "alta"
+                },
+                {
+                  "name": "nivel_urgencia",
+                  "value": "nivel_urgencia"
+                },
+                {
+                  "name": "6",
+                  "value": "6"
+                },
+                {
+                  "name": "5",
+                  "value": "5"
+                },
+                {
+                  "name": "8",
+                  "value": "8"
+                },
+                {
+                  "name": "9",
+                  "value": "9"
+                },
+                {
+                  "name": "2",
+                  "value": "2"
+                },
+                {
+                  "name": "7",
+                  "value": "7"
+                },
+                {
+                  "name": "3",
+                  "value": "3"
+                },
+                {
+                  "name": "1",
+                  "value": "1"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Sucursal",
+              "displayName": "Sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Delivery-Calle 47",
+                  "value": "Delivery-Calle 47"
+                },
+                {
+                  "name": "Delivery-Calle 9",
+                  "value": "Delivery-Calle 9"
+                },
+                {
+                  "name": "Restó-Calle 47",
+                  "value": "Restó-Calle 47"
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "whatsapp",
+                  "value": "whatsapp"
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "sucursal",
+                  "value": "sucursal"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha Reporte",
+              "displayName": "Fecha Reporte",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notas",
+              "displayName": "Notas",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notas Operación",
+              "displayName": "Notas Operación",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -1552,
+        624
+      ],
+      "id": "8d99b8aa-ce11-4119-9726-e4007739b410",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "filterByFormula": "={Teléfono} = \"{{ $json.fields[\"Teléfono\"] }}\"",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -1360,
+        624
+      ],
+      "id": "dc362231-6cae-41ba-bbb3-4023378dfbe0",
+      "name": "Search records",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "02b40b9c-84de-46e6-864e-f98b1f704a51",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1136,
+        624
+      ],
+      "id": "b3bc318f-8a46-4da9-918b-60e38bf4bb79",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{$json.id}}",
+            "Atención": "Humano",
+            "Fecha de Bloqueo": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "Tipo": "Cliente",
+            "Bloqueo": "Temporal",
+            "Sucursal": "={{ $json.fields.Sucursal.toJsonString() }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Administración",
+                  "value": "Administración"
+                },
+                {
+                  "name": "Cliente",
+                  "value": "Cliente"
+                },
+                {
+                  "name": "Staff",
+                  "value": "Staff"
+                },
+                {
+                  "name": "Otro",
+                  "value": "Otro"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Atención",
+              "displayName": "Atención",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Humano",
+                  "value": "Humano"
+                },
+                {
+                  "name": "IA",
+                  "value": "IA"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Bloqueo",
+              "displayName": "Bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Definitivo",
+                  "value": "Definitivo"
+                },
+                {
+                  "name": "Temporal",
+                  "value": "Temporal"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Sucursal",
+              "displayName": "Sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Nonna, ho fame!",
+                  "value": "Nonna, ho fame!"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha de Bloqueo",
+              "displayName": "Fecha de Bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        528
+      ],
+      "id": "9a604b0e-7092-4d72-a054-5f448274a06e",
+      "name": "Update record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Atención": "Humano",
+            "Fecha de Bloqueo": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "Teléfono": "={{ $('Flujo Agente Principal').item.json.phone_number }}",
+            "Bloqueo": "Temporal",
+            "Sucursal": "=[ '{{ $('Create a record').item.json.fields.Sucursal }}']",
+            "Tipo": "Cliente"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Administración",
+                  "value": "Administración"
+                },
+                {
+                  "name": "Cliente",
+                  "value": "Cliente"
+                },
+                {
+                  "name": "Staff",
+                  "value": "Staff"
+                },
+                {
+                  "name": "Otro",
+                  "value": "Otro"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Atención",
+              "displayName": "Atención",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Humano",
+                  "value": "Humano"
+                },
+                {
+                  "name": "IA",
+                  "value": "IA"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Bloqueo",
+              "displayName": "Bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Definitivo",
+                  "value": "Definitivo"
+                },
+                {
+                  "name": "Temporal",
+                  "value": "Temporal"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Sucursal",
+              "displayName": "Sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Nonna, ho fame!",
+                  "value": "Nonna, ho fame!"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha de Bloqueo",
+              "displayName": "Fecha de Bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        640
+      ],
+      "id": "9b6049dc-e012-44b9-a9f2-f4737791dfef",
+      "name": "Create a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n// Entrada esperada:\n// - $input.all() = registros encontrados en AirTable\n// - Nodo \"Flujo Agente Principal\" = evento actual del agente\n\nconst registros = $input.all();\nconst flujo = $('Flujo Agente Principal').first().json;\n\n// -----------------------------\n// Normalizadores\n// -----------------------------\nfunction limpiarCanal(canal) {\n  const texto = String(canal || '')\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^\\p{L}\\p{N}\\s]/gu, '')\n    .trim()\n    .toLowerCase();\n\n  if (texto.includes('resto') || texto.includes('salon')) return 'Restó';\n  if (texto.includes('delivery')) return 'Delivery';\n  if (texto.includes('take')) return 'Delivery';\n\n  // Fallback controlado\n  return String(canal || '')\n    .replace(/[^\\p{L}\\p{N}\\s]/gu, '')\n    .trim();\n}\n\nfunction limpiarSucursal(sucursal) {\n  return String(sucursal || '').trim();\n}\n\nfunction obtenerArraySucursal(valor) {\n  if (Array.isArray(valor)) {\n    return valor\n      .map(v => String(v).trim())\n      .filter(Boolean);\n  }\n\n  if (typeof valor === 'string' && valor.trim()) {\n    return [valor.trim()];\n  }\n\n  return [];\n}\n\n// -----------------------------\n// Construcción de nueva opción\n// -----------------------------\nconst canal = limpiarCanal(flujo.canal);\nconst sucursal = limpiarSucursal(flujo.sucursal);\n\nif (!canal || !sucursal) {\n  throw new Error('Falta canal o sucursal desde el nodo \"Flujo Agente Principal\".');\n}\n\nconst nuevaOpcionSucursal = `${canal}-${sucursal}`;\n\n// -----------------------------\n// Procesar registros Airtable\n// -----------------------------\nreturn registros.map(item => {\n  const record = item.json;\n\n  const sucursalesActuales = obtenerArraySucursal(record.fields?.Sucursal);\n\n  const yaExiste = sucursalesActuales.includes(nuevaOpcionSucursal);\n\n  const sucursalesFinales = yaExiste\n    ? sucursalesActuales\n    : [...sucursalesActuales, nuevaOpcionSucursal];\n\n  return {\n    json: {\n      id: record.id,\n\n      fields: {\n        Sucursal: sucursalesFinales\n      },\n\n      telefono: record.fields?.['Teléfono'] ?? flujo.phone_number,\n      sucursal_recibida: nuevaOpcionSucursal,\n      sucursales_anteriores: sucursalesActuales,\n      sucursales_finales: sucursalesFinales,\n      requiere_actualizacion: !yaExiste\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -928,
+        528
+      ],
+      "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
+      "name": "Code in JavaScript"
     }
   ],
   "settings": {
@@ -3053,6 +4031,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-25T22:02:24.425Z",
-  "versionId": "e2fa2128-8514-432d-ab6a-e8b85c7e9440"
+  "updatedAt": "2026-04-29T23:14:44.794Z",
+  "versionId": "637c7802-b7d2-4868-8258-7100ae96cb50"
 }
