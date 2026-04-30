@@ -1,0 +1,6153 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-04-29T18:33:06.000Z",
+    "createdAt": "2026-04-29T18:33:02.535Z",
+    "versionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf",
+    "workflowId": "4ptCvWvO0JbxQVxn",
+    "nodes": [
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          592,
+          832
+        ],
+        "id": "89cc58c4-1c56-4129-a832-30c3862a2b77",
+        "name": "Loop Over Items3"
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 1 * * *"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -512,
+          1136
+        ],
+        "id": "9f49397d-7a30-4f43-86a4-fcf519b20fb9",
+        "name": "1 am"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          592,
+          1040
+        ],
+        "id": "bedcc922-7cbb-4a5b-b101-d837a5cadafc",
+        "name": "Loop Over Items4"
+      },
+      {
+        "parameters": {
+          "operation": "deleteRecord",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tbls1xSwHHWBarhDd",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+          },
+          "id": "={{ $json.id }}"
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          832,
+          848
+        ],
+        "id": "a9705e21-1ee1-4cb6-a102-e8295a09c3bf",
+        "name": "Limpia Reservas Historicas",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "deleteRecord",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblz86YzR25zM2bPt",
+            "mode": "list",
+            "cachedResultName": "Escalaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+          },
+          "id": "={{ $json.id }}"
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          832,
+          1056
+        ],
+        "id": "9862b87b-b793-4c27-95e1-75165fcf5540",
+        "name": "Limpia Escalaciones Historicos",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tbls1xSwHHWBarhDd",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+          },
+          "filterByFormula": "={Fecha}<'{{ $json.Fecha_3_meses }}'",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          80,
+          832
+        ],
+        "id": "6b7d9f56-badb-46e9-85f3-281628587e1f",
+        "name": "Obtiene Reservas Históricas",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblz86YzR25zM2bPt",
+            "mode": "list",
+            "cachedResultName": "Escalaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+          },
+          "filterByFormula": "={Fecha Reporte}<'{{ $json.Fecha_7_dias }}'",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          80,
+          1040
+        ],
+        "id": "ce8824cf-4c71-426c-9d3d-2d8281541e98",
+        "name": "Obtiene Escalaciones Históricas",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT *\nFROM {{ $('Get Initial Data').item.json.schema }}.n8n_chat_histories\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          336,
+          1248
+        ],
+        "id": "a8d9babe-f65f-40ac-902c-acb6c36da687",
+        "name": "Obtiene Historial a Borrar",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id , fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          800,
+          1264
+        ],
+        "id": "4e0b1cbb-fa45-4545-bd59-a9a0d88f39df",
+        "name": "Respalda Conversación",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "deleteTable",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Initial Data').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "n8n_chat_histories",
+            "mode": "list",
+            "cachedResultName": "n8n_chat_histories"
+          },
+          "deleteCommand": "delete",
+          "where": {
+            "values": [
+              {
+                "column": "session_id",
+                "value": "={{ $('Loop Over Items5').item.json.session_id }}"
+              },
+              {
+                "column": "id",
+                "value": "={{ $('Loop Over Items5').item.json.id }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          1024,
+          1264
+        ],
+        "id": "c86bd31a-4775-4b7a-8dae-9a93449667f9",
+        "name": "Limpiando Historial",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "UPDATE {{ $json.schema }}.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          80,
+          1248
+        ],
+        "id": "1ae55733-d907-438c-974f-4bb588c4a4af",
+        "name": "ACtualiza Intentos Negativos",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          592,
+          1248
+        ],
+        "id": "1dd05d3f-d6f8-41f7-a7e0-2a5c6724a601",
+        "name": "Loop Over Items5"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "where": {
+            "values": [
+              {
+                "column": "tipo_atencion",
+                "value": "Humano"
+              },
+              {
+                "column": "status",
+                "value": "Bloqueo Temporal"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          96,
+          1984
+        ],
+        "id": "9d4f096a-fb24-4e56-ab26-5dcddff0fd96",
+        "name": "Busca Bloqueo Temporal",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          320,
+          1984
+        ],
+        "id": "d1ae0cce-0ae8-4b8a-9004-ac10e29cc711",
+        "name": "Loop Over Items6"
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          784,
+          2000
+        ],
+        "id": "22d65462-eb9a-47b5-ab35-c801c4aa0891",
+        "name": "Busca Registro AirTable",
+        "alwaysOutputData": true,
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Initial Data').item.json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "telefono": "={{ $json.telefono }}",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "tipo_atencion": "IA",
+              "status": "Activo",
+              "intencion": "Información",
+              "tipo_cliente": "Seguimiento",
+              "notas": "Reactivación de Cliente"
+            },
+            "matchingColumns": [
+              "telefono"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal_bloqueo",
+                "displayName": "sucursal_bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          560,
+          2000
+        ],
+        "id": "d44eac4a-ed64-46f8-ac39-0ff130785896",
+        "name": "Actualiza Atención",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "deleteRecord",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "id": "={{ $json.id }}"
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          1216,
+          1984
+        ],
+        "id": "7a4b2aef-720d-44ea-9593-234623d0848d",
+        "name": "Elimina Registro AirTable",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "cd862e0d-adbe-4541-8941-2f2ad9c11987",
+                "leftValue": "={{ $json.isNotEmpty() }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          1008,
+          2000
+        ],
+        "id": "db3aeaeb-664e-43c1-a9d9-90a7ea7c3be3",
+        "name": "If4"
+      },
+      {
+        "parameters": {
+          "content": "## Limpieza de Bloqueos Temporales",
+          "height": 288,
+          "width": 1424,
+          "color": 3
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          32,
+          1920
+        ],
+        "typeVersion": 1,
+        "id": "0d82690f-cd44-4ea3-b710-4de65ebc2ab3",
+        "name": "Sticky Note2"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
+                "name": "Fecha_3_meses",
+                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
+                "type": "string"
+              },
+              {
+                "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
+                "name": "Fecha_7_dias",
+                "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
+                "type": "string"
+              },
+              {
+                "id": "4dfe68f0-cdd4-42f8-bea0-896d32cbfe81",
+                "name": "schema",
+                "value": "osaki_main",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -288,
+          1136
+        ],
+        "id": "8e9a0821-b7c9-4ba1-88ad-f4e0e70ff810",
+        "name": "Get Initial Data"
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 * 10-23 * * *"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -896,
+          352
+        ],
+        "id": "63ddadc0-a4ea-45b7-b8b0-85090eb40f0b",
+        "name": "Cada 10 min"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          64,
+          96
+        ],
+        "id": "b362f256-0bd7-4ff1-9877-666b9a13e6d6",
+        "name": "Loop Over Items7"
+      },
+      {
+        "parameters": {
+          "jsCode": "return $input.all();"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          288,
+          112
+        ],
+        "id": "8d9bde4d-a452-4de7-8807-9b6c6363336b",
+        "name": "Get Data"
+      },
+      {
+        "parameters": {
+          "operation": "select",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Edit Fields').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "returnAll": true,
+          "where": {
+            "values": [
+              {
+                "column": "telefono",
+                "value": "={{ $json.fields[\"Teléfono\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          512,
+          112
+        ],
+        "id": "c33809e1-24a9-4f58-946b-64cf4bfaff1c",
+        "name": "Info Base",
+        "alwaysOutputData": true,
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// n8n Code node (JavaScript)\n// Comparación multivariable: Bloqueo, Atención, Sucursal y Tipo de Cliente\n\nconst dataVerdad = $(\"Get Data\").all();\nconst dataBase = $(\"Info Base\").all();\n\nconst baseMap = {};\ndataBase.forEach(item => {\n  const tel = String(item.json.telefono || '');\n  if (tel) baseMap[tel] = item.json;\n});\n\nconst results = [];\n\nfor (const itemVerdad of dataVerdad) {\n  const fields = itemVerdad.json.fields || {};\n  const telVerdad = String(fields[\"Teléfono\"] || '');\n  \n  // 1. Normalización de campos de Airtable (La Verdad)\n  const rawBloqueo = fields[\"Bloqueo\"] || '';\n  const bloqueoAT = rawBloqueo.startsWith('Bloqueo') ? rawBloqueo : `Bloqueo ${rawBloqueo}`;\n  \n  const atencionAT = fields[\"Atención\"] || '';\n  const tipoClienteAT = fields[\"Tipo\"] || '';\n  \n  // Extraer sucursal del array (tomamos el primer elemento)\n  const sucursalAT = (Array.isArray(fields[\"Sucursal\"]) && fields[\"Sucursal\"].length > 0) \n    ? fields[\"Sucursal\"][0] \n    : '';\n\n  const registroBase = baseMap[telVerdad];\n  \n  let necesitaActualizacion = false;\n  let datosBase = {\n    status: \"No existe\",\n    atencion: \"No existe\",\n    tipo: \"No existe\",\n    sucursal: \"No existe\"\n  };\n\n  if (registroBase) {\n    // 2. Extraer datos de la Base de Datos\n    datosBase.status = registroBase.status || '';\n    datosBase.atencion = registroBase.tipo_atencion || '';\n    datosBase.tipo = registroBase.tipo_cliente || '';\n    \n    // La sucursal en tu DB parece venir en sucursal_bloqueo.sucursal[0] según tu JSON\n    datosBase.sucursal = (registroBase.sucursal_bloqueo && Array.isArray(registroBase.sucursal_bloqueo.sucursal))\n      ? registroBase.sucursal_bloqueo.sucursal[0]\n      : '';\n\n    // 3. COMPARACIÓN CUÁDRUPLE\n    if (\n      bloqueoAT !== datosBase.status || \n      atencionAT !== datosBase.atencion || \n      tipoClienteAT !== datosBase.tipo || \n      sucursalAT !== datosBase.sucursal\n    ) {\n      necesitaActualizacion = true;\n    }\n  } else {\n    necesitaActualizacion = true;\n  }\n\n  results.push({\n    json: {\n      ...itemVerdad.json,\n      actualizar_db: necesitaActualizacion,\n      comparativa: {\n        en_airtable: {\n          bloqueo: bloqueoAT,\n          atencion: atencionAT,\n          tipo_cliente: tipoClienteAT,\n          sucursal: sucursalAT\n        },\n        en_base_datos: {\n          bloqueo: datosBase.status,\n          atencion: datosBase.atencion,\n          tipo_cliente: datosBase.tipo,\n          sucursal: datosBase.sucursal\n        }\n      }\n    }\n  });\n}\n\nreturn results;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          528,
+          320
+        ],
+        "id": "f5a8b266-2324-4d58-8064-56cbb2127ffe",
+        "name": "Compara Datos"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "e20e867f-a167-43e4-95ce-8008b3453b95",
+                "leftValue": "={{ $json.actualizar_db }}",
+                "rightValue": false,
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          720,
+          320
+        ],
+        "id": "0a08061a-8e69-4975-85c8-2b957ac90309",
+        "name": "If5"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Edit Fields').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "telefono": "={{ $json.fields[\"Teléfono\"] }}",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "tipo_atencion": "={{ $json.fields[\"Atención\"] }}",
+              "notas": "=(AirTable) Actualiza tipo de atención: {{ $('Compara Datos').item.json.fields[\"Atención\"] }}",
+              "status": "={{ $json.fields.Atención === \"IA\" ? \"Activo\" : \"Bloqueo \" + $json.fields.Bloqueo }}",
+              "sucursal_bloqueo": "={\"sucursal\": {{ $json.fields.Sucursal.toJsonString() }}}",
+              "tipo_cliente": "={{ $json.fields.Tipo }}"
+            },
+            "matchingColumns": [
+              "telefono"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal_bloqueo",
+                "displayName": "sucursal_bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          928,
+          304
+        ],
+        "id": "4d3c0345-747e-4582-baf8-4c7bdefc48fb",
+        "name": "Actualiza Cliente",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f358e296-03c9-426c-a4c3-9c2414a4f964",
+                "leftValue": "={{ $json.isEmpty() }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          720,
+          112
+        ],
+        "id": "80475834-f144-4712-a69e-2994431b0fd8",
+        "name": "If6"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Edit Fields').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "clientes",
+            "mode": "list",
+            "cachedResultName": "clientes"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "notas": "=Registro creado desde AirTable",
+              "telefono": "={{ $('Get Data').item.json.fields[\"Teléfono\"] }}",
+              "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "canal": "AirTable",
+              "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "tipo_atencion": "={{ $('Get Data').item.json.fields[\"Atención\"] }}",
+              "status": "=Bloqueo {{ $('Get Data').item.json.fields.Bloqueo }}",
+              "sucursal_bloqueo": "={\"sucursal\": {{ $('Get Data').item.json.fields.Sucursal.toJsonString() }}}",
+              "tipo_cliente": "={{ $json.tipo_cliente }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_registro",
+                "displayName": "fecha_registro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "canal",
+                "displayName": "canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "nombre",
+                "displayName": "nombre",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono",
+                "displayName": "telefono",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "correo",
+                "displayName": "correo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "servicio",
+                "displayName": "servicio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "fecha_modificacion",
+                "displayName": "fecha_modificacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "tipo_atencion",
+                "displayName": "tipo_atencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "post_cita",
+                "displayName": "post_cita",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "num_mensaje_largo",
+                "displayName": "num_mensaje_largo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "actitud",
+                "displayName": "actitud",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "negativos_intentos",
+                "displayName": "negativos_intentos",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "preferencias_alimentarias",
+                "displayName": "preferencias_alimentarias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "total_reservaciones",
+                "displayName": "total_reservaciones",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "ult_reservacion",
+                "displayName": "ult_reservacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "tipo_cliente",
+                "displayName": "tipo_cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "alergias",
+                "displayName": "alergias",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "pregunta_verifica_reserva",
+                "displayName": "pregunta_verifica_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "chatid",
+                "displayName": "chatid",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "sucursal_bloqueo",
+                "displayName": "sucursal_bloqueo",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "object",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          928,
+          96
+        ],
+        "id": "609230b2-a6db-4bd6-9770-f848147b6a43",
+        "name": "Ingresa Registro1",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "434df984-5bc1-4d40-8076-28367625b851",
+                "leftValue": "={{ $json.tipo_atencion }}",
+                "rightValue": "IA",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          1184,
+          304
+        ],
+        "id": "22ba0f84-2830-44d5-9a09-d696fc8a3efb",
+        "name": "If7"
+      },
+      {
+        "parameters": {
+          "operation": "deleteRecord",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "id": "={{ $('Compara Datos').item.json.id }}"
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          1408,
+          368
+        ],
+        "id": "df903448-e1a9-4cdf-88a9-22f470531feb",
+        "name": "Elimina Registro",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          288,
+          576
+        ],
+        "id": "207046a2-3a75-473b-9d9b-27ae30888dc4",
+        "name": "Loop Over Items9"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT \n    (SELECT value FROM {{ $json.schema }}.info_business WHERE concept = 'CapacidadReservas' LIMIT 1) as \"capacidadreservas\",\n    (SELECT value FROM {{ $json.schema }}.info_business WHERE concept = 'SKUEjemplo' LIMIT 1) as \"SKUEjemplo\"\n  ;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          -144,
+          576
+        ],
+        "id": "72641a18-114e-4878-a132-de1a4948a3a2",
+        "name": "Info Negocio",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Edit Fields').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "reservaciones",
+            "mode": "list",
+            "cachedResultName": "reservaciones"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "cliente": "={{ $json.fields.Nombre }}",
+              "fecha_reservacion": "={{ $json.fields.Fecha }}",
+              "hora_reservacion": "={{ $json.fields.Hora }}",
+              "numero_personas": "={{ $json.fields.Personas }}",
+              "estado": "={{ $json.fields.Estado }}",
+              "dia_semana": "={{ DateTime.fromISO($json.fields.Fecha).setLocale('es').toFormat('cccc').replace(/^./, c => c.toUpperCase()) }}",
+              "telefono_contacto": "={{ $json.fields[\"Teléfono\"] }}",
+              "notas": "={{ $json.fields.Notas }}",
+              "zona": "={{ $json.fields.Zona }}",
+              "telefono_solicitante": "={{ $json.fields[\"Teléfono\"] }}",
+              "created_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+              "codigo_reserva": "={{ $('Info Negocio').first().json.SKUEjemplo.split('-')[0] }}-{{ new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires' }).slice(2).replace(/-/g, '') }}-{{ Array.from({length: 4}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26))).join('') }}",
+              "mesas_reserva": "={{ Math.ceil(parseInt($json.fields.Personas) / 2) }}",
+              "Canal": "AirTable",
+              "ubicacion": "Central"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "cliente",
+                "displayName": "cliente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "fecha_reservacion",
+                "displayName": "fecha_reservacion",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "hora_reservacion",
+                "displayName": "hora_reservacion",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "time",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "numero_personas",
+                "displayName": "numero_personas",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "estado",
+                "displayName": "estado",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "dia_semana",
+                "displayName": "dia_semana",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "email_contacto",
+                "displayName": "email_contacto",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "telefono_contacto",
+                "displayName": "telefono_contacto",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "notas",
+                "displayName": "notas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "zona",
+                "displayName": "zona",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "ubicacion",
+                "displayName": "ubicacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "telefono_solicitante",
+                "displayName": "telefono_solicitante",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "created_at",
+                "displayName": "created_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "updated_at",
+                "displayName": "updated_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "codigo_reserva",
+                "displayName": "codigo_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "mesas_reserva",
+                "displayName": "mesas_reserva",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "intento_confirmacion",
+                "displayName": "intento_confirmacion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "Canal",
+                "displayName": "Canal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          512,
+          592
+        ],
+        "id": "fa32bf70-0541-412f-990c-130b0f20fb53",
+        "name": "Ingresa Reserva",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tbls1xSwHHWBarhDd",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+          },
+          "filterByFormula": "AND(IS_AFTER({Fecha}, DATEADD(TODAY(), -1, 'days')), {Código} = BLANK())",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.2,
+        "position": [
+          80,
+          576
+        ],
+        "id": "0cf788bb-20c5-4dfd-8d5a-a446ec4e9d3a",
+        "name": "Busca Reservas",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tbls1xSwHHWBarhDd",
+            "mode": "list",
+            "cachedResultName": "Reservaciones",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "id": "={{ $('Loop Over Items9').item.json.id }}",
+              "Código": "={{ $json.codigo_reserva }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": true,
+                "removed": false
+              },
+              {
+                "id": "Código",
+                "displayName": "Código",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Nombre",
+                "displayName": "Nombre",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Fecha",
+                "displayName": "Fecha",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "dateTime",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Hora",
+                "displayName": "Hora",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "10:30",
+                    "value": "10:30"
+                  },
+                  {
+                    "name": "11:00",
+                    "value": "11:00"
+                  },
+                  {
+                    "name": "11:30",
+                    "value": "11:30"
+                  },
+                  {
+                    "name": "12:00",
+                    "value": "12:00"
+                  },
+                  {
+                    "name": "12:30",
+                    "value": "12:30"
+                  },
+                  {
+                    "name": "13:00",
+                    "value": "13:00"
+                  },
+                  {
+                    "name": "13:30",
+                    "value": "13:30"
+                  },
+                  {
+                    "name": "14:00",
+                    "value": "14:00"
+                  },
+                  {
+                    "name": "14:30",
+                    "value": "14:30"
+                  },
+                  {
+                    "name": "15:00",
+                    "value": "15:00"
+                  },
+                  {
+                    "name": "15:30",
+                    "value": "15:30"
+                  },
+                  {
+                    "name": "16:00",
+                    "value": "16:00"
+                  },
+                  {
+                    "name": "16:30",
+                    "value": "16:30"
+                  },
+                  {
+                    "name": "17:00",
+                    "value": "17:00"
+                  },
+                  {
+                    "name": "17:30",
+                    "value": "17:30"
+                  },
+                  {
+                    "name": "18:00",
+                    "value": "18:00"
+                  },
+                  {
+                    "name": "18:30",
+                    "value": "18:30"
+                  },
+                  {
+                    "name": "19:00",
+                    "value": "19:00"
+                  },
+                  {
+                    "name": "19:30",
+                    "value": "19:30"
+                  },
+                  {
+                    "name": "20:00",
+                    "value": "20:00"
+                  },
+                  {
+                    "name": "20:30",
+                    "value": "20:30"
+                  },
+                  {
+                    "name": "21:00",
+                    "value": "21:00"
+                  },
+                  {
+                    "name": "21:30",
+                    "value": "21:30"
+                  },
+                  {
+                    "name": "22:00",
+                    "value": "22:00"
+                  },
+                  {
+                    "name": "22:30",
+                    "value": "22:30"
+                  },
+                  {
+                    "name": "23:00",
+                    "value": "23:00"
+                  }
+                ],
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Personas",
+                "displayName": "Personas",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Zona",
+                "displayName": "Zona",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Salón",
+                    "value": "Salón"
+                  },
+                  {
+                    "name": "Barra",
+                    "value": "Barra"
+                  },
+                  {
+                    "name": "VIP",
+                    "value": "VIP"
+                  },
+                  {
+                    "name": "Sin Asignar",
+                    "value": "Sin Asignar"
+                  }
+                ],
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Teléfono",
+                "displayName": "Teléfono",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Estado",
+                "displayName": "Estado",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "options",
+                "options": [
+                  {
+                    "name": "Confirmada",
+                    "value": "Confirmada"
+                  },
+                  {
+                    "name": "Pendiente",
+                    "value": "Pendiente"
+                  },
+                  {
+                    "name": "Cancelada",
+                    "value": "Cancelada"
+                  }
+                ],
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Notas",
+                "displayName": "Notas",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Fecha de Creación",
+                "displayName": "Fecha de Creación",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": true,
+                "removed": true
+              },
+              {
+                "id": "Última Modificación",
+                "displayName": "Última Modificación",
+                "required": false,
+                "defaultMatch": false,
+                "canBeUsedToMatch": true,
+                "display": true,
+                "type": "string",
+                "readOnly": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.1,
+        "position": [
+          720,
+          592
+        ],
+        "id": "fd92e22f-9c01-40e6-8f76-fec532b94fae",
+        "name": "Actualiza Reserva",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "search",
+          "base": {
+            "__rl": true,
+            "value": "apprK9MtBIY9lyLQT",
+            "mode": "list",
+            "cachedResultName": "Sistema Osaki",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tblcwQ5NYWtFTX713",
+            "mode": "list",
+            "cachedResultName": "Clientes",
+            "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.airtable",
+        "typeVersion": 2.2,
+        "position": [
+          -160,
+          96
+        ],
+        "id": "0cab672f-be13-428c-b315-46d7c75fc3a0",
+        "name": "Obtiene Clientes",
+        "credentials": {
+          "airtableTokenApi": {
+            "id": "KlZpJ3cetMbQRAcX",
+            "name": "Osaki Tablero"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4d70a914-296d-4453-b9d9-0a51ab6a7366",
+                "name": "schema",
+                "value": "osaki_main",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -704,
+          352
+        ],
+        "id": "6f1aeeff-8697-4914-a57e-2a81bba07dcf",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          608,
+          1456
+        ],
+        "id": "6f649f3a-84b4-493f-8f8a-c0c93d3ff245",
+        "name": "Loop Over Items8"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          592,
+          1664
+        ],
+        "id": "35e60285-f7d7-4f05-8b4c-8f3bcb59d2d8",
+        "name": "Loop Over Items11"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT *\nFROM {{ $json.schema }}.n8n_chat_histories_delivery_calle_47\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          336,
+          1456
+        ],
+        "id": "1dd8b2f8-ac55-40b3-a1c0-37edae562a19",
+        "name": "Obtiene Historial a Borrar Deli Calle 47",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT *\nFROM {{ $json.schema }}.n8n_chat_histories_delivery_calle_9\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          336,
+          1664
+        ],
+        "id": "e8a148ae-2ea3-4b98-bf1a-386172c1ec07",
+        "name": "Obtiene Historial a Borrar Deli Calle 9",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_47_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id, fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_47\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          816,
+          1472
+        ],
+        "id": "940eee96-427f-4562-812a-8755afbce839",
+        "name": "Respalda Conversación Deli 47",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_9_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id, fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_9\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          800,
+          1680
+        ],
+        "id": "a27f606b-06a4-4e0c-a3a9-97b7285b8895",
+        "name": "Respalda Conversación Deli 9",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "deleteTable",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Initial Data').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "n8n_chat_histories_delivery_calle_47",
+            "mode": "list",
+            "cachedResultName": "n8n_chat_histories_delivery_calle_47"
+          },
+          "deleteCommand": "delete",
+          "where": {
+            "values": [
+              {
+                "column": "session_id",
+                "value": "={{ $('Loop Over Items8').item.json.session_id }}"
+              },
+              {
+                "column": "id",
+                "value": "={{ $('Loop Over Items8').item.json.id }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          1040,
+          1472
+        ],
+        "id": "2541a1c7-a7ec-4c15-94a3-937d716993ee",
+        "name": "Limpiando Historial Deli 47",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "deleteTable",
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Get Initial Data').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "n8n_chat_histories_delivery_calle_9",
+            "mode": "list",
+            "cachedResultName": "n8n_chat_histories_delivery_calle_9"
+          },
+          "deleteCommand": "delete",
+          "where": {
+            "values": [
+              {
+                "column": "session_id",
+                "value": "={{ $('Loop Over Items11').item.json.session_id }}"
+              },
+              {
+                "column": "id",
+                "value": "={{ $('Loop Over Items11').item.json.id }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          1024,
+          1680
+        ],
+        "id": "ecacfa40-277c-48cc-90a1-6de86aefcdd6",
+        "name": "Limpiando Historial Deli 9",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Loop Over Items3": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Limpia Reservas Historicas",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "1 am": {
+        "main": [
+          [
+            {
+              "node": "Get Initial Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items4": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Limpia Escalaciones Historicos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpia Reservas Historicas": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpia Escalaciones Historicos": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Reservas Históricas": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Escalaciones Históricas": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Historial a Borrar": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Respalda Conversación": {
+        "main": [
+          [
+            {
+              "node": "Limpiando Historial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpiando Historial": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "ACtualiza Intentos Negativos": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Historial a Borrar",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items5": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Respalda Conversación",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca Bloqueo Temporal": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items6": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Actualiza Atención",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca Registro AirTable": {
+        "main": [
+          [
+            {
+              "node": "If4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Atención": {
+        "main": [
+          [
+            {
+              "node": "Busca Registro AirTable",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Elimina Registro AirTable": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If4": {
+        "main": [
+          [
+            {
+              "node": "Elimina Registro AirTable",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Initial Data": {
+        "main": [
+          [
+            {
+              "node": "Obtiene Escalaciones Históricas",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Reservas Históricas",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "ACtualiza Intentos Negativos",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Busca Bloqueo Temporal",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Historial a Borrar Deli Calle 47",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Historial a Borrar Deli Calle 9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Cada 10 min": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items7": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Get Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Data": {
+        "main": [
+          [
+            {
+              "node": "Info Base",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Info Base": {
+        "main": [
+          [
+            {
+              "node": "If6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Compara Datos": {
+        "main": [
+          [
+            {
+              "node": "If5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If5": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Cliente",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Cliente": {
+        "main": [
+          [
+            {
+              "node": "If7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If6": {
+        "main": [
+          [
+            {
+              "node": "Ingresa Registro1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Compara Datos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ingresa Registro1": {
+        "main": [
+          [
+            {
+              "node": "If7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If7": {
+        "main": [
+          [
+            {
+              "node": "Elimina Registro",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop Over Items7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Elimina Registro": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items9": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Ingresa Reserva",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Info Negocio": {
+        "main": [
+          [
+            {
+              "node": "Busca Reservas",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ingresa Reserva": {
+        "main": [
+          [
+            {
+              "node": "Actualiza Reserva",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca Reservas": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Actualiza Reserva": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Clientes": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Info Negocio",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Obtiene Clientes",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items8": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Respalda Conversación Deli 47",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items11": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Respalda Conversación Deli 9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Historial a Borrar Deli Calle 47": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items8",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Obtiene Historial a Borrar Deli Calle 9": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items11",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Respalda Conversación Deli 47": {
+        "main": [
+          [
+            {
+              "node": "Limpiando Historial Deli 47",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Respalda Conversación Deli 9": {
+        "main": [
+          [
+            {
+              "node": "Limpiando Historial Deli 9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpiando Historial Deli 47": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items8",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpiando Historial Deli 9": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items11",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Temikia Agency",
+    "name": "Version 558e0182",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf",
+  "connections": {
+    "Loop Over Items3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Limpia Reservas Historicas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1 am": {
+      "main": [
+        [
+          {
+            "node": "Get Initial Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items4": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Limpia Escalaciones Historicos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpia Reservas Historicas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpia Escalaciones Historicos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Reservas Históricas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Escalaciones Históricas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Historial a Borrar": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respalda Conversación": {
+      "main": [
+        [
+          {
+            "node": "Limpiando Historial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpiando Historial": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ACtualiza Intentos Negativos": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Historial a Borrar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Respalda Conversación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Bloqueo Temporal": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items6": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Actualiza Atención",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Registro AirTable": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Atención": {
+      "main": [
+        [
+          {
+            "node": "Busca Registro AirTable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Elimina Registro AirTable": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Elimina Registro AirTable",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Initial Data": {
+      "main": [
+        [
+          {
+            "node": "Obtiene Escalaciones Históricas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Reservas Históricas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ACtualiza Intentos Negativos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Busca Bloqueo Temporal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Historial a Borrar Deli Calle 47",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Historial a Borrar Deli Calle 9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cada 10 min": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items7": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Data": {
+      "main": [
+        [
+          {
+            "node": "Info Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Info Base": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compara Datos": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Cliente": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Ingresa Registro1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Compara Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingresa Registro1": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Elimina Registro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Elimina Registro": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items9": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Ingresa Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Info Negocio": {
+      "main": [
+        [
+          {
+            "node": "Busca Reservas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingresa Reserva": {
+      "main": [
+        [
+          {
+            "node": "Actualiza Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Reservas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualiza Reserva": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Clientes": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Info Negocio",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Obtiene Clientes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items8": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Respalda Conversación Deli 47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items11": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Respalda Conversación Deli 9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Historial a Borrar Deli Calle 47": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtiene Historial a Borrar Deli Calle 9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respalda Conversación Deli 47": {
+      "main": [
+        [
+          {
+            "node": "Limpiando Historial Deli 47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respalda Conversación Deli 9": {
+      "main": [
+        [
+          {
+            "node": "Limpiando Historial Deli 9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpiando Historial Deli 47": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpiando Historial Deli 9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-28T21:09:12.774Z",
+  "id": "4ptCvWvO0JbxQVxn",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cronograma AirTable Nuevo",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        592,
+        832
+      ],
+      "id": "89cc58c4-1c56-4129-a832-30c3862a2b77",
+      "name": "Loop Over Items3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 1 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -512,
+        1136
+      ],
+      "id": "9f49397d-7a30-4f43-86a4-fcf519b20fb9",
+      "name": "1 am"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        592,
+        1040
+      ],
+      "id": "bedcc922-7cbb-4a5b-b101-d837a5cadafc",
+      "name": "Loop Over Items4"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbls1xSwHHWBarhDd",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        832,
+        848
+      ],
+      "id": "a9705e21-1ee1-4cb6-a102-e8295a09c3bf",
+      "name": "Limpia Reservas Historicas",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblz86YzR25zM2bPt",
+          "mode": "list",
+          "cachedResultName": "Escalaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        832,
+        1056
+      ],
+      "id": "9862b87b-b793-4c27-95e1-75165fcf5540",
+      "name": "Limpia Escalaciones Historicos",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbls1xSwHHWBarhDd",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+        },
+        "filterByFormula": "={Fecha}<'{{ $json.Fecha_3_meses }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        832
+      ],
+      "id": "6b7d9f56-badb-46e9-85f3-281628587e1f",
+      "name": "Obtiene Reservas Históricas",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblz86YzR25zM2bPt",
+          "mode": "list",
+          "cachedResultName": "Escalaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblz86YzR25zM2bPt"
+        },
+        "filterByFormula": "={Fecha Reporte}<'{{ $json.Fecha_7_dias }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        1040
+      ],
+      "id": "ce8824cf-4c71-426c-9d3d-2d8281541e98",
+      "name": "Obtiene Escalaciones Históricas",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM {{ $('Get Initial Data').item.json.schema }}.n8n_chat_histories\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        336,
+        1248
+      ],
+      "id": "a8d9babe-f65f-40ac-902c-acb6c36da687",
+      "name": "Obtiene Historial a Borrar",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id , fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        800,
+        1264
+      ],
+      "id": "4e0b1cbb-fa45-4545-bd59-a9a0d88f39df",
+      "name": "Respalda Conversación",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Get Initial Data').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $('Loop Over Items5').item.json.session_id }}"
+            },
+            {
+              "column": "id",
+              "value": "={{ $('Loop Over Items5').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1024,
+        1264
+      ],
+      "id": "c86bd31a-4775-4b7a-8dae-9a93449667f9",
+      "name": "Limpiando Historial",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE {{ $json.schema }}.clientes\nSET negativos_intentos=0\nWHERE negativos_intentos != 0\n;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        80,
+        1248
+      ],
+      "id": "1ae55733-d907-438c-974f-4bb588c4a4af",
+      "name": "ACtualiza Intentos Negativos",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        592,
+        1248
+      ],
+      "id": "1dd05d3f-d6f8-41f7-a7e0-2a5c6724a601",
+      "name": "Loop Over Items5"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "tipo_atencion",
+              "value": "Humano"
+            },
+            {
+              "column": "status",
+              "value": "Bloqueo Temporal"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        96,
+        1984
+      ],
+      "id": "9d4f096a-fb24-4e56-ab26-5dcddff0fd96",
+      "name": "Busca Bloqueo Temporal",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        320,
+        1984
+      ],
+      "id": "d1ae0cce-0ae8-4b8a-9004-ac10e29cc711",
+      "name": "Loop Over Items6"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "filterByFormula": "={Teléfono}='{{ $json.telefono.toString() }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        784,
+        2000
+      ],
+      "id": "22d65462-eb9a-47b5-ab35-c801c4aa0891",
+      "name": "Busca Registro AirTable",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Get Initial Data').item.json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefono": "={{ $json.telefono }}",
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "tipo_atencion": "IA",
+            "status": "Activo",
+            "intencion": "Información",
+            "tipo_cliente": "Seguimiento",
+            "notas": "Reactivación de Cliente"
+          },
+          "matchingColumns": [
+            "telefono"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "sucursal_bloqueo",
+              "displayName": "sucursal_bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        560,
+        2000
+      ],
+      "id": "d44eac4a-ed64-46f8-ac39-0ff130785896",
+      "name": "Actualiza Atención",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1216,
+        1984
+      ],
+      "id": "7a4b2aef-720d-44ea-9593-234623d0848d",
+      "name": "Elimina Registro AirTable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cd862e0d-adbe-4541-8941-2f2ad9c11987",
+              "leftValue": "={{ $json.isNotEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1008,
+        2000
+      ],
+      "id": "db3aeaeb-664e-43c1-a9d9-90a7ea7c3be3",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "content": "## Limpieza de Bloqueos Temporales",
+        "height": 288,
+        "width": 1424,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        32,
+        1920
+      ],
+      "typeVersion": 1,
+      "id": "0d82690f-cd44-4ea3-b710-4de65ebc2ab3",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e20ecaad-75ce-4168-ba0b-9a04392867a1",
+              "name": "Fecha_3_meses",
+              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ months: 3 }).toFormat(\"yyyy-MM-dd\") }}",
+              "type": "string"
+            },
+            {
+              "id": "cd5547d9-665f-4e0d-be02-899ed4308282",
+              "name": "Fecha_7_dias",
+              "value": "={{ $now.setZone('America/Argentina/Buenos_Aires').minus({ days: 7 }).toFormat(\"yyyy-MM-dd\") }}",
+              "type": "string"
+            },
+            {
+              "id": "4dfe68f0-cdd4-42f8-bea0-896d32cbfe81",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -288,
+        1136
+      ],
+      "id": "8e9a0821-b7c9-4ba1-88ad-f4e0e70ff810",
+      "name": "Get Initial Data"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 * 10-23 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -896,
+        352
+      ],
+      "id": "63ddadc0-a4ea-45b7-b8b0-85090eb40f0b",
+      "name": "Cada 10 min"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        64,
+        96
+      ],
+      "id": "b362f256-0bd7-4ff1-9877-666b9a13e6d6",
+      "name": "Loop Over Items7"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        112
+      ],
+      "id": "8d9bde4d-a452-4de7-8807-9b6c6363336b",
+      "name": "Get Data"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "telefono",
+              "value": "={{ $json.fields[\"Teléfono\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        512,
+        112
+      ],
+      "id": "c33809e1-24a9-4f58-946b-64cf4bfaff1c",
+      "name": "Info Base",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n// Comparación multivariable: Bloqueo, Atención, Sucursal y Tipo de Cliente\n\nconst dataVerdad = $(\"Get Data\").all();\nconst dataBase = $(\"Info Base\").all();\n\nconst baseMap = {};\ndataBase.forEach(item => {\n  const tel = String(item.json.telefono || '');\n  if (tel) baseMap[tel] = item.json;\n});\n\nconst results = [];\n\nfor (const itemVerdad of dataVerdad) {\n  const fields = itemVerdad.json.fields || {};\n  const telVerdad = String(fields[\"Teléfono\"] || '');\n  \n  // 1. Normalización de campos de Airtable (La Verdad)\n  const rawBloqueo = fields[\"Bloqueo\"] || '';\n  const bloqueoAT = rawBloqueo.startsWith('Bloqueo') ? rawBloqueo : `Bloqueo ${rawBloqueo}`;\n  \n  const atencionAT = fields[\"Atención\"] || '';\n  const tipoClienteAT = fields[\"Tipo\"] || '';\n  \n  // Extraer sucursal del array (tomamos el primer elemento)\n  const sucursalAT = (Array.isArray(fields[\"Sucursal\"]) && fields[\"Sucursal\"].length > 0) \n    ? fields[\"Sucursal\"][0] \n    : '';\n\n  const registroBase = baseMap[telVerdad];\n  \n  let necesitaActualizacion = false;\n  let datosBase = {\n    status: \"No existe\",\n    atencion: \"No existe\",\n    tipo: \"No existe\",\n    sucursal: \"No existe\"\n  };\n\n  if (registroBase) {\n    // 2. Extraer datos de la Base de Datos\n    datosBase.status = registroBase.status || '';\n    datosBase.atencion = registroBase.tipo_atencion || '';\n    datosBase.tipo = registroBase.tipo_cliente || '';\n    \n    // La sucursal en tu DB parece venir en sucursal_bloqueo.sucursal[0] según tu JSON\n    datosBase.sucursal = (registroBase.sucursal_bloqueo && Array.isArray(registroBase.sucursal_bloqueo.sucursal))\n      ? registroBase.sucursal_bloqueo.sucursal[0]\n      : '';\n\n    // 3. COMPARACIÓN CUÁDRUPLE\n    if (\n      bloqueoAT !== datosBase.status || \n      atencionAT !== datosBase.atencion || \n      tipoClienteAT !== datosBase.tipo || \n      sucursalAT !== datosBase.sucursal\n    ) {\n      necesitaActualizacion = true;\n    }\n  } else {\n    necesitaActualizacion = true;\n  }\n\n  results.push({\n    json: {\n      ...itemVerdad.json,\n      actualizar_db: necesitaActualizacion,\n      comparativa: {\n        en_airtable: {\n          bloqueo: bloqueoAT,\n          atencion: atencionAT,\n          tipo_cliente: tipoClienteAT,\n          sucursal: sucursalAT\n        },\n        en_base_datos: {\n          bloqueo: datosBase.status,\n          atencion: datosBase.atencion,\n          tipo_cliente: datosBase.tipo,\n          sucursal: datosBase.sucursal\n        }\n      }\n    }\n  });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        320
+      ],
+      "id": "f5a8b266-2324-4d58-8064-56cbb2127ffe",
+      "name": "Compara Datos"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e20e867f-a167-43e4-95ce-8008b3453b95",
+              "leftValue": "={{ $json.actualizar_db }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        720,
+        320
+      ],
+      "id": "0a08061a-8e69-4975-85c8-2b957ac90309",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefono": "={{ $json.fields[\"Teléfono\"] }}",
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "tipo_atencion": "={{ $json.fields[\"Atención\"] }}",
+            "notas": "=(AirTable) Actualiza tipo de atención: {{ $('Compara Datos').item.json.fields[\"Atención\"] }}",
+            "status": "={{ $json.fields.Atención === \"IA\" ? \"Activo\" : \"Bloqueo \" + $json.fields.Bloqueo }}",
+            "sucursal_bloqueo": "={\"sucursal\": {{ $json.fields.Sucursal.toJsonString() }}}",
+            "tipo_cliente": "={{ $json.fields.Tipo }}"
+          },
+          "matchingColumns": [
+            "telefono"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "sucursal_bloqueo",
+              "displayName": "sucursal_bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        928,
+        304
+      ],
+      "id": "4d3c0345-747e-4582-baf8-4c7bdefc48fb",
+      "name": "Actualiza Cliente",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f358e296-03c9-426c-a4c3-9c2414a4f964",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        720,
+        112
+      ],
+      "id": "80475834-f144-4712-a69e-2994431b0fd8",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clientes",
+          "mode": "list",
+          "cachedResultName": "clientes"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "notas": "=Registro creado desde AirTable",
+            "telefono": "={{ $('Get Data').item.json.fields[\"Teléfono\"] }}",
+            "fecha_registro": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "canal": "AirTable",
+            "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "tipo_atencion": "={{ $('Get Data').item.json.fields[\"Atención\"] }}",
+            "status": "=Bloqueo {{ $('Get Data').item.json.fields.Bloqueo }}",
+            "sucursal_bloqueo": "={\"sucursal\": {{ $('Get Data').item.json.fields.Sucursal.toJsonString() }}}",
+            "tipo_cliente": "={{ $json.tipo_cliente }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_registro",
+              "displayName": "fecha_registro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono",
+              "displayName": "telefono",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "correo",
+              "displayName": "correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "servicio",
+              "displayName": "servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fecha_modificacion",
+              "displayName": "fecha_modificacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_atencion",
+              "displayName": "tipo_atencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "post_cita",
+              "displayName": "post_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "num_mensaje_largo",
+              "displayName": "num_mensaje_largo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "actitud",
+              "displayName": "actitud",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "negativos_intentos",
+              "displayName": "negativos_intentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "preferencias_alimentarias",
+              "displayName": "preferencias_alimentarias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "total_reservaciones",
+              "displayName": "total_reservaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ult_reservacion",
+              "displayName": "ult_reservacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "tipo_cliente",
+              "displayName": "tipo_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "alergias",
+              "displayName": "alergias",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "pregunta_verifica_reserva",
+              "displayName": "pregunta_verifica_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "chatid",
+              "displayName": "chatid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "sucursal_bloqueo",
+              "displayName": "sucursal_bloqueo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        928,
+        96
+      ],
+      "id": "609230b2-a6db-4bd6-9770-f848147b6a43",
+      "name": "Ingresa Registro1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "434df984-5bc1-4d40-8076-28367625b851",
+              "leftValue": "={{ $json.tipo_atencion }}",
+              "rightValue": "IA",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1184,
+        304
+      ],
+      "id": "22ba0f84-2830-44d5-9a09-d696fc8a3efb",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "id": "={{ $('Compara Datos').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1408,
+        368
+      ],
+      "id": "df903448-e1a9-4cdf-88a9-22f470531feb",
+      "name": "Elimina Registro",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        288,
+        576
+      ],
+      "id": "207046a2-3a75-473b-9d9b-27ae30888dc4",
+      "name": "Loop Over Items9"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    (SELECT value FROM {{ $json.schema }}.info_business WHERE concept = 'CapacidadReservas' LIMIT 1) as \"capacidadreservas\",\n    (SELECT value FROM {{ $json.schema }}.info_business WHERE concept = 'SKUEjemplo' LIMIT 1) as \"SKUEjemplo\"\n  ;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -144,
+        576
+      ],
+      "id": "72641a18-114e-4878-a132-de1a4948a3a2",
+      "name": "Info Negocio",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Edit Fields').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "reservaciones",
+          "mode": "list",
+          "cachedResultName": "reservaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "cliente": "={{ $json.fields.Nombre }}",
+            "fecha_reservacion": "={{ $json.fields.Fecha }}",
+            "hora_reservacion": "={{ $json.fields.Hora }}",
+            "numero_personas": "={{ $json.fields.Personas }}",
+            "estado": "={{ $json.fields.Estado }}",
+            "dia_semana": "={{ DateTime.fromISO($json.fields.Fecha).setLocale('es').toFormat('cccc').replace(/^./, c => c.toUpperCase()) }}",
+            "telefono_contacto": "={{ $json.fields[\"Teléfono\"] }}",
+            "notas": "={{ $json.fields.Notas }}",
+            "zona": "={{ $json.fields.Zona }}",
+            "telefono_solicitante": "={{ $json.fields[\"Teléfono\"] }}",
+            "created_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "updated_at": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
+            "codigo_reserva": "={{ $('Info Negocio').first().json.SKUEjemplo.split('-')[0] }}-{{ new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires' }).slice(2).replace(/-/g, '') }}-{{ Array.from({length: 4}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26))).join('') }}",
+            "mesas_reserva": "={{ Math.ceil(parseInt($json.fields.Personas) / 2) }}",
+            "Canal": "AirTable",
+            "ubicacion": "Central"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_reservacion",
+              "displayName": "fecha_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hora_reservacion",
+              "displayName": "hora_reservacion",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero_personas",
+              "displayName": "numero_personas",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dia_semana",
+              "displayName": "dia_semana",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email_contacto",
+              "displayName": "email_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "telefono_contacto",
+              "displayName": "telefono_contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notas",
+              "displayName": "notas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zona",
+              "displayName": "zona",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ubicacion",
+              "displayName": "ubicacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefono_solicitante",
+              "displayName": "telefono_solicitante",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "codigo_reserva",
+              "displayName": "codigo_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mesas_reserva",
+              "displayName": "mesas_reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "intento_confirmacion",
+              "displayName": "intento_confirmacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        512,
+        592
+      ],
+      "id": "fa32bf70-0541-412f-990c-130b0f20fb53",
+      "name": "Ingresa Reserva",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbls1xSwHHWBarhDd",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+        },
+        "filterByFormula": "AND(IS_AFTER({Fecha}, DATEADD(TODAY(), -1, 'days')), {Código} = BLANK())",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        576
+      ],
+      "id": "0cf788bb-20c5-4dfd-8d5a-a446ec4e9d3a",
+      "name": "Busca Reservas",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbls1xSwHHWBarhDd",
+          "mode": "list",
+          "cachedResultName": "Reservaciones",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Loop Over Items9').item.json.id }}",
+            "Código": "={{ $json.codigo_reserva }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Código",
+              "displayName": "Código",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Hora",
+              "displayName": "Hora",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "10:30",
+                  "value": "10:30"
+                },
+                {
+                  "name": "11:00",
+                  "value": "11:00"
+                },
+                {
+                  "name": "11:30",
+                  "value": "11:30"
+                },
+                {
+                  "name": "12:00",
+                  "value": "12:00"
+                },
+                {
+                  "name": "12:30",
+                  "value": "12:30"
+                },
+                {
+                  "name": "13:00",
+                  "value": "13:00"
+                },
+                {
+                  "name": "13:30",
+                  "value": "13:30"
+                },
+                {
+                  "name": "14:00",
+                  "value": "14:00"
+                },
+                {
+                  "name": "14:30",
+                  "value": "14:30"
+                },
+                {
+                  "name": "15:00",
+                  "value": "15:00"
+                },
+                {
+                  "name": "15:30",
+                  "value": "15:30"
+                },
+                {
+                  "name": "16:00",
+                  "value": "16:00"
+                },
+                {
+                  "name": "16:30",
+                  "value": "16:30"
+                },
+                {
+                  "name": "17:00",
+                  "value": "17:00"
+                },
+                {
+                  "name": "17:30",
+                  "value": "17:30"
+                },
+                {
+                  "name": "18:00",
+                  "value": "18:00"
+                },
+                {
+                  "name": "18:30",
+                  "value": "18:30"
+                },
+                {
+                  "name": "19:00",
+                  "value": "19:00"
+                },
+                {
+                  "name": "19:30",
+                  "value": "19:30"
+                },
+                {
+                  "name": "20:00",
+                  "value": "20:00"
+                },
+                {
+                  "name": "20:30",
+                  "value": "20:30"
+                },
+                {
+                  "name": "21:00",
+                  "value": "21:00"
+                },
+                {
+                  "name": "21:30",
+                  "value": "21:30"
+                },
+                {
+                  "name": "22:00",
+                  "value": "22:00"
+                },
+                {
+                  "name": "22:30",
+                  "value": "22:30"
+                },
+                {
+                  "name": "23:00",
+                  "value": "23:00"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Personas",
+              "displayName": "Personas",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zona",
+              "displayName": "Zona",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Salón",
+                  "value": "Salón"
+                },
+                {
+                  "name": "Barra",
+                  "value": "Barra"
+                },
+                {
+                  "name": "VIP",
+                  "value": "VIP"
+                },
+                {
+                  "name": "Sin Asignar",
+                  "value": "Sin Asignar"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Confirmada",
+                  "value": "Confirmada"
+                },
+                {
+                  "name": "Pendiente",
+                  "value": "Pendiente"
+                },
+                {
+                  "name": "Cancelada",
+                  "value": "Cancelada"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Notas",
+              "displayName": "Notas",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Fecha de Creación",
+              "displayName": "Fecha de Creación",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Última Modificación",
+              "displayName": "Última Modificación",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        592
+      ],
+      "id": "fd92e22f-9c01-40e6-8f76-fec532b94fae",
+      "name": "Actualiza Reserva",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apprK9MtBIY9lyLQT",
+          "mode": "list",
+          "cachedResultName": "Sistema Osaki",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcwQ5NYWtFTX713",
+          "mode": "list",
+          "cachedResultName": "Clientes",
+          "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        96
+      ],
+      "id": "0cab672f-be13-428c-b315-46d7c75fc3a0",
+      "name": "Obtiene Clientes",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "KlZpJ3cetMbQRAcX",
+          "name": "Osaki Tablero"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4d70a914-296d-4453-b9d9-0a51ab6a7366",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -704,
+        352
+      ],
+      "id": "6f1aeeff-8697-4914-a57e-2a81bba07dcf",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        608,
+        1456
+      ],
+      "id": "6f649f3a-84b4-493f-8f8a-c0c93d3ff245",
+      "name": "Loop Over Items8"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        592,
+        1664
+      ],
+      "id": "35e60285-f7d7-4f05-8b4c-8f3bcb59d2d8",
+      "name": "Loop Over Items11"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM {{ $json.schema }}.n8n_chat_histories_delivery_calle_47\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        336,
+        1456
+      ],
+      "id": "1dd8b2f8-ac55-40b3-a1c0-37edae562a19",
+      "name": "Obtiene Historial a Borrar Deli Calle 47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM {{ $json.schema }}.n8n_chat_histories_delivery_calle_9\nWHERE fec_registro < NOW() - INTERVAL '4 days'\nORDER BY session_id asc, id asc;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        336,
+        1664
+      ],
+      "id": "e8a148ae-2ea3-4b98-bf1a-386172c1ec07",
+      "name": "Obtiene Historial a Borrar Deli Calle 9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_47_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id, fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_47\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        816,
+        1472
+      ],
+      "id": "940eee96-427f-4562-812a-8755afbce839",
+      "name": "Respalda Conversación Deli 47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "  INSERT INTO {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_9_bkup\n  (session_id,message, old_id, fec_registro)\n  select session_id,message, id, fec_registro\n  from {{ $('Get Initial Data').first().json.schema }}.n8n_chat_histories_delivery_calle_9\n  WHERE session_id='{{ $json.session_id }}'\n  and id ={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        800,
+        1680
+      ],
+      "id": "a27f606b-06a4-4e0c-a3a9-97b7285b8895",
+      "name": "Respalda Conversación Deli 9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Get Initial Data').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories_delivery_calle_47",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories_delivery_calle_47"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $('Loop Over Items8').item.json.session_id }}"
+            },
+            {
+              "column": "id",
+              "value": "={{ $('Loop Over Items8').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1040,
+        1472
+      ],
+      "id": "2541a1c7-a7ec-4c15-94a3-937d716993ee",
+      "name": "Limpiando Historial Deli 47",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Get Initial Data').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories_delivery_calle_9",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories_delivery_calle_9"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $('Loop Over Items11').item.json.session_id }}"
+            },
+            {
+              "column": "id",
+              "value": "={{ $('Loop Over Items11').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1024,
+        1680
+      ],
+      "id": "ecacfa40-277c-48cc-90a1-6de86aefcdd6",
+      "name": "Limpiando Historial Deli 9",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-04-28T21:09:12.779Z",
+      "createdAt": "2026-04-28T21:09:12.779Z",
+      "role": "workflow:owner",
+      "workflowId": "4ptCvWvO0JbxQVxn",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": {
+    "node:1 am": {
+      "recurrenceRules": []
+    },
+    "node:Cada 10 min": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2026-04-29T18:33:36.233Z",
+  "versionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf"
+}
