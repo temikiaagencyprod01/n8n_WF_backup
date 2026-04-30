@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-26T04:29:57.000Z",
-    "createdAt": "2026-04-26T04:29:56.344Z",
-    "versionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d",
+    "updatedAt": "2026-04-29T18:52:48.000Z",
+    "createdAt": "2026-04-29T18:52:45.540Z",
+    "versionId": "29e281ba-7edd-472b-8704-18273cb3e31f",
     "workflowId": "ZpYgShc1li13uf3h",
     "nodes": [
       {
@@ -11,7 +11,7 @@
         "type": "n8n-nodes-base.errorTrigger",
         "typeVersion": 1,
         "position": [
-          -272,
+          -480,
           -80
         ],
         "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
@@ -22,15 +22,21 @@
           "assignments": {
             "assignments": [
               {
-                "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
-                "name": "workflowName",
-                "value": "={{ $json.workflow.name }}",
+                "id": "2ba99237-371e-48e3-b3b0-5b8bfa949593",
+                "name": "entorno",
+                "value": "Osaki",
                 "type": "string"
               },
               {
                 "id": "b8c88f39-62df-4627-85ff-533944e5be35",
                 "name": "id",
                 "value": "={{ $json.execution.id }}",
+                "type": "string"
+              },
+              {
+                "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
+                "name": "workflowName",
+                "value": "={{ $json.workflow.name }}",
                 "type": "string"
               },
               {
@@ -60,7 +66,7 @@
               {
                 "id": "20bd6767-6e67-41c7-a8ad-ef21f3edfdba",
                 "name": "messages",
-                "value": "={{ $json.execution.error.messages }}",
+                "value": "={{ $json.execution.error.messages }}\n",
                 "type": "string"
               }
             ]
@@ -70,7 +76,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -48,
+          -80,
           -80
         ],
         "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
@@ -79,7 +85,7 @@
       {
         "parameters": {
           "chatId": "-1003789740019",
-          "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
+          "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Entorno</b>: \"+$json.entorno +\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
           "additionalFields": {
             "appendAttribution": false,
             "parse_mode": "HTML"
@@ -127,11 +133,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 200ca0c0",
+    "name": "Version 29e281ba",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d",
+  "activeVersionId": "29e281ba-7edd-472b-8704-18273cb3e31f",
   "connections": {
     "Error Trigger": {
       "main": [
@@ -169,7 +175,7 @@
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
       "position": [
-        -272,
+        -480,
         -80
       ],
       "id": "8062cb00-48b8-4a9d-bf3e-d2621d1803f9",
@@ -180,15 +186,21 @@
         "assignments": {
           "assignments": [
             {
-              "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
-              "name": "workflowName",
-              "value": "={{ $json.workflow.name }}",
+              "id": "2ba99237-371e-48e3-b3b0-5b8bfa949593",
+              "name": "entorno",
+              "value": "Osaki",
               "type": "string"
             },
             {
               "id": "b8c88f39-62df-4627-85ff-533944e5be35",
               "name": "id",
               "value": "={{ $json.execution.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2f5b26b2-3972-4d23-9167-37e30a1c4e1b",
+              "name": "workflowName",
+              "value": "={{ $json.workflow.name }}",
               "type": "string"
             },
             {
@@ -218,7 +230,7 @@
             {
               "id": "20bd6767-6e67-41c7-a8ad-ef21f3edfdba",
               "name": "messages",
-              "value": "={{ $json.execution.error.messages }}",
+              "value": "={{ $json.execution.error.messages }}\n",
               "type": "string"
             }
           ]
@@ -228,7 +240,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -48,
+        -80,
         -80
       ],
       "id": "468ac4b2-d29d-43e9-ac9a-a15a1d8878dc",
@@ -237,7 +249,7 @@
     {
       "parameters": {
         "chatId": "-1003789740019",
-        "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
+        "text": "={{ \"‼ <b>ERROR</b> ‼\"+\n\"\\nThere was an error in a workflow execution:\\n\"+\n\"\\n<b>Entorno</b>: \"+$json.entorno +\n\"\\n<b>Name</b>: \"+$json.workflowName +\n\"\\n<b>id</b>: \"+$json.id +\n\"\\n<b>Node </b>Name: \"+$json.nodeName+\n\"\\n<b>Node </b>Type: \"+$json.nodeType+\n\"\\n<b>Message</b>: \"+$json.message+\n\"\\n<b>URL</b>: \"+$json.urlExecution+\n\"\\n<b>Messages</b>:\"+ $json.messages}}",
         "additionalFields": {
           "appendAttribution": false,
           "parse_mode": "HTML"
@@ -283,6 +295,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-26T04:29:56.343Z",
-  "versionId": "200ca0c0-eddf-4417-a031-baa1eff17f7d"
+  "updatedAt": "2026-04-29T18:52:45.539Z",
+  "versionId": "29e281ba-7edd-472b-8704-18273cb3e31f"
 }
