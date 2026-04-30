@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-25T16:15:47.000Z",
-    "createdAt": "2026-04-25T16:15:34.688Z",
-    "versionId": "86e665a1-73c0-451b-83ad-9476f32f4149",
+    "updatedAt": "2026-04-29T15:34:15.000Z",
+    "createdAt": "2026-04-25T17:31:57.974Z",
+    "versionId": "cdfbefcc-b563-4d8e-946d-6aff11f5adad",
     "workflowId": "XVX6W8rkSJtoXnOz",
     "nodes": [
       {
@@ -3564,7 +3564,7 @@
               "Nombre": "={{ $('Normaliza Datos').item.json.nombre_completo }}",
               "Fecha": "={{ $json.fecha_reservacion }}",
               "Hora": "={{ $('Normaliza Datos').first().json.hora }}",
-              "Teléfono": "={{ $('Normaliza Datos').item.json.telefono.toNumber() }}",
+              "Teléfono": "={{ $('Normaliza Datos').item.json.telefono }}",
               "Estado": "={{ $json.estado }}",
               "Notas": "={{ $('Normaliza Datos').item.json.notas }}"
             },
@@ -5850,11 +5850,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 86e665a1",
+    "name": "Version cdfbefcc",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "86e665a1-73c0-451b-83ad-9476f32f4149",
+  "activeVersionId": "cdfbefcc-b563-4d8e-946d-6aff11f5adad",
   "connections": {
     "Agente Principal": {
       "main": [
