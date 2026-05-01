@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-29T18:33:06.000Z",
-    "createdAt": "2026-04-29T18:33:02.535Z",
-    "versionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf",
+    "updatedAt": "2026-04-30T23:20:56.000Z",
+    "createdAt": "2026-04-30T23:20:48.854Z",
+    "versionId": "61c664f0-2547-4076-81b1-0d884f7989d3",
     "workflowId": "4ptCvWvO0JbxQVxn",
     "nodes": [
       {
@@ -2254,6 +2254,7 @@
             "cachedResultName": "Clientes",
             "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
           },
+          "filterByFormula": "LEN({Teléfono} & \"\") = 10",
           "options": {}
         },
         "type": "n8n-nodes-base.airtable",
@@ -3057,11 +3058,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 558e0182",
+    "name": "Version 61c664f0",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf",
+  "activeVersionId": "61c664f0-2547-4076-81b1-0d884f7989d3",
   "connections": {
     "Loop Over Items3": {
       "main": [
@@ -5881,6 +5882,7 @@
           "cachedResultName": "Clientes",
           "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tblcwQ5NYWtFTX713"
         },
+        "filterByFormula": "LEN({Teléfono} & \"\") = 10",
         "options": {}
       },
       "type": "n8n-nodes-base.airtable",
@@ -6148,6 +6150,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-04-29T18:33:36.233Z",
-  "versionId": "558e0182-48f3-4254-bb70-c6c4c5dcf3bf"
+  "updatedAt": "2026-04-30T23:20:48.852Z",
+  "versionId": "61c664f0-2547-4076-81b1-0d884f7989d3"
 }
