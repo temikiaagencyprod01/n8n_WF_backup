@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-01T21:15:15.000Z",
-    "createdAt": "2026-05-01T21:15:03.786Z",
-    "versionId": "1bbfca19-f58c-449a-aa25-4fb04d263522",
+    "updatedAt": "2026-05-04T02:57:06.000Z",
+    "createdAt": "2026-05-04T02:56:58.418Z",
+    "versionId": "d42b1e2f-903a-44e6-a3bb-1486c162753d",
     "workflowId": "4ptCvWvO0JbxQVxn",
     "nodes": [
       {
@@ -1882,7 +1882,7 @@
             "cachedResultName": "Reservaciones",
             "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
           },
-          "filterByFormula": "AND(IS_AFTER({Fecha}, DATEADD(TODAY(), -1, 'days')), {Código} = BLANK())",
+          "filterByFormula": " {Código} = BLANK() ",
           "options": {}
         },
         "type": "n8n-nodes-base.airtable",
@@ -3110,11 +3110,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 1bbfca19",
+    "name": "Version d42b1e2f",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1bbfca19-f58c-449a-aa25-4fb04d263522",
+  "activeVersionId": "d42b1e2f-903a-44e6-a3bb-1486c162753d",
   "connections": {
     "Loop Over Items3": {
       "main": [
@@ -5580,7 +5580,7 @@
           "cachedResultName": "Reservaciones",
           "cachedResultUrl": "https://airtable.com/apprK9MtBIY9lyLQT/tbls1xSwHHWBarhDd"
         },
-        "filterByFormula": "AND(IS_AFTER({Fecha}, DATEADD(TODAY(), -1, 'days')), {Código} = BLANK())",
+        "filterByFormula": " {Código} = BLANK() ",
         "options": {}
       },
       "type": "n8n-nodes-base.airtable",
@@ -6257,6 +6257,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2026-05-01T21:15:03.784Z",
-  "versionId": "1bbfca19-f58c-449a-aa25-4fb04d263522"
+  "updatedAt": "2026-05-04T02:56:58.417Z",
+  "versionId": "d42b1e2f-903a-44e6-a3bb-1486c162753d"
 }
