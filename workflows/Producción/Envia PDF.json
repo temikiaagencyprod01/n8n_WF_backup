@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2025-12-11T20:16:27.062Z",
-    "createdAt": "2025-12-11T20:16:27.062Z",
-    "versionId": "5e71af83-17d7-4d73-9081-307591ccc3e9",
+    "updatedAt": "2026-05-05T03:12:43.000Z",
+    "createdAt": "2026-05-05T03:12:32.336Z",
+    "versionId": "d13886c1-ea14-482c-a2ce-02572a611e23",
     "workflowId": "pKVAY1ta2mKZ9sSC",
     "nodes": [
       {
@@ -96,8 +96,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.2,
         "position": [
-          80,
-          -16
+          672,
+          16
         ],
         "id": "071590d8-dbd0-4fc7-aa7e-3a3c5cc0f092",
         "name": "HTTP Request"
@@ -190,6 +190,34 @@
             "name": "Telegram Osaki-TemikiaProd01"
           }
         }
+      },
+      {
+        "parameters": {
+          "resource": "messages-api",
+          "operation": "send-document",
+          "instanceName": "={{ $json.instance }}",
+          "remoteJid": "={{ $json.remoteJid }}",
+          "media": "https://osakisushi.com/descargas/menu.pdf",
+          "caption": "=Menú Osaki",
+          "fileName": "Menu_Osaki.pdf",
+          "options_message": {
+            "delay": 1200
+          }
+        },
+        "type": "n8n-nodes-evolution-api.evolutionApi",
+        "typeVersion": 1,
+        "position": [
+          80,
+          0
+        ],
+        "id": "f9f0fd18-164d-494e-8f4e-6c3962ddac67",
+        "name": "Enviar documento",
+        "credentials": {
+          "evolutionApi": {
+            "id": "9xktnR3DFRTQS3QC",
+            "name": "Evolution Osaki"
+          }
+        }
       }
     ],
     "connections": {
@@ -206,20 +234,14 @@
       },
       "HTTP Request": {
         "main": [
-          [
-            {
-              "node": "Edit Fields",
-              "type": "main",
-              "index": 0
-            }
-          ]
+          []
         ]
       },
       "If": {
         "main": [
           [
             {
-              "node": "HTTP Request",
+              "node": "Enviar documento",
               "type": "main",
               "index": 0
             }
@@ -261,14 +283,25 @@
             }
           ]
         ]
+      },
+      "Enviar documento": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": null,
-    "description": null,
-    "autosaved": false
+    "name": "Version d13886c1",
+    "description": "",
+    "autosaved": true
   },
-  "activeVersionId": "5e71af83-17d7-4d73-9081-307591ccc3e9",
+  "activeVersionId": "d13886c1-ea14-482c-a2ce-02572a611e23",
   "connections": {
     "Main Agent": {
       "main": [
@@ -283,20 +316,14 @@
     },
     "HTTP Request": {
       "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "If": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Enviar documento",
             "type": "main",
             "index": 0
           }
@@ -329,6 +356,17 @@
       ]
     },
     "Send a document": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar documento": {
       "main": [
         [
           {
@@ -438,8 +476,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        80,
-        -16
+        672,
+        16
       ],
       "id": "071590d8-dbd0-4fc7-aa7e-3a3c5cc0f092",
       "name": "HTTP Request"
@@ -532,6 +570,34 @@
           "name": "Telegram Osaki-TemikiaProd01"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-document",
+        "instanceName": "={{ $json.instance }}",
+        "remoteJid": "={{ $json.remoteJid }}",
+        "media": "https://osakisushi.com/descargas/menu.pdf",
+        "caption": "=Menú Osaki",
+        "fileName": "Menu_Osaki.pdf",
+        "options_message": {
+          "delay": 1200
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        80,
+        0
+      ],
+      "id": "f9f0fd18-164d-494e-8f4e-6c3962ddac67",
+      "name": "Enviar documento",
+      "credentials": {
+        "evolutionApi": {
+          "id": "9xktnR3DFRTQS3QC",
+          "name": "Evolution Osaki"
+        }
+      }
     }
   ],
   "settings": {
@@ -540,7 +606,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -561,6 +628,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T21:18:30.945Z",
-  "versionId": "5e71af83-17d7-4d73-9081-307591ccc3e9"
+  "updatedAt": "2026-05-05T03:12:32.335Z",
+  "versionId": "d13886c1-ea14-482c-a2ce-02572a611e23"
 }
