@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-05T03:12:43.000Z",
-    "createdAt": "2026-05-05T03:12:32.336Z",
-    "versionId": "d13886c1-ea14-482c-a2ce-02572a611e23",
+    "updatedAt": "2026-05-05T15:51:20.000Z",
+    "createdAt": "2026-05-05T15:51:16.568Z",
+    "versionId": "3e63cb75-5067-43b6-9c04-3d9137894292",
     "workflowId": "pKVAY1ta2mKZ9sSC",
     "nodes": [
       {
@@ -198,7 +198,7 @@
           "instanceName": "={{ $json.instance }}",
           "remoteJid": "={{ $json.remoteJid }}",
           "media": "https://osakisushi.com/descargas/menu.pdf",
-          "caption": "=Menú Osaki",
+          "caption": "=Menú Osaki Restó - Calle 47",
           "fileName": "Menu_Osaki.pdf",
           "options_message": {
             "delay": 1200
@@ -297,11 +297,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version d13886c1",
+    "name": "Version 3e63cb75",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d13886c1-ea14-482c-a2ce-02572a611e23",
+  "activeVersionId": "3e63cb75-5067-43b6-9c04-3d9137894292",
   "connections": {
     "Main Agent": {
       "main": [
@@ -578,7 +578,7 @@
         "instanceName": "={{ $json.instance }}",
         "remoteJid": "={{ $json.remoteJid }}",
         "media": "https://osakisushi.com/descargas/menu.pdf",
-        "caption": "=Menú Osaki",
+        "caption": "=Menú Osaki Restó - Calle 47",
         "fileName": "Menu_Osaki.pdf",
         "options_message": {
           "delay": 1200
@@ -628,6 +628,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-05-05T03:12:32.335Z",
-  "versionId": "d13886c1-ea14-482c-a2ce-02572a611e23"
+  "updatedAt": "2026-05-05T15:51:16.567Z",
+  "versionId": "3e63cb75-5067-43b6-9c04-3d9137894292"
 }
