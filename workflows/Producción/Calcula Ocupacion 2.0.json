@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-19T22:08:52.000Z",
-    "createdAt": "2026-04-19T22:08:48.795Z",
-    "versionId": "5b6bf611-9e56-4c6e-b928-f804869f4d37",
+    "updatedAt": "2026-05-14T23:29:27.000Z",
+    "createdAt": "2026-05-14T23:29:18.706Z",
+    "versionId": "fd756609-0b37-4db6-aff5-b2d4797702c6",
     "workflowId": "IxamRP0GSevrwKvD",
     "nodes": [
       {
@@ -337,13 +337,13 @@
               {
                 "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
                 "name": "respuesta",
-                "value": "=En este horario está la promoción **Menú por Pasos**. Informa al usuario.",
+                "value": "=En este horario está la promoción **Menú por Pasos** (Validar si: Turno 1 20-22 hrs, Turno 2 22-00 hrs) . Informa al usuario.",
                 "type": "string"
               },
               {
                 "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
                 "name": "hora",
-                "value": "={{ $json.hora }}",
+                "value": "={{ $('Normaliza').item.json.hora }}",
                 "type": "string"
               },
               {
@@ -799,11 +799,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 5b6bf611",
+    "name": "Version fd756609",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "5b6bf611-9e56-4c6e-b928-f804869f4d37",
+  "activeVersionId": "fd756609-0b37-4db6-aff5-b2d4797702c6",
   "connections": {
     "Calcula Ocupación2": {
       "main": [
@@ -1326,13 +1326,13 @@
             {
               "id": "3f7707e9-b118-48fa-a451-3f033268e9f6",
               "name": "respuesta",
-              "value": "=En este horario está la promoción **Menú por Pasos**. Informa al usuario.",
+              "value": "=En este horario está la promoción **Menú por Pasos** (Validar si: Turno 1 20-22 hrs, Turno 2 22-00 hrs) . Informa al usuario.",
               "type": "string"
             },
             {
               "id": "30aaadef-5919-4620-bb8c-69f7f195e1cf",
               "name": "hora",
-              "value": "={{ $json.hora }}",
+              "value": "={{ $('Normaliza').item.json.hora }}",
               "type": "string"
             },
             {
@@ -1632,6 +1632,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-19T22:08:48.792Z",
-  "versionId": "5b6bf611-9e56-4c6e-b928-f804869f4d37"
+  "updatedAt": "2026-05-14T23:29:18.705Z",
+  "versionId": "fd756609-0b37-4db6-aff5-b2d4797702c6"
 }
