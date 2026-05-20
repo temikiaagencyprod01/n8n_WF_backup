@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-01T00:37:18.000Z",
-    "createdAt": "2026-04-01T00:37:12.592Z",
-    "versionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc",
+    "updatedAt": "2026-05-19T23:17:33.000Z",
+    "createdAt": "2026-05-19T23:17:31.745Z",
+    "versionId": "fa7aa89d-32f7-45aa-a1d4-406091e683f8",
     "workflowId": "1rF03M1hskg0Bbju",
     "nodes": [
       {
@@ -1887,8 +1887,8 @@
       },
       {
         "parameters": {
-          "chatId": "67869519",
-          "text": "=Serividor de MySQL Caído",
+          "chatId": "-1003789740019",
+          "text": "=Serividor de MySQL Osaki Caído ",
           "additionalFields": {
             "appendAttribution": false,
             "parse_mode": "HTML"
@@ -1905,8 +1905,8 @@
         "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
         "credentials": {
           "telegramApi": {
-            "id": "KmmVDBdxNsFsr80s",
-            "name": "Telegram Osaki-TemikiaProd01"
+            "id": "Hzk8nmYjP8cCvVqh",
+            "name": "Telegram Temikia-Notifications"
           }
         },
         "disabled": true
@@ -2437,11 +2437,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version b870e96f",
+    "name": "Version fa7aa89d",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc",
+  "activeVersionId": "fa7aa89d-32f7-45aa-a1d4-406091e683f8",
   "connections": {
     "Obtiene Registros osakisucursal": {
       "main": [
@@ -4765,8 +4765,8 @@
     },
     {
       "parameters": {
-        "chatId": "67869519",
-        "text": "=Serividor de MySQL Caído",
+        "chatId": "-1003789740019",
+        "text": "=Serividor de MySQL Osaki Caído ",
         "additionalFields": {
           "appendAttribution": false,
           "parse_mode": "HTML"
@@ -4783,8 +4783,8 @@
       "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
       "credentials": {
         "telegramApi": {
-          "id": "KmmVDBdxNsFsr80s",
-          "name": "Telegram Osaki-TemikiaProd01"
+          "id": "Hzk8nmYjP8cCvVqh",
+          "name": "Telegram Temikia-Notifications"
         }
       },
       "disabled": true
@@ -4912,6 +4912,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-01T00:37:12.591Z",
-  "versionId": "b870e96f-e149-47f4-9f2d-3602d52c46cc"
+  "updatedAt": "2026-05-19T23:17:31.742Z",
+  "versionId": "fa7aa89d-32f7-45aa-a1d4-406091e683f8"
 }
