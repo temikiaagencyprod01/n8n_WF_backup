@@ -850,7 +850,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
-    "errorWorkflow": "ZpYgShc1li13uf3h"
+    "errorWorkflow": "ZpYgShc1li13uf3h",
+    "binaryMode": "separate"
   },
   "shared": [
     {
@@ -871,6 +872,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-01-11T21:19:34.154Z",
+  "updatedAt": "2026-05-19T23:04:52.612Z",
   "versionId": "d58ef466-828d-4ecd-8924-2dfa991292c1"
 }
