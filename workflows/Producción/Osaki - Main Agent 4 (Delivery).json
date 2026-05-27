@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-21T22:46:02.000Z",
-    "createdAt": "2026-05-21T22:45:39.111Z",
-    "versionId": "bba8b582-529c-45e1-bfcd-f9f944372cfc",
+    "updatedAt": "2026-05-26T20:34:22.000Z",
+    "createdAt": "2026-05-26T20:34:19.208Z",
+    "versionId": "6478acd1-a3f8-4b62-806e-039367a9e446",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -4598,7 +4598,7 @@
       {
         "parameters": {
           "httpMethod": "POST",
-          "path": "78358b90-df62-4a27-83e3-ce11722e8986",
+          "path": "Osaki-Delivery-Calle-47",
           "options": {}
         },
         "type": "n8n-nodes-base.webhook",
@@ -8856,11 +8856,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version bba8b582",
+    "name": "Version 6478acd1",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "bba8b582-529c-45e1-bfcd-f9f944372cfc",
+  "activeVersionId": "6478acd1-a3f8-4b62-806e-039367a9e446",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -15275,7 +15275,7 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "78358b90-df62-4a27-83e3-ce11722e8986",
+        "path": "Osaki-Delivery-Calle-47",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -17746,6 +17746,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-05-21T22:45:39.104Z",
-  "versionId": "bba8b582-529c-45e1-bfcd-f9f944372cfc"
+  "updatedAt": "2026-05-26T20:42:11.579Z",
+  "versionId": "6478acd1-a3f8-4b62-806e-039367a9e446"
 }
