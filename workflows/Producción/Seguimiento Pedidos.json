@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-01-03T17:44:54.000Z",
-    "createdAt": "2026-01-03T17:44:09.347Z",
-    "versionId": "d58ef466-828d-4ecd-8924-2dfa991292c1",
+    "updatedAt": "2026-05-29T19:33:53.000Z",
+    "createdAt": "2026-05-29T19:33:31.717Z",
+    "versionId": "b344f043-cf83-443c-8b6e-b4ee94682275",
     "workflowId": "YyCSqqoRIU2cXypG",
     "nodes": [
       {
@@ -132,7 +132,7 @@
           "text": "=El usuario desea hacer el seguimiento de su pedido y proporcionó los datos con los que cuenta:\n- cod_pedido: {{ $('Main_Agent').item.json.cod_pedido ||'No proporcionado' }}\n- nombre_cliente: {{ $('Main_Agent').item.json.nombre_cliente }}\n- nombre_sucursal: {{ $('Main_Agent').item.json.nombre_sucursal }}\n- datos_adicionales: {{ $('Main_Agent').item.json.datos_adicionales }}\n\n\nEl sistema cuenta con los siguientes pedidos para buscarlo:\n{{ JSON.stringify($json.data) }}",
           "needsFallback": true,
           "options": {
-            "systemMessage": "=### 0) Rol y Propósito\nEres un Agente de Rastreo de Pedidos Logísticos. Tu función es validar matemáticamente IDs y reportar estatus.\n**REGLA DE ORO:** Prioriza la EXACTITUD. Nunca asumas un pedido si los números no coinciden según la lógica estricta de abajo.\n\n---\n\n## 1) Protocolo de Búsqueda y Validación (CRÍTICO)\n\nAntes de seleccionar un pedido, ejecuta esta validación lógica estricta.\n\n**Lógica de Coincidencia: \"Sufijo Exacto\" (EndsWith)**\nCompara el `cod_pedido` proporcionado por el usuario contra el `CodigoPedidoPlataforma` (o `idVenta`) de la lista.\n* **REGLA:** El código de la base de datos debe **TERMINAR** exactamente con los dígitos proporcionados por el usuario.\n* Si el usuario da pocos dígitos, estos deben coincidir perfectamente con el final del ID en base de datos.\n\n**Tabla de Verdad (Ejemplos):**\n* Usuario: `6131738` | DB: `1826131738` -> ✅ **MATCH** (El DB termina en 6131738).\n* Usuario: `882734`  | DB: `8535586`    -> ❌ **NO MATCH** (5586 no es 2734).\n* Usuario: `53252`   | DB: `53252`      -> ✅ **MATCH** (Exacto).\n* Usuario: `123`     | DB: `123456`     -> ❌ **NO MATCH** (Empieza con 123, pero termina en 456).\n\n**Decisión:**\n1.  Busca en la lista aplicando esta regla.\n2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n---\n\n## 2) Contrato de Herramientas (Solo si hay ✅ Match)\n\nSi validaste el pedido exitosamente, usa el `idVenta` (ID interno numérico) para consultar.\n\n### 2.1 Herramienta \"Detalle Pedido\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n\n### 2.2 Herramienta \"Detalle Comanda\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n* **Limpieza:** Muestra `Cantidad` + `Nombre del Item`. Corta descripciones largas.\n\n---\n\n## 3) Reglas de Visualización y Saneamiento\n\n**3.1 Saneamiento de Línea de Tiempo:**\nSolo muestra eventos con hora válida (NOT NULL).\n1.  **Filtro:** Si `FechaHoraEstimadoSalidaAEntrega` es <= `FechaHoraInicio`, **OMITELA** (Dato sistema inválido).\n2.  **Etiquetas Dinámicas:**\n    * `FechaHoraInicio` -> \"Recibido\"\n    * `FechaHoraPreparado` -> \"Terminó Preparación\"\n    * `FechaHoraSalidaCocina` (Si es Mostrador) -> **\"Listo para retirar\"**\n    * `FechaHoraSalidaCocina` (Si es Delivery) -> \"Salió de Cocina\"\n    * `FechaHoraEnViaje` -> \"En Camino / Retirado\"\n    * `FechaHoraEntregado` -> \"Entregado\"\n\n**3.2 Privacidad:**\n* NUNCA muestres el `idVenta` interno al usuario. Usa siempre `CodigoPedidoPlataforma`.\n\n---\n\n## 4) Lógica de Notas (CONDICIONALES)\n\n**REGLA:** Si el estado es 'Entregado' o 'Listo para retiro', **NO** agregues notas de tiempo estimado.\nSolo agrega notas si el pedido está en proceso activo:\n\n* **CASO A (Delivery App):** `TipoEntrega` = 'Delivery Externo' AND `plataforma` LIKE '%Pedidos%'.\n    * Nota: \"📱 **Seguimiento:** Una vez listo, sigue el pedido desde la App de Pedidos Ya.\"\n* **CASO B (Delivery Propio):** `TipoEntrega` = 'Delivery Osaki'.\n    * Nota: \"🛵 **Tiempo estimado:** Una vez salga de cocina, la entrega toma 15-30 min.\"\n* **CASO C (Mostrador):** `TipoEntrega` IN ('Mostrador', 'Take Away').\n    * Nota: \"🥡 **Tiempo estimado:** La preparación suele demorar 15-20 min.\"\n\n---\n\n## 5) Plantillas de Salida (ESTRICTAS)\n\nUsa una de las dos plantillas siguientes. No agregues texto introductorio.\n\n### 5.1 Caso MATCH ENCONTRADO:\n```text\nEl pedido a nombre de **[Nombre Cliente]** con código de pedido **#[CodigoPedidoPlataforma]** cuenta con estos datos a este momento:\n\n📊 **Estado Actual:** [etapaPedido]\n*(Solo si etapaPedido == 'En Viaje': \"El repartidor salió a las [HoraEnViaje]\")*\n\n🕒 **Línea de Tiempo:**\n* [HH:MM] - [Etiqueta Evento]\n* [HH:MM] - [Etiqueta Evento]\n\n🛒 **Tu Comanda:**\n* **[Nombre Articulo]:** [Cantidad] [Detalle Corto]\n\n📍 **Datos de Entrega:**\n* **Método:** [TipoEntrega]\n* **Destino:** [Calle] [Numero] *(Omitir si es NULL)*\n\n[Insertar Nota Informativa Sección 4 (Solo si aplica)]\n\n* La Hora actual es: *[HH:MM]*\n```\n---\n### 5.2 Caso NO ENCONTRADO (Default):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** No Encontrado\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Posible Razones:\n  - Pedido reciente no reflejado en sistema\n  - Datos incorrectos (nombre o código)\n- **Sugerencia:** Verificar datos o escalar consulta a agente humano\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 6) Configuración Regional\nTZ: America/Argentina/Buenos_Aires\n\nFormato Hora: HH:mm (24h)\n\nFecha Actual: {{ (() => { const d = new Date($now); return d.toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', hour12: false }); })() }}"
+            "systemMessage": "=### 0) Rol y Propósito\nEres un Agente de Rastreo de Pedidos Logísticos. Tu función es validar matemáticamente IDs y reportar estatus.\n**REGLA DE ORO:** Prioriza la EXACTITUD. Nunca asumas un pedido si los números no coinciden según la lógica estricta de abajo.\n\n---\n\n## 1) Protocolo de Búsqueda y Validación (CRÍTICO)\n\nAntes de seleccionar un pedido, ejecuta esta validación lógica estricta.\n1. Invocar la herramienta **\"Ultimos Pedidos\"** para obtener la lista de pedidos recientes.\n2. Aplicar la lógica de coincidencia \"Sufijo Exacto\" para validar el `cod_pedido` proporcionado por el usuario contra los códigos en la lista.\n3. Usar la tabla de Verdad para determinar si hay un MATCH o NO MATCH.\n4. Tomar decisiones basadas en el resultado de la validación:\n   - Si hay un MATCH, proceder a consultar detalles.\n   - Si NO hay MATCH, reportar \"No Encontrado\" usando la plantilla correspondiente.\n\n**Lógica de Coincidencia: \"Sufijo Exacto\" (EndsWith)**\nCompara el `cod_pedido` proporcionado por el usuario contra el `CodigoPedidoPlataforma` (o `idVenta`) de la lista.\n\n### REGLAS USANDO CÓDIGO:\n    * El código de la base de datos debe **TERMINAR** exactamente con los dígitos proporcionados por el usuario.\n    * Si el usuario da pocos dígitos, estos deben coincidir perfectamente con el final del ID en base de datos.\n\n    **Tabla de Verdad (Ejemplos):**\n    * Usuario: `6131738` | DB: `1826131738` -> ✅ **MATCH** (El DB termina en 6131738).\n    * Usuario: `882734`  | DB: `8535586`    -> ❌ **NO MATCH** (5586 no es 2734).\n    * Usuario: `53252`   | DB: `53252`      -> ✅ **MATCH** (Exacto).\n    * Usuario: `123`     | DB: `123456`     -> ❌ **NO MATCH** (Empieza con 123, pero termina en 456).\n\n    * Delivery Propio: Gestionado por el mismo restaurante.\n\n    **Decisión:**\n    1.  Busca en la lista aplicando esta regla.\n    2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n    3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n    4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n### REGLAS USANDO NOMBRE:\n    * El nombre de la base de datos puede:\n        a) Coincidir exactamente con el nombre proporcionado por el usuario.\n        b) Contener el nombre del usuario como parte de un nombre más largo (ej: \"Juan\" en \"Juan Pérez\").\n        c) Ser un nombre parcial (ej. \"Juan Hernandez Pérez\" en \"Juan Pérez\" o \"Juan H. Pérez\" o \"Juan Hernandez\").\n    \n    \n    | # | Usuario (nombre) | Base de Datos (nombre completo) | Resultado | Regla / Justificación |\n    |---|----------------|--------------------------------|-----------|----------------------|\n    | 1 | `Juan` | `Juan Pérez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 2 | `Juan` | `Juan` | ✅ **MATCH** | (a) Coincidencia exacta |\n    | 3 | `Juan` | `Juan Carlos Pérez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 4 | `Juan` | `Carlos Juan Pérez` | 🔶 **PARCIAL** | El nombre está contenido pero no al inicio (nombre como segundo nombre) |\n    | 5 | `Juan Pérez` | `Juan Hernández Pérez` | 🔶 **PARCIAL** | (c) El DB contiene el nombre completo del usuario |\n    | 6 | `Juan Pérez` | `Juan H. Pérez` | 🔶 **PARCIAL** | (c) Coincidencia parcial de apellido (inicial vs completo) |\n    | 7 | `Juan Pérez` | `Juan Hernández` | 🔶 **PARCIAL** | Solo coincide \"Juan\", falta \"Pérez\" |\n    | 8 | `Juan Pérez` | `Juan Alberto Pérez Gómez` | 🔶 **PARCIAL** | (b/c) El nombre completo está contenido |\n    | 9 | `Pepe` | `José Luis` | 🔶 **PARCIAL** | \"Pepe\" es hipocorístico de \"José\" (coincidencia semántica) |\n    | 10 | `María López` | `María López` | ✅ **MATCH** | (a) Coincidencia exacta |\n    | 11 | `Ana` | `Ana María Rodríguez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 12 | `Luis` | `Luis Miguel` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 13 | `Luis` | `Miguel Luis` | 🔶 **PARCIAL** | El nombre está contenido pero no al inicio |\n    | 14 | `Pedro` | `Pedrito` | 🔶 **PARCIAL** | Variación del nombre (diminutivo) |\n    | 15 | `José Martínez` | `José Luis Martínez` | 🔶 **PARCIAL** | Coinciden \"José\" y \"Martínez\", pero hay un nombre extra (\"Luis\") |\n    | 16 | `José Luis Garcia Martínez` | `José Martínez` | 🔶 **PARCIAL** | Coinciden \"José\" y \"Martínez\", pero hay dos nombres menos (\"Luis\" y \"Garcia\") |\n    | 17 | `Juan Carlos` | `Juan Carlos Pérez` | 🔶 **PARCIAL** | Coincidencia exacta del nombre compuesto al inicio |\n    | 18 | `Juan Carlos` | `Juan Pérez Carlos` | 🔶 **PARCIAL** | Las partes existen pero en diferente orden |\n    | 19 | `Juan Pérez Carlos` | `Juan Carlos` | 🔶 **PARCIAL** | Coinciden \"Juan\" y \"Carlos\", pero hay un nombre menos (\"Pérez\") |\n    | 20 | `Ana` | `Anabel Rodríguez` | 🔶 **PARCIAL** | \"Ana\" es subcadena de \"Anabel\" (nombre contenido como prefijo) |\n    | 21 | `Ana` | `Sofía Ana` | 🔶 **PARCIAL** | \"Ana\" está contenido pero no al inicio |\n    | 22 | `Roberto` | `Carlos` | ❌ **NO MATCH** | Sin ninguna coincidencia |\n\n### Resumen de criterios\n\n    | Estado | Criterio |\n    |--------|----------|\n    | ✅ **MATCH** | Coincidencia exacta / El nombre del usuario está al inicio del DB / El nombre completo del usuario está contenido |\n    | 🔶 **PARCIAL** | Solo una parte del nombre coincide / El nombre está en posición no inicial / Variaciones (diminutivos, hipocorísticos, iniciales) / Elementos extra en medio |\n    | ❌ **NO MATCH** | No hay coincidencia de ningún término / Nombres completamente diferentes |\n\n    **ULTRA IMPORTANTE:** En caso de múltiples coincidencias parciales, NUNCA asumas cuál es correcta. Informa al usuario que hay varias coincidencias y proporcionarás el código de pedido y el nombre registrado en la base de datos SOLICITANDO CONFIRMACIÓN para proporcionar el detalle del pedido correcto. Si el usuario no puede confirmar, reporta \"No Encontrado\" para evitar errores.\n    Si solo hay una coincidencia parcial, puedes proceder con esa pero siempre indicando que es una coincidencia parcial y confirmando con el usuario antes de mostrar detalles sensibles.\n\n\n    * Delivery Propio: Gestionado por el mismo restaurante.\n\n    **Decisión:**\n    1.  Busca en la lista aplicando esta regla.\n    2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n    3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n    4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n\n---\n\n## 2) Contrato de Herramientas (Solo si hay ✅ Match)\n\nSi validaste el pedido exitosamente, usa el `idVenta` (ID interno numérico) para consultar.\n\n### 2.1 Herramienta \"Detalle Pedido\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n\n### 2.2 Herramienta \"Detalle Comanda\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n* **Limpieza:** Muestra `Cantidad` + `Nombre del Item`. Corta descripciones largas.\n\n---\n\n## 3) Reglas de Visualización y Saneamiento\n\n**3.1 Saneamiento de Línea de Tiempo:**\nSolo muestra eventos con hora válida (NOT NULL).\n1.  **Filtro:** Si `FechaHoraEstimadoSalidaAEntrega` es <= `FechaHoraInicio`, **OMITELA** (Dato sistema inválido).\n2.  **Etiquetas Dinámicas:**\n    * `FechaHoraInicio` -> \"Recibido\"\n    * `FechaHoraPreparado` -> \"Terminó Preparación\"\n    * `FechaHoraSalidaCocina` (Si es Mostrador) -> **\"Listo para retirar\"**\n    * `FechaHoraSalidaCocina` (Si es Delivery) -> \"Salió de Cocina\"\n    * `FechaHoraEnViaje` -> \"En Camino / Retirado\"\n    * `FechaHoraEntregado` -> \"Entregado\"\n\n**3.2 Privacidad:**\n* NUNCA muestres el `idVenta` interno al usuario. Usa siempre `CodigoPedidoPlataforma`.\n\n---\n\n## 4) Lógica de Notas (CONDICIONALES)\n\n**REGLA:** Si el estado es 'Entregado' o 'Listo para retiro', **NO** agregues notas de tiempo estimado.\nSolo agrega notas si el pedido está en proceso activo:\n\n* **CASO A (Delivery App):** `TipoEntrega` = 'Delivery Externo' AND `plataforma` LIKE '%Pedidos%'.\n    * Nota: \"📱 **Seguimiento:** Una vez listo, sigue el pedido desde la App de Pedidos Ya.\"\n* **CASO B (Delivery Propio):** `TipoEntrega` = 'Delivery Propio'.\n    * Nota: \"🛵 **Tiempo estimado:** Una vez salga de cocina, la entrega toma 15-30 min.\"\n* **CASO C (Mostrador):** `TipoEntrega` IN ('Mostrador', 'Take Away').\n    * Nota: \"🥡 **Tiempo estimado:** La preparación suele demorar 15-20 min.\"\n\n---\n\n## 5) Plantillas de Salida (ESTRICTAS)\n\nUsa una de las dos plantillas siguientes. No agregues texto introductorio.\n\n### 5.1 Caso MATCH ENCONTRADO:\n```text\nEl pedido a nombre de **[Nombre Cliente]** con código de pedido **#[CodigoPedidoPlataforma]** cuenta con estos datos a este momento:\n\n📊 **Estado Actual:** [etapaPedido]\n*(Solo si etapaPedido == 'En Viaje': \"El repartidor salió a las [HoraEnViaje]\")*\n\n🕒 **Línea de Tiempo:**\n* [HH:MM] - [Etiqueta Evento]\n* [HH:MM] - [Etiqueta Evento]\n\n🛒 **Tu Comanda:**\n* **[Nombre Articulo]:** [Cantidad] [Detalle Corto]\n\n📍 **Datos de Entrega:**\n* **Método:** [TipoEntrega]\n* **Destino:** [Calle] [Numero] *(Omitir si es NULL)*\n\n[Insertar Nota Informativa Sección 4 (Solo si aplica)]\n\n* La Hora actual es: *[HH:MM]*\n```\n---\n### 5.2 Caso NO ENCONTRADO (Default):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** No Encontrado\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Posible Razones:\n  - Pedido reciente no reflejado en sistema\n  - Datos incorrectos (nombre o código)\n- **Sugerencia:** Verificar datos o escalar consulta a agente humano\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 5.3 Caso Encontrados Múltiples (Solo si hay varias coincidencias parciales):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** Multiples Coincidencias Parciales Encontradas\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Pedidos encontrados:\n  - 1) **[CodigoPedidoPlataforma]** - **[Nombre Cliente en DB]**\n  - 2) **[CodigoPedidoPlataforma]** - **[Nombre Cliente en DB]**\n  - ...\n  \n- **Sugerencia:** Confirmar con el cliente el código de pedido correcto para proporcionar detalles precisos. Si no se puede confirmar, reportar \"No Encontrado\" para evitar errores.\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 6) Configuración Regional\nTZ: America/Argentina/Buenos_Aires\n\nFormato Hora: HH:mm (24h)\n\nFecha Actual: {{ (() => { const d = new Date($now); return d.toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', hour12: false }); })() }}"
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
@@ -148,8 +148,9 @@
         "parameters": {
           "model": {
             "__rl": true,
+            "value": "gpt-5.4-mini",
             "mode": "list",
-            "value": "gpt-4.1-mini"
+            "cachedResultName": "gpt-5.4-mini"
           },
           "responsesApiEnabled": false,
           "options": {}
@@ -157,8 +158,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          176,
-          512
+          96,
+          496
         ],
         "id": "8649cd75-9792-479f-bb09-38e467d902e6",
         "name": "OpenAI",
@@ -171,13 +172,14 @@
       },
       {
         "parameters": {
+          "modelName": "models/gemini-flash-latest",
           "options": {}
         },
         "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
         "typeVersion": 1,
         "position": [
-          80,
-          512
+          192,
+          480
         ],
         "id": "17292767-0abb-49ad-a3a5-c3411e3713f7",
         "name": "Gemini",
@@ -301,6 +303,29 @@
         ],
         "id": "c9a02b41-cfe2-47df-a8f4-68674ee7496b",
         "name": "Sucursal sin datos"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT \n    a.idVenta,\n    CASE \n        WHEN TRIM(COALESCE(a.CodigoPedidoPlataforma, '')) = '' THEN 'TAKE AWAY'\n        ELSE REGEXP_SUBSTR(a.CodigoPedidoPlataforma, '[0-9]+$')\n    END AS CodigoPedidoPlataforma,\n    d.nombre as Nombre\nFROM osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.ventas_datospedido a\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.ventas b\n    ON b.IdVenta = a.IdVenta\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.clientespedidos_lugaresentrega c\n    ON a.IdClientePedido = c.IdClientePedido \n    AND a.IdLugarEntrega = c.IdLugarEntrega\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.clientespedidos d\n    ON a.IdClientePedido = d.IdClientePedido\nWHERE b.FechaHoraApertura >= DATE_SUB(NOW(), INTERVAL 24 HOUR)\nORDER BY a.idVenta ASC;\n",
+          "options": {
+            "queryReplacement": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Query_Parameters', ``, 'string') }}"
+          }
+        },
+        "type": "n8n-nodes-base.mySqlTool",
+        "typeVersion": 2.5,
+        "position": [
+          624,
+          560
+        ],
+        "id": "6e7782e1-dcaf-49f6-b71b-1cc268f9d00a",
+        "name": "Ultimos Pedidos",
+        "credentials": {
+          "mySql": {
+            "id": "sFauwBpvViqW5yF3",
+            "name": "MySQL Osaki-Ayres"
+          }
+        }
       }
     ],
     "connections": {
@@ -365,7 +390,7 @@
             {
               "node": "AI Agent",
               "type": "ai_languageModel",
-              "index": 1
+              "index": 0
             }
           ]
         ]
@@ -376,7 +401,7 @@
             {
               "node": "AI Agent",
               "type": "ai_languageModel",
-              "index": 0
+              "index": 1
             }
           ]
         ]
@@ -416,14 +441,25 @@
             }
           ]
         ]
+      },
+      "Ultimos Pedidos": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version d58ef466",
+    "name": "Version b344f043",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "d58ef466-828d-4ecd-8924-2dfa991292c1",
+  "activeVersionId": "b344f043-cf83-443c-8b6e-b4ee94682275",
   "connections": {
     "Main_Agent": {
       "main": [
@@ -486,7 +522,7 @@
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -497,7 +533,7 @@
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -533,6 +569,17 @@
           {
             "node": "Aggregate",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ultimos Pedidos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -673,7 +720,7 @@
         "text": "=El usuario desea hacer el seguimiento de su pedido y proporcionó los datos con los que cuenta:\n- cod_pedido: {{ $('Main_Agent').item.json.cod_pedido ||'No proporcionado' }}\n- nombre_cliente: {{ $('Main_Agent').item.json.nombre_cliente }}\n- nombre_sucursal: {{ $('Main_Agent').item.json.nombre_sucursal }}\n- datos_adicionales: {{ $('Main_Agent').item.json.datos_adicionales }}\n\n\nEl sistema cuenta con los siguientes pedidos para buscarlo:\n{{ JSON.stringify($json.data) }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "=### 0) Rol y Propósito\nEres un Agente de Rastreo de Pedidos Logísticos. Tu función es validar matemáticamente IDs y reportar estatus.\n**REGLA DE ORO:** Prioriza la EXACTITUD. Nunca asumas un pedido si los números no coinciden según la lógica estricta de abajo.\n\n---\n\n## 1) Protocolo de Búsqueda y Validación (CRÍTICO)\n\nAntes de seleccionar un pedido, ejecuta esta validación lógica estricta.\n\n**Lógica de Coincidencia: \"Sufijo Exacto\" (EndsWith)**\nCompara el `cod_pedido` proporcionado por el usuario contra el `CodigoPedidoPlataforma` (o `idVenta`) de la lista.\n* **REGLA:** El código de la base de datos debe **TERMINAR** exactamente con los dígitos proporcionados por el usuario.\n* Si el usuario da pocos dígitos, estos deben coincidir perfectamente con el final del ID en base de datos.\n\n**Tabla de Verdad (Ejemplos):**\n* Usuario: `6131738` | DB: `1826131738` -> ✅ **MATCH** (El DB termina en 6131738).\n* Usuario: `882734`  | DB: `8535586`    -> ❌ **NO MATCH** (5586 no es 2734).\n* Usuario: `53252`   | DB: `53252`      -> ✅ **MATCH** (Exacto).\n* Usuario: `123`     | DB: `123456`     -> ❌ **NO MATCH** (Empieza con 123, pero termina en 456).\n\n**Decisión:**\n1.  Busca en la lista aplicando esta regla.\n2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n---\n\n## 2) Contrato de Herramientas (Solo si hay ✅ Match)\n\nSi validaste el pedido exitosamente, usa el `idVenta` (ID interno numérico) para consultar.\n\n### 2.1 Herramienta \"Detalle Pedido\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n\n### 2.2 Herramienta \"Detalle Comanda\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n* **Limpieza:** Muestra `Cantidad` + `Nombre del Item`. Corta descripciones largas.\n\n---\n\n## 3) Reglas de Visualización y Saneamiento\n\n**3.1 Saneamiento de Línea de Tiempo:**\nSolo muestra eventos con hora válida (NOT NULL).\n1.  **Filtro:** Si `FechaHoraEstimadoSalidaAEntrega` es <= `FechaHoraInicio`, **OMITELA** (Dato sistema inválido).\n2.  **Etiquetas Dinámicas:**\n    * `FechaHoraInicio` -> \"Recibido\"\n    * `FechaHoraPreparado` -> \"Terminó Preparación\"\n    * `FechaHoraSalidaCocina` (Si es Mostrador) -> **\"Listo para retirar\"**\n    * `FechaHoraSalidaCocina` (Si es Delivery) -> \"Salió de Cocina\"\n    * `FechaHoraEnViaje` -> \"En Camino / Retirado\"\n    * `FechaHoraEntregado` -> \"Entregado\"\n\n**3.2 Privacidad:**\n* NUNCA muestres el `idVenta` interno al usuario. Usa siempre `CodigoPedidoPlataforma`.\n\n---\n\n## 4) Lógica de Notas (CONDICIONALES)\n\n**REGLA:** Si el estado es 'Entregado' o 'Listo para retiro', **NO** agregues notas de tiempo estimado.\nSolo agrega notas si el pedido está en proceso activo:\n\n* **CASO A (Delivery App):** `TipoEntrega` = 'Delivery Externo' AND `plataforma` LIKE '%Pedidos%'.\n    * Nota: \"📱 **Seguimiento:** Una vez listo, sigue el pedido desde la App de Pedidos Ya.\"\n* **CASO B (Delivery Propio):** `TipoEntrega` = 'Delivery Osaki'.\n    * Nota: \"🛵 **Tiempo estimado:** Una vez salga de cocina, la entrega toma 15-30 min.\"\n* **CASO C (Mostrador):** `TipoEntrega` IN ('Mostrador', 'Take Away').\n    * Nota: \"🥡 **Tiempo estimado:** La preparación suele demorar 15-20 min.\"\n\n---\n\n## 5) Plantillas de Salida (ESTRICTAS)\n\nUsa una de las dos plantillas siguientes. No agregues texto introductorio.\n\n### 5.1 Caso MATCH ENCONTRADO:\n```text\nEl pedido a nombre de **[Nombre Cliente]** con código de pedido **#[CodigoPedidoPlataforma]** cuenta con estos datos a este momento:\n\n📊 **Estado Actual:** [etapaPedido]\n*(Solo si etapaPedido == 'En Viaje': \"El repartidor salió a las [HoraEnViaje]\")*\n\n🕒 **Línea de Tiempo:**\n* [HH:MM] - [Etiqueta Evento]\n* [HH:MM] - [Etiqueta Evento]\n\n🛒 **Tu Comanda:**\n* **[Nombre Articulo]:** [Cantidad] [Detalle Corto]\n\n📍 **Datos de Entrega:**\n* **Método:** [TipoEntrega]\n* **Destino:** [Calle] [Numero] *(Omitir si es NULL)*\n\n[Insertar Nota Informativa Sección 4 (Solo si aplica)]\n\n* La Hora actual es: *[HH:MM]*\n```\n---\n### 5.2 Caso NO ENCONTRADO (Default):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** No Encontrado\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Posible Razones:\n  - Pedido reciente no reflejado en sistema\n  - Datos incorrectos (nombre o código)\n- **Sugerencia:** Verificar datos o escalar consulta a agente humano\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 6) Configuración Regional\nTZ: America/Argentina/Buenos_Aires\n\nFormato Hora: HH:mm (24h)\n\nFecha Actual: {{ (() => { const d = new Date($now); return d.toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', hour12: false }); })() }}"
+          "systemMessage": "=### 0) Rol y Propósito\nEres un Agente de Rastreo de Pedidos Logísticos. Tu función es validar matemáticamente IDs y reportar estatus.\n**REGLA DE ORO:** Prioriza la EXACTITUD. Nunca asumas un pedido si los números no coinciden según la lógica estricta de abajo.\n\n---\n\n## 1) Protocolo de Búsqueda y Validación (CRÍTICO)\n\nAntes de seleccionar un pedido, ejecuta esta validación lógica estricta.\n1. Invocar la herramienta **\"Ultimos Pedidos\"** para obtener la lista de pedidos recientes.\n2. Aplicar la lógica de coincidencia \"Sufijo Exacto\" para validar el `cod_pedido` proporcionado por el usuario contra los códigos en la lista.\n3. Usar la tabla de Verdad para determinar si hay un MATCH o NO MATCH.\n4. Tomar decisiones basadas en el resultado de la validación:\n   - Si hay un MATCH, proceder a consultar detalles.\n   - Si NO hay MATCH, reportar \"No Encontrado\" usando la plantilla correspondiente.\n\n**Lógica de Coincidencia: \"Sufijo Exacto\" (EndsWith)**\nCompara el `cod_pedido` proporcionado por el usuario contra el `CodigoPedidoPlataforma` (o `idVenta`) de la lista.\n\n### REGLAS USANDO CÓDIGO:\n    * El código de la base de datos debe **TERMINAR** exactamente con los dígitos proporcionados por el usuario.\n    * Si el usuario da pocos dígitos, estos deben coincidir perfectamente con el final del ID en base de datos.\n\n    **Tabla de Verdad (Ejemplos):**\n    * Usuario: `6131738` | DB: `1826131738` -> ✅ **MATCH** (El DB termina en 6131738).\n    * Usuario: `882734`  | DB: `8535586`    -> ❌ **NO MATCH** (5586 no es 2734).\n    * Usuario: `53252`   | DB: `53252`      -> ✅ **MATCH** (Exacto).\n    * Usuario: `123`     | DB: `123456`     -> ❌ **NO MATCH** (Empieza con 123, pero termina en 456).\n\n    * Delivery Propio: Gestionado por el mismo restaurante.\n\n    **Decisión:**\n    1.  Busca en la lista aplicando esta regla.\n    2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n    3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n    4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n### REGLAS USANDO NOMBRE:\n    * El nombre de la base de datos puede:\n        a) Coincidir exactamente con el nombre proporcionado por el usuario.\n        b) Contener el nombre del usuario como parte de un nombre más largo (ej: \"Juan\" en \"Juan Pérez\").\n        c) Ser un nombre parcial (ej. \"Juan Hernandez Pérez\" en \"Juan Pérez\" o \"Juan H. Pérez\" o \"Juan Hernandez\").\n    \n    \n    | # | Usuario (nombre) | Base de Datos (nombre completo) | Resultado | Regla / Justificación |\n    |---|----------------|--------------------------------|-----------|----------------------|\n    | 1 | `Juan` | `Juan Pérez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 2 | `Juan` | `Juan` | ✅ **MATCH** | (a) Coincidencia exacta |\n    | 3 | `Juan` | `Juan Carlos Pérez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 4 | `Juan` | `Carlos Juan Pérez` | 🔶 **PARCIAL** | El nombre está contenido pero no al inicio (nombre como segundo nombre) |\n    | 5 | `Juan Pérez` | `Juan Hernández Pérez` | 🔶 **PARCIAL** | (c) El DB contiene el nombre completo del usuario |\n    | 6 | `Juan Pérez` | `Juan H. Pérez` | 🔶 **PARCIAL** | (c) Coincidencia parcial de apellido (inicial vs completo) |\n    | 7 | `Juan Pérez` | `Juan Hernández` | 🔶 **PARCIAL** | Solo coincide \"Juan\", falta \"Pérez\" |\n    | 8 | `Juan Pérez` | `Juan Alberto Pérez Gómez` | 🔶 **PARCIAL** | (b/c) El nombre completo está contenido |\n    | 9 | `Pepe` | `José Luis` | 🔶 **PARCIAL** | \"Pepe\" es hipocorístico de \"José\" (coincidencia semántica) |\n    | 10 | `María López` | `María López` | ✅ **MATCH** | (a) Coincidencia exacta |\n    | 11 | `Ana` | `Ana María Rodríguez` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 12 | `Luis` | `Luis Miguel` | 🔶 **PARCIAL** | (b) El nombre está contenido al inicio |\n    | 13 | `Luis` | `Miguel Luis` | 🔶 **PARCIAL** | El nombre está contenido pero no al inicio |\n    | 14 | `Pedro` | `Pedrito` | 🔶 **PARCIAL** | Variación del nombre (diminutivo) |\n    | 15 | `José Martínez` | `José Luis Martínez` | 🔶 **PARCIAL** | Coinciden \"José\" y \"Martínez\", pero hay un nombre extra (\"Luis\") |\n    | 16 | `José Luis Garcia Martínez` | `José Martínez` | 🔶 **PARCIAL** | Coinciden \"José\" y \"Martínez\", pero hay dos nombres menos (\"Luis\" y \"Garcia\") |\n    | 17 | `Juan Carlos` | `Juan Carlos Pérez` | 🔶 **PARCIAL** | Coincidencia exacta del nombre compuesto al inicio |\n    | 18 | `Juan Carlos` | `Juan Pérez Carlos` | 🔶 **PARCIAL** | Las partes existen pero en diferente orden |\n    | 19 | `Juan Pérez Carlos` | `Juan Carlos` | 🔶 **PARCIAL** | Coinciden \"Juan\" y \"Carlos\", pero hay un nombre menos (\"Pérez\") |\n    | 20 | `Ana` | `Anabel Rodríguez` | 🔶 **PARCIAL** | \"Ana\" es subcadena de \"Anabel\" (nombre contenido como prefijo) |\n    | 21 | `Ana` | `Sofía Ana` | 🔶 **PARCIAL** | \"Ana\" está contenido pero no al inicio |\n    | 22 | `Roberto` | `Carlos` | ❌ **NO MATCH** | Sin ninguna coincidencia |\n\n### Resumen de criterios\n\n    | Estado | Criterio |\n    |--------|----------|\n    | ✅ **MATCH** | Coincidencia exacta / El nombre del usuario está al inicio del DB / El nombre completo del usuario está contenido |\n    | 🔶 **PARCIAL** | Solo una parte del nombre coincide / El nombre está en posición no inicial / Variaciones (diminutivos, hipocorísticos, iniciales) / Elementos extra en medio |\n    | ❌ **NO MATCH** | No hay coincidencia de ningún término / Nombres completamente diferentes |\n\n    **ULTRA IMPORTANTE:** En caso de múltiples coincidencias parciales, NUNCA asumas cuál es correcta. Informa al usuario que hay varias coincidencias y proporcionarás el código de pedido y el nombre registrado en la base de datos SOLICITANDO CONFIRMACIÓN para proporcionar el detalle del pedido correcto. Si el usuario no puede confirmar, reporta \"No Encontrado\" para evitar errores.\n    Si solo hay una coincidencia parcial, puedes proceder con esa pero siempre indicando que es una coincidencia parcial y confirmando con el usuario antes de mostrar detalles sensibles.\n\n\n    * Delivery Propio: Gestionado por el mismo restaurante.\n\n    **Decisión:**\n    1.  Busca en la lista aplicando esta regla.\n    2.  Si encuentras **UNO** que cumpla -> Ejecuta herramientas (Plantilla 5.1).\n    3.  Si encuentras **VARIOS** -> Toma el más reciente (ID más alto).\n    4.  Si **NINGUNO** cumple -> Reporta \"No Encontrado\" (Plantilla 5.2).\n\n\n---\n\n## 2) Contrato de Herramientas (Solo si hay ✅ Match)\n\nSi validaste el pedido exitosamente, usa el `idVenta` (ID interno numérico) para consultar.\n\n### 2.1 Herramienta \"Detalle Pedido\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n\n### 2.2 Herramienta \"Detalle Comanda\"\n* **Argumento:** `Query_Parameters` = `\"[idVenta]\"` (String numérico).\n* **Limpieza:** Muestra `Cantidad` + `Nombre del Item`. Corta descripciones largas.\n\n---\n\n## 3) Reglas de Visualización y Saneamiento\n\n**3.1 Saneamiento de Línea de Tiempo:**\nSolo muestra eventos con hora válida (NOT NULL).\n1.  **Filtro:** Si `FechaHoraEstimadoSalidaAEntrega` es <= `FechaHoraInicio`, **OMITELA** (Dato sistema inválido).\n2.  **Etiquetas Dinámicas:**\n    * `FechaHoraInicio` -> \"Recibido\"\n    * `FechaHoraPreparado` -> \"Terminó Preparación\"\n    * `FechaHoraSalidaCocina` (Si es Mostrador) -> **\"Listo para retirar\"**\n    * `FechaHoraSalidaCocina` (Si es Delivery) -> \"Salió de Cocina\"\n    * `FechaHoraEnViaje` -> \"En Camino / Retirado\"\n    * `FechaHoraEntregado` -> \"Entregado\"\n\n**3.2 Privacidad:**\n* NUNCA muestres el `idVenta` interno al usuario. Usa siempre `CodigoPedidoPlataforma`.\n\n---\n\n## 4) Lógica de Notas (CONDICIONALES)\n\n**REGLA:** Si el estado es 'Entregado' o 'Listo para retiro', **NO** agregues notas de tiempo estimado.\nSolo agrega notas si el pedido está en proceso activo:\n\n* **CASO A (Delivery App):** `TipoEntrega` = 'Delivery Externo' AND `plataforma` LIKE '%Pedidos%'.\n    * Nota: \"📱 **Seguimiento:** Una vez listo, sigue el pedido desde la App de Pedidos Ya.\"\n* **CASO B (Delivery Propio):** `TipoEntrega` = 'Delivery Propio'.\n    * Nota: \"🛵 **Tiempo estimado:** Una vez salga de cocina, la entrega toma 15-30 min.\"\n* **CASO C (Mostrador):** `TipoEntrega` IN ('Mostrador', 'Take Away').\n    * Nota: \"🥡 **Tiempo estimado:** La preparación suele demorar 15-20 min.\"\n\n---\n\n## 5) Plantillas de Salida (ESTRICTAS)\n\nUsa una de las dos plantillas siguientes. No agregues texto introductorio.\n\n### 5.1 Caso MATCH ENCONTRADO:\n```text\nEl pedido a nombre de **[Nombre Cliente]** con código de pedido **#[CodigoPedidoPlataforma]** cuenta con estos datos a este momento:\n\n📊 **Estado Actual:** [etapaPedido]\n*(Solo si etapaPedido == 'En Viaje': \"El repartidor salió a las [HoraEnViaje]\")*\n\n🕒 **Línea de Tiempo:**\n* [HH:MM] - [Etiqueta Evento]\n* [HH:MM] - [Etiqueta Evento]\n\n🛒 **Tu Comanda:**\n* **[Nombre Articulo]:** [Cantidad] [Detalle Corto]\n\n📍 **Datos de Entrega:**\n* **Método:** [TipoEntrega]\n* **Destino:** [Calle] [Numero] *(Omitir si es NULL)*\n\n[Insertar Nota Informativa Sección 4 (Solo si aplica)]\n\n* La Hora actual es: *[HH:MM]*\n```\n---\n### 5.2 Caso NO ENCONTRADO (Default):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** No Encontrado\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Posible Razones:\n  - Pedido reciente no reflejado en sistema\n  - Datos incorrectos (nombre o código)\n- **Sugerencia:** Verificar datos o escalar consulta a agente humano\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 5.3 Caso Encontrados Múltiples (Solo si hay varias coincidencias parciales):\n```text\n* **Operación:** Búsqueda de Pedido\n* **Resultado:** Multiples Coincidencias Parciales Encontradas\n* **Sucursal Consultada:** **[Nombre Sucursal]**\n* **Código de Pedido Proporcionado:** **#[codigoPedidoProporcionado]**\n* **Nombre del Cliente Proporcionado:** **[nombreClienteProporcionado]**\n* Pedidos encontrados:\n  - 1) **[CodigoPedidoPlataforma]** - **[Nombre Cliente en DB]**\n  - 2) **[CodigoPedidoPlataforma]** - **[Nombre Cliente en DB]**\n  - ...\n  \n- **Sugerencia:** Confirmar con el cliente el código de pedido correcto para proporcionar detalles precisos. Si no se puede confirmar, reportar \"No Encontrado\" para evitar errores.\n* La Hora actual es: *[HH:MM]*\n``` \n\n---\n### 6) Configuración Regional\nTZ: America/Argentina/Buenos_Aires\n\nFormato Hora: HH:mm (24h)\n\nFecha Actual: {{ (() => { const d = new Date($now); return d.toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', hour12: false }); })() }}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -689,8 +736,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "value": "gpt-4.1-mini"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "responsesApiEnabled": false,
         "options": {}
@@ -698,8 +746,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        176,
-        512
+        96,
+        496
       ],
       "id": "8649cd75-9792-479f-bb09-38e467d902e6",
       "name": "OpenAI",
@@ -712,13 +760,14 @@
     },
     {
       "parameters": {
+        "modelName": "models/gemini-flash-latest",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        80,
-        512
+        192,
+        480
       ],
       "id": "17292767-0abb-49ad-a3a5-c3411e3713f7",
       "name": "Gemini",
@@ -842,6 +891,29 @@
       ],
       "id": "c9a02b41-cfe2-47df-a8f4-68674ee7496b",
       "name": "Sucursal sin datos"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    a.idVenta,\n    CASE \n        WHEN TRIM(COALESCE(a.CodigoPedidoPlataforma, '')) = '' THEN 'TAKE AWAY'\n        ELSE REGEXP_SUBSTR(a.CodigoPedidoPlataforma, '[0-9]+$')\n    END AS CodigoPedidoPlataforma,\n    d.nombre as Nombre\nFROM osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.ventas_datospedido a\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.ventas b\n    ON b.IdVenta = a.IdVenta\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.clientespedidos_lugaresentrega c\n    ON a.IdClientePedido = c.IdClientePedido \n    AND a.IdLugarEntrega = c.IdLugarEntrega\nJOIN osakisucursal{{ $('Main_Agent').first().json.numero_sucursal }}.clientespedidos d\n    ON a.IdClientePedido = d.IdClientePedido\nWHERE b.FechaHoraApertura >= DATE_SUB(NOW(), INTERVAL 24 HOUR)\nORDER BY a.idVenta ASC;\n",
+        "options": {
+          "queryReplacement": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Query_Parameters', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.mySqlTool",
+      "typeVersion": 2.5,
+      "position": [
+        624,
+        560
+      ],
+      "id": "6e7782e1-dcaf-49f6-b71b-1cc268f9d00a",
+      "name": "Ultimos Pedidos",
+      "credentials": {
+        "mySql": {
+          "id": "sFauwBpvViqW5yF3",
+          "name": "MySQL Osaki-Ayres"
+        }
+      }
     }
   ],
   "settings": {
@@ -872,6 +944,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-05-19T23:04:52.612Z",
-  "versionId": "d58ef466-828d-4ecd-8924-2dfa991292c1"
+  "updatedAt": "2026-05-29T19:33:31.715Z",
+  "versionId": "b344f043-cf83-443c-8b6e-b4ee94682275"
 }
