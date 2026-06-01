@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-29T21:01:14.000Z",
-    "createdAt": "2026-05-29T21:01:03.257Z",
-    "versionId": "6612145a-679c-4aa9-9157-d49cf06f4b3d",
+    "updatedAt": "2026-05-31T22:21:16.000Z",
+    "createdAt": "2026-05-31T17:21:37.202Z",
+    "versionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -1598,7 +1598,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.3,
         "position": [
-          6064,
+          6096,
           992
         ],
         "id": "5fbbd6ba-1468-49bd-81b3-da407291c63b",
@@ -2526,7 +2526,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          5840,
+          5744,
           1056
         ],
         "id": "ad4c8604-f681-4ddf-b33f-b28a08e475a7",
@@ -6083,7 +6083,7 @@
         "type": "@n8n/n8n-nodes-langchain.agent",
         "typeVersion": 3.1,
         "position": [
-          5504,
+          5456,
           1056
         ],
         "id": "c9f08c17-980a-422c-9a23-50aabbb57f9e",
@@ -7119,6 +7119,108 @@
         ],
         "id": "4b228c8f-7ad1-4721-b4fb-6453c826fa67",
         "name": "Agente Escalador"
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "={{ $('Data Filter').first().json.schema }}",
+            "mode": "name"
+          },
+          "table": {
+            "__rl": true,
+            "value": "tema_conversaciones",
+            "mode": "list",
+            "cachedResultName": "tema_conversaciones"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "tema": "={{ $('Normaliza1').item.json.tema.split(' ').map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()).join(' ') }}",
+              "intencion": "={{ $('Normaliza1').item.json.intencion.split(' ').map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()).join(' ') }}",
+              "session_id": "={{ $('Data Filter').first().json.sessionId }}",
+              "sucursal": "={{ $('Data Filter').first().json.sucursal }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "session_id",
+                "displayName": "session_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tema",
+                "displayName": "tema",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "intencion",
+                "displayName": "intencion",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "sucursal",
+                "displayName": "sucursal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "created_at",
+                "displayName": "created_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          5920,
+          1056
+        ],
+        "id": "073680ec-0b47-48ca-9a1e-2367c052e102",
+        "name": "Registra Tema",
+        "credentials": {
+          "postgres": {
+            "id": "sk75eTZ4yDkbl8mt",
+            "name": "Postgres Osaki-TemikiaProd01"
+          }
+        }
       }
     ],
     "connections": {
@@ -7908,7 +8010,7 @@
         "main": [
           [
             {
-              "node": "Switch",
+              "node": "Registra Tema",
               "type": "main",
               "index": 0
             }
@@ -8991,14 +9093,25 @@
             }
           ]
         ]
+      },
+      "Registra Tema": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 6612145a",
+    "name": "Version 65992f8d",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "6612145a-679c-4aa9-9157-d49cf06f4b3d",
+  "activeVersionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -9786,7 +9899,7 @@
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Registra Tema",
             "type": "main",
             "index": 0
           }
@@ -10864,6 +10977,17 @@
         [
           {
             "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registra Tema": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -12471,7 +12595,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        6064,
+        6096,
         992
       ],
       "id": "5fbbd6ba-1468-49bd-81b3-da407291c63b",
@@ -13399,7 +13523,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5840,
+        5744,
         1056
       ],
       "id": "ad4c8604-f681-4ddf-b33f-b28a08e475a7",
@@ -16956,7 +17080,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        5504,
+        5456,
         1056
       ],
       "id": "c9f08c17-980a-422c-9a23-50aabbb57f9e",
@@ -17992,6 +18116,108 @@
       ],
       "id": "4b228c8f-7ad1-4721-b4fb-6453c826fa67",
       "name": "Agente Escalador"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "={{ $('Data Filter').first().json.schema }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tema_conversaciones",
+          "mode": "list",
+          "cachedResultName": "tema_conversaciones"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "tema": "={{ $('Normaliza1').item.json.tema.split(' ').map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()).join(' ') }}",
+            "intencion": "={{ $('Normaliza1').item.json.intencion.split(' ').map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()).join(' ') }}",
+            "session_id": "={{ $('Data Filter').first().json.sessionId }}",
+            "sucursal": "={{ $('Data Filter').first().json.sucursal }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tema",
+              "displayName": "tema",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "intencion",
+              "displayName": "intencion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sucursal",
+              "displayName": "sucursal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        5920,
+        1056
+      ],
+      "id": "073680ec-0b47-48ca-9a1e-2367c052e102",
+      "name": "Registra Tema",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
     }
   ],
   "settings": {
@@ -18022,6 +18248,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-05-29T21:01:03.228Z",
-  "versionId": "6612145a-679c-4aa9-9157-d49cf06f4b3d"
+  "updatedAt": "2026-05-31T17:23:07.377Z",
+  "versionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4"
 }
