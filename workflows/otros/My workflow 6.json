@@ -1,0 +1,88 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-05-31T22:15:46.021Z",
+  "id": "RssGgJ4eEMDkEpRe",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "372f9e49-6eac-4ad8-9945-7429aefed367",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "osaki_main",
+          "mode": "list",
+          "cachedResultName": "osaki_main"
+        },
+        "table": {
+          "__rl": true,
+          "value": "info_business",
+          "mode": "list",
+          "cachedResultName": "info_business"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        208,
+        0
+      ],
+      "id": "ff8ddf28-19d7-4fe9-8220-a415c6772b2d",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-05-31T22:15:46.028Z",
+      "createdAt": "2026-05-31T22:15:46.028Z",
+      "role": "workflow:owner",
+      "workflowId": "RssGgJ4eEMDkEpRe",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-05-31T22:16:13.848Z",
+  "versionId": "d9aad410-f6c0-4f11-9f3d-1c2b3fb594d1"
+}
