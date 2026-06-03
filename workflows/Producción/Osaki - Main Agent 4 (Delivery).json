@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-05-31T22:21:16.000Z",
-    "createdAt": "2026-05-31T17:21:37.202Z",
-    "versionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4",
+    "updatedAt": "2026-06-02T15:06:25.000Z",
+    "createdAt": "2026-06-02T15:06:22.820Z",
+    "versionId": "3ee912be-a135-4b7b-aa82-aabc578317c0",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -7019,11 +7019,20 @@
               },
               {
                 "id": "049f5766-87a8-4633-bb4f-b42147fb2d12",
-                "leftValue": "={{ $json.output }}",
-                "rightValue": "Calling",
+                "leftValue": "={{ $json.output.toLowerCase() }}",
+                "rightValue": "calling",
                 "operator": {
                   "type": "string",
-                  "operation": "notStartsWith"
+                  "operation": "notContains"
+                }
+              },
+              {
+                "id": "d553ab38-6f04-44f2-82cc-b87223869a2a",
+                "leftValue": "={{ $json.output.toLowerCase() }}",
+                "rightValue": "tool",
+                "operator": {
+                  "type": "string",
+                  "operation": "notContains"
                 }
               }
             ],
@@ -9107,11 +9116,11 @@
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 65992f8d",
+    "name": "Version 3ee912be",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4",
+  "activeVersionId": "3ee912be-a135-4b7b-aa82-aabc578317c0",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -18016,11 +18025,20 @@
             },
             {
               "id": "049f5766-87a8-4633-bb4f-b42147fb2d12",
-              "leftValue": "={{ $json.output }}",
-              "rightValue": "Calling",
+              "leftValue": "={{ $json.output.toLowerCase() }}",
+              "rightValue": "calling",
               "operator": {
                 "type": "string",
-                "operation": "notStartsWith"
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "d553ab38-6f04-44f2-82cc-b87223869a2a",
+              "leftValue": "={{ $json.output.toLowerCase() }}",
+              "rightValue": "tool",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
               }
             }
           ],
@@ -18227,7 +18245,8 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
     "errorWorkflow": "ZpYgShc1li13uf3h",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedPerExecution": 5
   },
   "shared": [
     {
@@ -18248,6 +18267,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-06-02T01:19:50.584Z",
-  "versionId": "65992f8d-19b8-43bf-a657-d0bdded27cb4"
+  "updatedAt": "2026-06-02T15:07:37.908Z",
+  "versionId": "3ee912be-a135-4b7b-aa82-aabc578317c0"
 }
