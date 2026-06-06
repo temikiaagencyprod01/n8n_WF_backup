@@ -1,0 +1,2820 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Vista Resumen Auditoría",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Top 5 Intención",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Top 5 Hora Contacto",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Estado Emocional Final Cliente",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Sentimiento Negativo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Riesgo Negocio",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Detalle Escalaciones",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respuestas_Encuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vista Resumen Auditoría": {
+      "main": [
+        [
+          {
+            "node": "KPI Funnel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Riesgo Negocio": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Intención": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Hora Contacto": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estado Emocional Final Cliente": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Sentimiento Negativo": {
+      "main": [
+        [
+          {
+            "node": "Aggregate4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Detalle Escalaciones": {
+      "main": [
+        [
+          {
+            "node": "Aggregate5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Aggregate4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Aggregate5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Salida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Salida": {
+      "main": [
+        [
+          {
+            "node": "Organiza Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All Data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KPI Funnel": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organiza Data": {
+      "main": [
+        [
+          {
+            "node": "Forma_HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Forma_HTML": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuestas_Encuesta": {
+      "main": [
+        [
+          {
+            "node": "Aggregate6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Top 5 Intención1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Top 5 Hora Contacto1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Estado Emocional Final Cliente1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Sentimiento Negativo1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Riesgo Negocio1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Detalle Escalaciones1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Temas_Conversaciones_Query",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "KPI Delivery Query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Intención1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Hora Contacto1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estado Emocional Final Cliente1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Sentimiento Negativo1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Riesgo Negocio1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate7": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate8": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Aggregate9": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Aggregate10": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Aggregate11": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Detalle Escalaciones1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate12": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "All Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Salida1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Salida1": {
+      "main": [
+        [
+          {
+            "node": "Organiza Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All Data1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organiza Data1": {
+      "main": [
+        [
+          {
+            "node": "Forma_HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Forma_HTML1": {
+      "main": [
+        [
+          {
+            "node": "HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Temas_Conversaciones_Query": {
+      "main": [
+        [
+          {
+            "node": "Temas_Conversaciones_Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temas_Conversaciones_Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "KPI Delivery Query": {
+      "main": [
+        [
+          {
+            "node": "KPI Delivery Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KPI Delivery Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Top 5 Intención2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Top 5 Hora Contacto2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Estado Emocional Final Cliente2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Sentimiento Negativo2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Casos Riesgo Negocio2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Detalle Escalaciones2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "KPI Delivery Query1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Temas_Conversaciones_Query1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Intención2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 5 Hora Contacto2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estado Emocional Final Cliente2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Sentimiento Negativo2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Casos Riesgo Negocio2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate13": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate14": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Aggregate15": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Aggregate16": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Aggregate17": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Detalle Escalaciones2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate18": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "All Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Normaliza Salida2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normaliza Salida2": {
+      "main": [
+        [
+          {
+            "node": "Organiza Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All Data2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organiza Data2": {
+      "main": [
+        [
+          {
+            "node": "Forma_HTML2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Forma_HTML2": {
+      "main": [
+        [
+          {
+            "node": "HTML2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "KPI Delivery Query1": {
+      "main": [
+        [
+          {
+            "node": "KPI Delivery Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KPI Delivery Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temas_Conversaciones_Query1": {
+      "main": [
+        [
+          {
+            "node": "Temas_Conversaciones_Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temas_Conversaciones_Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2026-03-09T16:40:29.148Z",
+  "id": "cMlUEVDRlCu45P00",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reporte Delivery Calle 9",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3184,
+        1984
+      ],
+      "id": "8aa39ed7-0a20-4e47-bb78-323e3cd6e8ab",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f85628b7-5a04-4420-a49e-2a3c3e4962bf",
+              "name": "=canal",
+              "value": "WhatsApp",
+              "type": "string"
+            },
+            {
+              "id": "c8003a48-3650-49f4-aad9-a1095fdd9c1d",
+              "name": "sucursal",
+              "value": "Restó Calle 47",
+              "type": "string"
+            },
+            {
+              "id": "69addca3-74c8-4aa9-b908-3ae457509d9e",
+              "name": "periodo_inicio",
+              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "44accf68-e2d6-4ac6-a615-b5ba78a17659",
+              "name": "periodo_fin",
+              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "3db45070-38f7-49b1-830e-20ff4b46dabf",
+              "name": "mes_periodo",
+              "value": "={{  (() => {   const mes = $now.setLocale('es').minus({ months: 1 }).toFormat('LLLL');   return mes.charAt(0).toUpperCase() + mes.slice(1); })() }}",
+              "type": "string"
+            },
+            {
+              "id": "7b716804-e6fc-43b6-b56b-a1bd3f3edd53",
+              "name": "mes_numero",
+              "value": "={{  (() => {   \n    // Obtener el mes como número (1-12)\n    const numeroMes = $now.minus({ months: 1 }).month; \n    return numeroMes; \n})() }}",
+              "type": "string"
+            },
+            {
+              "id": "1cb67591-2e02-4be6-9df0-fb8cbbbcb8e8",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            },
+            {
+              "id": "75903675-b6f5-4449-9ec7-647465e36d46",
+              "name": "schema_analytics",
+              "value": "osaki_analytics",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1488,
+        352
+      ],
+      "id": "2977476c-6df1-48aa-8165-ddb16a703ef6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "html": "{{ $json.html }}"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1520,
+        336
+      ],
+      "id": "79bb4f2f-4318-4175-a4ee-a5d7dcfea517",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "={{ $json.schema_analytics }}",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "value": "vw_scorecard_mensual_reservas",
+          "mode": "list",
+          "cachedResultName": "vw_scorecard_mensual_reservas"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "mes",
+              "value": "={{ $json.periodo_inicio }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -848,
+        -384
+      ],
+      "id": "3cbeabcb-df37-4e96-9ae8-99c284f095bc",
+      "name": "Vista Resumen Auditoría",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT intent_principal as Intencion_Principal, COUNT(*) as Cantidad\nFROM osaki_analytics.auditoria_conversacion_reservas\nwhere mes_analisis='{{ $json.mes_periodo }}'\ngroup by intent_principal\norder by 2 desc\nlimit 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        -32
+      ],
+      "id": "70147dea-8dbf-46aa-8b03-c6213755f457",
+      "name": "Top 5 Intención",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH base AS (\n    SELECT\n        session_id,\n        first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS inicio_local\n    FROM osaki_analytics.auditoria_conversacion_reservas\n    WHERE first_user_ts IS NOT NULL\n    and mes_analisis ='{{ $json.mes_periodo }}'\n),\nagrupado AS (\n    SELECT\n        EXTRACT(ISODOW FROM inicio_local)::int AS dia_num,\n        CASE EXTRACT(ISODOW FROM inicio_local)::int\n            WHEN 1 THEN 'Lunes'\n            WHEN 2 THEN 'Martes'\n            WHEN 3 THEN 'Miércoles'\n            WHEN 4 THEN 'Jueves'\n            WHEN 5 THEN 'Viernes'\n            WHEN 6 THEN 'Sábado'\n            WHEN 7 THEN 'Domingo'\n        END AS dia_semana,\n        EXTRACT(HOUR FROM inicio_local)::int AS hora,\n        COUNT(DISTINCT session_id) AS conversaciones_iniciadas\n    FROM base\n    GROUP BY 1, 2, 3\n)\nSELECT\n    dia_semana,\n    LPAD(hora::text, 2, '0') || ':00' AS hora,\n    conversaciones_iniciadas,\n    ROUND(\n        100.0 * conversaciones_iniciadas\n        / SUM(conversaciones_iniciadas) OVER (),\n        2\n    ) AS pct_sobre_total_topologia\nFROM agrupado\nORDER BY conversaciones_iniciadas DESC, dia_num, hora\nLIMIT 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        160
+      ],
+      "id": "3bdfed63-421c-4757-85a3-4b6af261a107",
+      "name": "Top 5 Hora Contacto",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select sentiment_final as sentimiento_final, count(*) as Cantidad\nfrom osaki_analytics.auditoria_conversacion_reservas\nwhere mes_analisis = '{{ $json.mes_periodo }}'\ngroup by sentiment_final \norder by 2 desc;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        352
+      ],
+      "id": "4327d71b-b7e6-4d9e-a41f-e0730c1d5a0f",
+      "name": "Estado Emocional Final Cliente",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT     first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,\n RIGHT(SPLIT_PART(session_id, '@', 1), 10) AS telefono, intent_principal,\nCASE WHEN escalado =true THEN 'Sí'\nELSE 'No' END\nas escalado\n,evidence_snippet as Resumen\nfrom osaki_analytics.auditoria_conversacion_reservas\nwhere mes_analisis = '{{ $json.mes_periodo }}'\nand sentiment_final = 'negativo'\n  ORDER BY fecha_hora_inicio asc  ;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        544
+      ],
+      "id": "9084eb16-a623-4744-b617-45fea120ebef",
+      "name": "Casos Sentimiento Negativo",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH base AS (\n  SELECT  \n    a.first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,  \n    RIGHT(SPLIT_PART(a.session_id, '@', 1), 10) AS telefono,\n    a.intent_principal as intento_principal,\n    CASE WHEN a.escalado =true THEN 'Sí'\n    ELSE 'No' END\n    as escalado,\n    a.escalacion_tipo,\n    a.error_tipo,\n    a.evidence_snippet as resumen,\n  riesgo_negocio\n  FROM osaki_analytics.auditoria_conversacion_reservas a\n  WHERE a.mes_analisis='{{ $json.mes_periodo }}'\n)    \nSELECT\n  telefono,\n  fecha_hora_inicio,\n  intento_principal,\n  escalado,\n  escalacion_tipo,\n  error_tipo,\n  resumen\nFROM base\nWHERE riesgo_negocio = 'high'\n\nORDER BY fecha_hora_inicio ASC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        -224
+      ],
+      "id": "eb4e0784-6872-4c0a-9f0f-6f3caeb7870f",
+      "name": "Casos Riesgo Negocio",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_riesgo_negocio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -224
+      ],
+      "id": "fef86c41-6a67-4f5a-b233-2e74505d1c7e",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_intencion",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -32
+      ],
+      "id": "c9c207d8-9c68-45a9-8833-76b4074dcee4",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_horario_contacto",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        160
+      ],
+      "id": "ca04a71d-2aab-4c84-af65-27f37ef7c893",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "resumen_estado_emocional_final",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        352
+      ],
+      "id": "f931278f-89a8-4be8-aab2-f8de5ba144a2",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_sentimiento_negativo",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        544
+      ],
+      "id": "8c9cb2c3-d600-49d8-a8f6-254c50c60aca",
+      "name": "Aggregate4"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select \n  fecha_reporte as fecha_hora,\n  num_telefono AS telefono,\n  resumen_intencion as intencion,\n  resumen_datos_clave as datos_clave ,\n  notas_tono_sentimiento as tono_sentimiento,\n  notas_urgencia as urgencia,\n  sucursal,\n  estado_seguimiento as estado\nfrom osaki_main.seguimiento_reportes\nwhere extract(month from fecha_reporte) = {{ $json.mes_numero }}\nand sucursal ='Restó-Calle 47'\n  order by fecha_reporte asc ;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -864,
+        736
+      ],
+      "id": "988617da-74ad-4a6a-add3-83cf976e76ca",
+      "name": "Detalle Escalaciones",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "detalle_escalaciones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        736
+      ],
+      "id": "46297e7f-7fc9-40ac-820b-8574bd76e68a",
+      "name": "Aggregate5"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 8,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        16,
+        240
+      ],
+      "id": "8ca73417-c1f2-480a-830c-ae84ed94d6e7",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=## Input a analizar\n{{ JSON.stringify($json) }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "Eres un analista senior de operaciones conversacionales para restaurantes. Tu tarea es leer un JSON de entrada con métricas, listas de casos y detalles operativos, y devolver exclusivamente un JSON válido con 8 salidas textuales:\n\n1) resumen_general\n2) resumen_kpis_funnel\n3) resumen_riesgos_negocio\n4) resumen_intenciones\n5) resumen_horarios_contacto\n6) resumen_estado_emocional\n7) resumen_casos_negativos\n8) resumen_escalaciones\n9) resumen_encuestas\n\n## Objetivo\nGenera 1 resumen general y 7 resúmenes específicos, uno por sección.\nCada salida debe ser un texto en español, en tono ejecutivo-profesional, claro y accionable.\nCada texto debe tener 1 o 2 párrafos según la cantidad de información disponible, procurando la brevedad, salvo que se requiera más para un mejor entendimiento.\nNo uses markdown.\nNo uses viñetas.\nNo agregues texto fuera del JSON.\nNo expliques tu proceso.\nNo inventes datos, causas, porcentajes ni conclusiones no sustentadas por el input.\n\n## Reglas de análisis\n- Basa cada resumen únicamente en los datos presentes en el input.\n- Cuando existan métricas numéricas relevantes, incorpóralas de forma natural dentro del texto.\n- Prioriza hallazgos, patrones, riesgos, desempeño, fricciones y oportunidades.\n- Si una sección trae pocos datos, escribe solo 1 párrafo breve pero útil.\n- Si faltan datos para una sección, indícalo de forma explícita y breve dentro del resumen, sin inventar.\n- No repitas exactamente el mismo contenido entre secciones.\n- El resumen general debe integrar la visión global del mes/sucursal/canal, conectando desempeño, operación, riesgo y experiencia del cliente.\n- Evita lenguaje exagerado. Sé preciso.\n- No menciones “sección 1”, “sección 2”, etc. Habla del contenido.\n- Interpreta porcentajes y volúmenes, pero sin sobreinferir causalidad.\n- Cuando haya tensiones o contradicciones operativas, menciónalas como hallazgos, no como certezas absolutas.\n- Si detectas problemas de consistencia en los datos, señálalo con prudencia.\n\n## Mapeo de secciones del input\nDebes construir cada salida usando principalmente estas partes del JSON:\n\n- resumen_general:\n  Usa la vista integral de todo el objeto: mes, sucursal_canon, canal_canon, KPIs principales, riesgos, intenciones, horarios, sentimiento y escalaciones.\n\n- resumen_kpis_funnel:\n  Usa principalmente:\n  chats_totales\n  chats_funnel_reserva\n  reservas_confirmadas_chat\n  reservas_confirmadas_por_100_chats_reserva\n  dropoff_total_pct\n  reserva_completa_pct\n  tiempo_confirmacion_p50_sec\n  tiempo_confirmacion_p90_sec\n  confirmacion_explicita_pct\n  error_detectado_pct\n  riesgo_high_pct\n  friccion_p50\n  friccion_p90\n  repreguntas_promedio\n  claridad_promedio\n  turnos_p50\n  turnos_p90\n  mensajes_totales_promedio\n  mensajes_ai_promedio\n  mensajes_human_promedio\n  reservas_operacion_total\n  cancelaciones_operacion_total\n  cancelaciones_operacion_pct\n  comensales_totales\n  reservas_activas_total\n  encuestas_total\n  encuesta_calificacion_promedio\n\n- resumen_riesgos_negocio:\n  Usa principalmente:\n  casos_riesgo:_negocio\n  riesgo_high_pct\n  error_detectado_pct\n  escalado_auditoria_pct\n  escaladas_auditoria_total\n  escalado_con_ticket_pct\n  tickets_humanos_total\n  tickets_pendientes_total\n  handoff_quality_promedio\n\n- resumen_intenciones:\n  Usa principalmente:\n  top_5_intencion\n\n- resumen_horarios_contacto:\n  Usa principalmente:\n  top_5_horario_contacto\n\n- resumen_estado_emocional:\n  Usa principalmente:\n  resumen_estado_emocional_final\n\n- resumen_casos_negativos:\n  Usa principalmente:\n  casos_sentimiento_negativo\n\n- resumen_escalaciones:\n  Usa principalmente:\n  detalle_escalaciones\n  escalado_auditoria_pct\n  escaladas_auditoria_total\n  escalado_con_ticket_pct\n  tickets_humanos_total\n  tickets_pendientes_total\n  escalacion_turno_promedio\n  handoff_quality_promedio\n\n\n- resumen_encuestas:\n  Usa principalmente:\n   ¿Qué te gustó más de la atención virtual?\n   ¿Qué sugerencias tienes para Osaki?\n\n\n## Instrucciones de estilo\n- Español ejecutivo y natural.\n- Redacción compacta pero con densidad analítica.\n- Enfócate en “qué pasó”, “qué significa” y “qué patrón operativo sugiere”.\n- No hagas recomendaciones tácticas detalladas; solo menciona implicaciones operativas cuando sean evidentes.\n- No cites teléfonos completos como elemento central; úsalos solo si son necesarios para contextualizar un patrón.\n- No copies literalmente snippets largos; sintetízalos.\n- Convierte timestamps a referencias temporales naturales solo si aporta valor; no es obligatorio reescribir fechas.\n- Mantén cada campo entre 80 y 220 palabras aproximadamente, salvo que la información sea escasa.\n\n## Validación obligatoria de salida\nDevuelve exclusivamente un objeto JSON válido, sin bloque markdown, con exactamente esta estructura y estas claves:\n\n{\n  \"resumen_general\": \"texto\",\n  \"resumen_kpis_funnel\": \"texto\",\n  \"resumen_riesgos_negocio\": \"texto\",\n  \"resumen_intenciones\": \"texto\",\n  \"resumen_horarios_contacto\": \"texto\",\n  \"resumen_estado_emocional\": \"texto\",\n  \"resumen_casos_negativos\": \"texto\",\n  \"resumen_escalaciones\": \"texto\",\n  \"resumen_encuestas\": \"texto\",\n}\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        496,
+        336
+      ],
+      "id": "f9ca25c5-35c7-470a-aaeb-d98b2853f648",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        384,
+        544
+      ],
+      "id": "a49e4610-4e22-4841-bf5e-91e3603f4d3b",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items\nreturn items.map(item => {\n  try {\n    // 1. Obtenemos el string\n    let rawContent = item.json.output || \"\";\n\n    // 2. Limpieza de Markdown\n    let cleanContent = rawContent\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/\\s*```$/, '')\n      .trim();\n\n    // -----------------------------------------------------------\n    // 3. REPARACIÓN Y NORMALIZACIÓN (El Parche)\n    // -----------------------------------------------------------\n    \n    // A. Reparar cierre incorrecto de propiedades (tu parche original)\n    cleanContent = cleanContent.replace(/(\\n\\s*)\"\\s*,/g, '$1},');\n\n    // B. Normalizar \"null\" -> null (Quitar comillas a los nulls)\n    // Esta regex busca : seguido de opcionalmente espacios, \"null\" y luego una coma o fin de objeto\n    cleanContent = cleanContent.replace(/:\\s*\"null\"(\\s*[,}])平衡/g, ': null$1');\n    \n    // Versión más agresiva si la anterior es muy específica:\n    cleanContent = cleanContent.replace(/:\\s*\"null\"/g, ': null');\n\n    // -----------------------------------------------------------\n\n    // 4. Parseo\n    const parsedData = JSON.parse(cleanContent);\n\n    // 5. Retorno Exitoso\n    return {\n      json: parsedData\n    };\n\n  } catch (error) {\n    return {\n      json: {\n        error: true,\n        message: \"Error al parsear el JSON tras la limpieza.\",\n        original_error: error.message,\n        cleaned_string: item.json.output // Enviamos el original para debug\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        336
+      ],
+      "id": "da1999f5-660f-435e-bf67-da8d09e78130",
+      "name": "Normaliza Salida"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        336
+      ],
+      "id": "a5d090ca-6498-43e2-987e-5dc8ac30a2de",
+      "name": "All Data"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "kpis_funnel",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -384
+      ],
+      "id": "8a4ff7e9-d42e-40c7-acde-0d15af6254e5",
+      "name": "KPI Funnel"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Capturamos los datos de los nodos de entrada\nconst allData = $node[\"All Data\"].json;\nconst normalizaSalida = $node[\"Normaliza Salida\"].json;\n\n// 2. Creamos el objeto raíz que contendrá todo el árbol\nconst arbolReporte = {\n  resumen_ejecutivo: normalizaSalida.resumen_general,\n  secciones: {}\n};\n\n// 3. Definimos el mapeo (Llave del Resumen vs Llave de los Datos)\nconst mapeoSecciones = [\n  { \n    id: \"kpis_funnel\", \n    nombre: \"KPIs de Funnel\", \n    resumenKey: \"resumen_kpis_funnel\", \n    dataKey: \"kpis_funnel\" \n  },\n  { \n    id: \"riesgos_negocio\", \n    nombre: \"Riesgos de Negocio\", \n    resumenKey: \"resumen_riesgos_negocio\", \n    dataKey: \"casos_riesgo_negocio\" \n  },\n  { \n    id: \"intenciones\", \n    nombre: \"Top Intenciones\", \n    resumenKey: \"resumen_intenciones\", \n    dataKey: \"top_5_intencion\" \n  },\n  { \n    id: \"horarios\", \n    nombre: \"Horarios de Contacto\", \n    resumenKey: \"resumen_horarios_contacto\", \n    dataKey: \"top_5_horario_contacto\" \n  },\n  { \n    id: \"estado_emocional\", \n    nombre: \"Análisis Emocional\", \n    resumenKey: \"resumen_estado_emocional\", \n    dataKey: \"resumen_estado_emocional_final\" \n  },\n  { \n    id: \"sentimiento_negativo\", \n    nombre: \"Casos de Sentimiento Negativo\", \n    resumenKey: \"resumen_casos_negativos\", \n    dataKey: \"casos_sentimiento_negativo\" \n  },\n  { \n    id: \"escalaciones\", \n    nombre: \"Detalle de Escalaciones\", \n    resumenKey: \"resumen_escalaciones\", \n    dataKey: \"detalle_escalaciones\" \n  },\n  { \n    id: \"encuestas\", \n    nombre: \"Detalle de Encuestas\", \n    resumenKey: \"resumen_encuestas\", \n    dataKey: \"respuestas_encuesta\" \n  }\n];\n\n// 4. Construimos el árbol intercalando cada sección\nmapeoSecciones.forEach(sec => {\n  arbolReporte.secciones[sec.id] = {\n    titulo: sec.nombre,\n    resumen_narrativo: normalizaSalida[sec.resumenKey] || \"Sin resumen disponible\",\n    datos_detallados: allData[sec.dataKey] || []\n  };\n});\n\n// 5. Retornamos UN SOLO ITEM con la estructura completa\nreturn [{ json: arbolReporte }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        336
+      ],
+      "id": "19dfaf9e-8c1c-4779-af56-8e50995c019e",
+      "name": "Organiza Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node\n// Salida: [{ json: { html } }]\n\nconst rawItems = $input.all().map(item => item.json);\n\n/* =========================\n   1) UTILIDADES\n========================= */\n\nfunction isReportObject(obj) {\n  return !!(\n    obj &&\n    typeof obj === 'object' &&\n    !Array.isArray(obj) &&\n    typeof obj.resumen_ejecutivo === 'string' &&\n    obj.secciones &&\n    typeof obj.secciones === 'object'\n  );\n}\n\nfunction extractPayload(value) {\n  if (isReportObject(value)) return value;\n\n  if (Array.isArray(value)) {\n    for (const item of value) {\n      const found = extractPayload(item);\n      if (found) return found;\n    }\n    return null;\n  }\n\n  if (value && typeof value === 'object') {\n    for (const key of Object.keys(value)) {\n      const found = extractPayload(value[key]);\n      if (found) return found;\n    }\n  }\n\n  return null;\n}\n\nconst data = extractPayload(rawItems);\n\nif (!data) {\n  throw new Error(\n    'No encontré un objeto con la estructura esperada: { resumen_ejecutivo, secciones }.'\n  );\n}\n\nfunction escapeHtml(value) {\n  return String(value ?? '')\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;')\n    .replace(/\"/g, '&quot;')\n    .replace(/'/g, '&#39;');\n}\n\nfunction prettyLabel(key) {\n  return String(key || '')\n    .replace(/_/g, ' ')\n    .replace(/\\b\\w/g, c => c.toUpperCase());\n}\n\nfunction isNumericLike(value) {\n  return (\n    typeof value === 'number' ||\n    (typeof value === 'string' && value.trim() !== '' && !isNaN(value))\n  );\n}\n\nfunction formatNumber(value, decimals = 2) {\n  return Number(value).toLocaleString('es-MX', {\n    minimumFractionDigits: 0,\n    maximumFractionDigits: decimals,\n  });\n}\n\nfunction formatDate(value, withTime = true) {\n  if (!value) return '—';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  return new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    ...(withTime\n      ? {\n          hour: '2-digit',\n          minute: '2-digit',\n          hour12: false,\n        }\n      : {}),\n  }).format(d);\n}\n\nfunction formatMonthYear(value) {\n  if (!value) return 'Periodo no definido';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  const month = new Intl.DateTimeFormat('es-MX', {\n    month: 'long',\n  }).format(d);\n\n  const year = new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n  }).format(d);\n\n  return `${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;\n}\n\nfunction secondsToHuman(seconds) {\n  if (!isNumericLike(seconds)) return '—';\n\n  const totalSec = Number(seconds);\n  const totalMin = Math.round(totalSec / 60);\n\n  if (totalMin < 60) return `${totalMin} min`;\n\n  const h = Math.floor(totalMin / 60);\n  const m = totalMin % 60;\n  return m === 0 ? `${h} h` : `${h} h ${m} min`;\n}\n\nfunction formatValue(key, value) {\n  if (value === null || value === undefined || value === '') return '—';\n\n  const lowerKey = String(key).toLowerCase();\n\n  if (lowerKey.includes('fecha') || lowerKey.includes('hora')) {\n    return formatDate(value, true);\n  }\n\n  if (lowerKey.endsWith('_sec')) {\n    return secondsToHuman(value);\n  }\n\n  if (lowerKey.endsWith('_pct') || lowerKey.includes('por_100')) {\n    return `${formatNumber(value, 2)}%`;\n  }\n\n  if (lowerKey.includes('telefono') || lowerKey.includes('num_telefono')) {\n    return escapeHtml(value);\n  }\n\n  if (typeof value === 'boolean') {\n    return value ? 'Sí' : 'No';\n  }\n\n  if (isNumericLike(value)) {\n    return formatNumber(value, 2);\n  }\n\n  return escapeHtml(value);\n}\n\nfunction renderParagraphs(text) {\n  if (!text) return '<p class=\"muted\">Sin resumen narrativo.</p>';\n\n  return String(text)\n    .split(/\\n\\s*\\n/)\n    .filter(Boolean)\n    .map(p => `<p>${escapeHtml(p)}</p>`)\n    .join('');\n}\n\nfunction renderTable(rows = []) {\n  if (!Array.isArray(rows) || rows.length === 0) {\n    return `<div class=\"empty-state\">Sin datos detallados.</div>`;\n  }\n\n  const columns = Array.from(\n    rows.reduce((acc, row) => {\n      Object.keys(row || {}).forEach(k => acc.add(k));\n      return acc;\n    }, new Set())\n  );\n\n  const thead = `\n    <thead>\n      <tr>\n        ${columns\n          .map(col => `<th>${escapeHtml(prettyLabel(col))}</th>`)\n          .join('')}\n      </tr>\n    </thead>\n  `;\n\n  const tbody = `\n    <tbody>\n      ${rows\n        .map(row => {\n          return `\n            <tr>\n              ${columns\n                .map(col => `<td>${formatValue(col, row?.[col])}</td>`)\n                .join('')}\n            </tr>\n          `;\n        })\n        .join('')}\n    </tbody>\n  `;\n\n  return `\n    <div class=\"table-wrap\">\n      <table>\n        ${thead}\n        ${tbody}\n      </table>\n    </div>\n  `;\n}\n\nfunction renderMetricCards(kpiRow = {}) {\n  const cards = [\n    {\n      label: 'Chats Funnel Reserva',\n      value: kpiRow.chats_funnel_reserva,\n      tone: '',\n    },\n    {\n      label: 'Reservas Confirmadas Chat',\n      value: kpiRow.reservas_confirmadas_chat,\n      tone: 'red',\n    },\n    {\n      label: 'Conversión',\n      value: kpiRow.reservas_confirmadas_por_100_chats_reserva != null\n        ? `${formatNumber(kpiRow.reservas_confirmadas_por_100_chats_reserva, 2)}%`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Dropoff Total',\n      value: kpiRow.dropoff_total_pct != null\n        ? `${formatNumber(kpiRow.dropoff_total_pct, 2)}%`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Errores Detectados',\n      value: kpiRow.error_detectado_pct != null\n        ? `${formatNumber(kpiRow.error_detectado_pct, 2)}%`\n        : '—',\n      tone: 'warn',\n    },\n    {\n      label: 'Tiempo Confirmación P50',\n      value: secondsToHuman(kpiRow.tiempo_confirmacion_p50_sec),\n      tone: '',\n    },\n    {\n      label: 'Tiempo Confirmación P90',\n      value: secondsToHuman(kpiRow.tiempo_confirmacion_p90_sec),\n      tone: 'danger',\n    },\n    {\n      label: 'Cancelaciones',\n      value: kpiRow.cancelaciones_operacion_pct != null\n        ? `${formatNumber(kpiRow.cancelaciones_operacion_pct, 2)}%`\n        : '—',\n      tone: '',\n    },\n  ];\n\n  return `\n    <div class=\"metrics-grid\">\n      ${cards\n        .map(card => {\n          return `\n            <div class=\"metric-card ${card.tone}\">\n              <div class=\"metric-label\">${escapeHtml(card.label)}</div>\n              <div class=\"metric-value\">${escapeHtml(card.value)}</div>\n            </div>\n          `;\n        })\n        .join('')}\n    </div>\n  `;\n}\n\nfunction renderSatisfactionCard(kpiRow = {}) {\n  const score = kpiRow.encuesta_calificacion_promedio ?? '—';\n  const surveys = kpiRow.encuestas_total ?? '—';\n\n  return `\n    <div class=\"score-card\">\n      <div class=\"score-label\">Satisfacción</div>\n      <div class=\"score-value\">${escapeHtml(formatValue('encuesta_calificacion_promedio', score))}</div>\n      <div class=\"score-stars\">★★★★★</div>\n      <div class=\"score-foot\">Encuestas: ${escapeHtml(formatValue('encuestas_total', surveys))}</div>\n    </div>\n  `;\n}\n\nfunction renderSection(sectionKey, section, index) {\n  const sectionColors = {\n    kpis_funnel: 'accent-black',\n    riesgos_negocio: 'accent-red',\n    intenciones: 'accent-black',\n    horarios: 'accent-black',\n    estado_emocional: 'accent-black',\n    sentimiento_negativo: 'accent-red',\n    escalaciones: 'accent-black',\n    encuestas: 'accent-black',\n  };\n\n  const colorClass = sectionColors[sectionKey] || 'accent-black';\n  let rows = Array.isArray(section?.datos_detallados) ? section.datos_detallados : [];\n\n  /* ========================================================\n     FILTRADO DE COLUMNAS SOLICITADAS POR EL USUARIO\n  ======================================================== */\n  \n  if (sectionKey === 'riesgos_negocio') {\n    // Se retiran los campos \"Escalado\", \"Escalacion Tipo\" y \"Error Tipo\"\n    rows = rows.map(row => {\n      const newRow = { ...row };\n      delete newRow.escalado;\n      delete newRow.escalacion_tipo;\n      delete newRow.error_tipo;\n      return newRow;\n    });\n  }\n\n  if (sectionKey === 'sentimiento_negativo') {\n    // Se retira el campo \"Intent Principal\"\n    rows = rows.map(row => {\n      const newRow = { ...row };\n      delete newRow.intent_principal;\n      delete newRow.intento_principal; // Cubrimos posibles variaciones en los datos\n      delete newRow.intencion_principal;\n      return newRow;\n    });\n  }\n\n  if (sectionKey === 'escalaciones') {\n    // Se retiran los campos \"Tono Sentimiento\", \"Urgencia\" y \"Estado\"\n    rows = rows.map(row => {\n      const newRow = { ...row };\n      delete newRow.tono_sentimiento;\n      delete newRow.urgencia;\n      delete newRow.estado;\n      return newRow;\n    });\n  }\n\n  /* ======================================================== */\n\n  if (sectionKey === 'kpis_funnel') {\n    const kpiRow = rows[0] || {};\n\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        ${renderMetricCards(kpiRow)}\n\n      </section>\n    `;\n  }\n  \n  if (sectionKey === 'encuestas') {\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        <div class=\"subsection-title\">Respuestas de clientes</div>\n        ${renderTable(rows)}\n      </section>\n    `;\n  }\n\n  return `\n    <section class=\"card ${colorClass}\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">${index}.</span>\n        <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n      </div>\n\n      <div class=\"section-text\">\n        ${renderParagraphs(section?.resumen_narrativo)}\n      </div>\n\n      ${renderTable(rows)}\n    </section>\n  `;\n}\n\n/* =========================\n   2) DATOS DERIVADOS\n========================= */\n\nconst secciones = data.secciones || {};\nconst orderedKeys = [\n  'kpis_funnel',\n  'riesgos_negocio',\n  'intenciones',\n  'horarios',\n  'estado_emocional',\n  'sentimiento_negativo',\n  'escalaciones',\n  'encuestas',\n].filter(key => secciones[key]);\n\nconst kpiRow = secciones.kpis_funnel?.datos_detallados?.[0] || {};\nconst sucursal = kpiRow.sucursal_canon || 'Sucursal no definida';\nconst canal = kpiRow.canal_canon || 'Canal no definido';\nconst periodo = formatMonthYear(kpiRow.mes);\n\n/* =========================\n   3) HTML FINAL\n========================= */\n\nconst html = `\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Reporte Operativo</title>\n  <style>\n    * { box-sizing: border-box; }\n    body {\n      margin: 0;\n      padding: 24px;\n      font-family: Arial, Helvetica, sans-serif;\n      background: #f4f4f5;\n      color: #111827;\n      line-height: 1.45;\n    }\n\n    .container {\n      max-width: 1280px;\n      margin: 0 auto;\n    }\n\n    .header {\n      display: flex;\n      justify-content: space-between;\n      align-items: stretch;\n      gap: 24px;\n      margin-bottom: 28px;\n      border-bottom: 4px solid #e11d48;\n      padding-bottom: 18px;\n    }\n\n    .brand-box {\n      background: #111827;\n      color: #fff;\n      padding: 18px 22px;\n      border-radius: 10px;\n      font-size: 30px;\n      font-weight: 800;\n      letter-spacing: -0.5px;\n      display: inline-block;\n    }\n\n    .brand-box .red {\n      color: #e11d48;\n    }\n\n    .header-left {\n      flex: 1;\n    }\n\n    .header-title {\n      margin: 14px 0 4px 0;\n      font-size: 28px;\n      font-weight: 800;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n    }\n\n    .header-subtitle {\n      margin: 0;\n      color: #4b5563;\n      font-size: 16px;\n      font-weight: 600;\n    }\n\n    .header-meta {\n      min-width: 260px;\n      background: #fff;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .meta-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      color: #9ca3af;\n      font-weight: 700;\n      letter-spacing: 1px;\n      margin-bottom: 8px;\n    }\n\n    .meta-brand {\n      font-size: 24px;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 2px;\n    }\n\n    .meta-text {\n      font-size: 13px;\n      color: #6b7280;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      margin-bottom: 22px;\n      box-shadow: 0 3px 10px rgba(0,0,0,0.06);\n      border-top: 5px solid #111827;\n    }\n\n    .accent-red { border-top-color: #dc2626; }\n    .accent-black { border-top-color: #111827; }\n\n    .summary-grid {\n      display: grid;\n      grid-template-columns: 2fr 320px;\n      gap: 24px;\n      align-items: start;\n    }\n\n    .section-title {\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      font-size: 26px;\n      font-weight: 800;\n      margin-bottom: 18px;\n    }\n\n    .section-index {\n      color: #e11d48;\n    }\n\n    .section-text p {\n      margin: 0 0 12px 0;\n      text-align: justify;\n      color: #374151;\n      font-size: 16px;\n    }\n\n    .subsection-title {\n      margin: 24px 0 12px 0;\n      font-size: 18px;\n      font-weight: 800;\n      color: #111827;\n    }\n\n    .score-card {\n      background: #111827;\n      color: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      text-align: center;\n    }\n\n    .score-label {\n      text-transform: uppercase;\n      font-size: 11px;\n      letter-spacing: 1.2px;\n      color: #9ca3af;\n      font-weight: 700;\n      margin-bottom: 10px;\n    }\n\n    .score-value {\n      font-size: 52px;\n      line-height: 1;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 10px;\n    }\n\n    .score-stars {\n      color: #fbbf24;\n      font-size: 22px;\n      letter-spacing: 2px;\n      margin-bottom: 8px;\n    }\n\n    .score-foot {\n      font-size: 12px;\n      color: #d1d5db;\n    }\n\n    .metrics-grid {\n      display: grid;\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n      gap: 14px;\n      margin-top: 18px;\n      margin-bottom: 6px;\n    }\n\n    .metric-card {\n      border-left: 5px solid #e11d48;\n      background: #fafafa;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .metric-card.red { border-left-color: #e11d48; }\n    .metric-card.warn { border-left-color: #d97706; }\n    .metric-card.danger { border-left-color: #dc2626; }\n\n    .metric-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #6b7280;\n      font-weight: 700;\n      margin-bottom: 8px;\n    }\n\n    .metric-value {\n      font-size: 30px;\n      font-weight: 900;\n      color: #111827;\n    }\n\n    .table-wrap {\n      overflow-x: auto;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n    }\n\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      background: #fff;\n      font-size: 13px;\n    }\n\n    thead th {\n      background: #111827;\n      color: #fff;\n      text-align: left;\n      padding: 12px 10px;\n      font-weight: 700;\n      vertical-align: top;\n    }\n\n    tbody td {\n      border-top: 1px solid #e5e7eb;\n      padding: 10px;\n      vertical-align: top;\n      color: #374151;\n    }\n\n    tbody tr:nth-child(even) {\n      background: #fafafa;\n    }\n\n    .empty-state {\n      border: 1px dashed #d1d5db;\n      background: #fafafa;\n      color: #6b7280;\n      border-radius: 10px;\n      padding: 18px;\n      text-align: center;\n    }\n\n    .muted {\n      color: #6b7280;\n    }\n\n    @media (max-width: 980px) {\n      .summary-grid {\n        grid-template-columns: 1fr;\n      }\n\n      .metrics-grid {\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n      }\n\n      .header {\n        flex-direction: column;\n      }\n    }\n\n    /* ====== CORRECCIONES PARA IMPRESIÓN Y PDF ====== */\n    @media print {\n      @page {\n        size: A4 portrait;\n        margin: 1.5cm;\n      }\n\n      body {\n        background: #fff;\n        padding: 0;\n        font-size: 11pt;\n        /* Fuerza al navegador a imprimir los colores oscuros de fondo */\n        -webkit-print-color-adjust: exact !important;\n        print-color-adjust: exact !important;\n      }\n\n      .container {\n        max-width: 100%;\n        margin: 0;\n      }\n\n      .card {\n        box-shadow: none;\n        border: 1px solid #e5e7eb;\n        padding: 16px;\n        margin-bottom: 20px;\n        /* IMPORTANTE: Permite que las tarjetas largas salten de página */\n        break-inside: auto;\n        page-break-inside: auto;\n      }\n\n      /* Evita que los títulos queden solos al final de la página */\n      .section-title, .subsection-title {\n        break-after: avoid;\n        page-break-after: avoid;\n      }\n\n      /* Las tarjetas pequeñas (métricas) no deben cortarse por la mitad */\n      .score-card, .metric-card {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      /* FIX DE TABLAS: Permite ajustar el texto y desactiva el scroll que recorta el PDF */\n      .table-wrap {\n        overflow: visible !important;\n        border: none;\n      }\n\n      table {\n        table-layout: fixed; /* Fuerza a la tabla a no superar el 100% de la hoja */\n        width: 100%;\n        word-wrap: break-word;\n      }\n\n      thead th {\n        font-size: 10pt;\n        padding: 8px;\n      }\n\n      tbody td {\n        font-size: 9pt;\n        padding: 8px;\n        word-wrap: break-word;\n        overflow-wrap: break-word;\n        hyphens: auto; /* Ayuda a cortar URLs largas o textos sin espacio */\n      }\n\n      /* Mantiene las filas de las tablas completas (no las parte a la mitad) */\n      tr {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      /* Mantiene los encabezados al hacer salto de página */\n      thead {\n        display: table-header-group;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n\n    <header class=\"header\">\n      <div class=\"header-left\">\n        <div class=\"brand-box\">\n          OSAKI <span class=\"red\">SUSHI</span>\n        </div>\n        <h1 class=\"header-title\">Reporte Operativo Detallado</h1>\n        <p class=\"header-subtitle\">\n          Sucursal: ${escapeHtml(sucursal)} | Periodo: ${escapeHtml(periodo)} | Canal: ${escapeHtml(canal)}\n        </p>\n      </div>\n\n      <div class=\"header-meta\">\n        <div class=\"meta-label\">Generado por</div>\n        <div class=\"meta-brand\">TEMIKIA</div>\n        <div class=\"meta-text\">Inteligencia Operacional</div>\n      </div>\n    </header>\n\n    <section class=\"card accent-black\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">1.</span>\n        <span>Resumen General</span>\n      </div>\n\n      <div class=\"summary-grid\">\n        <div class=\"section-text\">\n          ${renderParagraphs(data.resumen_ejecutivo)}\n        </div>\n        ${renderSatisfactionCard(kpiRow)}\n      </div>\n    </section>\n\n    ${orderedKeys\n      .map((key, idx) => renderSection(key, secciones[key], idx + 2))\n      .join('')}\n\n  </div>\n</body>\n</html>\n`;\n\nreturn [\n  {\n    json: {\n      html,\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1296,
+        336
+      ],
+      "id": "4f8fa176-b5ed-4d3f-bfec-fba2ed9c9ccc",
+      "name": "Forma_HTML"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9625f9ba-b3ae-4196-afdd-f618d1a65a8a",
+              "name": "html",
+              "value": "={{ $json.html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        336
+      ],
+      "id": "2d1d3d13-8f9a-440b-ba81-5e934da47b73",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Toma el HTML como string desde item.json.html y lo convierte en binario \"files\"\nconst html = String($json.html ?? '');\nreturn [{\n  json: {},\n  binary: {\n    // OJO: Gotenberg espera el campo de formulario llamado EXACTAMENTE \"files\"\n    files: {\n      data: Buffer.from(html, 'utf8').toString('base64'),\n      fileName: 'index.html',\n      mimeType: 'text/html'\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1968,
+        336
+      ],
+      "id": "2f035502-7c85-403f-967f-ab01cf785c1e",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://72.61.62.19:3001/forms/chromium/convert/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "=files"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "=Resumen Osaki.pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2192,
+        336
+      ],
+      "id": "d038ad50-9a73-439d-8765-10115f0433d0",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT pregunta_2 as \"¿Qué te gustó más de la atención virtual?\"\n, pregunta_3 as \"¿Qué sugerencias tienes para Osaki?\"\nfrom osaki_analytics.encuesta\nwhere extract(month from fec_registro) = {{ $json.mes_numero }}\nand (pregunta_2 is not null and pregunta_3 is not null)\norder by fec_registro;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -848,
+        912
+      ],
+      "id": "4498ccaa-c58a-408d-9d89-a59dfefbe24f",
+      "name": "Respuestas_Encuesta",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "respuestas_encuesta",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        912
+      ],
+      "id": "9bc916e8-d050-4405-a9cc-48ede8525b0f",
+      "name": "Aggregate6"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.4-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5.4-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        560,
+        544
+      ],
+      "id": "024ad244-ab0c-4f56-b610-8f6616283632",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    '{{ $json.periodo_inicio }}' as mes,\n    COUNT(*) as chats_totales,\n    COUNT(CASE WHEN intent_principal = 'crear_pedido' THEN 1 END) as chats_crear_pedido,\n    COUNT(CASE WHEN intent_principal = 'rastrear_pedido' THEN 1 END) as chats_rastrear_pedido,\n    COUNT(CASE WHEN resolution_ok = true THEN 1 END) as resoluciones_exitosas,\n    ROUND(100.0 * COUNT(CASE WHEN resolution_ok = true THEN 1 END) / COUNT(*), 2) as tasa_resolucion_pct,\n    COUNT(CASE WHEN escalado = true THEN 1 END) as total_escalados,\n    ROUND(100.0 * COUNT(CASE WHEN escalado = true THEN 1 END) / COUNT(*), 2) as tasa_escalado_pct,\n    ROUND(AVG(handoff_quality), 2) as handoff_quality_promedio,\n    ROUND(AVG(escalacion_turno), 2) as escalacion_turno_promedio,\n    ROUND(100.0 * COUNT(CASE WHEN error_detectado = true THEN 1 END) / COUNT(*), 2) as tasa_error_pct,\n    ROUND(100.0 * COUNT(CASE WHEN riesgo_negocio = 'high' THEN 1 END) / COUNT(*), 2) as tasa_riesgo_high_pct,\n    COUNT(CASE WHEN pedido_tipo_entrega = 'delivery' THEN 1 END) as pedidos_delivery,\n    COUNT(CASE WHEN pedido_tipo_entrega = 'retiro' THEN 1 END) as pedidos_takeaway,\n    ROUND(AVG(duration_sec), 0) as duracion_promedio_sec,\n    ROUND(AVG(msg_count_total), 2) as mensajes_promedio,\n    ROUND(AVG(msg_count_ai), 2) as mensajes_ai_promedio,\n    ROUND(AVG(msg_count_human), 2) as mensajes_human_promedio\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        1248
+      ],
+      "id": "1fd3663a-d8ef-4e92-8721-805df424f017",
+      "name": "KPI Delivery Query",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "kpis_delivery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1248
+      ],
+      "id": "9fe08f7e-58cb-43e9-82bd-7ecfb0bef3c6",
+      "name": "KPI Delivery Aggregate"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    tema, \n    intencion, \n    COUNT(*) as cantidad\nFROM osaki_main.tema_conversaciones\nWHERE sucursal = '{{ $json.sucursal }}'\n  AND EXTRACT(month FROM created_at) = {{ $json.mes_numero }}\nGROUP BY tema, intencion\nORDER BY cantidad DESC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -880,
+        2544
+      ],
+      "id": "9a90468a-bb56-4bce-aff9-4f3dbdc4bae8",
+      "name": "Temas_Conversaciones_Query",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "temas_conversaciones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        2544
+      ],
+      "id": "32a2d333-d7b2-42df-8589-3e3e879673e3",
+      "name": "Temas_Conversaciones_Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f85628b7-5a04-4420-a49e-2a3c3e4962bf",
+              "name": "=canal",
+              "value": "WhatsApp",
+              "type": "string"
+            },
+            {
+              "id": "c8003a48-3650-49f4-aad9-a1095fdd9c1d",
+              "name": "sucursal",
+              "value": "Calle 47",
+              "type": "string"
+            },
+            {
+              "id": "69addca3-74c8-4aa9-b908-3ae457509d9e",
+              "name": "periodo_inicio",
+              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "44accf68-e2d6-4ac6-a615-b5ba78a17659",
+              "name": "periodo_fin",
+              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "3db45070-38f7-49b1-830e-20ff4b46dabf",
+              "name": "mes_periodo",
+              "value": "={{  (() => {   const mes = $now.setLocale('es').minus({ months: 1 }).toFormat('LLLL');   return mes.charAt(0).toUpperCase() + mes.slice(1); })() }}",
+              "type": "string"
+            },
+            {
+              "id": "7b716804-e6fc-43b6-b56b-a1bd3f3edd53",
+              "name": "mes_numero",
+              "value": "={{  (() => {   \n    // Obtener el mes como número (1-12)\n    const numeroMes = $now.minus({ months: 1 }).month; \n    return numeroMes; \n})() }}",
+              "type": "string"
+            },
+            {
+              "id": "1cb67591-2e02-4be6-9df0-fb8cbbbcb8e8",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            },
+            {
+              "id": "75903675-b6f5-4449-9ec7-647465e36d46",
+              "name": "schema_analytics",
+              "value": "osaki_analytics",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1616,
+        1984
+      ],
+      "id": "a69735e2-e9b9-46b1-b6fe-d95df779d587",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "html": "{{ $json.html }}"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1488,
+        1968
+      ],
+      "id": "cb630e2f-740b-4d03-b579-42e0f28a9c29",
+      "name": "HTML1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT intent_principal as Intencion_Principal, COUNT(*) as Cantidad\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\nGROUP BY intent_principal\nORDER BY 2 DESC\nLIMIT 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        1600
+      ],
+      "id": "40bf8bb9-9818-49ad-8cd7-11eb9bc6aeca",
+      "name": "Top 5 Intención1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH base AS (\n    SELECT\n        session_id,\n        first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS inicio_local\n    FROM osaki_analytics.auditoria_conversacion_delivery\n    WHERE first_user_ts IS NOT NULL\n      AND sucursal_detectada = '{{ $json.sucursal }}'\n      AND mes_analisis = '{{ $json.mes_periodo }}'\n),\nagrupado AS (\n    SELECT\n        EXTRACT(ISODOW FROM inicio_local)::int AS dia_num,\n        CASE EXTRACT(ISODOW FROM inicio_local)::int\n            WHEN 1 THEN 'Lunes'\n            WHEN 2 THEN 'Martes'\n            WHEN 3 THEN 'Miércoles'\n            WHEN 4 THEN 'Jueves'\n            WHEN 5 THEN 'Viernes'\n            WHEN 6 THEN 'Sábado'\n            WHEN 7 THEN 'Domingo'\n        END AS dia_semana,\n        EXTRACT(HOUR FROM inicio_local)::int AS hora,\n        COUNT(DISTINCT session_id) AS conversaciones_iniciadas\n    FROM base\n    GROUP BY 1, 2, 3\n)\nSELECT\n    dia_semana,\n    LPAD(hora::text, 2, '0') || ':00' AS hora,\n    conversaciones_iniciadas,\n    ROUND(\n        100.0 * conversaciones_iniciadas\n        / SUM(conversaciones_iniciadas) OVER (),\n        2\n    ) AS pct_sobre_total_topologia\nFROM agrupado\nORDER BY conversaciones_iniciadas DESC, dia_num, hora\nLIMIT 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        1792
+      ],
+      "id": "200fc74e-abff-4751-832a-318dc26918d4",
+      "name": "Top 5 Hora Contacto1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT sentiment_final as sentimiento_final, count(*) as Cantidad\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\nGROUP BY sentiment_final \nORDER BY 2 DESC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        1984
+      ],
+      "id": "788c0f6e-51cc-419c-a78c-47680aa14cc6",
+      "name": "Estado Emocional Final Cliente1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,\n    cliente_nombre as cliente, \n    intent_principal as intencion,\n    CASE WHEN escalado = true THEN 'Sí' ELSE 'No' END as escalado,\n    evidence_snippet as resumen\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\n  AND sentiment_final = 'negativo'\nORDER BY fecha_hora_inicio ASC\nLIMIT 15;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        2176
+      ],
+      "id": "f15d06c9-6f45-47ad-bc21-cfdb5bf185d6",
+      "name": "Casos Sentimiento Negativo1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    cliente_nombre as cliente,\n    first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,\n    intent_principal as intencion,\n    pedido_plataforma as plataforma,\n    riesgo_negocio as nivel_riesgo,\n    evidence_snippet as resumen\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\n  AND (riesgo_negocio = 'high' OR (riesgo_negocio = 'med' AND error_detectado = true))\nORDER BY fecha_hora_inicio ASC\nLIMIT 15;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        1408
+      ],
+      "id": "c2ac4a40-ae71-4de6-9579-000258641751",
+      "name": "Casos Riesgo Negocio1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_riesgo_negocio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1408
+      ],
+      "id": "53640385-7325-4b4c-a0e6-0621bb2f6a9c",
+      "name": "Aggregate7"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_intencion",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1600
+      ],
+      "id": "d4beb13e-c8ca-4957-883a-b775e3d468a4",
+      "name": "Aggregate8"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_horario_contacto",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1792
+      ],
+      "id": "032e0aae-a526-461b-8a99-524885d9a547",
+      "name": "Aggregate9"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "resumen_estado_emocional_final",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1984
+      ],
+      "id": "db2133f3-da4f-4639-8f36-3318ddcbd7ae",
+      "name": "Aggregate10"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_sentimiento_negativo",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        2176
+      ],
+      "id": "4f922d1f-7130-4a26-9f00-6972f7ef4f37",
+      "name": "Aggregate11"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    fecha_reporte as fecha_hora,\n    num_telefono AS telefono,\n    resumen_intencion as intencion,\n    resumen_datos_clave as datos_clave,\n    resumen_contexto as contexto,\n    resumen_proxima_accion as proxima_accion,\n    notas_tono_sentimiento as tono_sentimiento,\n    notas_urgencia as urgencia,\n    estado_seguimiento as estado\nFROM osaki_main.seguimiento_reportes\nWHERE sucursal = 'Delivery-{{ $json.sucursal }}'\n  AND EXTRACT(month FROM fecha_reporte) = {{ $json.mes_numero }}\nORDER BY fecha_reporte ASC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -896,
+        2368
+      ],
+      "id": "f7c7eff6-e172-4317-b7a8-4944afb5b4d5",
+      "name": "Detalle Escalaciones1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "detalle_escalaciones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        2368
+      ],
+      "id": "0b900b17-203d-4204-9b52-2b2a85b4ffa7",
+      "name": "Aggregate12"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 8,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -16,
+        1872
+      ],
+      "id": "5ec0eced-51f8-4694-af12-4de83c01b141",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=## Input a analizar\n{{ JSON.stringify($json) }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "Eres un analista senior de operaciones conversacionales para restaurantes. Tu tarea es leer un JSON de entrada con métricas, listas de casos y detalles operativos del bot de Delivery, y devolver exclusivamente un JSON válido con 9 salidas textuales:\n\n1) resumen_general\n2) resumen_kpis_delivery\n3) resumen_riesgos_negocio\n4) resumen_intenciones\n5) resumen_horarios_contacto\n6) resumen_estado_emocional\n7) resumen_casos_negativos\n8) resumen_temas_conversaciones\n9) resumen_escalaciones\n\n## Objetivo\nGenera 1 resumen general y 8 resúmenes específicos, uno por sección.\nCada salida debe ser un texto en español, en tono ejecutivo-profesional, claro y accionable.\nCada texto debe tener 1 o 2 párrafos según la cantidad de información disponible, procurando la brevedad, salvo que se requiera más para un mejor entendimiento.\nNo uses markdown.\nNo uses viñetas.\nNo agregues texto fuera del JSON.\nNo expliques tu proceso.\nNo inventes datos, causas, porcentajes ni conclusiones no sustentadas por el input.\n\n## Reglas de análisis\n- Basa cada resumen únicamente en los datos presentes en el input.\n- Cuando existan métricas numéricas relevantes, incorpóralas de forma natural dentro del texto.\n- Prioriza hallazgos, patrones, riesgos, desempeño, fricciones y oportunidades.\n- Si una sección trae pocos datos, escribe solo 1 párrafo breve pero útil.\n- Si faltan datos para una sección, indícalo de forma explícita y breve dentro del resumen, sin inventar.\n- No repitas exactamente el mismo contenido entre secciones.\n- El resumen general debe integrar la visión global del mes/sucursal/canal, conectando desempeño, operación, riesgo y experiencia del cliente.\n- Evita lenguaje exagerado. Sé preciso.\n- No menciones “sección 1”, “sección 2”, etc. Habla del contenido.\n- Interpreta porcentajes y volúmenes, pero sin sobreinferir causalidad.\n- Cuando haya tensiones o contradicciones operativas, menciónalas como hallazgos, no como certezas absolutas.\n- Si detectas problemas de consistencia en los datos, señálalo con prudencia.\n\n## Mapeo de secciones del input\nDebes construir cada salida usando principalmente estas partes del JSON:\n\n- resumen_general:\n  Usa la vista integral de todo el objeto: mes, sucursal, canal, KPIs principales de delivery, riesgos, intenciones, horarios, sentimiento, temas y escalaciones.\n\n- resumen_kpis_delivery:\n  Usa principalmente:\n  chats_totales\n  chats_crear_pedido\n  chats_rastrear_pedido\n  resoluciones_exitosas\n  tasa_resolucion_pct\n  total_escalados\n  tasa_escalado_pct\n  handoff_quality_promedio\n  escalacion_turno_promedio\n  tasa_error_pct\n  tasa_riesgo_high_pct\n  pedidos_delivery\n  pedidos_takeaway\n  duracion_promedio_sec\n  mensajes_promedio\n  mensajes_ai_promedio\n  mensajes_human_promedio\n\n- resumen_riesgos_negocio:\n  Usa principalmente:\n  casos_riesgo_negocio\n  tasa_riesgo_high_pct\n  tasa_error_pct\n\n- resumen_intenciones:\n  Usa principalmente:\n  top_5_intencion\n\n- resumen_horarios_contacto:\n  Usa principalmente:\n  top_5_horario_contacto\n\n- resumen_estado_emocional:\n  Usa principalmente:\n  resumen_estado_emocional_final\n\n- resumen_casos_negativos:\n  Usa principalmente:\n  casos_sentimiento_negativo\n\n- resumen_temas_conversaciones:\n  Usa principalmente:\n  temas_conversaciones\n\n- resumen_escalaciones:\n  Usa principalmente:\n  detalle_escalaciones\n  tasa_escalado_pct\n  escalacion_turno_promedio\n  handoff_quality_promedio\n\n## Instrucciones de estilo\n- Español ejecutivo y natural.\n- Redacción compacta pero con densidad analítica.\n- Enfócate en “qué pasó”, “qué significa” y “qué patrón operativo sugiere”.\n- No hagas recomendaciones tácticas detalladas; solo menciona implicaciones operativas cuando sean evidentes.\n- No cites teléfonos completos como elemento central; úsalos solo si son necesarios para contextualizar un patrón.\n- No copies literalmente snippets largos; sintetízalos.\n- Convierte timestamps a referencias temporales naturales solo si aporta valor; no es obligatorio reescribir fechas.\n- Mantén cada campo entre 80 y 220 palabras aproximadamente, salvo que la información sea escasa.\n\n## Validación obligatoria de salida\nDevuelve exclusivamente un objeto JSON válido, sin bloque markdown, con exactamente esta estructura y estas claves:\n\n{\n  \"resumen_general\": \"texto\",\n  \"resumen_kpis_delivery\": \"texto\",\n  \"resumen_riesgos_negocio\": \"texto\",\n  \"resumen_intenciones\": \"texto\",\n  \"resumen_horarios_contacto\": \"texto\",\n  \"resumen_estado_emocional\": \"texto\",\n  \"resumen_casos_negativos\": \"texto\",\n  \"resumen_temas_conversaciones\": \"texto\",\n  \"resumen_escalaciones\": \"texto\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        464,
+        1968
+      ],
+      "id": "9529834b-9bc8-484b-8978-4e06885fc783",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        352,
+        2176
+      ],
+      "id": "49e3fd2b-9b7c-4c30-9e43-af351a370cc5",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items\nreturn items.map(item => {\n  try {\n    // 1. Obtenemos el string\n    let rawContent = item.json.output || \"\";\n\n    // 2. Limpieza de Markdown\n    let cleanContent = rawContent\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/\\s*```$/, '')\n      .trim();\n\n    // -----------------------------------------------------------\n    // 3. REPARACIÓN Y NORMALIZACIÓN (El Parche)\n    // -----------------------------------------------------------\n    \n    // A. Reparar cierre incorrecto de propiedades (tu parche original)\n    cleanContent = cleanContent.replace(/(\\n\\s*)\"\\s*,/g, '$1},');\n\n    // B. Normalizar \"null\" -> null (Quitar comillas a los nulls)\n    // Esta regex busca : seguido de opcionalmente espacios, \"null\" y luego una coma o fin de objeto\n    cleanContent = cleanContent.replace(/:\\s*\"null\"(\\s*[,}])平衡/g, ': null$1');\n    \n    // Versión más agresiva si la anterior es muy específica:\n    cleanContent = cleanContent.replace(/:\\s*\"null\"/g, ': null');\n\n    // -----------------------------------------------------------\n\n    // 4. Parseo\n    const parsedData = JSON.parse(cleanContent);\n\n    // 5. Retorno Exitoso\n    return {\n      json: parsedData\n    };\n\n  } catch (error) {\n    return {\n      json: {\n        error: true,\n        message: \"Error al parsear el JSON tras la limpieza.\",\n        original_error: error.message,\n        cleaned_string: item.json.output // Enviamos el original para debug\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        816,
+        1968
+      ],
+      "id": "5853dddd-53a9-493e-9cf0-393fcbdf1f4b",
+      "name": "Normaliza Salida1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        1968
+      ],
+      "id": "af16d27d-dd69-486e-a7c1-cb00ba6b7f04",
+      "name": "All Data1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Capturamos los datos de los nodos de entrada\nconst allData = $node[\"All Data1\"].json;\nconst normalizaSalida = $node[\"Normaliza Salida1\"].json;\n\n// 2. Creamos el objeto raíz que contendrá todo el árbol\nconst arbolReporte = {\n  resumen_ejecutivo: normalizaSalida.resumen_general,\n  secciones: {}\n};\n\n// 3. Definimos el mapeo (Llave del Resumen vs Llave de los Datos)\nconst mapeoSecciones = [\n  { \n    id: \"kpis_delivery\", \n    nombre: \"KPIs de Delivery\", \n    resumenKey: \"resumen_kpis_delivery\", \n    dataKey: \"kpis_delivery\" \n  },\n  { \n    id: \"riesgos_negocio\", \n    nombre: \"Riesgos de Negocio e Incidencias\", \n    resumenKey: \"resumen_riesgos_negocio\", \n    dataKey: \"casos_riesgo_negocio\" \n  },\n  { \n    id: \"intenciones\", \n    nombre: \"Top Intenciones\", \n    resumenKey: \"resumen_intenciones\", \n    dataKey: \"top_5_intencion\" \n  },\n  { \n    id: \"horarios\", \n    nombre: \"Horarios de Contacto\", \n    resumenKey: \"resumen_horarios_contacto\", \n    dataKey: \"top_5_horario_contacto\" \n  },\n  { \n    id: \"estado_emocional\", \n    nombre: \"Análisis Emocional\", \n    resumenKey: \"resumen_estado_emocional\", \n    dataKey: \"resumen_estado_emocional_final\" \n  },\n  { \n    id: \"sentimiento_negativo\", \n    nombre: \"Casos de Sentimiento Negativo\", \n    resumenKey: \"resumen_casos_negativos\", \n    dataKey: \"casos_sentimiento_negativo\" \n  },\n  { \n    id: \"temas_conversaciones\", \n    nombre: \"Temas de Mensajes en Conversaciones\", \n    resumenKey: \"resumen_temas_conversaciones\", \n    dataKey: \"temas_conversaciones\" \n  },\n  { \n    id: \"escalaciones\", \n    nombre: \"Detalle de Escalaciones\", \n    resumenKey: \"resumen_escalaciones\", \n    dataKey: \"detalle_escalaciones\" \n  }\n];\n\n// 4. Construimos el árbol intercalando cada sección\nmapeoSecciones.forEach(sec => {\n  arbolReporte.secciones[sec.id] = {\n    titulo: sec.nombre,\n    resumen_narrativo: normalizaSalida[sec.resumenKey] || \"Sin resumen disponible\",\n    datos_detallados: allData[sec.dataKey] || []\n  };\n});\n\n// 5. Retornamos UN SOLO ITEM con la estructura completa\nreturn [{ json: arbolReporte }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        1968
+      ],
+      "id": "23fd6d5b-b3c2-43da-9fa9-c6442d9443ae",
+      "name": "Organiza Data1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node\n// Salida: [{ json: { html } }]\n\nconst rawItems = $input.all().map(item => item.json);\n\n/* =========================\n   1) UTILIDADES\n========================= */\n\nfunction isReportObject(obj) {\n  return !!(\n    obj &&\n    typeof obj === 'object' &&\n    !Array.isArray(obj) &&\n    typeof obj.resumen_ejecutivo === 'string' &&\n    obj.secciones &&\n    typeof obj.secciones === 'object'\n  );\n}\n\nfunction extractPayload(value) {\n  if (isReportObject(value)) return value;\n\n  if (Array.isArray(value)) {\n    for (const item of value) {\n      const found = extractPayload(item);\n      if (found) return found;\n    }\n    return null;\n  }\n\n  if (value && typeof value === 'object') {\n    for (const key of Object.keys(value)) {\n      const found = extractPayload(value[key]);\n      if (found) return found;\n    }\n  }\n\n  return null;\n}\n\nconst data = extractPayload(rawItems);\n\nif (!data) {\n  throw new Error(\n    'No encontré un objeto con la estructura esperada: { resumen_ejecutivo, secciones }.'\n  );\n}\n\nfunction escapeHtml(value) {\n  return String(value ?? '')\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;')\n    .replace(/\"/g, '&quot;')\n    .replace(/'/g, '&#39;');\n}\n\nfunction prettyLabel(key) {\n  return String(key || '')\n    .replace(/_/g, ' ')\n    .replace(/\\b\\w/g, c => c.toUpperCase());\n}\n\nfunction isNumericLike(value) {\n  return (\n    typeof value === 'number' ||\n    (typeof value === 'string' && value.trim() !== '' && !isNaN(value))\n  );\n}\n\nfunction formatNumber(value, decimals = 2) {\n  return Number(value).toLocaleString('es-MX', {\n    minimumFractionDigits: 0,\n    maximumFractionDigits: decimals,\n  });\n}\n\nfunction formatDate(value, withTime = true) {\n  if (!value) return '—';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  return new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    ...(withTime\n      ? {\n          hour: '2-digit',\n          minute: '2-digit',\n          hour12: false,\n        }\n      : {}),\n  }).format(d);\n}\n\nfunction formatMonthYear(value) {\n  if (!value) return 'Periodo no definido';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  const month = new Intl.DateTimeFormat('es-MX', {\n    month: 'long',\n  }).format(d);\n\n  const year = new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n  }).format(d);\n\n  return `${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;\n}\n\nfunction secondsToHuman(seconds) {\n  if (!isNumericLike(seconds)) return '—';\n\n  const totalSec = Number(seconds);\n  const totalMin = Math.round(totalSec / 60);\n\n  if (totalMin < 60) return `${totalMin} min`;\n\n  const h = Math.floor(totalMin / 60);\n  const m = totalMin % 60;\n  return m === 0 ? `${h} h` : `${h} h ${m} min`;\n}\n\nfunction formatValue(key, value) {\n  if (value === null || value === undefined || value === '') return '—';\n\n  const lowerKey = String(key).toLowerCase();\n\n  if (lowerKey.includes('fecha') || lowerKey.includes('hora')) {\n    return formatDate(value, true);\n  }\n\n  if (lowerKey.endsWith('_sec') || lowerKey.includes('duracion')) {\n    return secondsToHuman(value);\n  }\n\n  if (lowerKey.endsWith('_pct') || lowerKey.includes('por_100') || lowerKey.includes('tasa')) {\n    return `${formatNumber(value, 2)}%`;\n  }\n\n  if (lowerKey.includes('telefono') || lowerKey.includes('num_telefono')) {\n    return escapeHtml(value);\n  }\n\n  if (typeof value === 'boolean') {\n    return value ? 'Sí' : 'No';\n  }\n\n  if (isNumericLike(value)) {\n    return formatNumber(value, 2);\n  }\n\n  return escapeHtml(value);\n}\n\nfunction renderParagraphs(text) {\n  if (!text) return '<p class=\"muted\">Sin resumen narrativo.</p>';\n\n  return String(text)\n    .split(/\\n\\s*\\n/)\n    .filter(Boolean)\n    .map(p => `<p>${escapeHtml(p)}</p>`)\n    .join('');\n}\n\nfunction renderTable(rows = []) {\n  if (!Array.isArray(rows) || rows.length === 0) {\n    return `<div class=\"empty-state\">Sin datos detallados.</div>`;\n  }\n\n  const columns = Array.from(\n    rows.reduce((acc, row) => {\n      Object.keys(row || {}).forEach(k => acc.add(k));\n      return acc;\n    }, new Set())\n  );\n\n  const thead = `\n    <thead>\n      <tr>\n        ${columns\n          .map(col => `<th>${escapeHtml(prettyLabel(col))}</th>`)\n          .join('')}\n      </tr>\n    </thead>\n  `;\n\n  const tbody = `\n    <tbody>\n      ${rows\n        .map(row => {\n          return `\n            <tr>\n              ${columns\n                .map(col => `<td>${formatValue(col, row?.[col])}</td>`)\n                .join('')}\n            </tr>\n          `;\n        })\n        .join('')}\n    </tbody>\n  `;\n\n  return `\n    <div class=\"table-wrap\">\n      <table>\n        ${thead}\n        ${tbody}\n      </table>\n    </div>\n  `;\n}\n\nfunction renderMetricCards(kpiRow = {}) {\n  const cards = [\n    {\n      label: 'Chats Totales',\n      value: kpiRow.chats_totales != null ? formatNumber(kpiRow.chats_totales, 0) : '—',\n      tone: '',\n    },\n    {\n      label: 'Tasa de Resolución',\n      value: kpiRow.tasa_resolucion_pct != null\n        ? `${formatNumber(kpiRow.tasa_resolucion_pct, 2)}%`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Tasa de Escalado',\n      value: kpiRow.tasa_escalado_pct != null\n        ? `${formatNumber(kpiRow.tasa_escalado_pct, 2)}%`\n        : '—',\n      tone: 'warn',\n    },\n    {\n      label: 'Calidad de Handoff',\n      value: kpiRow.handoff_quality_promedio != null\n        ? `${formatNumber(kpiRow.handoff_quality_promedio, 2)} / 3`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Pedidos (Deliv / TakeAway)',\n      value: `${kpiRow.pedidos_delivery ?? 0} / ${kpiRow.pedidos_takeaway ?? 0}`,\n      tone: '',\n    },\n    {\n      label: 'Errores Detectados',\n      value: kpiRow.tasa_error_pct != null\n        ? `${formatNumber(kpiRow.tasa_error_pct, 2)}%`\n        : '—',\n      tone: 'warn',\n    },\n    {\n      label: 'Riesgo Alto',\n      value: kpiRow.tasa_riesgo_high_pct != null\n        ? `${formatNumber(kpiRow.tasa_riesgo_high_pct, 2)}%`\n        : '—',\n      tone: 'danger',\n    },\n    {\n      label: 'Mensajes por Chat (Prom)',\n      value: kpiRow.mensajes_promedio != null\n        ? formatNumber(kpiRow.mensajes_promedio, 2)\n        : '—',\n      tone: '',\n    },\n  ];\n\n  return `\n    <div class=\"metrics-grid\">\n      ${cards\n        .map(card => {\n          return `\n            <div class=\"metric-card ${card.tone}\">\n              <div class=\"metric-label\">${escapeHtml(card.label)}</div>\n              <div class=\"metric-value\">${escapeHtml(card.value)}</div>\n            </div>\n          `;\n        })\n        .join('')}\n    </div>\n  `;\n}\n\nfunction renderResolutionCard(kpiRow = {}) {\n  const rate = kpiRow.tasa_resolucion_pct ?? '—';\n  const total = kpiRow.chats_totales ?? '—';\n\n  return `\n    <div class=\"score-card\">\n      <div class=\"score-label\">Tasa de Resolución</div>\n      <div class=\"score-value\">${escapeHtml(rate)}%</div>\n      <div class=\"score-stars\">★★★★★</div>\n      <div class=\"score-foot\">Chats: ${escapeHtml(total)}</div>\n    </div>\n  `;\n}\n\nfunction renderSection(sectionKey, section, index) {\n  const sectionColors = {\n    kpis_delivery: 'accent-black',\n    riesgos_negocio: 'accent-red',\n    intenciones: 'accent-black',\n    horarios: 'accent-black',\n    estado_emocional: 'accent-black',\n    sentimiento_negativo: 'accent-red',\n    temas_conversaciones: 'accent-black',\n    escalaciones: 'accent-black',\n  };\n\n  const colorClass = sectionColors[sectionKey] || 'accent-black';\n  let rows = Array.isArray(section?.datos_detallados) ? section.datos_detallados : [];\n\n  if (sectionKey === 'escalaciones') {\n    // Se retiran los campos \"Tono Sentimiento\", \"Urgencia\" y \"Estado\"\n    rows = rows.map(row => {\n      const newRow = { ...row };\n      delete newRow.tono_sentimiento;\n      delete newRow.urgencia;\n      delete newRow.estado;\n      return newRow;\n    });\n  }\n\n  if (sectionKey === 'kpis_delivery') {\n    const kpiRow = rows[0] || {};\n\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        ${renderMetricCards(kpiRow)}\n\n      </section>\n    `;\n  }\n  \n  if (sectionKey === 'temas_conversaciones') {\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        <div class=\"subsection-title\">Distribución de Temas de Mensajes</div>\n        ${renderTable(rows)}\n      </section>\n    `;\n  }\n\n  return `\n    <section class=\"card ${colorClass}\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">${index}.</span>\n        <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n      </div>\n\n      <div class=\"section-text\">\n        ${renderParagraphs(section?.resumen_narrativo)}\n      </div>\n\n      ${renderTable(rows)}\n    </section>\n  `;\n}\n\n/* =========================\n   2) DATOS DERIVADOS\n========================= */\n\nconst secciones = data.secciones || {};\nconst orderedKeys = [\n  'kpis_delivery',\n  'riesgos_negocio',\n  'intenciones',\n  'horarios',\n  'estado_emocional',\n  'sentimiento_negativo',\n  'temas_conversaciones',\n  'escalaciones',\n].filter(key => secciones[key]);\n\nconst kpiRow = secciones.kpis_delivery?.datos_detallados?.[0] || {};\nconst sucursal = \"Delivery Calle 47\";\nconst canal = \"WhatsApp\";\nconst periodo = formatMonthYear(kpiRow.mes);\n\n/* =========================\n   3) HTML FINAL\n========================= */\n\nconst html = `\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Reporte Operativo Delivery</title>\n  <style>\n    * { box-sizing: border-box; }\n    body {\n      margin: 0;\n      padding: 24px;\n      font-family: Arial, Helvetica, sans-serif;\n      background: #f4f4f5;\n      color: #111827;\n      line-height: 1.45;\n    }\n\n    .container {\n      max-width: 1280px;\n      margin: 0 auto;\n    }\n\n    .header {\n      display: flex;\n      justify-content: space-between;\n      align-items: stretch;\n      gap: 24px;\n      margin-bottom: 28px;\n      border-bottom: 4px solid #e11d48;\n      padding-bottom: 18px;\n    }\n\n    .brand-box {\n      background: #111827;\n      color: #fff;\n      padding: 18px 22px;\n      border-radius: 10px;\n      font-size: 30px;\n      font-weight: 800;\n      letter-spacing: -0.5px;\n      display: inline-block;\n    }\n\n    .brand-box .red {\n      color: #e11d48;\n    }\n\n    .header-left {\n      flex: 1;\n    }\n\n    .header-title {\n      margin: 14px 0 4px 0;\n      font-size: 28px;\n      font-weight: 800;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n    }\n\n    .header-subtitle {\n      margin: 0;\n      color: #4b5563;\n      font-size: 16px;\n      font-weight: 600;\n    }\n\n    .header-meta {\n      min-width: 260px;\n      background: #fff;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .meta-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      color: #9ca3af;\n      font-weight: 700;\n      letter-spacing: 1px;\n      margin-bottom: 8px;\n    }\n\n    .meta-brand {\n      font-size: 24px;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 2px;\n    }\n\n    .meta-text {\n      font-size: 13px;\n      color: #6b7280;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      margin-bottom: 22px;\n      box-shadow: 0 3px 10px rgba(0,0,0,0.06);\n      border-top: 5px solid #111827;\n    }\n\n    .accent-red { border-top-color: #dc2626; }\n    .accent-black { border-top-color: #111827; }\n\n    .summary-grid {\n      display: grid;\n      grid-template-columns: 2fr 320px;\n      gap: 24px;\n      align-items: start;\n    }\n\n    .section-title {\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      font-size: 26px;\n      font-weight: 800;\n      margin-bottom: 18px;\n    }\n\n    .section-index {\n      color: #e11d48;\n    }\n\n    .section-text p {\n      margin: 0 0 12px 0;\n      text-align: justify;\n      color: #374151;\n      font-size: 16px;\n    }\n\n    .subsection-title {\n      margin: 24px 0 12px 0;\n      font-size: 18px;\n      font-weight: 800;\n      color: #111827;\n    }\n\n    .score-card {\n      background: #111827;\n      color: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      text-align: center;\n    }\n\n    .score-label {\n      text-transform: uppercase;\n      font-size: 11px;\n      letter-spacing: 1.2px;\n      color: #9ca3af;\n      font-weight: 700;\n      margin-bottom: 10px;\n    }\n\n    .score-value {\n      font-size: 52px;\n      line-height: 1;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 10px;\n    }\n\n    .score-stars {\n      color: #10b981;\n      font-size: 22px;\n      letter-spacing: 2px;\n      margin-bottom: 8px;\n    }\n\n    .score-foot {\n      font-size: 12px;\n      color: #d1d5db;\n    }\n\n    .metrics-grid {\n      display: grid;\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n      gap: 14px;\n      margin-top: 18px;\n      margin-bottom: 6px;\n    }\n\n    .metric-card {\n      border-left: 5px solid #e11d48;\n      background: #fafafa;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .metric-card.red { border-left-color: #e11d48; }\n    .metric-card.warn { border-left-color: #d97706; }\n    .metric-card.danger { border-left-color: #dc2626; }\n\n    .metric-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #6b7280;\n      font-weight: 700;\n      margin-bottom: 8px;\n    }\n\n    .metric-value {\n      font-size: 26px;\n      font-weight: 900;\n      color: #111827;\n    }\n\n    .table-wrap {\n      overflow-x: auto;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n    }\n\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      background: #fff;\n      font-size: 13px;\n    }\n\n    thead th {\n      background: #111827;\n      color: #fff;\n      text-align: left;\n      padding: 12px 10px;\n      font-weight: 700;\n      vertical-align: top;\n    }\n\n    tbody td {\n      border-top: 1px solid #e5e7eb;\n      padding: 10px;\n      vertical-align: top;\n      color: #374151;\n    }\n\n    tbody tr:nth-child(even) {\n      background: #fafafa;\n    }\n\n    .empty-state {\n      border: 1px dashed #d1d5db;\n      background: #fafafa;\n      color: #6b7280;\n      border-radius: 10px;\n      padding: 18px;\n      text-align: center;\n    }\n\n    .muted {\n      color: #6b7280;\n    }\n\n    @media (max-width: 980px) {\n      .summary-grid {\n        grid-template-columns: 1fr;\n      }\n\n      .metrics-grid {\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n      }\n\n      .header {\n        flex-direction: column;\n      }\n    }\n\n    /* ====== CORRECCIONES PARA IMPRESIÓN Y PDF ====== */\n    @media print {\n      @page {\n        size: A4 portrait;\n        margin: 1.5cm;\n      }\n\n      body {\n        background: #fff;\n        padding: 0;\n        font-size: 11pt;\n        -webkit-print-color-adjust: exact !important;\n        print-color-adjust: exact !important;\n      }\n\n      .container {\n        max-width: 100%;\n        margin: 0;\n      }\n\n      .card {\n        box-shadow: none;\n        border: 1px solid #e5e7eb;\n        padding: 16px;\n        margin-bottom: 20px;\n        break-inside: auto;\n        page-break-inside: auto;\n      }\n\n      .section-title, .subsection-title {\n        break-after: avoid;\n        page-break-after: avoid;\n      }\n\n      .score-card, .metric-card {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      .table-wrap {\n        overflow: visible !important;\n        border: none;\n      }\n\n      table {\n        table-layout: fixed;\n        width: 100%;\n        word-wrap: break-word;\n      }\n\n      thead th {\n        font-size: 10pt;\n        padding: 8px;\n      }\n\n      tbody td {\n        font-size: 9pt;\n        padding: 8px;\n        word-wrap: break-word;\n        overflow-wrap: break-word;\n        hyphens: auto;\n      }\n\n      tr {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      thead {\n        display: table-header-group;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n\n    <header class=\"header\">\n      <div class=\"header-left\">\n        <div class=\"brand-box\">\n          OSAKI <span class=\"red\">DELIVERY</span>\n        </div>\n        <h1 class=\"header-title\">Reporte Operativo Delivery</h1>\n        <p class=\"header-subtitle\">\n          Sucursal: ${escapeHtml(sucursal)} | Periodo: ${escapeHtml(periodo)} | Canal: ${escapeHtml(canal)}\n        </p>\n      </div>\n\n      <div class=\"header-meta\">\n        <div class=\"meta-label\">Generado por</div>\n        <div class=\"meta-brand\">TEMIKIA</div>\n        <div class=\"meta-text\">Inteligencia Operacional</div>\n      </div>\n    </header>\n\n    <section class=\"card accent-black\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">1.</span>\n        <span>Resumen General</span>\n      </div>\n\n      <div class=\"summary-grid\">\n        <div class=\"section-text\">\n          ${renderParagraphs(data.resumen_ejecutivo)}\n        </div>\n        ${renderResolutionCard(kpiRow)}\n      </div>\n    </section>\n\n    ${orderedKeys\n      .map((key, idx) => renderSection(key, secciones[key], idx + 2))\n      .join('')}\n\n  </div>\n</body>\n</html>\n`;\n\nreturn [\n  {\n    json: {\n      html,\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1264,
+        1968
+      ],
+      "id": "119874e8-dfc8-4aa3-855d-0db31c397fee",
+      "name": "Forma_HTML1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9625f9ba-b3ae-4196-afdd-f618d1a65a8a",
+              "name": "html",
+              "value": "={{ $json.html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1712,
+        1968
+      ],
+      "id": "73a64eef-bd53-48b3-97c5-a34e1d9ccfe1",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Toma el HTML como string desde item.json.html y lo convierte en binario \"files\"\nconst html = String($json.html ?? '');\nreturn [{\n  json: {},\n  binary: {\n    // OJO: Gotenberg espera el campo de formulario llamado EXACTAMENTE \"files\"\n    files: {\n      data: Buffer.from(html, 'utf8').toString('base64'),\n      fileName: 'index.html',\n      mimeType: 'text/html'\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1936,
+        1968
+      ],
+      "id": "8f2f2144-a8bc-41e4-a36d-a03afdb7227d",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://72.61.62.19:3001/forms/chromium/convert/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "=files"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "=Resumen Osaki.pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2160,
+        1968
+      ],
+      "id": "fe44ab77-ac8f-45a9-bab2-3688c31b9300",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.4-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5.4-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        2176
+      ],
+      "id": "88117a5a-56df-49af-9869-2f58d3c36344",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f85628b7-5a04-4420-a49e-2a3c3e4962bf",
+              "name": "=canal",
+              "value": "WhatsApp",
+              "type": "string"
+            },
+            {
+              "id": "c8003a48-3650-49f4-aad9-a1095fdd9c1d",
+              "name": "sucursal",
+              "value": "Calle 9",
+              "type": "string"
+            },
+            {
+              "id": "69addca3-74c8-4aa9-b908-3ae457509d9e",
+              "name": "periodo_inicio",
+              "value": "={{ $now.minus({ months: 1 }).startOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "44accf68-e2d6-4ac6-a615-b5ba78a17659",
+              "name": "periodo_fin",
+              "value": "={{ $now.minus({ months: 1 }).endOf('month').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "3db45070-38f7-49b1-830e-20ff4b46dabf",
+              "name": "mes_periodo",
+              "value": "={{  (() => {   const mes = $now.setLocale('es').minus({ months: 1 }).toFormat('LLLL');   return mes.charAt(0).toUpperCase() + mes.slice(1); })() }}",
+              "type": "string"
+            },
+            {
+              "id": "7b716804-e6fc-43b6-b56b-a1bd3f3edd53",
+              "name": "mes_numero",
+              "value": "={{  (() => {   \n    // Obtener el mes como número (1-12)\n    const numeroMes = $now.minus({ months: 1 }).month; \n    return numeroMes; \n})() }}",
+              "type": "string"
+            },
+            {
+              "id": "1cb67591-2e02-4be6-9df0-fb8cbbbcb8e8",
+              "name": "schema",
+              "value": "osaki_main",
+              "type": "string"
+            },
+            {
+              "id": "75903675-b6f5-4449-9ec7-647465e36d46",
+              "name": "schema_analytics",
+              "value": "osaki_analytics",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1456,
+        3856
+      ],
+      "id": "05dad0f8-d424-45f7-afc1-e711cbee03d1",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "html": "{{ $json.html }}"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1552,
+        3840
+      ],
+      "id": "890b38b5-a689-43ee-ac63-343f742b4d3b",
+      "name": "HTML2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    '{{ $json.periodo_inicio }}' as mes,\n    '{{ $json.sucursal }}' as sucursal_name,\n    COUNT(*) as chats_totales,\n    COUNT(CASE WHEN intent_principal = 'crear_pedido' THEN 1 END) as chats_crear_pedido,\n    COUNT(CASE WHEN intent_principal = 'rastrear_pedido' THEN 1 END) as chats_rastrear_pedido,\n    COUNT(CASE WHEN resolution_ok = true THEN 1 END) as resoluciones_exitosas,\n    ROUND(100.0 * COUNT(CASE WHEN resolution_ok = true THEN 1 END) / COUNT(*), 2) as tasa_resolucion_pct,\n    COUNT(CASE WHEN escalado = true THEN 1 END) as total_escalados,\n    ROUND(100.0 * COUNT(CASE WHEN escalado = true THEN 1 END) / COUNT(*), 2) as tasa_escalado_pct,\n    ROUND(AVG(handoff_quality), 2) as handoff_quality_promedio,\n    ROUND(AVG(escalacion_turno), 2) as escalacion_turno_promedio,\n    ROUND(100.0 * COUNT(CASE WHEN error_detectado = true THEN 1 END) / COUNT(*), 2) as tasa_error_pct,\n    ROUND(100.0 * COUNT(CASE WHEN riesgo_negocio = 'high' THEN 1 END) / COUNT(*), 2) as tasa_riesgo_high_pct,\n    COUNT(CASE WHEN pedido_tipo_entrega = 'delivery' THEN 1 END) as pedidos_delivery,\n    COUNT(CASE WHEN pedido_tipo_entrega = 'retiro' THEN 1 END) as pedidos_takeaway,\n    ROUND(AVG(duration_sec), 0) as duracion_promedio_sec,\n    ROUND(AVG(msg_count_total), 2) as mensajes_promedio,\n    ROUND(AVG(msg_count_ai), 2) as mensajes_ai_promedio,\n    ROUND(AVG(msg_count_human), 2) as mensajes_human_promedio\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -816,
+        3120
+      ],
+      "id": "ed9a10f2-06d4-4fb0-8b75-949f5338214a",
+      "name": "KPI Delivery Query1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT intent_principal as Intencion_Principal, COUNT(*) as Cantidad\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\nGROUP BY intent_principal\nORDER BY 2 DESC\nLIMIT 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        3472
+      ],
+      "id": "aaeff162-fe42-4203-9e9b-affc183ef8cc",
+      "name": "Top 5 Intención2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH base AS (\n    SELECT\n        session_id,\n        first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS inicio_local\n    FROM osaki_analytics.auditoria_conversacion_delivery\n    WHERE first_user_ts IS NOT NULL\n      AND sucursal_detectada = '{{ $json.sucursal }}'\n      AND mes_analisis = '{{ $json.mes_periodo }}'\n),\nagrupado AS (\n    SELECT\n        EXTRACT(ISODOW FROM inicio_local)::int AS dia_num,\n        CASE EXTRACT(ISODOW FROM inicio_local)::int\n            WHEN 1 THEN 'Lunes'\n            WHEN 2 THEN 'Martes'\n            WHEN 3 THEN 'Miércoles'\n            WHEN 4 THEN 'Jueves'\n            WHEN 5 THEN 'Viernes'\n            WHEN 6 THEN 'Sábado'\n            WHEN 7 THEN 'Domingo'\n        END AS dia_semana,\n        EXTRACT(HOUR FROM inicio_local)::int AS hora,\n        COUNT(DISTINCT session_id) AS conversaciones_iniciadas\n    FROM base\n    GROUP BY 1, 2, 3\n)\nSELECT\n    dia_semana,\n    LPAD(hora::text, 2, '0') || ':00' AS hora,\n    conversaciones_iniciadas,\n    ROUND(\n        100.0 * conversaciones_iniciadas\n        / SUM(conversaciones_iniciadas) OVER (),\n        2\n    ) AS pct_sobre_total_topologia\nFROM agrupado\nORDER BY conversaciones_iniciadas DESC, dia_num, hora\nLIMIT 5;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        3664
+      ],
+      "id": "478953fb-719c-4ece-a203-7e9df019355f",
+      "name": "Top 5 Hora Contacto2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT sentiment_final as sentimiento_final, count(*) as Cantidad\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\nGROUP BY sentiment_final \nORDER BY 2 DESC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        3856
+      ],
+      "id": "9cb91a37-bfcd-4c5c-ac2f-40cdb4e79d9f",
+      "name": "Estado Emocional Final Cliente2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,\n    cliente_nombre as cliente, \n    intent_principal as intencion,\n    CASE WHEN escalado = true THEN 'Sí' ELSE 'No' END as escalado,\n    evidence_snippet as resumen\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\n  AND sentiment_final = 'negativo'\nORDER BY fecha_hora_inicio ASC\nLIMIT 15;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        4048
+      ],
+      "id": "341164d2-4052-4987-9a3d-9595914724c4",
+      "name": "Casos Sentimiento Negativo2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    cliente_nombre as cliente,\n    first_user_ts AT TIME ZONE 'America/Argentina/Buenos_Aires' AS fecha_hora_inicio,\n    intent_principal as intencion,\n    pedido_plataforma as plataforma,\n    riesgo_negocio as nivel_riesgo,\n    evidence_snippet as resumen\nFROM osaki_analytics.auditoria_conversacion_delivery\nWHERE sucursal_detectada = '{{ $json.sucursal }}'\n  AND mes_analisis = '{{ $json.mes_periodo }}'\n  AND (riesgo_negocio = 'high' OR (riesgo_negocio = 'med' AND error_detectado = true))\nORDER BY fecha_hora_inicio ASC\nLIMIT 15;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        3280
+      ],
+      "id": "1bd433fe-33e1-432e-96a4-68e0604f52b6",
+      "name": "Casos Riesgo Negocio2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_riesgo_negocio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        3280
+      ],
+      "id": "281125b1-0e03-4f20-8990-a3529081adf8",
+      "name": "Aggregate13"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_intencion",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        3472
+      ],
+      "id": "04f706e1-b2c3-463e-a662-5051ef8412cf",
+      "name": "Aggregate14"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "top_5_horario_contacto",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        3664
+      ],
+      "id": "4a4d9709-897d-4614-9dee-5ff7dd2b52a0",
+      "name": "Aggregate15"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "resumen_estado_emocional_final",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        3856
+      ],
+      "id": "a01da5a1-4b13-4491-a4a5-0674e51ee654",
+      "name": "Aggregate16"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "casos_sentimiento_negativo",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        4048
+      ],
+      "id": "6d522e60-2305-422c-9fe8-d96b3e6988f0",
+      "name": "Aggregate17"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    fecha_reporte as fecha_hora,\n    num_telefono AS telefono,\n    resumen_intencion as intencion,\n    resumen_datos_clave as datos_clave,\n    resumen_contexto as contexto,\n    resumen_proxima_accion as proxima_accion,\n    notas_tono_sentimiento as tono_sentimiento,\n    notas_urgencia as urgencia,\n    estado_seguimiento as estado\nFROM osaki_main.seguimiento_reportes\nWHERE sucursal = 'Delivery-{{ $json.sucursal }}'\n  AND EXTRACT(month FROM fecha_reporte) = {{ $json.mes_numero }}\nORDER BY fecha_reporte ASC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -832,
+        4240
+      ],
+      "id": "080f4c28-5b34-4e2d-a171-8d6c5af67aec",
+      "name": "Detalle Escalaciones2",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "detalle_escalaciones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        4240
+      ],
+      "id": "2ab48d0b-777c-415c-9564-095d0768aea9",
+      "name": "Aggregate18"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 8,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        48,
+        3744
+      ],
+      "id": "5c89dafc-ebac-475c-a837-e5c10718a433",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=## Input a analizar\n{{ JSON.stringify($json) }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "Eres un analista senior de operaciones conversacionales para restaurantes. Tu tarea es leer un JSON de entrada con métricas, listas de casos y detalles operativos del bot de Delivery, y devolver exclusivamente un JSON válido con 9 salidas textuales:\n\n1) resumen_general\n2) resumen_kpis_delivery\n3) resumen_riesgos_negocio\n4) resumen_intenciones\n5) resumen_horarios_contacto\n6) resumen_estado_emocional\n7) resumen_casos_negativos\n8) resumen_temas_conversaciones\n9) resumen_escalaciones\n\n## Objetivo\nGenera 1 resumen general y 8 resúmenes específicos, uno por sección.\nCada salida debe ser un texto en español, en tono ejecutivo-profesional, claro y accionable.\nCada texto debe tener 1 o 2 párrafos según la cantidad de información disponible, procurando la brevedad, salvo que se requiera más para un mejor entendimiento.\nNo uses markdown.\nNo uses viñetas.\nNo agregues texto fuera del JSON.\nNo expliques tu proceso.\nNo inventes datos, causas, porcentajes ni conclusiones no sustentadas por el input.\n\n## Reglas de análisis\n- Basa cada resumen únicamente en los datos presentes en el input.\n- Cuando existan métricas numéricas relevantes, incorpóralas de forma natural dentro del texto.\n- Prioriza hallazgos, patrones, riesgos, desempeño, fricciones y oportunidades.\n- Si una sección trae pocos datos, escribe solo 1 párrafo breve pero útil.\n- Si faltan datos para una sección, indícalo de forma explícita y breve dentro del resumen, sin inventar.\n- No repitas exactamente el mismo contenido entre secciones.\n- El resumen general debe integrar la visión global del mes/sucursal/canal, conectando desempeño, operación, riesgo y experiencia del cliente.\n- Evita lenguaje exagerado. Sé preciso.\n- No menciones “sección 1”, “sección 2”, etc. Habla del contenido.\n- Interpreta porcentajes y volúmenes, pero sin sobreinferir causalidad.\n- Cuando haya tensiones o contradicciones operativas, menciónalas como hallazgos, no como certezas absolutas.\n- Si detectas problemas de consistencia en los datos, señálalo con prudencia.\n\n## Mapeo de secciones del input\nDebes construir cada salida usando principalmente estas partes del JSON:\n\n- resumen_general:\n  Usa la vista integral de todo el objeto: mes, sucursal, canal, KPIs principales de delivery, riesgos, intenciones, horarios, sentimiento, temas y escalaciones.\n\n- resumen_kpis_delivery:\n  Usa principalmente:\n  chats_totales\n  chats_crear_pedido\n  chats_rastrear_pedido\n  resoluciones_exitosas\n  tasa_resolucion_pct\n  total_escalados\n  tasa_escalado_pct\n  handoff_quality_promedio\n  escalacion_turno_promedio\n  tasa_error_pct\n  tasa_riesgo_high_pct\n  pedidos_delivery\n  pedidos_takeaway\n  duracion_promedio_sec\n  mensajes_promedio\n  mensajes_ai_promedio\n  mensajes_human_promedio\n\n- resumen_riesgos_negocio:\n  Usa principalmente:\n  casos_riesgo_negocio\n  tasa_riesgo_high_pct\n  tasa_error_pct\n\n- resumen_intenciones:\n  Usa principalmente:\n  top_5_intencion\n\n- resumen_horarios_contacto:\n  Usa principalmente:\n  top_5_horario_contacto\n\n- resumen_estado_emocional:\n  Usa principalmente:\n  resumen_estado_emocional_final\n\n- resumen_casos_negativos:\n  Usa principalmente:\n  casos_sentimiento_negativo\n\n- resumen_temas_conversaciones:\n  Usa principalmente:\n  temas_conversaciones\n\n- resumen_escalaciones:\n  Usa principalmente:\n  detalle_escalaciones\n  tasa_escalado_pct\n  escalacion_turno_promedio\n  handoff_quality_promedio\n\n## Instrucciones de estilo\n- Español ejecutivo y natural.\n- Redacción compacta pero con densidad analítica.\n- Enfócate en “qué pasó”, “qué significa” y “qué patrón operativo sugiere”.\n- No hagas recomendaciones tácticas detalladas; solo menciona implicaciones operativas cuando sean evidentes.\n- No cites teléfonos completos como elemento central; úsalos solo si son necesarios para contextualizar un patrón.\n- No copies literalmente snippets largos; sintetízalos.\n- Convierte timestamps a referencias temporales naturales solo si aporta valor; no es obligatorio reescribir fechas.\n- Mantén cada campo entre 80 y 220 palabras aproximadamente, salvo que la información sea escasa.\n\n## Validación obligatoria de salida\nDevuelve exclusivamente un objeto JSON válido, sin bloque markdown, con exactamente esta estructura y estas claves:\n\n{\n  \"resumen_general\": \"texto\",\n  \"resumen_kpis_delivery\": \"texto\",\n  \"resumen_riesgos_negocio\": \"texto\",\n  \"resumen_intenciones\": \"texto\",\n  \"resumen_horarios_contacto\": \"texto\",\n  \"resumen_estado_emocional\": \"texto\",\n  \"resumen_casos_negativos\": \"texto\",\n  \"resumen_temas_conversaciones\": \"texto\",\n  \"resumen_escalaciones\": \"texto\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        528,
+        3840
+      ],
+      "id": "6c5c8ba0-b116-4f08-a157-7187593d7cbb",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-flash-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        416,
+        4048
+      ],
+      "id": "f81bba09-275c-4fa0-9031-95490e7cb021",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OAlDnAQJQHCtNBVS",
+          "name": "Google Gemini(PaLM) Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iteramos sobre todos los items\nreturn items.map(item => {\n  try {\n    // 1. Obtenemos el string\n    let rawContent = item.json.output || \"\";\n\n    // 2. Limpieza de Markdown\n    let cleanContent = rawContent\n      .replace(/^```json\\s*/i, '')\n      .replace(/^```\\s*/i, '')\n      .replace(/\\s*```$/, '')\n      .trim();\n\n    // -----------------------------------------------------------\n    // 3. REPARACIÓN Y NORMALIZACIÓN (El Parche)\n    // -----------------------------------------------------------\n    \n    // A. Reparar cierre incorrecto de propiedades (tu parche original)\n    cleanContent = cleanContent.replace(/(\\n\\s*)\"\\s*,/g, '$1},');\n\n    // B. Normalizar \"null\" -> null (Quitar comillas a los nulls)\n    // Esta regex busca : seguido de opcionalmente espacios, \"null\" y luego una coma o fin de objeto\n    cleanContent = cleanContent.replace(/:\\s*\"null\"(\\s*[,}])平衡/g, ': null$1');\n    \n    // Versión más agresiva si la anterior es muy específica:\n    cleanContent = cleanContent.replace(/:\\s*\"null\"/g, ': null');\n\n    // -----------------------------------------------------------\n\n    // 4. Parseo\n    const parsedData = JSON.parse(cleanContent);\n\n    // 5. Retorno Exitoso\n    return {\n      json: parsedData\n    };\n\n  } catch (error) {\n    return {\n      json: {\n        error: true,\n        message: \"Error al parsear el JSON tras la limpieza.\",\n        original_error: error.message,\n        cleaned_string: item.json.output // Enviamos el original para debug\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        3840
+      ],
+      "id": "40ce65a4-c709-476b-aeba-909cd27c45b6",
+      "name": "Normaliza Salida2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        304,
+        3840
+      ],
+      "id": "c31d7ca6-48a1-44e9-831e-103b744e7c46",
+      "name": "All Data2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "kpis_delivery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        3120
+      ],
+      "id": "0c440a56-5616-4b86-bb8a-1fc16302e1cb",
+      "name": "KPI Delivery Aggregate1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Capturamos los datos de los nodos de entrada\nconst allData = $node[\"All Data2\"].json;\nconst normalizaSalida = $node[\"Normaliza Salida2\"].json;\n\n// 2. Creamos el objeto raíz que contendrá todo el árbol\nconst arbolReporte = {\n  resumen_ejecutivo: normalizaSalida.resumen_general,\n  secciones: {}\n};\n\n// 3. Definimos el mapeo (Llave del Resumen vs Llave de los Datos)\nconst mapeoSecciones = [\n  { \n    id: \"kpis_delivery\", \n    nombre: \"KPIs de Delivery\", \n    resumenKey: \"resumen_kpis_delivery\", \n    dataKey: \"kpis_delivery\" \n  },\n  { \n    id: \"riesgos_negocio\", \n    nombre: \"Riesgos de Negocio e Incidencias\", \n    resumenKey: \"resumen_riesgos_negocio\", \n    dataKey: \"casos_riesgo_negocio\" \n  },\n  { \n    id: \"intenciones\", \n    nombre: \"Top Intenciones\", \n    resumenKey: \"resumen_intenciones\", \n    dataKey: \"top_5_intencion\" \n  },\n  { \n    id: \"horarios\", \n    nombre: \"Horarios de Contacto\", \n    resumenKey: \"resumen_horarios_contacto\", \n    dataKey: \"top_5_horario_contacto\" \n  },\n  { \n    id: \"estado_emocional\", \n    nombre: \"Análisis Emocional\", \n    resumenKey: \"resumen_estado_emocional\", \n    dataKey: \"resumen_estado_emocional_final\" \n  },\n  { \n    id: \"sentimiento_negativo\", \n    nombre: \"Casos de Sentimiento Negativo\", \n    resumenKey: \"resumen_casos_negativos\", \n    dataKey: \"casos_sentimiento_negativo\" \n  },\n  { \n    id: \"temas_conversaciones\", \n    nombre: \"Temas de Mensajes en Conversaciones\", \n    resumenKey: \"resumen_temas_conversaciones\", \n    dataKey: \"temas_conversaciones\" \n  },\n  { \n    id: \"escalaciones\", \n    nombre: \"Detalle de Escalaciones\", \n    resumenKey: \"resumen_escalaciones\", \n    dataKey: \"detalle_escalaciones\" \n  }\n];\n\n// 4. Construimos el árbol intercalando cada sección\nmapeoSecciones.forEach(sec => {\n  arbolReporte.secciones[sec.id] = {\n    titulo: sec.nombre,\n    resumen_narrativo: normalizaSalida[sec.resumenKey] || \"Sin resumen disponible\",\n    datos_detallados: allData[sec.dataKey] || []\n  };\n});\n\n// 5. Retornamos UN SOLO ITEM con la estructura completa\nreturn [{ json: arbolReporte }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        3840
+      ],
+      "id": "1bf33fc6-9cd9-4f57-bc96-df99d25d8398",
+      "name": "Organiza Data2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node\n// Salida: [{ json: { html } }]\n\nconst rawItems = $input.all().map(item => item.json);\n\n/* =========================\n   1) UTILIDADES\n========================= */\n\nfunction isReportObject(obj) {\n  return !!(\n    obj &&\n    typeof obj === 'object' &&\n    !Array.isArray(obj) &&\n    typeof obj.resumen_ejecutivo === 'string' &&\n    obj.secciones &&\n    typeof obj.secciones === 'object'\n  );\n}\n\nfunction extractPayload(value) {\n  if (isReportObject(value)) return value;\n\n  if (Array.isArray(value)) {\n    for (const item of value) {\n      const found = extractPayload(item);\n      if (found) return found;\n    }\n    return null;\n  }\n\n  if (value && typeof value === 'object') {\n    for (const key of Object.keys(value)) {\n      const found = extractPayload(value[key]);\n      if (found) return found;\n    }\n  }\n\n  return null;\n}\n\nconst data = extractPayload(rawItems);\n\nif (!data) {\n  throw new Error(\n    'No encontré un objeto con la estructura esperada: { resumen_ejecutivo, secciones }.'\n  );\n}\n\nfunction escapeHtml(value) {\n  return String(value ?? '')\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;')\n    .replace(/\"/g, '&quot;')\n    .replace(/'/g, '&#39;');\n}\n\nfunction prettyLabel(key) {\n  return String(key || '')\n    .replace(/_/g, ' ')\n    .replace(/\\b\\w/g, c => c.toUpperCase());\n}\n\nfunction isNumericLike(value) {\n  return (\n    typeof value === 'number' ||\n    (typeof value === 'string' && value.trim() !== '' && !isNaN(value))\n  );\n}\n\nfunction formatNumber(value, decimals = 2) {\n  return Number(value).toLocaleString('es-MX', {\n    minimumFractionDigits: 0,\n    maximumFractionDigits: decimals,\n  });\n}\n\nfunction formatDate(value, withTime = true) {\n  if (!value) return '—';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  return new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    ...(withTime\n      ? {\n          hour: '2-digit',\n          minute: '2-digit',\n          hour12: false,\n        }\n      : {}),\n  }).format(d);\n}\n\nfunction formatMonthYear(value) {\n  if (!value) return 'Periodo no definido';\n\n  const d = new Date(value);\n  if (Number.isNaN(d.getTime())) return escapeHtml(value);\n\n  const month = new Intl.DateTimeFormat('es-MX', {\n    month: 'long',\n  }).format(d);\n\n  const year = new Intl.DateTimeFormat('es-MX', {\n    year: 'numeric',\n  }).format(d);\n\n  return `${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;\n}\n\nfunction secondsToHuman(seconds) {\n  if (!isNumericLike(seconds)) return '—';\n\n  const totalSec = Number(seconds);\n  const totalMin = Math.round(totalSec / 60);\n\n  if (totalMin < 60) return `${totalMin} min`;\n\n  const h = Math.floor(totalMin / 60);\n  const m = totalMin % 60;\n  return m === 0 ? `${h} h` : `${h} h ${m} min`;\n}\n\nfunction formatValue(key, value) {\n  if (value === null || value === undefined || value === '') return '—';\n\n  const lowerKey = String(key).toLowerCase();\n\n  if (lowerKey.includes('fecha') || lowerKey.includes('hora')) {\n    return formatDate(value, true);\n  }\n\n  if (lowerKey.endsWith('_sec') || lowerKey.includes('duracion')) {\n    return secondsToHuman(value);\n  }\n\n  if (lowerKey.endsWith('_pct') || lowerKey.includes('por_100') || lowerKey.includes('tasa')) {\n    return `${formatNumber(value, 2)}%`;\n  }\n\n  if (lowerKey.includes('telefono') || lowerKey.includes('num_telefono')) {\n    return escapeHtml(value);\n  }\n\n  if (typeof value === 'boolean') {\n    return value ? 'Sí' : 'No';\n  }\n\n  if (isNumericLike(value)) {\n    return formatNumber(value, 2);\n  }\n\n  return escapeHtml(value);\n}\n\nfunction renderParagraphs(text) {\n  if (!text) return '<p class=\"muted\">Sin resumen narrativo.</p>';\n\n  return String(text)\n    .split(/\\n\\s*\\n/)\n    .filter(Boolean)\n    .map(p => `<p>${escapeHtml(p)}</p>`)\n    .join('');\n}\n\nfunction renderTable(rows = []) {\n  if (!Array.isArray(rows) || rows.length === 0) {\n    return `<div class=\"empty-state\">Sin datos detallados.</div>`;\n  }\n\n  const columns = Array.from(\n    rows.reduce((acc, row) => {\n      Object.keys(row || {}).forEach(k => acc.add(k));\n      return acc;\n    }, new Set())\n  );\n\n  const thead = `\n    <thead>\n      <tr>\n        ${columns\n          .map(col => `<th>${escapeHtml(prettyLabel(col))}</th>`)\n          .join('')}\n      </tr>\n    </thead>\n  `;\n\n  const tbody = `\n    <tbody>\n      ${rows\n        .map(row => {\n          return `\n            <tr>\n              ${columns\n                .map(col => `<td>${formatValue(col, row?.[col])}</td>`)\n                .join('')}\n            </tr>\n          `;\n        })\n        .join('')}\n    </tbody>\n  `;\n\n  return `\n    <div class=\"table-wrap\">\n      <table>\n        ${thead}\n        ${tbody}\n      </table>\n    </div>\n  `;\n}\n\nfunction renderMetricCards(kpiRow = {}) {\n  const cards = [\n    {\n      label: 'Chats Totales',\n      value: kpiRow.chats_totales != null ? formatNumber(kpiRow.chats_totales, 0) : '—',\n      tone: '',\n    },\n    {\n      label: 'Tasa de Resolución',\n      value: kpiRow.tasa_resolucion_pct != null\n        ? `${formatNumber(kpiRow.tasa_resolucion_pct, 2)}%`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Tasa de Escalado',\n      value: kpiRow.tasa_escalado_pct != null\n        ? `${formatNumber(kpiRow.tasa_escalado_pct, 2)}%`\n        : '—',\n      tone: 'warn',\n    },\n    {\n      label: 'Calidad de Handoff',\n      value: kpiRow.handoff_quality_promedio != null\n        ? `${formatNumber(kpiRow.handoff_quality_promedio, 2)} / 3`\n        : '—',\n      tone: '',\n    },\n    {\n      label: 'Pedidos (Deliv / TakeAway)',\n      value: `${kpiRow.pedidos_delivery ?? 0} / ${kpiRow.pedidos_takeaway ?? 0}`,\n      tone: '',\n    },\n    {\n      label: 'Errores Detectados',\n      value: kpiRow.tasa_error_pct != null\n        ? `${formatNumber(kpiRow.tasa_error_pct, 2)}%`\n        : '—',\n      tone: 'warn',\n    },\n    {\n      label: 'Riesgo Alto',\n      value: kpiRow.tasa_riesgo_high_pct != null\n        ? `${formatNumber(kpiRow.tasa_riesgo_high_pct, 2)}%`\n        : '—',\n      tone: 'danger',\n    },\n    {\n      label: 'Mensajes por Chat (Prom)',\n      value: kpiRow.mensajes_promedio != null\n        ? formatNumber(kpiRow.mensajes_promedio, 2)\n        : '—',\n      tone: '',\n    },\n  ];\n\n  return `\n    <div class=\"metrics-grid\">\n      ${cards\n        .map(card => {\n          return `\n            <div class=\"metric-card ${card.tone}\">\n              <div class=\"metric-label\">${escapeHtml(card.label)}</div>\n              <div class=\"metric-value\">${escapeHtml(card.value)}</div>\n            </div>\n          `;\n        })\n        .join('')}\n    </div>\n  `;\n}\n\nfunction renderResolutionCard(kpiRow = {}) {\n  const rate = kpiRow.tasa_resolucion_pct ?? '—';\n  const total = kpiRow.chats_totales ?? '—';\n\n  return `\n    <div class=\"score-card\">\n      <div class=\"score-label\">Tasa de Resolución</div>\n      <div class=\"score-value\">${escapeHtml(rate)}%</div>\n      <div class=\"score-stars\">★★★★★</div>\n      <div class=\"score-foot\">Chats: ${escapeHtml(total)}</div>\n    </div>\n  `;\n}\n\nfunction renderSection(sectionKey, section, index) {\n  const sectionColors = {\n    kpis_delivery: 'accent-black',\n    riesgos_negocio: 'accent-red',\n    intenciones: 'accent-black',\n    horarios: 'accent-black',\n    estado_emocional: 'accent-black',\n    sentimiento_negativo: 'accent-red',\n    temas_conversaciones: 'accent-black',\n    escalaciones: 'accent-black',\n  };\n\n  const colorClass = sectionColors[sectionKey] || 'accent-black';\n  let rows = Array.isArray(section?.datos_detallados) ? section.datos_detallados : [];\n\n  if (sectionKey === 'escalaciones') {\n    // Se retiran los campos \"Tono Sentimiento\", \"Urgencia\" y \"Estado\"\n    rows = rows.map(row => {\n      const newRow = { ...row };\n      delete newRow.tono_sentimiento;\n      delete newRow.urgencia;\n      delete newRow.estado;\n      return newRow;\n    });\n  }\n\n  if (sectionKey === 'kpis_delivery') {\n    const kpiRow = rows[0] || {};\n\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        ${renderMetricCards(kpiRow)}\n\n      </section>\n    `;\n  }\n  \n  if (sectionKey === 'temas_conversaciones') {\n    return `\n      <section class=\"card ${colorClass}\">\n        <div class=\"section-title\">\n          <span class=\"section-index\">${index}.</span>\n          <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n        </div>\n\n        <div class=\"section-text\">\n          ${renderParagraphs(section?.resumen_narrativo)}\n        </div>\n\n        <div class=\"subsection-title\">Distribución de Temas de Mensajes</div>\n        ${renderTable(rows)}\n      </section>\n    `;\n  }\n\n  return `\n    <section class=\"card ${colorClass}\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">${index}.</span>\n        <span>${escapeHtml(section?.titulo || prettyLabel(sectionKey))}</span>\n      </div>\n\n      <div class=\"section-text\">\n        ${renderParagraphs(section?.resumen_narrativo)}\n      </div>\n\n      ${renderTable(rows)}\n    </section>\n  `;\n}\n\n/* =========================\n   2) DATOS DERIVADOS\n========================= */\n\nconst secciones = data.secciones || {};\nconst orderedKeys = [\n  'kpis_delivery',\n  'riesgos_negocio',\n  'intenciones',\n  'horarios',\n  'estado_emocional',\n  'sentimiento_negativo',\n  'temas_conversaciones',\n  'escalaciones',\n].filter(key => secciones[key]);\n\nconst kpiRow = secciones.kpis_delivery?.datos_detallados?.[0] || {};\nconst sucursal = \"Delivery \" + (kpiRow.sucursal_name || \"Calle 9\");\nconst canal = \"WhatsApp\";\nconst periodo = formatMonthYear(kpiRow.mes);\n\n/* =========================\n   3) HTML FINAL\n========================= */\n\nconst html = `\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Reporte Operativo Delivery</title>\n  <style>\n    * { box-sizing: border-box; }\n    body {\n      margin: 0;\n      padding: 24px;\n      font-family: Arial, Helvetica, sans-serif;\n      background: #f4f4f5;\n      color: #111827;\n      line-height: 1.45;\n    }\n\n    .container {\n      max-width: 1280px;\n      margin: 0 auto;\n    }\n\n    .header {\n      display: flex;\n      justify-content: space-between;\n      align-items: stretch;\n      gap: 24px;\n      margin-bottom: 28px;\n      border-bottom: 4px solid #e11d48;\n      padding-bottom: 18px;\n    }\n\n    .brand-box {\n      background: #111827;\n      color: #fff;\n      padding: 18px 22px;\n      border-radius: 10px;\n      font-size: 30px;\n      font-weight: 800;\n      letter-spacing: -0.5px;\n      display: inline-block;\n    }\n\n    .brand-box .red {\n      color: #e11d48;\n    }\n\n    .header-left {\n      flex: 1;\n    }\n\n    .header-title {\n      margin: 14px 0 4px 0;\n      font-size: 28px;\n      font-weight: 800;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n    }\n\n    .header-subtitle {\n      margin: 0;\n      color: #4b5563;\n      font-size: 16px;\n      font-weight: 600;\n    }\n\n    .header-meta {\n      min-width: 260px;\n      background: #fff;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .meta-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      color: #9ca3af;\n      font-weight: 700;\n      letter-spacing: 1px;\n      margin-bottom: 8px;\n    }\n\n    .meta-brand {\n      font-size: 24px;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 2px;\n    }\n\n    .meta-text {\n      font-size: 13px;\n      color: #6b7280;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      margin-bottom: 22px;\n      box-shadow: 0 3px 10px rgba(0,0,0,0.06);\n      border-top: 5px solid #111827;\n    }\n\n    .accent-red { border-top-color: #dc2626; }\n    .accent-black { border-top-color: #111827; }\n\n    .summary-grid {\n      display: grid;\n      grid-template-columns: 2fr 320px;\n      gap: 24px;\n      align-items: start;\n    }\n\n    .section-title {\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      font-size: 26px;\n      font-weight: 800;\n      margin-bottom: 18px;\n    }\n\n    .section-index {\n      color: #e11d48;\n    }\n\n    .section-text p {\n      margin: 0 0 12px 0;\n      text-align: justify;\n      color: #374151;\n      font-size: 16px;\n    }\n\n    .subsection-title {\n      margin: 24px 0 12px 0;\n      font-size: 18px;\n      font-weight: 800;\n      color: #111827;\n    }\n\n    .score-card {\n      background: #111827;\n      color: #fff;\n      border-radius: 12px;\n      padding: 24px;\n      text-align: center;\n    }\n\n    .score-label {\n      text-transform: uppercase;\n      font-size: 11px;\n      letter-spacing: 1.2px;\n      color: #9ca3af;\n      font-weight: 700;\n      margin-bottom: 10px;\n    }\n\n    .score-value {\n      font-size: 52px;\n      line-height: 1;\n      font-weight: 900;\n      color: #e11d48;\n      margin-bottom: 10px;\n    }\n\n    .score-stars {\n      color: #10b981;\n      font-size: 22px;\n      letter-spacing: 2px;\n      margin-bottom: 8px;\n    }\n\n    .score-foot {\n      font-size: 12px;\n      color: #d1d5db;\n    }\n\n    .metrics-grid {\n      display: grid;\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n      gap: 14px;\n      margin-top: 18px;\n      margin-bottom: 6px;\n    }\n\n    .metric-card {\n      border-left: 5px solid #e11d48;\n      background: #fafafa;\n      border-radius: 10px;\n      padding: 16px;\n    }\n\n    .metric-card.red { border-left-color: #e11d48; }\n    .metric-card.warn { border-left-color: #d97706; }\n    .metric-card.danger { border-left-color: #dc2626; }\n\n    .metric-label {\n      font-size: 11px;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #6b7280;\n      font-weight: 700;\n      margin-bottom: 8px;\n    }\n\n    .metric-value {\n      font-size: 26px;\n      font-weight: 900;\n      color: #111827;\n    }\n\n    .table-wrap {\n      overflow-x: auto;\n      border: 1px solid #e5e7eb;\n      border-radius: 10px;\n    }\n\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      background: #fff;\n      font-size: 13px;\n    }\n\n    thead th {\n      background: #111827;\n      color: #fff;\n      text-align: left;\n      padding: 12px 10px;\n      font-weight: 700;\n      vertical-align: top;\n    }\n\n    tbody td {\n      border-top: 1px solid #e5e7eb;\n      padding: 10px;\n      vertical-align: top;\n      color: #374151;\n    }\n\n    tbody tr:nth-child(even) {\n      background: #fafafa;\n    }\n\n    .empty-state {\n      border: 1px dashed #d1d5db;\n      background: #fafafa;\n      color: #6b7280;\n      border-radius: 10px;\n      padding: 18px;\n      text-align: center;\n    }\n\n    .muted {\n      color: #6b7280;\n    }\n\n    @media (max-width: 980px) {\n      .summary-grid {\n        grid-template-columns: 1fr;\n      }\n\n      .metrics-grid {\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n      }\n\n      .header {\n        flex-direction: column;\n      }\n    }\n\n    /* ====== CORRECCIONES PARA IMPRESIÓN Y PDF ====== */\n    @media print {\n      @page {\n        size: A4 portrait;\n        margin: 1.5cm;\n      }\n\n      body {\n        background: #fff;\n        padding: 0;\n        font-size: 11pt;\n        -webkit-print-color-adjust: exact !important;\n        print-color-adjust: exact !important;\n      }\n\n      .container {\n        max-width: 100%;\n        margin: 0;\n      }\n\n      .card {\n        box-shadow: none;\n        border: 1px solid #e5e7eb;\n        padding: 16px;\n        margin-bottom: 20px;\n        break-inside: auto;\n        page-break-inside: auto;\n      }\n\n      .section-title, .subsection-title {\n        break-after: avoid;\n        page-break-after: avoid;\n      }\n\n      .score-card, .metric-card {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      .table-wrap {\n        overflow: visible !important;\n        border: none;\n      }\n\n      table {\n        table-layout: fixed;\n        width: 100%;\n        word-wrap: break-word;\n      }\n\n      thead th {\n        font-size: 10pt;\n        padding: 8px;\n      }\n\n      tbody td {\n        font-size: 9pt;\n        padding: 8px;\n        word-wrap: break-word;\n        overflow-wrap: break-word;\n        hyphens: auto;\n      }\n\n      tr {\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n\n      thead {\n        display: table-header-group;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n\n    <header class=\"header\">\n      <div class=\"header-left\">\n        <div class=\"brand-box\">\n          OSAKI <span class=\"red\">DELIVERY</span>\n        </div>\n        <h1 class=\"header-title\">Reporte Operativo Delivery</h1>\n        <p class=\"header-subtitle\">\n          Sucursal: ${escapeHtml(sucursal)} | Periodo: ${escapeHtml(periodo)} | Canal: ${escapeHtml(canal)}\n        </p>\n      </div>\n\n      <div class=\"header-meta\">\n        <div class=\"meta-label\">Generado por</div>\n        <div class=\"meta-brand\">TEMIKIA</div>\n        <div class=\"meta-text\">Inteligencia Operacional</div>\n      </div>\n    </header>\n\n    <section class=\"card accent-black\">\n      <div class=\"section-title\">\n        <span class=\"section-index\">1.</span>\n        <span>Resumen General</span>\n      </div>\n\n      <div class=\"summary-grid\">\n        <div class=\"section-text\">\n          ${renderParagraphs(data.resumen_ejecutivo)}\n        </div>\n        ${renderResolutionCard(kpiRow)}\n      </div>\n    </section>\n\n    ${orderedKeys\n      .map((key, idx) => renderSection(key, secciones[key], idx + 2))\n      .join('')}\n\n  </div>\n</body>\n</html>\n`;\n\nreturn [\n  {\n    json: {\n      html,\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1328,
+        3840
+      ],
+      "id": "50b544e9-a0b0-4be1-a4a2-e2e4b193dd4b",
+      "name": "Forma_HTML2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9625f9ba-b3ae-4196-afdd-f618d1a65a8a",
+              "name": "html",
+              "value": "={{ $json.html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1776,
+        3840
+      ],
+      "id": "bba04c86-9efd-4aa1-a6e4-df5afb2a0301",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Toma el HTML como string desde item.json.html y lo convierte en binario \"files\"\nconst html = String($json.html ?? '');\nreturn [{\n  json: {},\n  binary: {\n    // OJO: Gotenberg espera el campo de formulario llamado EXACTAMENTE \"files\"\n    files: {\n      data: Buffer.from(html, 'utf8').toString('base64'),\n      fileName: 'index.html',\n      mimeType: 'text/html'\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        3840
+      ],
+      "id": "14d90c53-8a3b-44b3-8134-573d66de76ff",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://72.61.62.19:3001/forms/chromium/convert/html",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "files",
+              "inputDataFieldName": "=files"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "=Resumen Osaki.pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2224,
+        3840
+      ],
+      "id": "0180ecf8-509a-404c-98ed-9017c27675f0",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n    tema, \n    intencion, \n    COUNT(*) as cantidad\nFROM osaki_main.tema_conversaciones\nWHERE sucursal = '{{ $json.sucursal }}'\n  AND EXTRACT(month FROM created_at) = {{ $json.mes_numero }}\nGROUP BY tema, intencion\nORDER BY cantidad DESC;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -816,
+        4416
+      ],
+      "id": "61bc6f44-7d3d-4c38-8bbb-1c15653145b5",
+      "name": "Temas_Conversaciones_Query1",
+      "credentials": {
+        "postgres": {
+          "id": "sk75eTZ4yDkbl8mt",
+          "name": "Postgres Osaki-TemikiaProd01"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "temas_conversaciones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        4416
+      ],
+      "id": "ed73c288-c1c7-4278-a1ce-63826f8832f1",
+      "name": "Temas_Conversaciones_Aggregate1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.4-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5.4-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        592,
+        4048
+      ],
+      "id": "5ad155fd-02d0-4438-8476-64cd651b32ad",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "fATP1TjAWkMAqBDc",
+          "name": "OpenAi Osaki-TemikiaProd01"
+        }
+      }
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-09T16:40:29.159Z",
+      "createdAt": "2026-03-09T16:40:29.159Z",
+      "role": "workflow:owner",
+      "workflowId": "cMlUEVDRlCu45P00",
+      "projectId": "ROVo9T66IPW6MHN4"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-06-05T18:24:37.812Z",
+  "versionId": "34c10417-6829-4078-811a-f488a0b31ec8"
+}
