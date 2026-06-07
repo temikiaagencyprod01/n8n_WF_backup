@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-29T23:14:57.000Z",
-    "createdAt": "2026-04-29T23:14:44.797Z",
-    "versionId": "637c7802-b7d2-4868-8258-7100ae96cb50",
+    "updatedAt": "2026-06-07T01:04:44.000Z",
+    "createdAt": "2026-06-07T01:03:16.450Z",
+    "versionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -442,8 +442,9 @@
         "parameters": {
           "promptType": "define",
           "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
+          "needsFallback": true,
           "options": {
-            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas\n- Tu salida será exclusivamente usando el formato json."
+            "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas OBLIGATORIAS\n- Tu output será exclusivamente usando el formato json especificado más arriba."
           }
         },
         "type": "@n8n/n8n-nodes-langchain.agent",
@@ -469,8 +470,8 @@
         "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
         "typeVersion": 1.3,
         "position": [
-          -1312,
-          400
+          -1232,
+          464
         ],
         "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
         "name": "OpenAI Chat Model",
@@ -1672,6 +1673,28 @@
         ],
         "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
         "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "model": "deepseek-v4-flash",
+          "options": {
+            "responseFormat": "json_object"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+        "typeVersion": 1,
+        "position": [
+          -1344,
+          464
+        ],
+        "id": "6306ec18-862a-45bc-bf90-fd676c96b974",
+        "name": "DeepSeek Chat Model",
+        "credentials": {
+          "deepSeekApi": {
+            "id": "THD65LGcfOEGV6tJ",
+            "name": "DeepSeek n8n-Osaki"
+          }
+        }
       }
     ],
     "connections": {
@@ -1794,7 +1817,7 @@
             {
               "node": "AI Agent",
               "type": "ai_languageModel",
-              "index": 0
+              "index": 1
             }
           ]
         ]
@@ -1999,14 +2022,25 @@
             }
           ]
         ]
+      },
+      "DeepSeek Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "Temikia Agency",
-    "name": "Version 637c7802",
+    "name": "Version 1eb055ba",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "637c7802-b7d2-4868-8258-7100ae96cb50",
+  "activeVersionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1",
   "connections": {
     "Aggregate": {
       "main": [
@@ -2127,7 +2161,7 @@
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -2328,6 +2362,17 @@
           {
             "node": "Update record",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -2778,8 +2823,9 @@
       "parameters": {
         "promptType": "define",
         "text": "=Eres un analista que resume diálogos de atención al cliente en español, entre una IA y un Humano.\nResume el siguiente fragmento en 1–2 viñetas claras, objetivas y sin inventar datos.\nConserva números explícitos (p. ej., #personas, fechas, horas) cuando aparezcan.\n\nTexto:\n\"{{ $json.text }}\"",
+        "needsFallback": true,
         "options": {
-          "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas\n- Tu salida será exclusivamente usando el formato json."
+          "systemMessage": "=## Rol del Agente de Escalamiento\n\nEres un agente especializado en analizar y consolidar múltiples resúmenes parciales de conversaciones con clientes en un solo reporte ejecutivo.\nTu objetivo es obtener una visión clara y concisa de la situación del cliente, destacando los puntos clave y recomendando la próxima acción a seguir.\n\n---\n\n\n## Formato de Salida Obligatorio: \n\n```json \n{\n\"queja\": \"\" //2-5 palabras si el cliente está haciendo una queja o un reclamo\n\"intencion\": \"Reclamos por Calidad|Fallas Técnicas App|Gestión de Pedidos|Errores de Entrega|Reservas y Eventos|Pagos y Precios|Información y Ventas|Otros\",\n\"datos_clave\": \"\", // Aquella información crítica extraída de la conversación (max 200 caracteres)\n\"contexto\": \"\", // Resumen breve del contexto relevante (max 300 caracteres)\n\"proxima_accion_recomendada\": \"\" // Sugerencia concreta de próxima acción  (Ser específica y accionable; max 100 caracteres)\n}, \n\"notas_operativas\": {\n    \"tono_sentimiento\": \"positivo|neutral|negativo\",\n    \"urgencia\": \"baja|media|alta\",\n    \"nivel_urgencia\": \"1-10\" \n}\n```\n\n## Reglas OBLIGATORIAS\n- Tu output será exclusivamente usando el formato json especificado más arriba."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -2805,8 +2851,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -1312,
-        400
+        -1232,
+        464
       ],
       "id": "41f4c3ec-71b6-4657-9473-1f54db2fe753",
       "name": "OpenAI Chat Model",
@@ -4008,6 +4054,28 @@
       ],
       "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
       "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "options": {
+          "responseFormat": "json_object"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -1344,
+        464
+      ],
+      "id": "6306ec18-862a-45bc-bf90-fd676c96b974",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "THD65LGcfOEGV6tJ",
+          "name": "DeepSeek n8n-Osaki"
+        }
+      }
     }
   ],
   "settings": {
@@ -4017,7 +4085,8 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false,
     "errorWorkflow": "ZpYgShc1li13uf3h",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "timeSavedPerExecution": 2
   },
   "shared": [
     {
@@ -4031,6 +4100,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-05-20T00:21:48.911Z",
-  "versionId": "637c7802-b7d2-4868-8258-7100ae96cb50"
+  "updatedAt": "2026-06-07T01:04:39.273Z",
+  "versionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1"
 }
