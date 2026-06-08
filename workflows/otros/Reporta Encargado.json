@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-07T01:04:44.000Z",
-    "createdAt": "2026-06-07T01:03:16.450Z",
-    "versionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1",
+    "updatedAt": "2026-06-08T02:18:54.000Z",
+    "createdAt": "2026-06-08T02:18:50.259Z",
+    "versionId": "d3ed0325-5a3d-48a9-8094-3982dd759f21",
     "workflowId": "9IRkn2WtQUbKYT7W",
     "nodes": [
       {
@@ -707,13 +707,13 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "telefono": "={{ $json.fields[\"Teléfono\"] }}",
+              "telefono": "=  {{ $('Datos Cliente').first().json.telefono }}",
               "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
               "notas": "={{ $('Normaliza Analisis').item.json.datos_clave }}",
               "status": "Bloqueo Temporal",
               "intencion": "={{ $('Normaliza Analisis').item.json.intencion }}",
               "tipo_cliente": "Cliente",
-              "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
+              "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal+'\"]}' }}"
             },
             "matchingColumns": [
               "telefono"
@@ -1256,7 +1256,8 @@
             "id": "KlZpJ3cetMbQRAcX",
             "name": "Osaki Tablero"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -1292,7 +1293,8 @@
             "id": "KlZpJ3cetMbQRAcX",
             "name": "Osaki Tablero"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -1326,7 +1328,8 @@
           624
         ],
         "id": "b3bc318f-8a46-4da9-918b-60e38bf4bb79",
-        "name": "If1"
+        "name": "If1",
+        "disabled": true
       },
       {
         "parameters": {
@@ -1497,7 +1500,8 @@
             "id": "KlZpJ3cetMbQRAcX",
             "name": "Osaki Tablero"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -1659,7 +1663,8 @@
             "id": "KlZpJ3cetMbQRAcX",
             "name": "Osaki Tablero"
           }
-        }
+        },
+        "disabled": true
       },
       {
         "parameters": {
@@ -1672,7 +1677,8 @@
           528
         ],
         "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
-        "name": "Code in JavaScript"
+        "name": "Code in JavaScript",
+        "disabled": true
       },
       {
         "parameters": {
@@ -2035,12 +2041,13 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "Temikia Agency",
-    "name": "Version 1eb055ba",
+    "name": "Version d3ed0325",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1",
+  "activeVersionId": "d3ed0325-5a3d-48a9-8094-3982dd759f21",
   "connections": {
     "Aggregate": {
       "main": [
@@ -3088,13 +3095,13 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "telefono": "={{ $json.fields[\"Teléfono\"] }}",
+            "telefono": "=  {{ $('Datos Cliente').first().json.telefono }}",
             "fecha_modificacion": "={{ $now.setZone('America/Argentina/Buenos_Aires').toFormat(\"yyyy-MM-dd'T'HH:mm:ss.000'Z'\") }}",
             "notas": "={{ $('Normaliza Analisis').item.json.datos_clave }}",
             "status": "Bloqueo Temporal",
             "intencion": "={{ $('Normaliza Analisis').item.json.intencion }}",
             "tipo_cliente": "Cliente",
-            "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $json.fields.Sucursal+'\"]}' }}"
+            "sucursal_bloqueo": "={{ '{\"sucursal\":[\"'+ $('Flujo Agente Principal').item.json.canal.split(' ')[1] +'-'+ $('Flujo Agente Principal').item.json.sucursal+'\"]}' }}"
           },
           "matchingColumns": [
             "telefono"
@@ -3637,7 +3644,8 @@
           "id": "KlZpJ3cetMbQRAcX",
           "name": "Osaki Tablero"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -3673,7 +3681,8 @@
           "id": "KlZpJ3cetMbQRAcX",
           "name": "Osaki Tablero"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -3707,7 +3716,8 @@
         624
       ],
       "id": "b3bc318f-8a46-4da9-918b-60e38bf4bb79",
-      "name": "If1"
+      "name": "If1",
+      "disabled": true
     },
     {
       "parameters": {
@@ -3878,7 +3888,8 @@
           "id": "KlZpJ3cetMbQRAcX",
           "name": "Osaki Tablero"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -4040,7 +4051,8 @@
           "id": "KlZpJ3cetMbQRAcX",
           "name": "Osaki Tablero"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -4053,7 +4065,8 @@
         528
       ],
       "id": "7a30788f-d3b4-4ab9-94f8-f33a64e9b7a8",
-      "name": "Code in JavaScript"
+      "name": "Code in JavaScript",
+      "disabled": true
     },
     {
       "parameters": {
@@ -4100,6 +4113,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-06-07T01:04:39.273Z",
-  "versionId": "1eb055ba-9e22-4c7a-a625-7581de5e84e1"
+  "updatedAt": "2026-06-08T02:48:54.570Z",
+  "versionId": "d3ed0325-5a3d-48a9-8094-3982dd759f21"
 }
