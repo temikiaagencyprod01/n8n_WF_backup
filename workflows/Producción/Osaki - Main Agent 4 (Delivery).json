@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-05T17:15:20.000Z",
-    "createdAt": "2026-06-05T17:15:04.855Z",
-    "versionId": "9f2b4938-a0a6-417c-9642-9c9a0dc8e96e",
+    "updatedAt": "2026-06-09T20:03:28.000Z",
+    "createdAt": "2026-06-09T16:24:32.198Z",
+    "versionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -946,7 +946,6 @@
               "dia_semana",
               "limite_por_cliente",
               "acumulable",
-              "presentacion",
               "es_vegetariano",
               "es_vegano",
               "es_sin_gluten",
@@ -9141,11 +9140,11 @@
     },
     "nodeGroups": [],
     "authors": "Temikia Agency",
-    "name": "Version 9f2b4938",
+    "name": "Version 81441f43",
     "description": "",
-    "autosaved": true
+    "autosaved": false
   },
-  "activeVersionId": "9f2b4938-a0a6-417c-9642-9c9a0dc8e96e",
+  "activeVersionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -11988,7 +11987,6 @@
             "dia_semana",
             "limite_por_cliente",
             "acumulable",
-            "presentacion",
             "es_vegetariano",
             "es_vegano",
             "es_sin_gluten",
@@ -18316,6 +18314,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-06-09T03:39:08.814Z",
-  "versionId": "9f2b4938-a0a6-417c-9642-9c9a0dc8e96e"
+  "updatedAt": "2026-06-09T16:24:32.187Z",
+  "versionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3"
 }
