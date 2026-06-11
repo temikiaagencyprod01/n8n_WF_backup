@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-09T20:03:28.000Z",
-    "createdAt": "2026-06-09T16:24:32.198Z",
-    "versionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3",
+    "updatedAt": "2026-06-11T03:45:44.000Z",
+    "createdAt": "2026-06-11T03:44:42.225Z",
+    "versionId": "9a2fcd32-4045-4460-8478-bedd2235d80f",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -556,7 +556,12 @@
             "cachedResultName": "info_business"
           },
           "returnAll": true,
-          "options": {}
+          "options": {
+            "outputColumns": [
+              "concept",
+              "value"
+            ]
+          }
         },
         "type": "n8n-nodes-base.postgresTool",
         "typeVersion": 2.6,
@@ -5605,7 +5610,7 @@
                   "conditions": [
                     {
                       "id": "be6b673f-8e36-4843-8938-a932bb91d472",
-                      "leftValue": "={{ $('Data Filter').item.json.message_content.trim() }}",
+                      "leftValue": "={{ $('Data Filter').first().json.message_content.trim() }}",
                       "rightValue": "cleanMyHistorial",
                       "operator": {
                         "type": "string",
@@ -9140,11 +9145,11 @@
     },
     "nodeGroups": [],
     "authors": "Temikia Agency",
-    "name": "Version 81441f43",
+    "name": "Version 9a2fcd32",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3",
+  "activeVersionId": "9a2fcd32-4045-4460-8478-bedd2235d80f",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -11597,7 +11602,12 @@
           "cachedResultName": "info_business"
         },
         "returnAll": true,
-        "options": {}
+        "options": {
+          "outputColumns": [
+            "concept",
+            "value"
+          ]
+        }
       },
       "type": "n8n-nodes-base.postgresTool",
       "typeVersion": 2.6,
@@ -16646,7 +16656,7 @@
                 "conditions": [
                   {
                     "id": "be6b673f-8e36-4843-8938-a932bb91d472",
-                    "leftValue": "={{ $('Data Filter').item.json.message_content.trim() }}",
+                    "leftValue": "={{ $('Data Filter').first().json.message_content.trim() }}",
                     "rightValue": "cleanMyHistorial",
                     "operator": {
                       "type": "string",
@@ -18314,6 +18324,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-06-09T16:24:32.187Z",
-  "versionId": "81441f43-f86b-4484-bbd2-5d6e11bd99e3"
+  "updatedAt": "2026-06-11T03:44:42.213Z",
+  "versionId": "9a2fcd32-4045-4460-8478-bedd2235d80f"
 }
