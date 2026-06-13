@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-06-11T03:45:44.000Z",
-    "createdAt": "2026-06-11T03:44:42.225Z",
-    "versionId": "9a2fcd32-4045-4460-8478-bedd2235d80f",
+    "updatedAt": "2026-06-12T16:54:03.000Z",
+    "createdAt": "2026-06-12T16:54:00.452Z",
+    "versionId": "43a7f046-e4ea-48e1-a7cc-bb42629e182e",
     "workflowId": "7Rl6NqIV3yaFZVPV",
     "nodes": [
       {
@@ -2654,7 +2654,8 @@
         "name": "Agente Pedidos",
         "retryOnFail": true,
         "maxTries": 5,
-        "waitBetweenTries": 5000
+        "waitBetweenTries": 5000,
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -7247,6 +7248,43 @@
         ],
         "id": "19a05cd8-493f-4958-9d10-f4801f0fd7a7",
         "name": "Calcula Abierto"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          7952,
+          1104
+        ],
+        "id": "4dda3160-c438-4631-b721-5babc69fb4ff",
+        "name": "Wait4",
+        "webhookId": "ad91a366-24e3-475b-80d3-6b4571980429"
+      },
+      {
+        "parameters": {
+          "chatId": "67869519",
+          "text": "=Presentó un error y entró en el reintento:\n\nhttps://n8n-n8n.2hxkvh.easypanel.host/workflow/7Rl6NqIV3yaFZVPV",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          8224,
+          1104
+        ],
+        "id": "e3c49a6a-d5c0-41ae-9f47-d29039b4c27b",
+        "name": "Soporte1",
+        "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+        "credentials": {
+          "telegramApi": {
+            "id": "KmmVDBdxNsFsr80s",
+            "name": "Telegram Osaki-TemikiaProd01"
+          }
+        }
       }
     ],
     "connections": {
@@ -8026,6 +8064,13 @@
           [
             {
               "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait4",
               "type": "main",
               "index": 0
             }
@@ -9141,15 +9186,37 @@
             }
           ]
         ]
+      },
+      "Wait4": {
+        "main": [
+          [
+            {
+              "node": "Soporte1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Soporte1": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "nodeGroups": [],
     "authors": "Temikia Agency",
-    "name": "Version 9a2fcd32",
+    "name": "Version 43a7f046",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "9a2fcd32-4045-4460-8478-bedd2235d80f",
+  "activeVersionId": "43a7f046-e4ea-48e1-a7cc-bb42629e182e",
   "connections": {
     "Busca Cliente": {
       "main": [
@@ -9927,6 +9994,13 @@
         [
           {
             "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait4",
             "type": "main",
             "index": 0
           }
@@ -11037,6 +11111,28 @@
         [
           {
             "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Soporte1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Soporte1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -13700,7 +13796,8 @@
       "name": "Agente Pedidos",
       "retryOnFail": true,
       "maxTries": 5,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -18293,6 +18390,43 @@
       ],
       "id": "19a05cd8-493f-4958-9d10-f4801f0fd7a7",
       "name": "Calcula Abierto"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        7952,
+        1104
+      ],
+      "id": "4dda3160-c438-4631-b721-5babc69fb4ff",
+      "name": "Wait4",
+      "webhookId": "ad91a366-24e3-475b-80d3-6b4571980429"
+    },
+    {
+      "parameters": {
+        "chatId": "67869519",
+        "text": "=Presentó un error y entró en el reintento:\n\nhttps://n8n-n8n.2hxkvh.easypanel.host/workflow/7Rl6NqIV3yaFZVPV",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        8224,
+        1104
+      ],
+      "id": "e3c49a6a-d5c0-41ae-9f47-d29039b4c27b",
+      "name": "Soporte1",
+      "webhookId": "8aa90276-75ad-4faf-9f8b-c07f8acd0c54",
+      "credentials": {
+        "telegramApi": {
+          "id": "KmmVDBdxNsFsr80s",
+          "name": "Telegram Osaki-TemikiaProd01"
+        }
+      }
     }
   ],
   "settings": {
@@ -18324,6 +18458,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2026-06-11T03:44:42.213Z",
-  "versionId": "9a2fcd32-4045-4460-8478-bedd2235d80f"
+  "updatedAt": "2026-06-12T16:54:00.438Z",
+  "versionId": "43a7f046-e4ea-48e1-a7cc-bb42629e182e"
 }
